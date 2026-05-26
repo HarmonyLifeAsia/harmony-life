@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects, getProjectBySlug } from '../../_data/projects'
 import ContactForm from '../../_components/ContactForm'
+import GalleryLightbox from '../../_components/GalleryLightbox'
 import ProjectHero from './ProjectHero'
 
 export function generateStaticParams() {
@@ -91,32 +92,7 @@ export default async function ProjectPage(props: PageProps<'/projects/[slug]'>) 
             {project.images.length > 0 && (
               <div>
                 <p className="font-serif text-2xl text-cream mb-6">Photo Gallery</p>
-                <div className="grid grid-cols-3 gap-3">
-                  {project.images[0] && (
-                    <div className="col-span-2">
-                      <div className="aspect-[4/3] overflow-hidden rounded-sm">
-                        <img src={project.images[0]} alt={`${project.name} — main view`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex flex-col gap-3">
-                    {project.images[1] && (
-                      <div className="aspect-square overflow-hidden rounded-sm">
-                        <img src={project.images[1]} alt={`${project.name} — interior`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                      </div>
-                    )}
-                    {project.images[2] && (
-                      <div className="aspect-square overflow-hidden rounded-sm">
-                        <img src={project.images[2]} alt={`${project.name} — pool`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                      </div>
-                    )}
-                  </div>
-                  {project.images.slice(3).map((img, i) => (
-                    <div key={i} className="aspect-[4/3] overflow-hidden rounded-sm">
-                      <img src={img} alt={`${project.name} — photo ${i + 4}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                    </div>
-                  ))}
-                </div>
+                <GalleryLightbox images={project.images} projectName={project.name} />
               </div>
             )}
 
