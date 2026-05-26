@@ -27,31 +27,44 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link href={`/projects/${project.slug}`} className="block cursor-pointer">
         <div className="relative bg-charcoal/40 border border-gold/10 rounded-lg overflow-hidden hover:border-gold/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
-          {/* Image */}
+          {/* Image with exterior→interior crossfade on hover */}
           <div className="relative h-56 overflow-hidden">
+            {/* Exterior (default) */}
             <img
               src={project.thumbnail}
               alt={project.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            {/* Interior (revealed on hover) */}
+            {project.images[3] && (
+              <img
+                src={project.images[3]}
+                alt={`${project.name} — interior`}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 scale-105 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
 
             {/* Status badge */}
-            <div className="absolute top-3 left-3">
+            <div className="absolute top-3 left-3 z-20">
               <span className={`inline-flex text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full border font-medium backdrop-blur-sm ${statusColors[project.status]}`}>
                 {project.status}
               </span>
             </div>
 
             {/* Type badge */}
-            <div className="absolute top-3 right-3">
+            <div className="absolute top-3 right-3 z-20">
               <span className="text-[10px] text-cream/80 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm tracking-wide">
                 {project.type}
               </span>
             </div>
 
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/5 transition-colors duration-500" />
+            {/* Hover label */}
+            <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span className="text-[10px] text-gold tracking-[0.3em] uppercase font-sans">
+                Inside View
+              </span>
+            </div>
           </div>
 
           {/* Content */}

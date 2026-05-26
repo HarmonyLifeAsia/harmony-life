@@ -76,8 +76,19 @@ body {
   color: #1a1a2e;
 }
 
+/* Cinematic marquee strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
   *,
   *::before,
   *::after {

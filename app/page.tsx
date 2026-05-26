@@ -4,6 +4,8 @@ import Hero from './_components/Hero'
 import CounterBar from './_components/CounterBar'
 import SectionHeading from './_components/SectionHeading'
 import ProjectCard from './_components/ProjectCard'
+import CinematicTour from './_components/CinematicTour'
+import MarqueeStrip from './_components/MarqueeStrip'
 import WhyInvestSection from './_components/WhyInvestSection'
 import LifestyleSection from './_components/LifestyleSection'
 import FounderSection from './_components/FounderSection'
@@ -42,7 +44,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Why Invest */}
+      {/* 4. Cinematic Tour */}
+      <CinematicTour />
+      <MarqueeStrip />
+
+      {/* 5. Why Invest */}
       <WhyInvestSection />
 
       {/* 5. Lifestyle */}
