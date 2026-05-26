@@ -13,6 +13,7 @@ const statusColors = {
   'Selling': 'bg-jungle/20 text-jungle-light border-jungle/30',
   'Coming Soon': 'bg-gold/10 text-gold border-gold/30',
   'Under Construction': 'bg-blue-500/10 text-blue-300 border-blue-400/30',
+  'Sold Out': 'bg-cream/10 text-cream/60 border-cream/20',
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
@@ -26,38 +27,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link href={`/projects/${project.slug}`} className="block cursor-pointer">
         <div className="relative bg-charcoal/40 border border-gold/10 rounded-lg overflow-hidden hover:border-gold/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
-          {/* Image placeholder */}
-          <div
-            className="relative h-56 overflow-hidden"
-            style={{ background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})` }}
-          >
-            <div className="absolute inset-0 opacity-30"
-              style={{
-                backgroundImage: 'radial-gradient(circle at 30% 30%, rgba(201,168,118,0.4) 0%, transparent 60%)',
-              }}
+          {/* Image */}
+          <div className="relative h-56 overflow-hidden">
+            <img
+              src={project.thumbnail}
+              alt={project.name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Project type indicator */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-14 h-14 mx-auto mb-3 border border-gold/30 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </div>
-                <p className="text-gold/40 text-[10px] tracking-widest uppercase">Project Image</p>
-              </div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
             {/* Status badge */}
             <div className="absolute top-3 left-3">
-              <span className={`inline-flex text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full border font-medium ${statusColors[project.status]}`}>
+              <span className={`inline-flex text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full border font-medium backdrop-blur-sm ${statusColors[project.status]}`}>
                 {project.status}
               </span>
             </div>
 
             {/* Type badge */}
             <div className="absolute top-3 right-3">
-              <span className="text-[10px] text-cream/40 bg-black/30 px-2 py-1 rounded-sm tracking-wide">
+              <span className="text-[10px] text-cream/80 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm tracking-wide">
                 {project.type}
               </span>
             </div>

@@ -8,17 +8,22 @@ interface ProjectHeroProps {
 }
 
 export default function ProjectHero({ project }: ProjectHeroProps) {
+  const heroBg = project.thumbnail || project.images[0]
+
   return (
-    <section
-      className="relative pt-32 pb-20 px-6 overflow-hidden"
-      style={{ background: `linear-gradient(160deg, ${project.gradientFrom}, #1a1a2e)` }}
-    >
-      {/* Ambient overlay */}
-      <div className="absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(ellipse at 20% 50%, rgba(201,168,118,0.07) 0%, transparent 60%)',
-        }}
-      />
+    <section className="relative pt-32 pb-20 px-6 overflow-hidden min-h-[420px]">
+      {/* Background image */}
+      {heroBg ? (
+        <>
+          <div className="absolute inset-0">
+            <img src={heroBg} alt={project.name} className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/60" />
+        </>
+      ) : (
+        <div className="absolute inset-0" style={{ background: `linear-gradient(160deg, ${project.gradientFrom}, #1a1a2e)` }} />
+      )}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-primary" />
 
       <div className="max-w-7xl mx-auto relative z-10">

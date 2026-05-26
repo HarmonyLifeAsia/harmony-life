@@ -18,21 +18,13 @@ export default function FounderSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-2"
           >
-            <div
-              className="relative rounded-xl overflow-hidden aspect-[3/4]"
-              style={{ background: 'linear-gradient(145deg, #2a2a42, #1a1a2e)' }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 rounded-full border border-gold/30 mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-10 h-10 text-gold/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-gold/40 text-xs tracking-widest uppercase">Founder Photo</p>
-                  <p className="text-cream/20 text-xs mt-1">Robert Jakub Szymański</p>
-                </div>
-              </div>
+            <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
+              <img
+                src="/images/about.jpg"
+                alt="Robert Jakub Szymański — Founder of Harmony Life"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
               {/* Gold corner accent */}
               <div className="absolute top-0 right-0 w-16 h-px bg-gold/40" />
               <div className="absolute top-0 right-0 w-px h-16 bg-gold/40" />

@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import ImagePlaceholder from './ImagePlaceholder'
 
 const amenities = [
   { label: 'Private Pools', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14' },
@@ -82,12 +81,13 @@ export default function LifestyleSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <ImagePlaceholder
-              label="Lifestyle Photo — Villa Pool & Gardens"
-              aspectRatio="aspect-[4/5]"
-              gradientFrom="#2D4A3E"
-              gradientTo="#1a2e24"
-            />
+            <div className="aspect-[4/5] rounded-lg overflow-hidden">
+              <img
+                src="/images/projects/harmony-life-oasis/04.jpg"
+                alt="Luxury pool villa lifestyle at Harmony Life, Koh Samui"
+                className="w-full h-full object-cover"
+              />
+            </div>
             {/* Decorative border offset */}
             <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 rounded-lg pointer-events-none" />
             {/* Floating stat card */}

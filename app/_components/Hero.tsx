@@ -30,16 +30,15 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden flex items-center justify-center">
-      {/* Parallax Background */}
+      {/* Parallax Background with real photo */}
       <motion.div
         style={{ y }}
         className="absolute inset-0 w-full h-[120%]"
       >
-        <div
-          className="w-full h-full"
-          style={{
-            background: 'linear-gradient(160deg, #0d1a2e 0%, #1a1a2e 30%, #2D1f3a 60%, #1a2e1e 100%)',
-          }}
+        <img
+          src="/images/hero/bg.jpg"
+          alt="Harmony Life luxury villa on Koh Samui"
+          className="w-full h-full object-cover"
         />
         {/* Atmospheric overlay layers */}
         <div className="absolute inset-0"
@@ -49,24 +48,8 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Hero image placeholder */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full h-full relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-transparent" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center opacity-20">
-            <div className="border border-gold/30 rounded-lg px-12 py-8">
-              <svg className="w-12 h-12 text-gold/40 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <p className="text-gold/40 text-xs tracking-widest uppercase">Hero Image</p>
-              <p className="text-cream/20 text-xs mt-1">Dramatic Villa / Ocean View</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/90" />
 
       {/* Content */}
       <motion.div

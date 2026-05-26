@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects, getProjectBySlug } from '../../_data/projects'
 import ContactForm from '../../_components/ContactForm'
-import ImagePlaceholder from '../../_components/ImagePlaceholder'
 import ProjectHero from './ProjectHero'
 
 export function generateStaticParams() {
@@ -33,6 +32,7 @@ export default async function ProjectPage(props: PageProps<'/projects/[slug]'>) 
     'Selling': 'bg-jungle/20 text-jungle-light border-jungle/30',
     'Coming Soon': 'bg-gold/10 text-gold border-gold/30',
     'Under Construction': 'bg-blue-500/10 text-blue-300 border-blue-400/30',
+    'Sold Out': 'bg-cream/10 text-cream/60 border-cream/20',
   }
 
   return (
@@ -88,41 +88,56 @@ export default async function ProjectPage(props: PageProps<'/projects/[slug]'>) 
             </div>
 
             {/* Gallery */}
-            <div>
-              <p className="font-serif text-2xl text-cream mb-6">Photo Gallery</p>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="col-span-2">
-                  <ImagePlaceholder
-                    label="Main View"
-                    aspectRatio="aspect-[4/3]"
-                    gradientFrom={project.gradientFrom}
-                    gradientTo={project.gradientTo}
-                  />
+            {project.images.length > 0 && (
+              <div>
+                <p className="font-serif text-2xl text-cream mb-6">Photo Gallery</p>
+                <div className="grid grid-cols-3 gap-3">
+                  {project.images[0] && (
+                    <div className="col-span-2">
+                      <div className="aspect-[4/3] overflow-hidden rounded-sm">
+                        <img src={project.images[0]} alt={`${project.name} — main view`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex flex-col gap-3">
+                    {project.images[1] && (
+                      <div className="aspect-square overflow-hidden rounded-sm">
+                        <img src={project.images[1]} alt={`${project.name} — interior`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                      </div>
+                    )}
+                    {project.images[2] && (
+                      <div className="aspect-square overflow-hidden rounded-sm">
+                        <img src={project.images[2]} alt={`${project.name} — pool`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                      </div>
+                    )}
+                  </div>
+                  {project.images.slice(3).map((img, i) => (
+                    <div key={i} className="aspect-[4/3] overflow-hidden rounded-sm">
+                      <img src={img} alt={`${project.name} — photo ${i + 4}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                    </div>
+                  ))}
                 </div>
-                <div className="flex flex-col gap-3">
-                  <ImagePlaceholder label="Interior" aspectRatio="aspect-square" gradientFrom={project.gradientTo} gradientTo={project.gradientFrom} />
-                  <ImagePlaceholder label="Pool" aspectRatio="aspect-square" gradientFrom="#2D3A1E" gradientTo="#1a2e14" />
-                </div>
-                {[
-                  'Living Area', 'Kitchen', 'Master Bedroom',
-                ].map((lbl) => (
-                  <ImagePlaceholder key={lbl} label={lbl} aspectRatio="aspect-[4/3]" gradientFrom="#1e2a2e" gradientTo="#1a1a2e" />
-                ))}
               </div>
-            </div>
+            )}
 
             {/* Floor Plans */}
             <div>
               <p className="font-serif text-2xl text-cream mb-6">Floor Plans</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {['Ground Floor Plan', 'First Floor Plan'].map((label) => (
-                  <ImagePlaceholder
+                  <div
                     key={label}
-                    label={label}
-                    aspectRatio="aspect-[4/3]"
-                    gradientFrom="#252542"
-                    gradientTo="#1a1a2e"
-                  />
+                    className="aspect-[4/3] rounded-sm border border-gold/20 flex items-center justify-center"
+                    style={{ background: 'linear-gradient(135deg, #252542, #1a1a2e)' }}
+                  >
+                    <div className="text-center">
+                      <svg className="w-8 h-8 text-gold/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                      </svg>
+                      <p className="text-gold/40 text-xs tracking-widest uppercase">{label}</p>
+                      <p className="text-cream/20 text-xs mt-1">Available on request</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

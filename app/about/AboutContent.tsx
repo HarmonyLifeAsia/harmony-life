@@ -3,7 +3,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import SectionHeading from '../_components/SectionHeading'
-import ImagePlaceholder from '../_components/ImagePlaceholder'
 
 const values = [
   {
@@ -95,24 +94,26 @@ export default function AboutContent() {
               animate={storyInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 }}
             >
-              <ImagePlaceholder
-                label="Brand Story — Koh Samui Landscape"
-                aspectRatio="aspect-[4/3]"
-                gradientFrom="#2D4A3E"
-                gradientTo="#1a2e24"
-              />
+              <div className="aspect-[4/3] rounded-xl overflow-hidden">
+                <img
+                  src="/images/projects/harmony-life-oasis/01.jpg"
+                  alt="Harmony Life — luxury villa on Koh Samui"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
 
           {/* Founder Full Bio */}
           <div className="grid lg:grid-cols-5 gap-12 items-start mb-24">
             <div className="lg:col-span-2">
-              <ImagePlaceholder
-                label="Robert Jakub Szymański"
-                aspectRatio="aspect-[3/4]"
-                gradientFrom="#2a2a42"
-                gradientTo="#1a1a2e"
-              />
+              <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                <img
+                  src="/images/about.jpg"
+                  alt="Robert Jakub Szymański — Founder & CEO, Harmony Life"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="mt-4 bg-charcoal/30 border border-gold/10 rounded-lg p-4">
                 <p className="text-cream text-sm font-medium">Robert Jakub Szymański</p>
                 <p className="text-gold text-xs mt-0.5">Founder & CEO, Harmony Life</p>
@@ -214,13 +215,13 @@ export default function AboutContent() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="group"
               >
-                <ImagePlaceholder
-                  label={member.name === 'Team Member' ? 'Team Photo' : member.name}
-                  aspectRatio="aspect-square"
-                  gradientFrom="#2a2a42"
-                  gradientTo="#1a1a2e"
-                  className="mb-4 group-hover:opacity-90 transition-opacity"
-                />
+                <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-charcoal/30">
+                  <img
+                    src={i === 0 ? '/images/about.jpg' : `/images/projects/harmony-life-hill-2/0${i + 1}.jpg`}
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                  />
+                </div>
                 <p className="text-cream font-medium text-sm">{member.name}</p>
                 <p className="text-gold text-xs mt-0.5">{member.role}</p>
                 <p className="text-cream/45 text-xs mt-2 leading-relaxed">{member.bio}</p>
