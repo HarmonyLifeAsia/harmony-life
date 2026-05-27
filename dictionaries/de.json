@@ -203,7 +203,23 @@
     "ctaEyebrow": "Bereit anzufangen?",
     "ctaTitle": "Entdecken Sie unsere Projekte",
     "ctaSubtitle": "Von ausverkauften Erfolgen bis zu den neuesten Launches — erfahren Sie, warum Harmony Life den Maßstab für Luxuswohnen auf Koh Samui setzt.",
-    "ctaButton": "Alle Projekte ansehen"
+    "ctaButton": "Alle Projekte ansehen",
+    "founderEyebrow": "Der Gründer",
+    "founderHeading": "Baumeister aus Leidenschaft, Insulaner aus Überzeugung",
+    "founderBio1": "In Danzig geboren und als Ingenieur und Projektmanager ausgebildet, begann Robert seine Karriere im Wohnungsbau in Warschau Anfang der 2000er Jahre. Durch sorgfältige Handwerkskunst und die absolute Weigerung, Abstriche zu machen, baute er eines der angesehensten Portfolios im polnischen Luxuswohnungssektor.",
+    "founderBio2": "Seine Projekte waren bekannt für strukturelle Langlebigkeit, Energieeffizienz weit vor den Vorschriften und ein Ausbaustandard, der Premiumpreise rechtfertigte. Käufer wussten: Wenn Robert es gebaut hat, hält es.",
+    "founderBio3": "Der Umzug nach Koh Samui im Jahr 2019 war keine Pensionierung — es war eine Expansion. Robert identifizierte einen unterversorgten Markt: internationale Käufer und Investoren, die tropischen Luxus wollten, aber europäische Baustandards forderten. Nicht nur Ästhetik, sondern wirklich überlegene Gebäude.",
+    "founderBio4": "Heute betreibt Harmony Life fünf Projekte auf der Insel, und Robert überwacht persönlich die Qualitätskontrolle bei jeder Entwicklung. Seine Philosophie hat sich nicht geändert: Baue es so, als ob deine Familie dort leben würde.",
+    "founderQuote": "Koh Samui ist das Paradies. Aber das Paradies verdient Gebäude, die eine Generation überdauern — nicht fünf Jahre. Das ist es, was wir bauen.",
+    "founderBullet1": "Über 20 Jahre in der Entwicklung",
+    "founderBullet2": "150+ Projekte in Warschau",
+    "founderBullet3": "Koh-Samui-Bewohner seit 2019",
+    "founderBullet4": "Mitglied des Thailändischen Immobilienverbands",
+    "companyEyebrow": "Firmeninformationen",
+    "companyNameLabel": "Firmenname",
+    "companyRegLabel": "Registrierung",
+    "companyOfficeLabel": "Büro",
+    "companyContactLabel": "Kontakt"
   },
   "contactPage": {
     "heroEyebrow": "Kontakt aufnehmen",
@@ -216,7 +232,13 @@
     "hoursLabel": "Öffnungszeiten",
     "hoursValue": "Mo–Fr: 9:00–18:00 Uhr ICT\nWochenende: Nach Vereinbarung",
     "languagesLabel": "Sprachen",
-    "formTitle": "Schreiben Sie uns"
+    "formTitle": "Schreiben Sie uns",
+    "formSubtitle": "Wir antworten innerhalb von 24 Stunden in Ihrer bevorzugten Sprache.",
+    "whatsappLabel": "WhatsApp-Chat",
+    "whatsappSubtext": "Schnellste Antwort — normalerweise < 1 Stunde",
+    "videoCallTitle": "Videoanruf buchen",
+    "videoCallDesc": "Private 30-minütige Beratung mit Robert oder unserem Verkaufsteam. 7 Tage die Woche verfügbar.",
+    "videoCallButton": "Gespräch vereinbaren"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

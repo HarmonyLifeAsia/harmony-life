@@ -203,7 +203,23 @@
     "ctaEyebrow": "Ready to Begin?",
     "ctaTitle": "Explore our projects",
     "ctaSubtitle": "From sold-out successes to the latest launches — discover why Harmony Life is the benchmark for luxury living on Koh Samui.",
-    "ctaButton": "View All Projects"
+    "ctaButton": "View All Projects",
+    "founderEyebrow": "The Founder",
+    "founderHeading": "A builder at heart, an islander by choice",
+    "founderBio1": "Born in Gdańsk and trained as an engineer and project manager, Robert began his career in residential construction in Warsaw in the early 2000s. Through careful craftsmanship and an absolute refusal to cut corners, he built one of the most respected portfolios in Poland's luxury residential sector.",
+    "founderBio2": "His projects were known for structural longevity, energy efficiency decades ahead of regulation, and a level of finish that justified premium prices. Buyers knew: if Robert built it, it would last.",
+    "founderBio3": "The move to Koh Samui in 2019 was not retirement — it was expansion. Robert identified an underserved market: international buyers and investors who wanted tropical luxury but demanded European standards of construction. Not aesthetics only, but genuinely superior buildings.",
+    "founderBio4": "Today, Harmony Life operates five projects on the island, and Robert personally oversees quality control on every development. His philosophy hasn't changed: build it as if your family will live there.",
+    "founderQuote": "Koh Samui is paradise. But paradise deserves buildings that last a generation, not five years. That's what we build.",
+    "founderBullet1": "20+ years in development",
+    "founderBullet2": "150+ projects in Warsaw",
+    "founderBullet3": "Koh Samui resident since 2019",
+    "founderBullet4": "Member, Thai Real Estate Association",
+    "companyEyebrow": "Company Information",
+    "companyNameLabel": "Company Name",
+    "companyRegLabel": "Registration",
+    "companyOfficeLabel": "Office",
+    "companyContactLabel": "Contact"
   },
   "contactPage": {
     "heroEyebrow": "Get In Touch",
@@ -216,7 +232,13 @@
     "hoursLabel": "Office Hours",
     "hoursValue": "Mon–Fri: 9:00–18:00 ICT\nWeekends: By appointment",
     "languagesLabel": "Languages",
-    "formTitle": "Send us a message"
+    "formTitle": "Send us a message",
+    "formSubtitle": "We'll respond in your preferred language within 24 hours.",
+    "whatsappLabel": "Chat on WhatsApp",
+    "whatsappSubtext": "Fastest response — usually < 1 hour",
+    "videoCallTitle": "Book a Video Call",
+    "videoCallDesc": "Private 30-min consultation with Robert or our sales team. Available 7 days a week.",
+    "videoCallButton": "Schedule a Call"
   },
   "notFound": {
     "title": "Page not found",

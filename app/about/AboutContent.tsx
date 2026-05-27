@@ -2,65 +2,62 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import SectionHeading from '../_components/SectionHeading'
+import { useDict, useLocale } from '../_components/LangProvider'
 
-const values = [
-  {
-    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-    title: 'Quality',
-    description: 'European construction standards — non-negotiable. Every material, every joint, every finish is selected and installed to the highest European specifications.',
-  },
-  {
-    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-    title: 'Harmony',
-    description: 'Every project is designed to exist in balance — with nature, with the local community, and with the aspirations of our buyers and their families.',
-  },
-  {
-    icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
-    title: 'Nature',
-    description: "Koh Samui's natural beauty is not a backdrop — it is an active design element. We build around it, preserve it, and celebrate it in every project.",
-  },
-  {
-    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
-    title: 'Community',
-    description: 'Harmony Life is more than properties — it\'s a community of like-minded people who value quality, lifestyle, and authentic tropical living.',
-  },
-]
-
-const team = [
-  { name: 'Robert Jakub Szymański', role: 'Founder & CEO', bio: '20+ years in premium residential development. 150+ projects across Warsaw before bringing European standards to Koh Samui.' },
-  { name: 'Team Member', role: 'Head of Sales', bio: 'Placeholder for team member description.' },
-  { name: 'Team Member', role: 'Lead Architect', bio: 'Placeholder for team member description.' },
-  { name: 'Team Member', role: 'Property Manager', bio: 'Placeholder for team member description.' },
+const valueIcons = [
+  'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+  'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
 ]
 
 export default function AboutContent() {
+  const dict = useDict()
+  const lang = useLocale()
+  const t = dict.about
+
   const storyRef = useRef<HTMLDivElement>(null)
   const storyInView = useInView(storyRef, { once: true, margin: '-80px' })
+  const founderRef = useRef<HTMLDivElement>(null)
+  const founderInView = useInView(founderRef, { once: true, margin: '-80px' })
+
+  const values = [
+    { icon: valueIcons[0], title: t.value1Title, description: t.value1Desc },
+    { icon: valueIcons[1], title: t.value2Title, description: t.value2Desc },
+    { icon: valueIcons[2], title: t.value3Title, description: t.value3Desc },
+    { icon: valueIcons[3], title: t.value4Title, description: t.value4Desc },
+  ]
+
+  const team = [
+    { name: 'Robert Jakub Szymański', role: t.teamFounderRole, bio: t.teamFounderBio },
+    { name: 'Team Member', role: t.teamMember2Role, bio: t.teamMember2Bio },
+    { name: 'Team Member', role: t.teamMember3Role, bio: t.teamMember3Bio },
+    { name: 'Team Member', role: t.teamMember4Role, bio: t.teamMember4Bio },
+  ]
+
+  const founderBullets = [t.founderBullet1, t.founderBullet2, t.founderBullet3, t.founderBullet4]
 
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden"
+      <section
+        className="relative pt-32 pb-20 px-6 overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #1a2e2a, #1a1a2e)' }}
       >
-        <div className="absolute inset-0"
+        <div
+          className="absolute inset-0"
           style={{ backgroundImage: 'radial-gradient(ellipse at 30% 50%, rgba(201,168,118,0.06) 0%, transparent 60%)' }}
         />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-primary" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">Our Story</p>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{t.heroEyebrow}</p>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-cream leading-tight mb-6">
-              From Warsaw<br />to Koh Samui
+              {t.heroTitle}
             </h1>
-            <p className="text-cream/60 max-w-2xl text-lg leading-relaxed">
-              How 20 years of European construction excellence found its perfect canvas on the most beautiful island in Thailand.
-            </p>
+            <p className="text-cream/60 max-w-2xl text-lg leading-relaxed">{t.heroSubtitle}</p>
           </motion.div>
         </div>
       </section>
@@ -74,19 +71,11 @@ export default function AboutContent() {
               animate={storyInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">The Journey</p>
-              <h2 className="font-serif text-4xl text-cream leading-tight mb-6">
-                Building with purpose, wherever life leads
-              </h2>
-              <p className="text-cream/65 text-base leading-relaxed mb-4">
-                Robert Jakub Szymański spent two decades building a reputation for uncompromising quality in Warsaw's luxury residential market. 150+ completed projects. A name synonymous with structural integrity, premium materials, and meticulous detail.
-              </p>
-              <p className="text-cream/65 text-base leading-relaxed mb-4">
-                Then came Koh Samui. A holiday turned into a love affair with the island — its light, its pace, its people. Robert saw something extraordinary: breathtaking natural beauty with a growing international market, but almost no developments built to the standards Europeans expect.
-              </p>
-              <p className="text-cream/65 text-base leading-relaxed">
-                The opportunity was clear. The challenge was worthy. Harmony Life was born.
-              </p>
+              <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{t.storyEyebrow}</p>
+              <h2 className="font-serif text-4xl text-cream leading-tight mb-6">{t.storyTitle}</h2>
+              <p className="text-cream/65 text-base leading-relaxed mb-4">{t.storyP1}</p>
+              <p className="text-cream/65 text-base leading-relaxed mb-4">{t.storyP2}</p>
+              <p className="text-cream/65 text-base leading-relaxed">{t.storyP3}</p>
             </motion.div>
 
             <motion.div
@@ -105,8 +94,13 @@ export default function AboutContent() {
           </div>
 
           {/* Founder Full Bio */}
-          <div className="grid lg:grid-cols-5 gap-12 items-start mb-24">
-            <div className="lg:col-span-2">
+          <div ref={founderRef} className="grid lg:grid-cols-5 gap-12 items-start mb-24">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={founderInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-2"
+            >
               <div className="aspect-[3/4] rounded-xl overflow-hidden">
                 <img
                   src="/images/about.jpg"
@@ -118,12 +112,7 @@ export default function AboutContent() {
                 <p className="text-cream text-sm font-medium">Robert Jakub Szymański</p>
                 <p className="text-gold text-xs mt-0.5">Founder & CEO, Harmony Life</p>
                 <div className="mt-3 pt-3 border-t border-gold/10 flex flex-col gap-1.5">
-                  {[
-                    '20+ years in development',
-                    '150+ projects in Warsaw',
-                    'Koh Samui resident since 2019',
-                    'Member, Thai Real Estate Association',
-                  ].map((item) => (
+                  {founderBullets.map((item) => (
                     <p key={item} className="text-cream/50 text-xs flex items-start gap-2">
                       <svg className="w-3 h-3 text-gold mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
@@ -133,33 +122,27 @@ export default function AboutContent() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="lg:col-span-3">
-              <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">The Founder</p>
-              <h2 className="font-serif text-4xl text-cream mb-6">A builder at heart, an islander by choice</h2>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={founderInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="lg:col-span-3"
+            >
+              <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{t.founderEyebrow}</p>
+              <h2 className="font-serif text-4xl text-cream mb-6">{t.founderHeading}</h2>
               <div className="space-y-4 text-cream/65 text-base leading-relaxed">
-                <p>
-                  Born in Gdańsk and trained as an engineer and project manager, Robert began his career in residential construction in Warsaw in the early 2000s. Through careful craftsmanship and an absolute refusal to cut corners, he built one of the most respected portfolios in Poland's luxury residential sector.
-                </p>
-                <p>
-                  His projects were known for structural longevity, energy efficiency decades ahead of regulation, and a level of finish that justified premium prices. Buyers knew: if Robert built it, it would last.
-                </p>
-                <p>
-                  The move to Koh Samui in 2019 was not retirement — it was expansion. Robert identified an underserved market: international buyers and investors who wanted tropical luxury but demanded European standards of construction. Not aesthetics only, but genuinely superior buildings.
-                </p>
-                <p>
-                  Today, Harmony Life operates five projects on the island, and Robert personally oversees quality control on every development. His philosophy hasn't changed: build it as if your family will live there.
-                </p>
+                <p>{t.founderBio1}</p>
+                <p>{t.founderBio2}</p>
+                <p>{t.founderBio3}</p>
+                <p>{t.founderBio4}</p>
               </div>
-
               <blockquote className="mt-8 pl-6 border-l-2 border-gold/40">
-                <p className="font-serif text-xl text-cream/80 italic">
-                  "Koh Samui is paradise. But paradise deserves buildings that last a generation, not five years. That's what we build."
-                </p>
+                <p className="font-serif text-xl text-cream/80 italic">"{t.founderQuote}"</p>
                 <p className="text-gold/60 text-sm mt-3">— Robert Jakub Szymański</p>
               </blockquote>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -168,10 +151,7 @@ export default function AboutContent() {
       <section className="py-24 px-6 bg-charcoal/15">
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 flex justify-center">
-            <SectionHeading
-              eyebrow="Our Philosophy"
-              title="Four pillars we never compromise"
-            />
+            <SectionHeading eyebrow={t.valuesEyebrow} title={t.valuesTitle} />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
@@ -200,10 +180,7 @@ export default function AboutContent() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 flex justify-center">
-            <SectionHeading
-              eyebrow="Our Team"
-              title="The people behind Harmony Life"
-            />
+            <SectionHeading eyebrow={t.teamEyebrow} title={t.teamTitle} />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, i) => (
@@ -231,17 +208,39 @@ export default function AboutContent() {
         </div>
       </section>
 
+      {/* CTA */}
+      <section className="py-20 px-6 bg-charcoal/15">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{t.ctaEyebrow}</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-4">{t.ctaTitle}</h2>
+            <p className="text-cream/60 text-base leading-relaxed mb-8 max-w-xl mx-auto">{t.ctaSubtitle}</p>
+            <Link
+              href={`/${lang}/#projects`}
+              className="inline-block bg-gold text-primary font-medium px-10 py-4 text-sm tracking-wider hover:bg-gold-light transition-colors duration-300 cursor-pointer"
+            >
+              {t.ctaButton}
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Company Registration */}
       <section className="py-12 px-6 border-t border-gold/10">
         <div className="max-w-7xl mx-auto">
           <div className="bg-charcoal/20 rounded-xl p-8">
-            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Company Information</p>
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{t.companyEyebrow}</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
               {[
-                { label: 'Company Name', value: 'Harmony Life Samui Co., Ltd.' },
-                { label: 'Registration', value: 'Thai Company Registration TBA' },
-                { label: 'Office', value: 'Bo Phut, Koh Samui, Surat Thani 84320' },
-                { label: 'Contact', value: 'info@harmonylife.asia' },
+                { label: t.companyNameLabel, value: 'Harmony Life Samui Co., Ltd.' },
+                { label: t.companyRegLabel, value: 'Thai Company Registration TBA' },
+                { label: t.companyOfficeLabel, value: 'Bo Phut, Koh Samui, Surat Thani 84320' },
+                { label: t.companyContactLabel, value: 'info@harmonylife.asia' },
               ].map(({ label, value }) => (
                 <div key={label}>
                   <p className="text-cream/30 text-xs uppercase tracking-wide mb-1">{label}</p>
