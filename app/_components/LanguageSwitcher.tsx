@@ -1,26 +1,39 @@
 'use client'
 
-import { useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 
-const langs = ['EN', 'PL', 'DE']
+const langs = [
+  { code: 'en', label: 'EN' },
+  { code: 'pl', label: 'PL' },
+  { code: 'de', label: 'DE' },
+]
 
 export default function LanguageSwitcher() {
-  const [active, setActive] = useState('EN')
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const currentLang = pathname.split('/')[1] ?? 'en'
+
+  const switchLang = (code: string) => {
+    const segments = pathname.split('/')
+    segments[1] = code
+    router.push(segments.join('/'))
+  }
 
   return (
     <div className="flex items-center gap-1 text-xs">
       {langs.map((lang, i) => (
-        <span key={lang} className="flex items-center gap-1">
+        <span key={lang.code} className="flex items-center gap-1">
           <button
-            onClick={() => setActive(lang)}
+            onClick={() => switchLang(lang.code)}
             className={`cursor-pointer font-sans tracking-wider transition-colors duration-200 ${
-              active === lang
+              currentLang === lang.code
                 ? 'text-gold'
                 : 'text-cream/50 hover:text-cream/80'
             }`}
-            aria-label={`Switch to ${lang}`}
+            aria-label={`Switch to ${lang.label}`}
           >
-            {lang}
+            {lang.label}
           </button>
           {i < langs.length - 1 && <span className="text-cream/20">|</span>}
         </span>

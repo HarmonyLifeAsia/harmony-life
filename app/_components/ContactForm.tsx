@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useDict } from './LangProvider'
 
 interface ContactFormProps {
   projectName?: string
@@ -10,23 +11,18 @@ interface ContactFormProps {
 
 export default function ContactForm({ projectName, compact = false }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle')
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    language: 'EN',
-  })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '', language: 'EN' })
+  const dict = useDict()
+  const t = dict.contactForm
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1200))
+    await new Promise(r => setTimeout(r, 1200))
     setStatus('success')
   }
 
@@ -35,18 +31,14 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
 
   if (status === 'success') {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-12"
-      >
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
         <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center mx-auto mb-4">
           <svg className="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="font-serif text-2xl text-cream mb-2">Thank you</h3>
-        <p className="text-cream/60 text-sm">We&apos;ll be in touch within 24 hours.</p>
+        <h3 className="font-serif text-2xl text-cream mb-2">{t.successTitle}</h3>
+        <p className="text-cream/60 text-sm">{t.successText}</p>
       </motion.div>
     )
   }
@@ -59,57 +51,25 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
         </div>
       )}
 
-      <div className={compact ? 'grid grid-cols-1 md:grid-cols-2 gap-5' : 'grid grid-cols-1 md:grid-cols-2 gap-5'}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className={labelClass}>Full Name *</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className={inputClass}
-          />
+          <label htmlFor="name" className={labelClass}>{t.name} *</label>
+          <input id="name" name="name" type="text" required value={form.name} onChange={handleChange} placeholder={t.name} className={inputClass} />
         </div>
         <div>
-          <label htmlFor="email" className={labelClass}>Email *</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-            className={inputClass}
-          />
+          <label htmlFor="email" className={labelClass}>{t.email} *</label>
+          <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="your@email.com" className={inputClass} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="phone" className={labelClass}>Phone / WhatsApp</label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="+1 234 567 890"
-            className={inputClass}
-          />
+          <label htmlFor="phone" className={labelClass}>{t.phone}</label>
+          <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+1 234 567 890" className={inputClass} />
         </div>
         <div>
-          <label htmlFor="language" className={labelClass}>Preferred Language</label>
-          <select
-            id="language"
-            name="language"
-            value={form.language}
-            onChange={handleChange}
-            className={`${inputClass} cursor-pointer`}
-          >
+          <label htmlFor="language" className={labelClass}>Language</label>
+          <select id="language" name="language" value={form.language} onChange={handleChange} className={`${inputClass} cursor-pointer`}>
             <option value="EN">English</option>
             <option value="PL">Polski</option>
             <option value="DE">Deutsch</option>
@@ -119,16 +79,8 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
       </div>
 
       <div>
-        <label htmlFor="message" className={labelClass}>Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows={compact ? 3 : 5}
-          value={form.message}
-          onChange={handleChange}
-          placeholder="Tell us about your investment goals or lifestyle vision…"
-          className={`${inputClass} resize-none`}
-        />
+        <label htmlFor="message" className={labelClass}>{t.message}</label>
+        <textarea id="message" name="message" rows={compact ? 3 : 5} value={form.message} onChange={handleChange} placeholder={t.messagePlaceholder} className={`${inputClass} resize-none`} />
       </div>
 
       <button
@@ -141,14 +93,12 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
             <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            Sending…
+            {t.submitting}
           </span>
-        ) : 'Send Enquiry'}
+        ) : t.submit}
       </button>
 
-      <p className="text-cream/25 text-xs text-center">
-        By submitting, you agree to our Privacy Policy. We never share your data.
-      </p>
+      <p className="text-cream/25 text-xs text-center">{t.privacy}</p>
     </form>
   )
 }
