@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useDict, useLocale } from './LangProvider'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const dict = useDict()
+  const lang = useLocale()
+  const t = dict.cookies
 
   useEffect(() => {
     const consent = localStorage.getItem('hl-cookie-consent')
@@ -34,23 +38,26 @@ export default function CookieBanner() {
           aria-label="Cookie consent"
         >
           <p className="text-cream/80 text-sm leading-relaxed mb-4">
-            We use cookies to enhance your experience and analyse site traffic. By clicking{' '}
-            <span className="text-gold">Accept</span>, you consent to our use of cookies in accordance
-            with our{' '}
-            <a href="#" className="text-gold/80 underline cursor-pointer hover:text-gold">Privacy Policy</a>.
+            {t.messagePart1}{' '}
+            <span className="text-gold">{t.accept}</span>
+            {t.messagePart2}{' '}
+            <a href={`/${lang}/privacy`} className="text-gold/80 underline cursor-pointer hover:text-gold">
+              {t.privacyLink}
+            </a>
+            {t.messageEnd}
           </p>
           <div className="flex gap-3">
             <button
               onClick={accept}
               className="flex-1 bg-gold text-primary text-xs font-medium py-2.5 rounded-sm hover:bg-gold-light transition-colors cursor-pointer"
             >
-              Accept All
+              {t.accept}
             </button>
             <button
               onClick={decline}
               className="flex-1 border border-gold/30 text-cream/60 text-xs py-2.5 rounded-sm hover:text-cream hover:border-gold/60 transition-colors cursor-pointer"
             >
-              Decline
+              {t.decline}
             </button>
           </div>
         </motion.div>

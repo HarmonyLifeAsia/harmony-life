@@ -120,7 +120,9 @@
     "submitting": "Wysyłanie...",
     "successTitle": "Wiadomość odebrana!",
     "successText": "Skontaktujemy się w ciągu 24 godzin. W pilnych sprawach prosimy napisać bezpośrednio na WhatsApp.",
-    "privacy": "Twoje dane są poufne i nie będą udostępniane osobom trzecim."
+    "privacy": "Twoje dane są poufne i nie będą udostępniane osobom trzecim.",
+    "language": "Język",
+    "enquiryAbout": "Zapytanie o:"
   },
   "footer": {
     "tagline": "Europejskie standardy budowlane spotykają tropikalną azjatycką harmonię. Ekskluzywne wille i apartamenty na Koh Samui, realizowane przez Roberta Jakuba Szymańskiego z ponad 20-letnim doświadczeniem.",
@@ -132,7 +134,9 @@
     "subscribe": "Subskrybuj",
     "privacy": "Polityka prywatności",
     "terms": "Regulamin",
-    "rights": "Wszelkie prawa zastrzeżone."
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "subscribeSuccess": "Dziękujemy za subskrypcję!",
+    "joinButton": "Dołącz"
   },
   "projectDetail": {
     "aboutEyebrow": "O tym projekcie",
@@ -238,7 +242,19 @@
     "whatsappSubtext": "Najszybsza odpowiedź — zazwyczaj < 1 godziny",
     "videoCallTitle": "Zarezerwuj rozmowę wideo",
     "videoCallDesc": "Prywatna 30-minutowa konsultacja z Robertem lub naszym zespołem sprzedaży. Dostępna 7 dni w tygodniu.",
-    "videoCallButton": "Umów rozmowę"
+    "videoCallButton": "Umów rozmowę",
+    "languagesValue": "English · Polski · Deutsch · Thai"
+  },
+  "marquee": {
+    "words": ["Harmony Life", "Koh Samui", "Standardy europejskie", "Luksusowe życie", "Tajlandia", "Prywatne wille", "Klasa inwestycyjna", "Tropikalny raj"]
+  },
+  "cookies": {
+    "messagePart1": "Używamy plików cookies, aby poprawić Twoje doświadczenia i analizować ruch na stronie. Klikając",
+    "messagePart2": ", wyrażasz zgodę na używanie cookies zgodnie z naszą",
+    "messageEnd": ".",
+    "accept": "Akceptuj wszystkie",
+    "decline": "Odrzuć",
+    "privacyLink": "Polityką prywatności"
   },
   "notFound": {
     "title": "Strona nie znaleziona",

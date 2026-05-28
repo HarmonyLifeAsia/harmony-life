@@ -120,7 +120,9 @@
     "submitting": "Wird gesendet...",
     "successTitle": "Nachricht erhalten!",
     "successText": "Wir melden uns innerhalb von 24 Stunden. Bei dringenden Anliegen wenden Sie sich bitte direkt per WhatsApp an uns.",
-    "privacy": "Ihre Daten sind vertraulich und werden nicht an Dritte weitergegeben."
+    "privacy": "Ihre Daten sind vertraulich und werden nicht an Dritte weitergegeben.",
+    "language": "Sprache",
+    "enquiryAbout": "Anfrage zu:"
   },
   "footer": {
     "tagline": "Europäische Baustandards treffen auf tropische asiatische Harmonie. Premium-Villen und Apartments auf Koh Samui, entwickelt von Robert Jakub Szymański mit über 20 Jahren Erfahrung.",
@@ -132,7 +134,9 @@
     "subscribe": "Abonnieren",
     "privacy": "Datenschutzerklärung",
     "terms": "Allgemeine Geschäftsbedingungen",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "subscribeSuccess": "Danke für Ihre Anmeldung!",
+    "joinButton": "Abonnieren"
   },
   "projectDetail": {
     "aboutEyebrow": "Über dieses Projekt",
@@ -238,7 +242,19 @@
     "whatsappSubtext": "Schnellste Antwort — normalerweise < 1 Stunde",
     "videoCallTitle": "Videoanruf buchen",
     "videoCallDesc": "Private 30-minütige Beratung mit Robert oder unserem Verkaufsteam. 7 Tage die Woche verfügbar.",
-    "videoCallButton": "Gespräch vereinbaren"
+    "videoCallButton": "Gespräch vereinbaren",
+    "languagesValue": "English · Polski · Deutsch · Thai"
+  },
+  "marquee": {
+    "words": ["Harmony Life", "Koh Samui", "Europäische Standards", "Luxusleben", "Thailand", "Privatvillen", "Investitionsqualität", "Tropisches Paradies"]
+  },
+  "cookies": {
+    "messagePart1": "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und den Website-Traffic zu analysieren. Mit Klick auf",
+    "messagePart2": "stimmen Sie der Cookie-Nutzung gemäß unserer",
+    "messageEnd": " zu.",
+    "accept": "Alle akzeptieren",
+    "decline": "Ablehnen",
+    "privacyLink": "Datenschutzerklärung"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

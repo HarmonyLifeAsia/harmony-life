@@ -120,7 +120,9 @@
     "submitting": "Sending...",
     "successTitle": "Message received!",
     "successText": "We'll be in touch within 24 hours. For urgent matters, please WhatsApp us directly.",
-    "privacy": "Your information is private and will never be shared with third parties."
+    "privacy": "Your information is private and will never be shared with third parties.",
+    "language": "Language",
+    "enquiryAbout": "Enquiry about:"
   },
   "footer": {
     "tagline": "European construction standards meet tropical Asian harmony. Premium villas and apartments on Koh Samui, developed by Robert Jakub Szymański with 20+ years of experience.",
@@ -132,7 +134,9 @@
     "subscribe": "Subscribe",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "subscribeSuccess": "Thank you for subscribing!",
+    "joinButton": "Join"
   },
   "projectDetail": {
     "aboutEyebrow": "About this Project",
@@ -238,7 +242,19 @@
     "whatsappSubtext": "Fastest response — usually < 1 hour",
     "videoCallTitle": "Book a Video Call",
     "videoCallDesc": "Private 30-min consultation with Robert or our sales team. Available 7 days a week.",
-    "videoCallButton": "Schedule a Call"
+    "videoCallButton": "Schedule a Call",
+    "languagesValue": "English · Polski · Deutsch · Thai"
+  },
+  "marquee": {
+    "words": ["Harmony Life", "Koh Samui", "European Standards", "Luxury Living", "Thailand", "Private Villas", "Investment Grade", "Tropical Paradise"]
+  },
+  "cookies": {
+    "messagePart1": "We use cookies to enhance your experience and analyse site traffic. By clicking",
+    "messagePart2": ", you consent to our use of cookies in accordance with our",
+    "messageEnd": ".",
+    "accept": "Accept All",
+    "decline": "Decline",
+    "privacyLink": "Privacy Policy"
   },
   "notFound": {
     "title": "Page not found",

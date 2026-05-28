@@ -47,7 +47,7 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
     <form onSubmit={handleSubmit} className="space-y-5">
       {projectName && (
         <div className="bg-gold/10 border border-gold/20 rounded-sm px-4 py-3">
-          <p className="text-gold/80 text-xs tracking-wide">Enquiry about: <span className="font-medium">{projectName}</span></p>
+          <p className="text-gold/80 text-xs tracking-wide">{t.enquiryAbout} <span className="font-medium">{projectName}</span></p>
         </div>
       )}
 
@@ -68,7 +68,7 @@ export default function ContactForm({ projectName, compact = false }: ContactFor
           <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+1 234 567 890" className={inputClass} />
         </div>
         <div>
-          <label htmlFor="language" className={labelClass}>Language</label>
+          <label htmlFor="language" className={labelClass}>{t.language}</label>
           <select id="language" name="language" value={form.language} onChange={handleChange} className={`${inputClass} cursor-pointer`}>
             <option value="EN">English</option>
             <option value="PL">Polski</option>

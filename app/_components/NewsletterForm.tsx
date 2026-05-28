@@ -1,10 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useDict } from './LangProvider'
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
+  const dict = useDict()
+  const t = dict.footer
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -12,7 +15,7 @@ export default function NewsletterForm() {
   }
 
   if (done) {
-    return <p className="text-gold text-xs">Thank you for subscribing!</p>
+    return <p className="text-gold text-xs">{t.subscribeSuccess}</p>
   }
 
   return (
@@ -30,7 +33,7 @@ export default function NewsletterForm() {
         type="submit"
         className="bg-gold text-primary text-xs px-4 py-2 rounded-sm hover:bg-gold-light transition-colors cursor-pointer"
       >
-        Join
+        {t.joinButton}
       </button>
     </form>
   )

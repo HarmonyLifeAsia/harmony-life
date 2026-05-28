@@ -1,18 +1,12 @@
-const words = [
-  'Harmony Life',
-  'Koh Samui',
-  'European Standards',
-  'Luxury Living',
-  'Thailand',
-  'Private Villas',
-  'Investment Grade',
-  'Tropical Paradise',
-]
+'use client'
 
-// Doubled for seamless infinite loop
-const items = [...words, ...words]
+import { useDict } from './LangProvider'
 
 export default function MarqueeStrip() {
+  const dict = useDict()
+  const words = dict.marquee.words as readonly string[]
+  const items = [...words, ...words]
+
   return (
     <div className="overflow-hidden border-y border-gold/10 py-4 bg-charcoal/20 select-none">
       <div className="marquee-track flex gap-0 whitespace-nowrap" aria-hidden>
