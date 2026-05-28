@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import LanguageSwitcher from './LanguageSwitcher'
+import ThemeToggle from './ThemeToggle'
 import { useDict, useLocale } from './LangProvider'
 
 export default function Navigation() {
@@ -64,6 +65,7 @@ export default function Navigation() {
             >
               {dict.nav.bookConsultation}
             </Link>
+            <ThemeToggle />
             <LanguageSwitcher />
           </nav>
 
@@ -100,7 +102,8 @@ export default function Navigation() {
                 {dict.nav.bookConsultation}
               </Link>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="flex items-center gap-4">
+              <ThemeToggle />
               <LanguageSwitcher />
             </motion.div>
           </motion.div>
