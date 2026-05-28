@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '../_data/projects'
 import { useDict } from './LangProvider'
@@ -33,16 +34,20 @@ export default function ProjectCard({ project, index, lang }: ProjectCardProps) 
       <Link href={`/${lang}/projects/${project.slug}`} className="block cursor-pointer">
         <div className="relative bg-charcoal/40 border border-gold/10 rounded-lg overflow-hidden hover:border-gold/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
           <div className="relative h-56 overflow-hidden">
-            <img
+            <Image
               src={project.thumbnail}
               alt={project.name}
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-0"
+              fill
+              sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+              className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-0"
             />
             {project.images[3] && (
-              <img
+              <Image
                 src={project.images[3]}
                 alt={`${project.name} — interior`}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 scale-105 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+                fill
+                sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+                className="object-cover opacity-0 scale-105 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />

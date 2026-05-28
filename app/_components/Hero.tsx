@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useDict, useLocale } from './LangProvider'
@@ -28,7 +29,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden flex items-center justify-center">
       <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%]">
-        <img src="/images/hero/bg.jpg" alt="Harmony Life luxury villa on Koh Samui" className="w-full h-full object-cover" />
+        <Image src="/images/hero/bg.webp" alt="Harmony Life luxury villa on Koh Samui" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 40%, rgba(201,168,118,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(74,124,89,0.08) 0%, transparent 60%)' }} />
       </motion.div>
 

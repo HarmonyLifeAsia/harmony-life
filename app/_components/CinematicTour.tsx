@@ -15,9 +15,9 @@ export default function CinematicTour({ lang }: Props) {
   const t = dict.cinematic
 
   const scenes = [
-    { image: '/images/projects/harmony-life-hill-2/02.jpg', alt: 'Harmony Life Hill 2 — aerial exterior view', eyebrow: t.scene1Eyebrow, caption: t.scene1Caption, num: '01' },
-    { image: '/images/projects/harmony-life-hill-2/03.jpg', alt: 'Harmony Life Hill 2 — pool and terrace',     eyebrow: t.scene2Eyebrow, caption: t.scene2Caption, num: '02' },
-    { image: '/images/projects/harmony-life-hill-2/05.jpg', alt: 'Harmony Life Hill 2 — interior living room', eyebrow: t.scene3Eyebrow, caption: t.scene3Caption, num: '03' },
+    { image: '/images/projects/harmony-life-hill-2/02.webp', alt: 'Harmony Life Hill 2 — aerial exterior view', eyebrow: t.scene1Eyebrow, caption: t.scene1Caption, num: '01' },
+    { image: '/images/projects/harmony-life-hill-2/03.webp', alt: 'Harmony Life Hill 2 — pool and terrace',     eyebrow: t.scene2Eyebrow, caption: t.scene2Caption, num: '02' },
+    { image: '/images/projects/harmony-life-hill-2/05.webp', alt: 'Harmony Life Hill 2 — interior living room', eyebrow: t.scene3Eyebrow, caption: t.scene3Caption, num: '03' },
   ]
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })

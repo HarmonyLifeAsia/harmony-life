@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import SectionHeading from '../_components/SectionHeading'
 import { useDict, useLocale } from '../_components/LangProvider'
@@ -83,11 +84,12 @@ export default function AboutContent() {
               animate={storyInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 }}
             >
-              <div className="aspect-[4/3] rounded-xl overflow-hidden">
-                <img
-                  src="/images/projects/harmony-life-oasis/01.jpg"
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                <Image
+                  src="/images/projects/harmony-life-oasis/01.webp"
                   alt="Harmony Life — luxury villa on Koh Samui"
-                  className="w-full h-full object-cover"
+                  fill sizes="(max-width:1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
             </motion.div>
@@ -101,11 +103,12 @@ export default function AboutContent() {
               transition={{ duration: 0.7 }}
               className="lg:col-span-2"
             >
-              <div className="aspect-[3/4] rounded-xl overflow-hidden">
-                <img
-                  src="/images/about.jpg"
+              <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+                <Image
+                  src="/images/about.webp"
                   alt="Robert Jakub Szymański — Founder & CEO, Harmony Life"
-                  className="w-full h-full object-cover"
+                  fill sizes="(max-width:1024px) 100vw, 40vw"
+                  className="object-cover"
                 />
               </div>
               <div className="mt-4 bg-charcoal/30 border border-gold/10 rounded-lg p-4">
@@ -192,11 +195,12 @@ export default function AboutContent() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="group"
               >
-                <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-charcoal/30">
-                  <img
-                    src={i === 0 ? '/images/about.jpg' : `/images/projects/harmony-life-hill-2/0${i + 1}.jpg`}
+                <div className="relative aspect-square overflow-hidden rounded-xl mb-4 bg-charcoal/30">
+                  <Image
+                    src={i === 0 ? '/images/about.webp' : `/images/projects/harmony-life-hill-2/0${i + 1}.webp`}
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                    fill sizes="(max-width:640px) 50vw, 25vw"
+                    className="object-cover group-hover:opacity-90 transition-opacity"
                   />
                 </div>
                 <p className="text-cream font-medium text-sm">{member.name}</p>

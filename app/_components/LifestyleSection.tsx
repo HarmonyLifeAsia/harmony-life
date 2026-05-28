@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import { useDict } from './LangProvider'
 
 const amenityIcons = [
@@ -52,8 +53,8 @@ export default function LifestyleSection() {
           </div>
 
           <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="relative">
-            <div className="aspect-[4/5] rounded-lg overflow-hidden">
-              <img src="/images/projects/harmony-life-oasis/04.jpg" alt="Luxury pool villa lifestyle at Harmony Life, Koh Samui" className="w-full h-full object-cover" />
+            <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
+              <Image src="/images/projects/harmony-life-oasis/04.webp" alt="Luxury pool villa lifestyle at Harmony Life, Koh Samui" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 rounded-lg pointer-events-none" />
             <div className="absolute -bottom-6 -left-6 bg-primary border border-gold/30 rounded-lg p-4 shadow-xl shadow-black/40">
