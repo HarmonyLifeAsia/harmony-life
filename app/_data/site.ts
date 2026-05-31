@@ -1,5 +1,5 @@
 // Single source of truth for site-wide contact + booking details.
-export const CONTACT_EMAIL = 'robert@harmonylife.asia'
+export const CONTACT_EMAIL = 'office@harmonylife.asia'
 export const CALENDLY_URL =
   'https://calendly.com/robert-samui/spotkanie-inwestycyjne-harmony-life'
 
