@@ -53,12 +53,12 @@ export default async function ProjectPage({
   }
 
   const paymentSchedule = [
-    { stage: t.payment1Stage, percent: '2%',  timing: t.payment1Timing },
-    { stage: t.payment2Stage, percent: '28%', timing: t.payment2Timing },
-    { stage: t.payment3Stage, percent: '20%', timing: t.payment3Timing },
-    { stage: t.payment4Stage, percent: '20%', timing: t.payment4Timing },
-    { stage: t.payment5Stage, percent: '20%', timing: t.payment5Timing },
-    { stage: t.payment6Stage, percent: '10%', timing: t.payment6Timing },
+    { stage: t.payment1Stage, percent: '—',   timing: t.payment1Timing },
+    { stage: t.payment2Stage, percent: '30%', timing: t.payment2Timing },
+    { stage: t.payment3Stage, percent: '25%', timing: t.payment3Timing },
+    { stage: t.payment4Stage, percent: '30%', timing: t.payment4Timing },
+    { stage: t.payment5Stage, percent: '10%', timing: t.payment5Timing },
+    { stage: t.payment6Stage, percent: '5%',  timing: t.payment6Timing },
   ]
 
   return (
