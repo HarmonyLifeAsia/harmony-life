@@ -59,8 +59,8 @@ export default function CinematicTour({ lang }: Props) {
           <img src={scenes[2].image} alt={scenes[2].alt} className="w-full h-full object-cover" />
         </motion.div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-primary/35 pointer-events-none z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/55 via-transparent to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-scrim/85 via-scrim/10 to-scrim/35 pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-scrim/55 via-transparent to-transparent pointer-events-none z-10" />
 
         <motion.div style={{ opacity: s1TxtO, y: s1TxtY }} className="absolute bottom-28 left-8 md:left-16 z-20 max-w-lg pointer-events-none">
           <p className="text-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[0].eyebrow}</p>

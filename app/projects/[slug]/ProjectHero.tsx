@@ -18,8 +18,8 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
           <div className="absolute inset-0">
             <img src={heroBg} alt={project.name} className="w-full h-full object-cover" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-scrim/90 via-scrim/70 to-scrim/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-scrim via-transparent to-scrim/60" />
         </>
       ) : (
         <div className="absolute inset-0" style={{ background: `linear-gradient(160deg, ${project.gradientFrom}, #1a1a2e)` }} />

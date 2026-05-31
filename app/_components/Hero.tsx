@@ -40,8 +40,8 @@ export default function Hero() {
         />
       </div>
 
-      {/* Navy shadow — strongest at bottom-left, fading to top-right */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/60 to-primary/15" />
+      {/* Navy shadow — strongest at bottom-left, fading to top-right (stays dark in light mode) */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-scrim via-scrim/60 to-scrim/15" />
 
       <motion.div
         style={{ y: textY, opacity }}
