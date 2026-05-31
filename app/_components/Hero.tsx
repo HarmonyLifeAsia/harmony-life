@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useDict, useLocale } from './LangProvider'
@@ -14,7 +13,6 @@ export default function Hero() {
   const t = dict.hero
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
 
@@ -29,12 +27,29 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden flex items-center justify-center">
-      <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%]">
-        <Image src="/images/hero/bg.webp" alt="Harmony Life luxury villa on Koh Samui" fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 40%, rgba(201,168,118,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(74,124,89,0.08) 0%, transparent 60%)' }} />
-      </motion.div>
+      {/* Looping YouTube background video */}
+      <div className="absolute inset-0 overflow-hidden">
+        <iframe
+          src="https://www.youtube.com/embed/55VtihTuPpQ?autoplay=1&mute=1&loop=1&playlist=55VtihTuPpQ&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&fs=0&iv_load_policy=3"
+          title="Harmony Life Koh Samui"
+          allow="autoplay; encrypted-media"
+          aria-hidden="true"
+          tabIndex={-1}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          style={{ width: '100vw', height: '56.25vw', minWidth: '177.78vh', minHeight: '100vh' }}
+        />
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/90" />
+      {/* Navy gradient — strongest at bottom-left, fading to top-right */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/60 to-primary/15" />
+      {/* Diagonal blur — strong bottom-left, clear top-right */}
+      <div
+        className="absolute inset-0 backdrop-blur-md"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 68%)',
+          maskImage: 'linear-gradient(to top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 68%)',
+        }}
+      />
 
       <motion.div
         style={{ y: textY, opacity }}
