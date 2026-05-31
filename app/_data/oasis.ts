@@ -19,15 +19,17 @@ export const OASIS_CONSTRUCTION = seq(6, `${BASE}/construction`)
 // Update this when new construction photos are added.
 export const OASIS_CONSTRUCTION_DATE = '05.2026'
 
-// Leave empty until the video is ready, then set the YouTube video id.
-export const OASIS_YOUTUBE_ID = ''
+// YouTube video id (from https://youtu.be/BqgHDR20q08).
+export const OASIS_YOUTUBE_ID = 'BqgHDR20q08'
+
+// Offer document (opens in a new tab).
+export const OASIS_OFFER_URL = 'https://canva.link/1fsfd05xf53qpy5'
 
 export interface OasisVilla {
   id: string
   nameKey: string // key in dictionaries → oasis
   floorPlan: string
   images: string[]
-  offer: string // downloadable offer PDF — drop file at public/offers/oasis/<id>.pdf
 }
 
 export const OASIS_VILLAS: OasisVilla[] = [
@@ -41,5 +43,4 @@ export const OASIS_VILLAS: OasisVilla[] = [
   ...v,
   floorPlan: `${BASE}/villas/${v.id}/floorplan.webp`,
   images: seq(4, `${BASE}/villas/${v.id}`),
-  offer: `/offers/oasis/${v.id}.pdf`,
 }))

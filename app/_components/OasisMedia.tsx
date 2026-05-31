@@ -7,6 +7,7 @@ import {
   OASIS_CONSTRUCTION,
   OASIS_CONSTRUCTION_DATE,
   OASIS_YOUTUBE_ID,
+  OASIS_OFFER_URL,
   OASIS_VILLAS,
 } from '../_data/oasis'
 
@@ -43,7 +44,7 @@ export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: R
 
               <VillaQuickContact
                 villaName={o[v.nameKey]}
-                offerUrl={v.offer}
+                offerUrl={OASIS_OFFER_URL}
                 labels={{
                   downloadOffer: o.downloadOffer,
                   quickContact: o.quickContact,

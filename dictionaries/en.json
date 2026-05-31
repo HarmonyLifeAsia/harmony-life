@@ -163,7 +163,7 @@
     "locationTitle": "Location",
     "startingFrom": "Starting from",
     "requestPricing": "Request Pricing",
-    "downloadBrochure": "Download Brochure",
+    "downloadBrochure": "OFFER",
     "enquireTitle": "Enquire About This Project",
     "bedroomsLabel": "Bedrooms",
     "bathroomsLabel": "Bathrooms",
@@ -201,7 +201,7 @@
     "constructionAsOf": "As of",
     "videoTitle": "Development Video",
     "videoComing": "Video coming soon",
-    "downloadOffer": "Download Offer",
+    "downloadOffer": "OFFER",
     "quickContact": "Quick Contact",
     "quickContactDesc": "Leave your details — we'll get back to you about this villa."
   },

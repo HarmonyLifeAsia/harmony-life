@@ -163,7 +163,7 @@
     "locationTitle": "Lokalizacja",
     "startingFrom": "Ceny od",
     "requestPricing": "Zapytaj o cenę",
-    "downloadBrochure": "Pobierz broszurę",
+    "downloadBrochure": "OFERTA",
     "enquireTitle": "Zapytaj o ten projekt",
     "bedroomsLabel": "Sypialnie",
     "bathroomsLabel": "Łazienki",
@@ -201,7 +201,7 @@
     "constructionAsOf": "Stan na",
     "videoTitle": "Film z osiedla",
     "videoComing": "Film wkrótce",
-    "downloadOffer": "Pobierz ofertę",
+    "downloadOffer": "OFERTA",
     "quickContact": "Szybki kontakt",
     "quickContactDesc": "Zostaw swoje dane — oddzwonimy w sprawie tej willi."
   },

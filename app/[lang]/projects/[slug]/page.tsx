@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { projects, getProjectBySlug } from '../../../_data/projects'
 import { CALENDLY_URL } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import OasisMedia from '../../../_components/OasisMedia'
+import { OASIS_OFFER_URL } from '../../../_data/oasis'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 
 export function generateStaticParams() {
@@ -219,18 +219,14 @@ export default async function ProjectPage({
                   >
                     {dict.nav.bookConsultation}
                   </a>
-                  <Link
-                    href={`/${lang}/contact`}
-                    className="block w-full text-center border border-gold/30 text-cream/70 hover:text-gold hover:border-gold py-3.5 text-sm transition-colors cursor-pointer"
-                  >
-                    {t.requestPricing}
-                  </Link>
                   <a
-                    href="#brochure"
+                    href={slug === 'harmony-life-oasis' ? OASIS_OFFER_URL : `/${lang}/contact`}
+                    target={slug === 'harmony-life-oasis' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full border border-gold/30 text-cream/70 hover:text-gold hover:border-gold py-3.5 text-sm transition-colors cursor-pointer"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     {t.downloadBrochure}
                   </a>
