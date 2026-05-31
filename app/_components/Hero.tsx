@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useDict, useLocale } from './LangProvider'
@@ -28,7 +29,11 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden flex items-center justify-center">
-      {/* Looping YouTube background video (segment only — no intro title / end cards) */}
+      {/* Phones: lightweight static poster (no YouTube player) */}
+      <div className="absolute inset-0 md:hidden">
+        <Image src="/images/hero/bg.webp" alt="Harmony Life — Koh Samui" fill priority sizes="100vw" className="object-cover" />
+      </div>
+      {/* Tablet/desktop: looping YouTube background (clean segment) */}
       <HeroVideo />
 
       {/* Navy shadow — strongest at bottom-left, fading to top-right (stays dark in light mode) */}
@@ -44,12 +49,12 @@ export default function Hero() {
         <motion.p variants={itemVariants} className="text-gold text-xs tracking-[0.35em] uppercase font-sans mb-6">
           {t.eyebrow}
         </motion.p>
-        <motion.h1 variants={itemVariants} className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream leading-[1.05] mb-6">
+        <motion.h1 variants={itemVariants} className="font-serif text-[2rem] sm:text-5xl md:text-7xl lg:text-8xl text-cream leading-[1.1] md:leading-[1.05] mb-6">
           {t.title}
           <br />
           <span className="text-gradient-gold">{t.titleHighlight}</span>
         </motion.h1>
-        <motion.p variants={itemVariants} className="text-cream/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <motion.p variants={itemVariants} className="text-cream/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
           {t.subtitle}
         </motion.p>
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 items-center justify-center">

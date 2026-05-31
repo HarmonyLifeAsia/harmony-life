@@ -24,6 +24,12 @@ export default function HeroVideo() {
     let cancelled = false
     let interval: ReturnType<typeof setInterval> | undefined
 
+    // Skip the YouTube player on phones — saves data/battery and improves LCP.
+    // A static poster image is shown instead (see Hero).
+    if (typeof window !== 'undefined' && !window.matchMedia('(min-width: 768px)').matches) {
+      return
+    }
+
     function createPlayer() {
       if (cancelled || !holderRef.current || !window.YT?.Player) return
       playerRef.current = new window.YT.Player(holderRef.current, {
@@ -87,7 +93,7 @@ export default function HeroVideo() {
   }, [])
 
   return (
-    <div className="absolute inset-0 overflow-hidden hero-yt">
+    <div className="absolute inset-0 overflow-hidden hero-yt hidden md:block">
       <div ref={holderRef} aria-hidden="true" />
     </div>
   )
