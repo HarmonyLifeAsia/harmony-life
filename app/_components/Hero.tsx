@@ -40,16 +40,8 @@ export default function Hero() {
         />
       </div>
 
-      {/* Navy gradient — strongest at bottom-left, fading to top-right */}
+      {/* Navy shadow — strongest at bottom-left, fading to top-right */}
       <div className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/60 to-primary/15" />
-      {/* Diagonal blur — strong bottom-left, clear top-right */}
-      <div
-        className="absolute inset-0 backdrop-blur-md"
-        style={{
-          WebkitMaskImage: 'linear-gradient(to top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 68%)',
-          maskImage: 'linear-gradient(to top right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 68%)',
-        }}
-      />
 
       <motion.div
         style={{ y: textY, opacity }}
