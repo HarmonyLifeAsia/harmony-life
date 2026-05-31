@@ -184,6 +184,24 @@
     "payment6Stage": "Completion",
     "payment6Timing": "On completion of all interior and exterior works"
   },
+  "oasis": {
+    "mainGalleryTitle": "Development Gallery",
+    "villaTypesTitle": "Villa Types",
+    "villaTypesSubtitle": "Layouts & Visualisations",
+    "villa1": "1-Bedroom Villa — Type A",
+    "villa2": "1-Bedroom Villa — Type B, Sea View",
+    "villa3": "2-Bedroom Villa",
+    "villa4": "3-Bedroom Villa",
+    "villa5": "3-Bedroom Villa — Rooftop Terrace, Sea View",
+    "villa6": "4-Bedroom Villa — Sea View",
+    "floorPlanLabel": "Floor Plan",
+    "visualsLabel": "Visualisations",
+    "imageComing": "Image coming soon",
+    "constructionTitle": "Construction Progress",
+    "constructionAsOf": "As of",
+    "videoTitle": "Development Video",
+    "videoComing": "Video coming soon"
+  },
   "about": {
     "heroEyebrow": "Our Story",
     "heroTitle": "Building Paradise With European Precision",

@@ -6,6 +6,7 @@ import { CALENDLY_URL } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
+import OasisMedia from '../../../_components/OasisMedia'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 
 export function generateStaticParams() {
@@ -110,52 +111,58 @@ export default async function ProjectPage({
               </div>
             </div>
 
-            {project.images.length > 0 && (
-              <div>
-                <p className="font-serif text-2xl text-cream mb-6">{t.galleryTitle}</p>
-                <GalleryLightbox images={project.images} projectName={project.name} />
-              </div>
-            )}
+            {slug === 'harmony-life-oasis' ? (
+              <OasisMedia o={dict.oasis as unknown as Record<string, string>} />
+            ) : (
+              <>
+                {project.images.length > 0 && (
+                  <div>
+                    <p className="font-serif text-2xl text-cream mb-6">{t.galleryTitle}</p>
+                    <GalleryLightbox images={project.images} projectName={project.name} />
+                  </div>
+                )}
 
-            <div>
-              <p className="font-serif text-2xl text-cream mb-6">{t.floorPlansTitle}</p>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[t.groundFloor, t.firstFloor].map((label) => (
+                <div>
+                  <p className="font-serif text-2xl text-cream mb-6">{t.floorPlansTitle}</p>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {[t.groundFloor, t.firstFloor].map((label) => (
+                      <div
+                        key={label}
+                        className="aspect-[4/3] rounded-sm border border-gold/20 flex items-center justify-center"
+                        style={{ background: 'linear-gradient(135deg, #252542, #1a1a2e)' }}
+                      >
+                        <div className="text-center">
+                          <svg className="w-8 h-8 text-gold/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                          </svg>
+                          <p className="text-gold/40 text-xs tracking-widest uppercase">{label}</p>
+                          <p className="text-cream/20 text-xs mt-1">{t.availableOnRequest}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="font-serif text-2xl text-cream mb-2">{t.vizTitle}</p>
+                  <p className="text-cream/40 text-sm mb-6">{t.vizSubtitle}</p>
                   <div
-                    key={label}
-                    className="aspect-[4/3] rounded-sm border border-gold/20 flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #252542, #1a1a2e)' }}
+                    className="rounded-xl border border-gold/20 flex items-center justify-center"
+                    style={{ minHeight: '320px', background: 'linear-gradient(135deg, #1a1a2e, #252542)' }}
                   >
                     <div className="text-center">
-                      <svg className="w-8 h-8 text-gold/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                      </svg>
-                      <p className="text-gold/40 text-xs tracking-widest uppercase">{label}</p>
-                      <p className="text-cream/20 text-xs mt-1">{t.availableOnRequest}</p>
+                      <div className="w-16 h-16 border border-gold/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-gold/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                      </div>
+                      <p className="text-gold/40 text-sm tracking-widest uppercase">{t.vizTitle}</p>
+                      <p className="text-cream/20 text-xs mt-1">{t.vizComingSoon}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="font-serif text-2xl text-cream mb-2">{t.vizTitle}</p>
-              <p className="text-cream/40 text-sm mb-6">{t.vizSubtitle}</p>
-              <div
-                className="rounded-xl border border-gold/20 flex items-center justify-center"
-                style={{ minHeight: '320px', background: 'linear-gradient(135deg, #1a1a2e, #252542)' }}
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 border border-gold/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-gold/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                  </div>
-                  <p className="text-gold/40 text-sm tracking-widest uppercase">{t.vizTitle}</p>
-                  <p className="text-cream/20 text-xs mt-1">{t.vizComingSoon}</p>
                 </div>
-              </div>
-            </div>
+              </>
+            )}
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.paymentTitle}</p>

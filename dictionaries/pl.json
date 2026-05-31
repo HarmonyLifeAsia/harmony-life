@@ -184,6 +184,24 @@
     "payment6Stage": "Zakończenie",
     "payment6Timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz willi"
   },
+  "oasis": {
+    "mainGalleryTitle": "Galeria osiedla",
+    "villaTypesTitle": "Rodzaje willi",
+    "villaTypesSubtitle": "Układy i wizualizacje",
+    "villa1": "Willa 1 sypialnia — Typ A",
+    "villa2": "Willa 1 sypialnia — Typ B, widok na morze",
+    "villa3": "Willa 2 sypialnie",
+    "villa4": "Willa 3 sypialnie",
+    "villa5": "Willa 3 sypialnie — taras na dachu, widok na morze",
+    "villa6": "Willa 4 sypialnie — widok na morze",
+    "floorPlanLabel": "Rzut kondygnacji",
+    "visualsLabel": "Wizualizacje",
+    "imageComing": "Zdjęcie wkrótce",
+    "constructionTitle": "Postęp budowy",
+    "constructionAsOf": "Stan na",
+    "videoTitle": "Film z osiedla",
+    "videoComing": "Film wkrótce"
+  },
   "about": {
     "heroEyebrow": "Nasza historia",
     "heroTitle": "Budujemy raj z europejską precyzją",

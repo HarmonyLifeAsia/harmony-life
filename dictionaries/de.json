@@ -184,6 +184,24 @@
     "payment6Stage": "Fertigstellung",
     "payment6Timing": "Nach Abschluss aller Innen- und Außenarbeiten"
   },
+  "oasis": {
+    "mainGalleryTitle": "Galerie der Anlage",
+    "villaTypesTitle": "Villa-Typen",
+    "villaTypesSubtitle": "Grundrisse & Visualisierungen",
+    "villa1": "Villa mit 1 Schlafzimmer — Typ A",
+    "villa2": "Villa mit 1 Schlafzimmer — Typ B, Meerblick",
+    "villa3": "Villa mit 2 Schlafzimmern",
+    "villa4": "Villa mit 3 Schlafzimmern",
+    "villa5": "Villa mit 3 Schlafzimmern — Dachterrasse, Meerblick",
+    "villa6": "Villa mit 4 Schlafzimmern — Meerblick",
+    "floorPlanLabel": "Grundriss",
+    "visualsLabel": "Visualisierungen",
+    "imageComing": "Bild folgt in Kürze",
+    "constructionTitle": "Baufortschritt",
+    "constructionAsOf": "Stand",
+    "videoTitle": "Video der Anlage",
+    "videoComing": "Video folgt in Kürze"
+  },
   "about": {
     "heroEyebrow": "Unsere Geschichte",
     "heroTitle": "Ein Paradies mit europäischer Präzision gebaut",
