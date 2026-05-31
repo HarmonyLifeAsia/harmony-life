@@ -112,7 +112,10 @@ export default async function ProjectPage({
             </div>
 
             {slug === 'harmony-life-oasis' ? (
-              <OasisMedia o={dict.oasis as unknown as Record<string, string>} />
+              <OasisMedia
+                o={dict.oasis as unknown as Record<string, string>}
+                cf={dict.contactForm as unknown as Record<string, string>}
+              />
             ) : (
               <>
                 {project.images.length > 0 && (

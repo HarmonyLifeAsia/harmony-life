@@ -200,7 +200,10 @@
     "constructionTitle": "Construction Progress",
     "constructionAsOf": "As of",
     "videoTitle": "Development Video",
-    "videoComing": "Video coming soon"
+    "videoComing": "Video coming soon",
+    "downloadOffer": "Download Offer",
+    "quickContact": "Quick Contact",
+    "quickContactDesc": "Leave your details — we'll get back to you about this villa."
   },
   "about": {
     "heroEyebrow": "Our Story",

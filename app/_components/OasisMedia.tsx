@@ -1,5 +1,7 @@
 import MediaImage from './MediaImage'
 import MediaGallery from './MediaGallery'
+import VillaQuickContact from './VillaQuickContact'
+import SentBanner from './SentBanner'
 import {
   OASIS_MAIN_GALLERY,
   OASIS_CONSTRUCTION,
@@ -9,10 +11,13 @@ import {
 } from '../_data/oasis'
 
 // Oasis-only media sections: development gallery, villa types (floor plan +
-// visualisations), construction progress, and a video. `o` is dict.oasis.
-export default function OasisMedia({ o }: { o: Record<string, string> }) {
+// visualisations + CTAs), construction progress, and a video.
+// `o` is dict.oasis, `cf` is dict.contactForm.
+export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: Record<string, string> }) {
   return (
     <>
+      <SentBanner title={cf.successTitle} text={cf.successText} />
+
       {/* Development gallery */}
       <div>
         <p className="font-serif text-2xl text-cream mb-6">{o.mainGalleryTitle}</p>
@@ -35,6 +40,21 @@ export default function OasisMedia({ o }: { o: Record<string, string> }) {
 
               <p className="text-cream/40 text-[10px] tracking-widest uppercase mb-2">{o.visualsLabel}</p>
               <MediaGallery images={v.images} alt={o[v.nameKey]} placeholderLabel={o.imageComing} cols="grid-cols-2 md:grid-cols-4" />
+
+              <VillaQuickContact
+                villaName={o[v.nameKey]}
+                offerUrl={v.offer}
+                labels={{
+                  downloadOffer: o.downloadOffer,
+                  quickContact: o.quickContact,
+                  quickContactDesc: o.quickContactDesc,
+                  name: cf.name,
+                  email: cf.email,
+                  phone: cf.phone,
+                  submit: cf.submit,
+                  privacy: cf.privacy,
+                }}
+              />
             </div>
           ))}
         </div>

@@ -200,7 +200,10 @@
     "constructionTitle": "Baufortschritt",
     "constructionAsOf": "Stand",
     "videoTitle": "Video der Anlage",
-    "videoComing": "Video folgt in Kürze"
+    "videoComing": "Video folgt in Kürze",
+    "downloadOffer": "Angebot herunterladen",
+    "quickContact": "Schnellkontakt",
+    "quickContactDesc": "Hinterlassen Sie Ihre Daten — wir melden uns zu dieser Villa."
   },
   "about": {
     "heroEyebrow": "Unsere Geschichte",

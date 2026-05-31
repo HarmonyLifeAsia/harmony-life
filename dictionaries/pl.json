@@ -200,7 +200,10 @@
     "constructionTitle": "Postęp budowy",
     "constructionAsOf": "Stan na",
     "videoTitle": "Film z osiedla",
-    "videoComing": "Film wkrótce"
+    "videoComing": "Film wkrótce",
+    "downloadOffer": "Pobierz ofertę",
+    "quickContact": "Szybki kontakt",
+    "quickContactDesc": "Zostaw swoje dane — oddzwonimy w sprawie tej willi."
   },
   "about": {
     "heroEyebrow": "Nasza historia",

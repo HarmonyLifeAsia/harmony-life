@@ -27,6 +27,7 @@ export interface OasisVilla {
   nameKey: string // key in dictionaries → oasis
   floorPlan: string
   images: string[]
+  offer: string // downloadable offer PDF — drop file at public/offers/oasis/<id>.pdf
 }
 
 export const OASIS_VILLAS: OasisVilla[] = [
@@ -40,4 +41,5 @@ export const OASIS_VILLAS: OasisVilla[] = [
   ...v,
   floorPlan: `${BASE}/villas/${v.id}/floorplan.webp`,
   images: seq(4, `${BASE}/villas/${v.id}`),
+  offer: `/offers/oasis/${v.id}.pdf`,
 }))
