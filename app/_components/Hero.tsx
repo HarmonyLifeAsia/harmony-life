@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useDict, useLocale } from './LangProvider'
 import { CALENDLY_URL } from '../_data/site'
+import HeroVideo from './HeroVideo'
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null)
@@ -27,18 +28,8 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden flex items-center justify-center">
-      {/* Looping YouTube background video */}
-      <div className="absolute inset-0 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/55VtihTuPpQ?autoplay=1&mute=1&loop=1&playlist=55VtihTuPpQ&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&fs=0&iv_load_policy=3"
-          title="Harmony Life Koh Samui"
-          allow="autoplay; encrypted-media"
-          aria-hidden="true"
-          tabIndex={-1}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ width: '100vw', height: '56.25vw', minWidth: '177.78vh', minHeight: '100vh' }}
-        />
-      </div>
+      {/* Looping YouTube background video (segment only — no intro title / end cards) */}
+      <HeroVideo />
 
       {/* Navy shadow — strongest at bottom-left, fading to top-right (stays dark in light mode) */}
       <div className="absolute inset-0 bg-gradient-to-tr from-scrim via-scrim/60 to-scrim/15" />
