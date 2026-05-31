@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moniter — Prezentacja dla Inwestora</title>
+<meta name="description" content="Moniter.asia — inteligentny monitoring ogłoszeń i marketplace'ów. Zwalidowany w Polsce, gotowy na rynek 1,6 mld internautów w Azji. Runda 220 000 USD za 10% udziału w zysku.">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="robots" content="noindex">
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moniter.asia — Prezentacja dla Inwestora">
+<meta property="og:description" content="Monitoring ogłoszeń zwalidowany w Polsce, gotowy na rynek 1,6 mld internautów w Azji. Runda 220 000 USD za 10% udziału w zysku.">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="moniter-logo.svg" type="image/svg+xml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e1a; --bg2:#0f1626; --card:#141d33; --card2:#1a2742;
+    --line:#243352; --txt:#e8eef9; --mut:#94a3c4; --dim:#64748b;
+    --acc:#2b8fff; --acc2:#6fb4ff; --gold:#ffcb5c; --pink:#ff6b9d;
+    --con:#7c8db5; --base:#2b8fff; --agg:#19c3d6;
+    --heroTop:#ffffff; --accStrong:#2b8fff; --grid:#243352;
+  }
+  body.light{
+    --bg:#f5f7fb; --bg2:#eef2f9; --card:#ffffff; --card2:#f0f4fa;
+    --line:#dde4ef; --txt:#0f1b33; --mut:#56688c; --dim:#8595b3;
+    --acc:#006afc; --acc2:#2b8fff; --gold:#c98a00; --pink:#e3477e;
+    --con:#7c8db5; --base:#006afc; --agg:#0aa6b8;
+    --heroTop:#0f1b33; --accStrong:#006afc; --grid:#e3e9f3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+  /* theme toggle */
+  .theme-btn{position:fixed;top:18px;right:18px;z-index:50;display:flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--line);color:var(--txt);font-family:inherit;font-weight:700;
+    font-size:13px;padding:10px 16px;border-radius:999px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+  .theme-btn:hover{border-color:var(--acc)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(26px,4vw,40px);margin-bottom:8px}
+  h3{font-size:20px;margin-bottom:6px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--acc);margin-bottom:14px}
+  .lead{color:var(--mut);font-size:18px;max-width:680px}
+  .muted{color:var(--mut)}
+  .dim{color:var(--dim);font-size:13px}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+    background:radial-gradient(1200px 600px at 75% -10%,rgba(43,143,255,.18),transparent),
+               radial-gradient(900px 500px at 10% 110%,rgba(0,106,252,.14),transparent);
+    border-bottom:1px solid var(--line)}
+  .hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;
+    transform:translate(-50%,-50%);border:0;filter:blur(4px) brightness(.9) saturate(1.05)}
+  .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;backdrop-filter:blur(2px);
+    background:linear-gradient(180deg,rgba(10,14,26,.38),rgba(10,14,26,.68)),
+               radial-gradient(1100px 560px at 75% -10%,rgba(43,143,255,.22),transparent)}
+  body.light .hero-overlay{background:linear-gradient(180deg,rgba(10,14,26,.34),rgba(10,14,26,.64)),
+               radial-gradient(1100px 560px at 75% -10%,rgba(0,106,252,.22),transparent)}
+  .hero .wrap{position:relative;z-index:2}
+  body.light .hero .logo{color:#eef2fb}
+  body.light .hero h1{--heroTop:#ffffff;--accStrong:#7fb8ff}
+  body.light .hero .lead{color:#d3def4}
+  body.light .hero .dim{color:#aebbd6}
+  .logo{font-weight:900;font-size:22px;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+  .logomark{width:40px;height:40px;border-radius:11px;flex:0 0 40px;display:inline-flex;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+  .logomark svg{width:100%;height:100%}
+  .hero h1{font-size:clamp(38px,7vw,76px);margin:22px 0 18px;background:linear-gradient(120deg,var(--heroTop) 30%,var(--accStrong) 75%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lead{font-size:21px;max-width:640px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+    padding:14px 20px;border-radius:14px;font-weight:600}
+  .pill b{color:var(--acc)}
+  .pill.gold b{color:var(--gold)}
+
+  /* KPI */
+  .grid{display:grid;gap:18px}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .kpi .n{font-size:34px;font-weight:900;letter-spacing:-.03em;color:#fff}
+  .kpi .n.acc{color:var(--acc)} .kpi .n.blue{color:var(--acc2)} .kpi .n.gold{color:var(--gold)}
+  .kpi .l{color:var(--mut);font-size:14px;margin-top:4px}
+
+  .chartbox{position:relative;height:340px}
+  .chartbox.tall{height:420px}
+
+  /* phases */
+  .phase{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border-bottom:none}
+  .phase .num{flex:0 0 56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:20px;background:linear-gradient(135deg,var(--card2),var(--card));border:1px solid var(--line)}
+  .phase .num.live{background:linear-gradient(135deg,#1f86ff,#0a52c4);color:#fff;border:none;box-shadow:0 0 24px rgba(43,143,255,.4)}
+  .phase .flags{font-size:20px;margin-top:4px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    padding:3px 10px;border-radius:999px;background:rgba(43,143,255,.15);color:var(--acc);margin-left:8px}
+  .tag.soon{background:rgba(77,159,255,.15);color:var(--acc2)}
+  .tag.future{background:rgba(255,203,92,.13);color:var(--gold)}
+
+  /* pricing */
+  .price-track{display:flex;align-items:stretch;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .price{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative}
+  .price.target{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc),0 12px 40px rgba(43,143,255,.18)}
+  .price .when{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700}
+  .price .amt{font-size:42px;font-weight:900;margin:10px 0 2px}
+  .price .amt span{font-size:16px;color:var(--mut);font-weight:600}
+  .price .sub{color:var(--mut);font-size:14px}
+  .arrow{align-self:center;font-size:26px;color:var(--acc)}
+
+  /* scenario toggle */
+  .toggle{display:inline-flex;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:5px;gap:4px;margin-bottom:24px;flex-wrap:wrap}
+  .toggle button{border:none;background:transparent;color:var(--mut);font-weight:700;font-size:14px;
+    padding:11px 22px;border-radius:10px;cursor:pointer;transition:.2s;font-family:inherit}
+  .toggle button.active{color:#fff;background:var(--acc)}
+  .toggle button[data-s="conservative"].active{background:var(--con);color:#0a0e1a}
+  .toggle button[data-s="base"].active{background:var(--base);color:#fff}
+  .toggle button[data-s="aggressive"].active{background:var(--agg);color:#04222a}
+
+  table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+  th,td{padding:13px 12px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--mut);font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  tbody tr:hover{background:rgba(255,255,255,.02)}
+  td.hi{color:var(--acc);font-weight:800}
+  tfoot td{font-weight:800;border-top:2px solid var(--line);border-bottom:none;font-size:16px}
+
+  .returnbig{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .returnbig .card{text-align:center}
+  .returnbig .n{font-size:40px;font-weight:900;letter-spacing:-.03em}
+  .returnbig .x{color:var(--acc)} .returnbig .x2{color:var(--gold)}
+
+  .terms li{margin:10px 0;padding-left:6px}
+  ul.clean{list-style:none}
+  ul.clean li{position:relative;padding-left:30px;margin:14px 0;color:var(--txt)}
+  ul.clean li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:14px;border-radius:4px;
+    background:linear-gradient(135deg,var(--acc),var(--acc2))}
+
+  .note{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:10px;padding:16px 20px;color:var(--mut);font-size:14px;margin-top:24px}
+  /* use of funds */
+  .funds{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:center;margin-top:28px}
+  .fundlist .row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+  .fundlist .row:last-child{border-bottom:none}
+  .fundlist .pct{font-size:22px;font-weight:900}
+  .fundlist .pct.a{color:var(--acc)} .fundlist .pct.b{color:var(--acc2)} .fundlist .pct.c{color:var(--gold)}
+  .fundlist .desc{color:var(--mut);font-size:14px;max-width:60%}
+  .fundlist .lbl{font-weight:700}
+
+  /* team */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .person{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;text-align:center}
+  .photo{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:linear-gradient(135deg,var(--card2),var(--bg2));border:2px solid transparent;color:var(--dim);font-size:12px;text-align:center;line-height:1.3}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo.empty{border:2px dashed var(--line)}
+  .ph-fallback{display:none}
+  .photo.empty .ph-fallback{display:block}
+  .person h3{margin-bottom:4px}
+  .person .role{color:var(--acc);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .person p{color:var(--mut);font-size:14px}
+  footer{padding:50px 0;text-align:center;color:var(--dim);font-size:13px}
+  .barmini{height:8px;border-radius:99px;background:var(--card2);overflow:hidden;margin-top:8px}
+  .barmini i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+  @media(max-width:820px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}.returnbig{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.funds{grid-template-columns:1fr}.team{grid-template-columns:1fr}.fundlist .desc{max-width:100%}}
+
+  /* signup / deklaracja */
+  .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1f86ff,#0a52c4);color:#fff;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:14px;box-shadow:0 8px 24px rgba(43,143,255,.3)}
+  .cta-btn:hover{filter:brightness(1.06)}
+  .stepper{display:flex;align-items:center;gap:14px;margin:10px 0 16px}
+  .stepper button{width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:26px;font-weight:800;cursor:pointer;line-height:1;flex:0 0 48px}
+  .stepper button:hover{border-color:var(--acc);color:var(--acc)}
+  .pkgbox{flex:1;text-align:center}
+  .pkgnum{font-size:40px;font-weight:900;letter-spacing:-.03em;color:var(--acc);line-height:1}
+  input[type=range]{width:100%;accent-color:var(--acc);margin-bottom:16px;cursor:pointer}
+  .declare{border-top:1px solid var(--line);margin-top:4px}
+  .drow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .drow:last-child{border-bottom:none}
+  .drow span{color:var(--mut);font-size:14px}
+  .drow b{font-size:18px;font-weight:800;white-space:nowrap}
+  .drow.hi b{color:var(--acc);font-size:22px}
+  .form{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+  .form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--mut)}
+  .form input,.form textarea{font-family:inherit;font-size:15px;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%;resize:vertical}
+  .form input:focus,.form textarea:focus{outline:none;border-color:var(--acc)}
+  .submit{margin-top:4px;background:linear-gradient(135deg,#1f86ff,#0a52c4);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:16px;padding:15px;border-radius:12px;cursor:pointer}
+  .submit:hover{filter:brightness(1.06)}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()"><span id="themeIcon">☀️</span> <span id="themeLabel">Jasny</span></button>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-video">
+    <iframe id="heroYT" src="https://www.youtube-nocookie.com/embed/w-9khNG1lIQ?autoplay=1&mute=1&controls=0&start=330&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1"
+      title="Moniter — tło" allow="autoplay; encrypted-media" frameborder="0" tabindex="-1"></iframe>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="wrap">
+    <div class="logo"><span class="logomark"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="240" rx="56" fill="#fff"/><g fill="none" stroke="#0a1f44" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M76 168 V112 L120 80 L172 116"/><path d="M96 156 L116 130 L132 145 L160 110"/></g></svg></span> MONITER<span style="color:var(--acc)">.asia</span></div>
+    <h1>Monitorujemy ogłoszenia całej Azji.</h1>
+    <p class="lead">Inteligentny monitoring ogłoszeń i marketplace'ów — sprawdzony w Polsce, gotowy na rynek 1,6 miliarda użytkowników internetu w Azji.</p>
+    <div class="hero-cta">
+      <div class="pill gold">Pozyskujemy <b>220 000 USD</b></div>
+      <div class="pill">za <b>10% udziału w zysku</b></div>
+      <div class="pill">próg wejścia <b>10 000 USD</b></div>
+      <a href="#zapis" class="cta-btn">Zapisz się na rundę &rarr;</a>
+    </div>
+    <p class="dim" style="margin-top:28px">Przewiń, aby zobaczyć rynek, ścieżkę skalowania i potencjalny zwrot &darr;</p>
+  </div>
+</header>
+
+<!-- CZYM JEST MONITER -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Produkt &amp; trakcja</div>
+    <h2>Co już działa</h2>
+    <p class="lead" style="margin-bottom:30px">Moniter w czasie rzeczywistym śledzi ogłoszenia z Facebooka i tysięcy stron, a użytkownicy tworzą własne filtry, by jako pierwsi łapać interesujące oferty. Produkt jest zwalidowany na rynku polskim.</p>
+    <div class="grid g4">
+      <div class="card kpi"><div class="n acc">586 192</div><div class="l">monitorowanych ogłoszeń (FB + strony)</div></div>
+      <div class="card kpi"><div class="n">116</div><div class="l">użytkowników, w tym 50 zweryfikowanych</div></div>
+      <div class="card kpi"><div class="n blue">34</div><div class="l">filtry stworzone przez użytkowników</div></div>
+      <div class="card kpi"><div class="n gold">5 USD</div><div class="l">obecny abonament miesięczny</div></div>
+    </div>
+    <p class="dim" style="margin-top:18px">Dane na dziś: 28 832 ogłoszenia z Facebooka i 557 360 ze stron WWW; 29 filtrów dla stron i 5 filtrów dla FB; 12 użytkowników aktywnych w maju.</p>
+  </div>
+</section>
+
+<!-- RYNEK: POLSKA vs TAJLANDIA vs AZJA -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Wielkość rynku</div>
+    <h2>Z Polski na rynek 30× większy</h2>
+    <p class="lead">Polska, na której produkt został zwalidowany, ma ok. 36 mln mieszkańców i 32 mln użytkowników internetu. Tajlandia — nasza baza w Azji — jest dwa razy większa, a cała docelowa Azja to ~1,6 mld internautów.</p>
+    <div class="card" style="margin-top:28px">
+      <h3>Użytkownicy internetu wg rynku (mln)</h3>
+      <p class="dim" style="margin-bottom:12px">Skala logarytmiczna — Chiny dosłownie nie mieszczą się w skali liniowej.</p>
+      <div class="chartbox tall"><canvas id="popChart"></canvas></div>
+    </div>
+    <div class="grid g3" style="margin-top:22px">
+      <div class="card kpi"><div class="n">36 mln</div><div class="l">🇵🇱 Polska — rynek walidacji</div></div>
+      <div class="card kpi"><div class="n acc">71,6 mln</div><div class="l">🇹🇭 Tajlandia — baza w Azji (94,7% online)</div></div>
+      <div class="card kpi"><div class="n blue">~1,6 mld</div><div class="l">🌏 cała docelowa Azja (internauci)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DUŻE MIASTA -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Gęstość = trakcja</div>
+    <h2>Wielkie miasta — gdzie ogłoszenia żyją</h2>
+    <p class="lead">Monitoring ogłoszeń działa najlepiej tam, gdzie jest największa płynność rynku. Azjatyckie metropolie wielokrotnie przewyższają Warszawę.</p>
+    <div class="card" style="margin-top:28px">
+      <h3>Populacja obszarów metropolitalnych (mln)</h3>
+      <div class="chartbox"><canvas id="cityChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ŚCIEŻKA EKSPANSJI -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Strategia skalowania</div>
+    <h2>Ścieżka rozwoju krok po kroku</h2>
+    <p class="lead" style="margin-bottom:20px">Nie wchodzimy wszędzie naraz. Skalujemy falami — od zwalidowanego rynku, przez bazę w Tajlandii, po największe gospodarki Azji.</p>
+
+    <div class="card">
+      <div class="phase">
+        <div class="num live">✓</div>
+        <div>
+          <h3>Faza 0 — Walidacja <span class="tag">teraz</span></h3>
+          <div class="flags">🇵🇱</div>
+          <p class="muted">Polska. Działający produkt, płacący użytkownicy, dopracowane silniki monitoringu FB i stron WWW.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">1</div>
+        <div>
+          <h3>Faza 1 — Baza w Azji <span class="tag soon">Rok 1</span></h3>
+          <div class="flags">🇹🇭</div>
+          <p class="muted">Tajlandia (domena moniter.asia), start w Bangkoku — 11,4 mln metropolia, 94,7% online. Lokalizacja produktu i pierwszy przyczółek azjatycki.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">2</div>
+        <div>
+          <h3>Faza 2 — Azja Południowo-Wschodnia <span class="tag soon">Rok 2</span></h3>
+          <div class="flags">🇻🇳 🇵🇭 🇰🇭</div>
+          <p class="muted">Wietnam, Filipiny, Kambodża. Rynki o szybko rosnącej penetracji internetu i kulturze handlu na marketplace'ach.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">3</div>
+        <div>
+          <h3>Faza 3 — Gigant SEA <span class="tag future">Rok 3</span></h3>
+          <div class="flags">🇮🇩</div>
+          <p class="muted">Indonezja — największy rynek Azji Płd.-Wsch., ~283 mln ludzi, ~188 mln internautów i ogromny rynek ogłoszeń.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">4</div>
+        <div>
+          <h3>Faza 4 — Rynki dojrzałe i skala <span class="tag future">Rok 4–5</span></h3>
+          <div class="flags">🇯🇵 🇨🇳</div>
+          <p class="muted">Japonia (wysoki ARPU, 95% online) i Chiny (~1,1 mld internautów). Najwyższa wartość klienta i maksymalna skala.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL ABONAMENTOWY -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Model przychodowy</div>
+    <h2>Od 5 USD do 30 USD miesięcznie</h2>
+    <p class="lead">Dziś cena startowa buduje bazę użytkowników. W miarę dojrzewania produktu i rynku ARPU rośnie 6-krotnie do poziomu docelowego.</p>
+    <div class="price-track">
+      <div class="price">
+        <div class="when">Dziś</div>
+        <div class="amt">5 <span>USD/mc</span></div>
+        <div class="sub">Cena wejściowa — budowa bazy i trakcji</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="price target">
+        <div class="when" style="color:var(--acc)">Docelowo</div>
+        <div class="amt">30 <span>USD/mc</span></div>
+        <div class="sub">lub <b style="color:var(--acc)">250 USD / rok</b> (oszczędność ~30%)</div>
+      </div>
+    </div>
+    <div class="note">Model SaaS: niski koszt krańcowy obsługi kolejnego użytkownika. Każdy nowy rynek dokłada przychód przy marginalnym wzroście kosztów infrastruktury — stąd rosnąca marża w kolejnych latach.</div>
+  </div>
+</section>
+
+<!-- SCENARIUSZE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Prognoza 5-letnia</div>
+    <h2>Trzy scenariusze wzrostu</h2>
+    <p class="lead">Przełączaj scenariusze, aby zobaczyć liczbę płacących użytkowników, przychody i zysk w 5-letnim horyzoncie. Nawet agresywny scenariusz to ułamek promila azjatyckiego rynku.</p>
+
+    <div class="toggle" id="toggle">
+      <button data-s="conservative">Konserwatywny</button>
+      <button data-s="base" class="active">Bazowy</button>
+      <button data-s="aggressive">Agresywny</button>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:22px">
+      <div class="card"><h3>Płacący użytkownicy</h3><div class="chartbox"><canvas id="subChart"></canvas></div></div>
+      <div class="card"><h3>Przychód roczny (mln USD)</h3><div class="chartbox"><canvas id="revChart"></canvas></div></div>
+    </div>
+
+    <div class="card">
+      <h3 id="tblTitle">Model finansowy — scenariusz bazowy</h3>
+      <table>
+        <thead>
+          <tr><th>Pozycja</th><th>Rok 1</th><th>Rok 2</th><th>Rok 3</th><th>Rok 4</th><th>Rok 5</th></tr>
+        </thead>
+        <tbody id="modelBody"></tbody>
+      </table>
+      <p class="dim" style="margin-top:14px">ARPU (śr. przychód/użytkownika/rok) rośnie wraz z ceną: 60 → 100 → 150 → 200 → 240 USD. Marża netto: 0% → 8% → 20% → 32% → 40%. Wszystkie kwoty w USD.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ZWROT INWESTORA -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Zwrot dla inwestora</div>
+    <h2>Ile może zarobić inwestor</h2>
+    <p class="lead">220 000 USD = 10% udziału w zysku. Poniżej: udział inwestora w zysku rok po roku oraz łączny zwrot dla całej rundy i dla pojedynczego pakietu 10 000 USD.</p>
+
+    <div class="toggle" id="toggle2" style="margin-top:24px">
+      <button data-s="conservative">Konserwatywny</button>
+      <button data-s="base" class="active">Bazowy</button>
+      <button data-s="aggressive">Agresywny</button>
+    </div>
+
+    <div class="card" style="margin-bottom:22px">
+      <h3>Udział inwestora (10% zysku) w kolejnych latach — mln USD</h3>
+      <div class="chartbox"><canvas id="invChart"></canvas></div>
+    </div>
+
+    <div class="returnbig">
+      <div class="card">
+        <div class="dim">Łączny zwrot całej rundy (5 lat)</div>
+        <div class="n x" id="rTotal">—</div>
+        <div class="muted">z inwestycji 220 000 USD</div>
+      </div>
+      <div class="card">
+        <div class="dim">Wielokrotność (5 lat)</div>
+        <div class="n x2" id="rMult">—</div>
+        <div class="muted">zwrot / wkład</div>
+      </div>
+      <div class="card">
+        <div class="dim">Pakiet 10 000 USD zwraca</div>
+        <div class="n x" id="rTicket">—</div>
+        <div class="muted">łącznie w 5 lat</div>
+      </div>
+    </div>
+    <div class="note">Pakiet 10 000 USD = 4,55% rundy = 0,455% udziału w zysku spółki. Zwrot pakietu skaluje się proporcjonalnie do wyniku całej rundy.</div>
+  </div>
+</section>
+
+<!-- NA CO ŚRODKI -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Przeznaczenie środków</div>
+    <h2>Na co pójdzie 220 000 USD</h2>
+    <p class="lead">Środki napędzają wzrost: zdecydowana większość na pozyskanie użytkowników w Azji, reszta na lokalne przywództwo operacyjne i rozwój produktu pod potrzeby klientów.</p>
+    <div class="funds">
+      <div class="chartbox" style="height:300px"><canvas id="fundsChart"></canvas></div>
+      <div class="fundlist">
+        <div class="row">
+          <div><div class="lbl">Marketing i pozyskanie użytkowników</div><div class="desc">Skalowanie akwizycji na rynkach azjatyckich — fundament wzrostu bazy abonentów.</div></div>
+          <div class="pct a">80%</div>
+        </div>
+        <div class="row">
+          <div><div class="lbl">Dyrektor operacyjny w Bangkoku</div><div class="desc">Zatrudnienie lokalnego COO — przywództwo operacyjne i ekspansja w Azji.</div></div>
+          <div class="pct b">~12%</div>
+        </div>
+        <div class="row">
+          <div><div class="lbl">Rozwój nowych funkcji</div><div class="desc">Funkcje dostosowane do potrzeb klientów na nowych rynkach.</div></div>
+          <div class="pct c">~8%</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">80% budżetu trafia bezpośrednio w marketing i pozyskanie użytkowników — to dźwignia, która zamienia kapitał w abonentów, a abonentów w zysk dzielony z inwestorami.</div>
+  </div>
+</section>
+
+<!-- ZESPÓŁ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Zespół zarządzający</div>
+    <h2>Ludzie za projektem</h2>
+    <p class="lead">Połączenie produktu, technologii i strategii — z realnym osadzeniem na rynku azjatyckim.</p>
+    <div class="team">
+      <div class="person">
+        <div class="photo"><img src="pamula.jpg" alt="Przemysław Pamuła" width="120" height="120" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('empty');this.remove();" /><span class="ph-fallback">zdjęcie<br>wkrótce</span></div>
+        <h3>Przemysław Pamuła</h3>
+        <div class="role">Pomysłodawca &amp; Założyciel</div>
+        <p>Twórca Moniter.pl — autor koncepcji produktu i fundamentów monitoringu ogłoszeń.</p>
+      </div>
+      <div class="person">
+        <div class="photo"><img src="szymanski.jpg" alt="Robert Szymański" width="120" height="120" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('empty');this.remove();" /><span class="ph-fallback">zdjęcie<br>wkrótce</span></div>
+        <h3>Robert Szymański</h3>
+        <div class="role">Strateg · Wizjoner · Inwestor</div>
+        <p>Polski deweloper działający w Tajlandii. Strategia ekspansji i przyczółek na rynku azjatyckim.</p>
+      </div>
+      <div class="person">
+        <div class="photo"><img src="bosek.jpg" alt="Mateusz Bosek" width="120" height="120" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('empty');this.remove();" /><span class="ph-fallback">zdjęcie<br>wkrótce</span></div>
+        <h3>Mateusz Bosek</h3>
+        <div class="role">Dział &amp; Wdrożenia IT</div>
+        <p>Odpowiedzialny za technologię, dział IT oraz wdrożenia produktu na nowych rynkach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARUNKI -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Warunki inwestycji</div>
+    <h2>Przejrzysta oferta</h2>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card">
+        <ul class="clean">
+          <li><b>Kwota rundy:</b> 220 000 USD</li>
+          <li><b>Oferowany udział:</b> 10% w zysku</li>
+          <li><b>Minimalny pakiet:</b> 10 000 USD</li>
+          <li><b>Maks. liczba pakietów:</b> 22 × 10 000 USD</li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul class="clean">
+          <li><b>Wycena rundy:</b> 2,2 mln USD (przy 10% = 220 tys. USD)</li>
+          <li><b>Model:</b> SaaS, abonament 5 → 30 USD/mc</li>
+          <li><b>Przeznaczenie:</b> ekspansja Azja + zespół + marketing</li>
+          <li><b>Horyzont:</b> 5 lat, wypłata z udziału w zysku</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZAPIS / DEKLARACJA -->
+<section id="zapis">
+  <div class="wrap">
+    <div class="eyebrow">Zapis na rundę</div>
+    <h2>Zarezerwuj swój udział</h2>
+    <p class="lead">Cała runda to <b>220 000 USD = 10% udziału w zysku spółki</b>, podzielone na pakiety po 10 000 USD. Wybierz liczbę pakietów — od razu zobaczysz, jaką część rundy i jaki udział w zysku spółki obejmujesz.</p>
+
+    <div class="grid g2" style="margin-top:28px;align-items:start">
+      <!-- Kalkulator udziału -->
+      <div class="card">
+        <h3>Twój pakiet</h3>
+        <div class="stepper">
+          <button type="button" id="pkgMinus" aria-label="Mniej pakietów">&minus;</button>
+          <div class="pkgbox"><div class="pkgnum" id="pkgNum">1</div><div class="dim">pakiet(y) &times; 10 000 USD</div></div>
+          <button type="button" id="pkgPlus" aria-label="Więcej pakietów">+</button>
+        </div>
+        <input type="range" id="pkgRange" min="1" max="22" value="1" aria-label="Liczba pakietów">
+        <div class="declare">
+          <div class="drow"><span>Kwota inwestycji</span><b id="dAmount">10 000 USD</b></div>
+          <div class="drow"><span>Udział w rundzie (220 000 USD)</span><b id="dRound">4,55%</b></div>
+          <div class="drow hi"><span>Udział w zysku spółki</span><b id="dProfit">0,455%</b></div>
+          <div class="drow"><span>Szac. zwrot w 5 lat <span class="dim" id="dScen">(scen. bazowy)</span></span><b id="dReturn">&mdash;</b></div>
+        </div>
+        <p class="dim" id="dRemain" style="margin-top:12px"></p>
+      </div>
+
+      <!-- Formularz -->
+      <div class="card">
+        <h3>Deklaracja zapisu</h3>
+        <p class="dim" style="margin-bottom:14px">Niezobowiązująco rezerwujesz wybraną liczbę pakietów. Skontaktujemy się, by potwierdzić szczegóły i dokumentację.</p>
+        <form id="signupForm" class="form">
+          <label>Imię i nazwisko / firma<input type="text" name="name" autocomplete="name" required></label>
+          <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+          <label>Telefon<input type="tel" name="phone" autocomplete="tel"></label>
+          <label>Uwagi (opcjonalnie)<textarea name="note" rows="2"></textarea></label>
+          <button type="submit" class="submit">Wyślij deklarację &rarr;</button>
+          <p id="formMsg" style="font-weight:700;font-size:14px;margin-top:2px"></p>
+          <p class="dim">Wysłanie deklaracji nie stanowi umowy ani zobowiązania finansowego.</p>
+        </form>
+      </div>
+    </div>
+    <div class="note">Mechanika podziału: 10 000 USD = 4,55% rundy = 0,455% udziału w zysku spółki. Każdy kolejny pakiet dodaje 4,55% rundy i 0,455% udziału w zysku. Pełna runda (22 pakiety) = 10% udziału w zysku.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="justify-content:center;font-size:18px"><span class="logomark" style="width:32px;height:32px;flex-basis:32px;border-radius:9px"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="240" rx="56" fill="#fff"/><g fill="none" stroke="#0a1f44" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M76 168 V112 L120 80 L172 116"/><path d="M96 156 L116 130 L132 145 L160 110"/></g></svg></span> MONITER.asia</div>
+    <p style="margin-top:14px;max-width:760px;margin-left:auto;margin-right:auto">Materiał ma charakter poglądowy i marketingowy. Prognozy finansowe są scenariuszami opartymi na założeniach i nie stanowią gwarancji wyników ani oferty w rozumieniu przepisów o instrumentach finansowych. Decyzję inwestycyjną należy podjąć po analizie pełnej dokumentacji i ryzyk.</p>
+    <p style="margin-top:14px">robert@harmonylife.asia · Dane rynkowe: maj 2026</p>
+  </div>
+</footer>
+
+<script>
+const arpu=[60,100,150,200,240];      // USD/rok
+const margin=[0,0.08,0.20,0.32,0.40]; // marża netto
+const subs={
+  conservative:[800,3000,9000,22000,45000],
+  base:        [1500,7000,25000,70000,150000],
+  aggressive:  [3000,18000,65000,180000,420000]
+};
+const labels=['Rok 1','Rok 2','Rok 3','Rok 4','Rok 5'];
+const names={conservative:'konserwatywny',base:'bazowy',aggressive:'agresywny'};
+const cols={conservative:'#7c8db5',base:'#2b8fff',aggressive:'#19c3d6'};
+const INVEST=220000, TICKET=10000;   // USD
+
+function fmt(n){return n.toLocaleString('pl-PL');}
+function fmtM(n){return (n/1e6).toLocaleString('pl-PL',{maximumFractionDigits:1});}
+function model(s){
+  const u=subs[s];
+  return u.map((q,i)=>{
+    const rev=q*arpu[i];        // przychód roczny w USD
+    const profit=rev*margin[i];
+    const inv=profit*0.10;
+    return {q,rev,profit,inv};
+  });
+}
+function totals(s){
+  const m=model(s);
+  const inv=m.reduce((a,r)=>a+r.inv,0);
+  return {inv, mult:inv/INVEST, ticket:inv*(TICKET/INVEST)};
+}
+
+// charts config base
+Chart.defaults.font.family="-apple-system,Segoe UI,Roboto,sans-serif";
+Chart.defaults.font.size=13;
+function cssVar(n){return getComputedStyle(document.body).getPropertyValue(n).trim();}
+let grid={color:'#243352'};
+
+let popChart,cityChart,fundsChart;
+function buildStatic(){
+  if(popChart)popChart.destroy(); if(cityChart)cityChart.destroy(); if(fundsChart)fundsChart.destroy();
+  const cardBg=cssVar('--card');
+  popChart=new Chart(document.getElementById('popChart'),{
+    type:'bar',
+    data:{labels:['🇵🇱 Polska','🇰🇭 Kambodża','🇹🇭 Tajlandia','🇻🇳 Wietnam','🇵🇭 Filipiny','🇯🇵 Japonia','🇮🇩 Indonezja','🇨🇳 Chiny'],
+      datasets:[{label:'Internauci (mln)',data:[32,13,67.8,78,90,117,188,1100],
+        backgroundColor:['#7c8db5','#3a4a6b','#19c3d6','#4dc2ff','#2b8fff','#9d7bff','#ffcb5c','#ff6b9d'],borderRadius:8}]}
+    ,options:{indexAxis:'y',plugins:{legend:{display:false}},
+      scales:{x:{type:'logarithmic',grid,ticks:{callback:v=>v+' mln'}},y:{grid:{display:false}}}}
+  });
+  cityChart=new Chart(document.getElementById('cityChart'),{
+    type:'bar',
+    data:{labels:['Warszawa 🇵🇱','Phnom Penh 🇰🇭','Hanoi 🇻🇳','Ho Chi Minh 🇻🇳','Bangkok 🇹🇭','Manila 🇵🇭','Szanghaj 🇨🇳','Jakarta 🇮🇩','Tokio 🇯🇵'],
+      datasets:[{label:'Metropolia (mln)',data:[3.1,2.3,8.7,9.5,11.4,14.7,29,33,37],
+        backgroundColor:(c)=>c.dataIndex===0?'#7c8db5':cssVar('--base'),borderRadius:8}]},
+    options:{plugins:{legend:{display:false}},scales:{y:{grid,ticks:{callback:v=>v+' mln'}},x:{grid:{display:false}}}}
+  });
+  fundsChart=new Chart(document.getElementById('fundsChart'),{
+    type:'doughnut',
+    data:{labels:['Marketing i akwizycja (80%)','COO w Bangkoku (~12%)','Rozwój funkcji (~8%)'],
+      datasets:[{data:[80,12,8],backgroundColor:['#2b8fff','#6fb4ff','#ffcb5c'],borderColor:cardBg,borderWidth:4}]},
+    options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{padding:14,boxWidth:12}},
+      tooltip:{callbacks:{label:i=>i.label}}}}
+  });
+}
+
+// dynamic charts
+let subChart,revChart,invChart;
+function buildCharts(s){
+  const m=model(s);
+  const subData=m.map(r=>r.q);
+  const revData=m.map(r=>+(r.rev/1e6).toFixed(2));
+  const invData=m.map(r=>+(r.inv/1e6).toFixed(2));
+  const c=cols[s];
+  if(subChart)subChart.destroy(); if(revChart)revChart.destroy(); if(invChart)invChart.destroy();
+
+  subChart=new Chart(document.getElementById('subChart'),{type:'bar',
+    data:{labels,datasets:[{data:subData,backgroundColor:c,borderRadius:8}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>fmt(i.raw)+' użytkowników'}}},
+      scales:{y:{grid,ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+
+  revChart=new Chart(document.getElementById('revChart'),{type:'line',
+    data:{labels,datasets:[{data:revData,borderColor:c,backgroundColor:c+'33',fill:true,tension:.35,borderWidth:3,pointRadius:5,pointBackgroundColor:c}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>fmt(i.raw)+' mln USD'}}},
+      scales:{y:{grid,ticks:{callback:v=>v+' mln'}},x:{grid:{display:false}}}}});
+
+  invChart=new Chart(document.getElementById('invChart'),{type:'bar',
+    data:{labels,datasets:[{data:invData,backgroundColor:c,borderRadius:8}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>fmt(i.raw)+' mln USD dla inwestorów'}}},
+      scales:{y:{grid,ticks:{callback:v=>v+' mln'}},x:{grid:{display:false}}}}});
+}
+
+function buildTable(s){
+  const m=model(s);
+  document.getElementById('tblTitle').textContent='Model finansowy — scenariusz '+names[s];
+  const rows=[
+    ['Płacący użytkownicy', m.map(r=>fmt(r.q))],
+    ['Przychód roczny (USD)', m.map(r=>fmt(Math.round(r.rev)))],
+    ['Zysk netto (USD)', m.map(r=>fmt(Math.round(r.profit)))],
+    ['Udział inwestora 10% (USD)', m.map(r=>fmt(Math.round(r.inv))), true],
+  ];
+  document.getElementById('modelBody').innerHTML=rows.map(([lab,vals,hi])=>
+    '<tr><td>'+lab+'</td>'+vals.map(v=>'<td'+(hi?' class="hi"':'')+'>'+v+'</td>').join('')+'</tr>'
+  ).join('');
+}
+
+function buildReturns(s){
+  const t=totals(s);
+  document.getElementById('rTotal').textContent=fmt(Math.round(t.inv))+' USD';
+  document.getElementById('rMult').textContent=t.mult.toFixed(1)+'×';
+  document.getElementById('rTicket').textContent=fmt(Math.round(t.ticket))+' USD';
+}
+
+let currentScenario='base';
+function setScenario(s){
+  currentScenario=s;
+  document.querySelectorAll('#toggle button').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
+  document.querySelectorAll('#toggle2 button').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
+  buildCharts(s); buildTable(s); buildReturns(s);
+  updateDeclare();
+}
+document.querySelectorAll('#toggle button,#toggle2 button').forEach(b=>b.addEventListener('click',()=>setScenario(b.dataset.s)));
+
+// ---- zapis / deklaracja udziału ----
+const ROUND_PROFIT=0.10;                 // 10% zysku za całą rundę
+const MAX_PKG=Math.floor(INVEST/TICKET); // 22 pełne pakiety
+const WEB3FORMS_KEY='4e74606e-aa83-4830-b740-63b82440a3f9';  // web3forms.com — skrzynka robert@harmonylife.asia
+const pct=(v,d)=>(v*100).toLocaleString('pl-PL',{maximumFractionDigits:d})+'%';
+function pkgCount(){return +document.getElementById('pkgRange').value;}
+function updateDeclare(){
+  const n=pkgCount();
+  const amount=n*TICKET;
+  const roundShare=amount/INVEST;          // udział w rundzie
+  const profitShare=roundShare*ROUND_PROFIT; // udział w zysku spółki
+  const ret=totals(currentScenario).ticket*n;
+  document.getElementById('pkgNum').textContent=n;
+  document.getElementById('dAmount').textContent=fmt(amount)+' USD';
+  document.getElementById('dRound').textContent=pct(roundShare,2);
+  document.getElementById('dProfit').textContent=pct(profitShare,3);
+  document.getElementById('dReturn').textContent=fmt(Math.round(ret))+' USD';
+  document.getElementById('dScen').textContent='(scen. '+names[currentScenario]+')';
+  const left=INVEST-amount;
+  document.getElementById('dRemain').textContent = left>0
+    ? 'Pozostaje do objęcia w rundzie: '+fmt(left)+' USD'
+    : 'Obejmujesz całą rundę — 220 000 USD i pełne 10% udziału w zysku.';
+}
+function setPkg(n){
+  const r=document.getElementById('pkgRange');
+  r.value=Math.max(1,Math.min(MAX_PKG,n));
+  updateDeclare();
+}
+document.getElementById('pkgRange').addEventListener('input',updateDeclare);
+document.getElementById('pkgPlus').addEventListener('click',()=>setPkg(pkgCount()+1));
+document.getElementById('pkgMinus').addEventListener('click',()=>setPkg(pkgCount()-1));
+document.getElementById('signupForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const f=e.target, n=pkgCount(), amount=n*TICKET;
+  const ret=fmt(Math.round(totals(currentScenario).ticket*n))+' USD (scen. '+names[currentScenario]+')';
+  const msg=document.getElementById('formMsg');
+  const btn=f.querySelector('.submit'), oldTxt=btn.textContent;
+  const payload={
+    access_key:WEB3FORMS_KEY,
+    subject:'Deklaracja zapisu — Moniter ('+n+' × 10 000 USD)',
+    from_name:'Moniter — formularz zapisu',
+    name:f.name.value, email:f.email.value, phone:f.phone.value||'—',
+    'Liczba pakietów':n+' × 10 000 USD',
+    'Kwota inwestycji':fmt(amount)+' USD',
+    'Udział w rundzie':pct(amount/INVEST,2),
+    'Udział w zysku spółki':pct(amount/INVEST*ROUND_PROFIT,3),
+    'Szac. zwrot w 5 lat':ret,
+    'Uwagi':f.note.value||'—'
+  };
+  btn.disabled=true; btn.textContent='Wysyłanie…'; msg.textContent='';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
+    const d=await r.json();
+    if(!d.success) throw new Error(d.message||'błąd');
+    f.reset(); setPkg(1);
+    msg.style.color='var(--acc)';
+    msg.textContent='Dziękujemy! Twoja deklaracja została wysłana — odezwiemy się wkrótce.';
+  }catch(err){
+    msg.style.color='var(--pink)';
+    msg.textContent='Nie udało się wysłać. Napisz proszę bezpośrednio na robert@harmonylife.asia.';
+  }finally{ btn.disabled=false; btn.textContent=oldTxt; }
+});
+
+function applyTheme(){
+  Chart.defaults.color=cssVar('--mut');
+  grid.color=cssVar('--grid');
+  buildStatic();
+  buildCharts(currentScenario);
+}
+function toggleTheme(){
+  const light=document.body.classList.toggle('light');
+  document.getElementById('themeIcon').textContent=light?'🌙':'☀️';
+  document.getElementById('themeLabel').textContent=light?'Ciemny':'Jasny';
+  applyTheme();
+}
+
+// init
+applyTheme();
+setScenario('base');
+</script>
+<script>
+// tło hero — start od 30 s i pętla wracająca do 30 s
+var heroPlayer;
+function onYouTubeIframeAPIReady(){
+  heroPlayer=new YT.Player('heroYT',{events:{
+    onReady:function(e){e.target.mute();e.target.seekTo(330);e.target.playVideo();},
+    onStateChange:function(e){if(e.data===YT.PlayerState.ENDED){e.target.seekTo(330);e.target.playVideo();}},
+    onError:function(){var v=document.querySelector('.hero-video');if(v)v.style.display='none';}
+  }});
+}
+(function(){var t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+</script>
+</body>
+</html>
