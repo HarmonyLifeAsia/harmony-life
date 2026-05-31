@@ -7,28 +7,31 @@
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
-    "title": "Luxury Living",
-    "titleHighlight": "on Koh Samui",
-    "subtitle": "European construction mastery meets tropical paradise. Premium villas and apartments crafted to the highest standards — your sanctuary awaits.",
+    "title": "Property on Koh Samui",
+    "titleHighlight": "you understand in every detail",
+    "subtitle": "We build to European construction standards, with a transparent ownership structure and one team that runs the build, the rental and your settlement. See what's available and on what terms.",
     "ctaExplore": "Explore Projects",
     "ctaBook": "Book a Consultation",
     "scroll": "Scroll"
   },
   "stats": {
-    "developments": "Active Developments",
+    "developments": "Projects on Samui",
     "experience": "Years Experience",
     "projectsEurope": "Projects in Europe",
-    "standards": "European Build Standards"
+    "standards": "European Build Standards",
+    "sunnyDays": "Days of sunshine a year"
   },
   "projects": {
     "eyebrow": "Our Portfolio",
     "title": "Exceptional Developments",
-    "subtitle": "Five landmark projects shaping the future of luxury living on Koh Samui.",
+    "subtitle": "Six developments on Koh Samui — from private-pool villas to sea-view apartments.",
     "viewDetails": "View Details",
     "beds": "Beds",
     "from": "From",
     "units": "Units",
-    "insideView": "Inside View"
+    "insideView": "Inside View",
+    "availableNow": "Available now",
+    "delivered": "Delivered — sold out"
   },
   "cinematic": {
     "scene1Eyebrow": "The Estate",
@@ -42,16 +45,17 @@
   "whyInvest": {
     "eyebrow": "Investment Case",
     "title": "Why Invest with Harmony Life",
-    "subtitle": "Three pillars that make Harmony Life the smart choice for discerning investors seeking both lifestyle and financial returns.",
-    "roiTitle": "Guaranteed ROI",
-    "roiDesc": "Benefit from Thailand's thriving luxury tourism market. Our managed rental program delivers consistent passive income while you're away from your paradise home.",
-    "roiStatLabel": "Estimated rental yield",
+    "subtitle": "Three pillars investors choose Harmony Life for: European build quality, a transparent rental model, and one team — from construction to settlement.",
+    "roiTitle": "Transparent rental model",
+    "roiDesc": "Your villa joins a shared rental pool managed by our team. Every quarter you receive a net settlement and an occupancy report — you see every cent.",
+    "roiStatLabel": "Net settlement & occupancy report",
     "buildTitle": "European Build Quality",
     "buildDesc": "Every Harmony Life property is constructed to the standards Robert Szymański refined over 150+ projects in Warsaw — superior insulation, ventilation systems, and premium European materials.",
     "buildStatLabel": "Projects in Europe",
     "mgmtTitle": "Full Property Management",
-    "mgmtDesc": "From guest check-in to maintenance, our dedicated team handles everything. Own a piece of paradise and enjoy truly hassle-free investment ownership.",
-    "mgmtStatLabel": "Owner support"
+    "mgmtDesc": "One team handles guest check-in, maintenance and day-to-day operations — you simply receive the statements. An investment without the daily work.",
+    "mgmtStatLabel": "Owner support",
+    "roiStat": "Quarterly"
   },
   "lifestyle": {
     "eyebrow": "Island Living",
@@ -100,7 +104,7 @@
   },
   "contactSection": {
     "eyebrow": "Schedule a Consultation",
-    "title": "Start your journey to paradise",
+    "title": "Let's talk about your investment",
     "subtitle": "Whether you're a first-time buyer or an experienced investor, our team is ready to guide you through every step. All consultations are private and obligation-free.",
     "feature1": "Private video consultations available",
     "feature2": "Support in EN, PL, DE & Thai",
@@ -271,7 +275,16 @@
     "openInMaps": "Open in Google Maps"
   },
   "marquee": {
-    "words": ["Harmony Life", "Koh Samui", "European Standards", "Luxury Living", "Thailand", "Private Villas", "Investment Grade", "Tropical Paradise"]
+    "words": [
+      "Harmony Life",
+      "Koh Samui",
+      "European Standards",
+      "Luxury Living",
+      "Thailand",
+      "Private Villas",
+      "Investment Grade",
+      "Tropical Paradise"
+    ]
   },
   "cookies": {
     "messagePart1": "We use cookies to enhance your experience and analyse site traffic. By clicking",
@@ -285,5 +298,10 @@
     "title": "Page not found",
     "subtitle": "The page you're looking for doesn't exist.",
     "cta": "Return Home"
+  },
+  "commitment": {
+    "eyebrow": "We stay after the sale",
+    "title": "We don't sell and disappear",
+    "body": "After your purchase you stay in the loop: net quarterly settlements, an online investor panel, construction photos twice a month, Investor Days on the island and priority on future projects."
   }
 }

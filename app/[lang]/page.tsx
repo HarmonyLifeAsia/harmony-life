@@ -14,7 +14,6 @@ import TestimonialsCarousel from '../_components/TestimonialsCarousel'
 import ContactForm from '../_components/ContactForm'
 import { projects } from '../_data/projects'
 import { CONTACT_EMAIL } from '../_data/site'
-import Link from 'next/link'
 
 export async function generateMetadata({
   params,
@@ -24,8 +23,14 @@ export async function generateMetadata({
   const { lang } = await params
   if (!hasLocale(lang)) return {}
   const dict = await getDictionary(lang)
+  const title =
+    lang === 'pl'
+      ? 'Harmony Life — inwestycje na Koh Samui'
+      : lang === 'de'
+        ? 'Harmony Life — Immobilien auf Koh Samui'
+        : 'Harmony Life — Property on Koh Samui'
   return {
-    title: 'Harmony Life | Invest in Harmony. Live in Paradise.',
+    title,
     description: dict.hero.subtitle,
     openGraph: { locale: lang === 'pl' ? 'pl_PL' : lang === 'de' ? 'de_DE' : 'en_US' },
   }
@@ -56,11 +61,24 @@ export default async function HomePage({
               subtitle={dict.projects.subtitle}
             />
           </div>
+          {/* Available now — shown first */}
+          <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-6">{dict.projects.availableNow}</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, i) => (
+            {projects.filter((p) => p.status !== 'Sold Out').map((project, i) => (
               <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
             ))}
           </div>
+          {/* Delivered / sold out — proof, shown below */}
+          {projects.some((p) => p.status === 'Sold Out') && (
+            <>
+              <p className="text-cream/40 text-xs tracking-[0.3em] uppercase font-sans mt-16 mb-6">{dict.projects.delivered}</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.filter((p) => p.status === 'Sold Out').map((project, i) => (
+                  <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -69,6 +87,16 @@ export default async function HomePage({
       <WhyInvestSection />
       <LifestyleSection />
       <FounderSection />
+
+      {/* Commitment — we stay after the sale */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{dict.commitment.eyebrow}</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-cream mb-6">{dict.commitment.title}</h2>
+          <p className="text-cream/65 text-lg leading-relaxed">{dict.commitment.body}</p>
+        </div>
+      </section>
+
       <TestimonialsCarousel />
 
       {/* CTA / Contact */}

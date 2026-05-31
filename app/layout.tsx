@@ -16,11 +16,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Harmony Life | Luxury Villas & Apartments on Koh Samui',
+    default: 'Harmony Life | Villas & Apartments on Koh Samui',
     template: '%s | Harmony Life Koh Samui',
   },
   description:
-    'Premium luxury villas and apartments on Koh Samui, Thailand. European construction standards meet tropical paradise. Invest with confidence — founded by Robert Jakub Szymański with 20+ years experience.',
+    'Villas and apartments on Koh Samui, Thailand, built to European construction standards — transparent ownership, one team from build to settlement. Founded by Robert Jakub Szymański with 20+ years of experience.',
   robots: { index: true, follow: true },
   icons: {
     icon: '/images/logo/favicon.png',

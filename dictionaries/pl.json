@@ -7,28 +7,31 @@
   },
   "hero": {
     "eyebrow": "Koh Samui, Tajlandia",
-    "title": "Luksusowe Życie",
-    "titleHighlight": "na Koh Samui",
-    "subtitle": "Europejska maestria budowlana spotyka tropikalny raj. Ekskluzywne wille i apartamenty tworzone według najwyższych standardów — Twoja oaza spokoju czeka.",
+    "title": "Nieruchomość na Koh Samui,",
+    "titleHighlight": "którą rozumiesz w każdym szczególe",
+    "subtitle": "Budujemy w europejskim standardzie konstrukcyjnym, z przejrzystą strukturą własności i jednym zespołem, który prowadzi budowę, najem i Twoje rozliczenie. Zobacz, co jest dostępne i na jakich zasadach.",
     "ctaExplore": "Odkryj inwestycje",
     "ctaBook": "Umów konsultację",
     "scroll": "Przewiń"
   },
   "stats": {
-    "developments": "Aktywne inwestycje",
+    "developments": "Projekty na Samui",
     "experience": "Lat doświadczenia",
     "projectsEurope": "Projektów w Europie",
-    "standards": "Europejskie standardy budowlane"
+    "standards": "Europejskie standardy budowlane",
+    "sunnyDays": "Dni słońca w roku"
   },
   "projects": {
     "eyebrow": "Nasze portfolio",
     "title": "Wyjątkowe inwestycje",
-    "subtitle": "Pięć flagowych projektów kształtujących przyszłość luksusowego życia na Koh Samui.",
+    "subtitle": "Sześć projektów na Koh Samui — od willi z prywatnym basenem po apartamenty z widokiem na morze.",
     "viewDetails": "Zobacz szczegóły",
     "beds": "Sypialnie",
     "from": "Od",
     "units": "Jednostki",
-    "insideView": "Widok wnętrza"
+    "insideView": "Widok wnętrza",
+    "availableNow": "Dostępne teraz",
+    "delivered": "Zrealizowane — wyprzedane"
   },
   "cinematic": {
     "scene1Eyebrow": "Posiadłość",
@@ -42,16 +45,17 @@
   "whyInvest": {
     "eyebrow": "Uzasadnienie inwestycji",
     "title": "Dlaczego inwestować z Harmony Life",
-    "subtitle": "Trzy filary, które czynią Harmony Life inteligentnym wyborem dla wymagających inwestorów poszukujących zarówno wyjątkowego stylu życia, jak i atrakcyjnych zwrotów finansowych.",
-    "roiTitle": "Gwarantowany zwrot z inwestycji",
-    "roiDesc": "Skorzystaj z rozkwitu tajlandzkiego rynku luksusowej turystyki. Nasz zarządzany program wynajmu zapewnia stały dochód pasywny, gdy jesteś z dala od swojego rajskiego domu.",
-    "roiStatLabel": "Szacowana stopa zwrotu z najmu",
+    "subtitle": "Trzy filary, dla których inwestor wybiera Harmony Life: europejska jakość konstrukcji, przejrzysty model najmu i jeden zespół — od budowy po rozliczenie.",
+    "roiTitle": "Przejrzysty model najmu i zwrotu",
+    "roiDesc": "Twoja willa wchodzi do wspólnej puli najmu zarządzanej przez nasz zespół. Co kwartał dostajesz rozliczenie netto i raport obłożenia — widzisz każdą złotówkę.",
+    "roiStatLabel": "Rozliczenie netto i raport obłożenia",
     "buildTitle": "Europejska jakość wykonania",
     "buildDesc": "Każda nieruchomość Harmony Life powstaje zgodnie ze standardami, które Robert Szymański doskonalił przez ponad 150 projektów w Warszawie — superiorna izolacja, systemy wentylacyjne i najwyższej klasy materiały z Europy.",
     "buildStatLabel": "Projektów w Europie",
     "mgmtTitle": "Kompleksowe zarządzanie nieruchomością",
-    "mgmtDesc": "Od check-in gości po serwis techniczny — nasz dedykowany zespół zajmuje się wszystkim. Posiadaj kawałek raju i ciesz się prawdziwie bezproblemową inwestycją.",
-    "mgmtStatLabel": "Wsparcie właściciela"
+    "mgmtDesc": "Jeden zespół prowadzi check-in gości, serwis techniczny i bieżącą obsługę — Ty tylko odbierasz rozliczenia. Inwestycja bez codziennych obowiązków.",
+    "mgmtStatLabel": "Wsparcie właściciela",
+    "roiStat": "Co kwartał"
   },
   "lifestyle": {
     "eyebrow": "Życie na wyspie",
@@ -100,7 +104,7 @@
   },
   "contactSection": {
     "eyebrow": "Umów konsultację",
-    "title": "Rozpocznij podróż do raju",
+    "title": "Porozmawiajmy o Twojej inwestycji",
     "subtitle": "Niezależnie czy jesteś pierwszym nabywcą, czy doświadczonym inwestorem — nasz zespół jest gotowy przeprowadzić Cię przez każdy etap. Wszystkie konsultacje są prywatne i niezobowiązujące.",
     "feature1": "Dostępne prywatne konsultacje wideo",
     "feature2": "Obsługa w j. angielskim, polskim, niemieckim i tajskim",
@@ -271,7 +275,16 @@
     "openInMaps": "Otwórz w Mapach Google"
   },
   "marquee": {
-    "words": ["Harmony Life", "Koh Samui", "Standardy europejskie", "Luksusowe życie", "Tajlandia", "Prywatne wille", "Klasa inwestycyjna", "Tropikalny raj"]
+    "words": [
+      "Harmony Life",
+      "Koh Samui",
+      "Standardy europejskie",
+      "Luksusowe życie",
+      "Tajlandia",
+      "Prywatne wille",
+      "Klasa inwestycyjna",
+      "Tropikalny raj"
+    ]
   },
   "cookies": {
     "messagePart1": "Używamy plików cookies, aby poprawić Twoje doświadczenia i analizować ruch na stronie. Klikając",
@@ -285,5 +298,10 @@
     "title": "Strona nie znaleziona",
     "subtitle": "Szukana strona nie istnieje.",
     "cta": "Wróć na stronę główną"
+  },
+  "commitment": {
+    "eyebrow": "Po sprzedaży zostajemy",
+    "title": "Nie sprzedajemy i nie znikamy",
+    "body": "Po zakupie zostajesz w kontakcie: kwartalne rozliczenia netto, panel inwestora online, zdjęcia z budowy 2× w miesiącu, Investor Days na wyspie i pierwszeństwo w kolejnych projektach."
   }
 }
