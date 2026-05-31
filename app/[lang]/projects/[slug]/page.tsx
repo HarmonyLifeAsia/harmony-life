@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects, getProjectBySlug } from '../../../_data/projects'
+import { CALENDLY_URL } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
@@ -200,9 +201,17 @@ export default async function ProjectPage({
                 </span>
 
                 <div className="mt-6 space-y-3">
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center bg-gold text-primary py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors cursor-pointer"
+                  >
+                    {dict.nav.bookConsultation}
+                  </a>
                   <Link
                     href={`/${lang}/contact`}
-                    className="block w-full text-center bg-gold text-primary py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors cursor-pointer"
+                    className="block w-full text-center border border-gold/30 text-cream/70 hover:text-gold hover:border-gold py-3.5 text-sm transition-colors cursor-pointer"
                   >
                     {t.requestPricing}
                   </Link>

@@ -3,7 +3,6 @@ import { getDictionary, hasLocale, locales } from '../_i18n/dictionaries'
 import { LangProvider } from '../_components/LangProvider'
 import Navigation from '../_components/Navigation'
 import Footer from '../_components/Footer'
-import WhatsAppButton from '../_components/WhatsAppButton'
 import CookieBanner from '../_components/CookieBanner'
 
 export function generateStaticParams() {
@@ -27,7 +26,6 @@ export default async function LangLayout({
       <Navigation />
       <main>{children}</main>
       <Footer />
-      <WhatsAppButton />
       <CookieBanner />
     </LangProvider>
   )

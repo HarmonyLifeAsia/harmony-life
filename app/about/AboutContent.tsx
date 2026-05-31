@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SectionHeading from '../_components/SectionHeading'
 import { useDict, useLocale } from '../_components/LangProvider'
+import { CONTACT_EMAIL } from '../_data/site'
 
 const valueIcons = [
   'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
@@ -244,7 +245,7 @@ export default function AboutContent() {
                 { label: t.companyNameLabel, value: 'Harmony Life Samui Co., Ltd.' },
                 { label: t.companyRegLabel, value: 'Thai Company Registration TBA' },
                 { label: t.companyOfficeLabel, value: 'Bo Phut, Koh Samui, Surat Thani 84320' },
-                { label: t.companyContactLabel, value: 'info@harmonylife.asia' },
+                { label: t.companyContactLabel, value: CONTACT_EMAIL },
               ].map(({ label, value }) => (
                 <div key={label}>
                   <p className="text-cream/30 text-xs uppercase tracking-wide mb-1">{label}</p>

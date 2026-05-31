@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import LanguageSwitcher from './LanguageSwitcher'
 import ThemeToggle from './ThemeToggle'
 import { useDict, useLocale } from './LangProvider'
+import { CALENDLY_URL } from '../_data/site'
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -44,9 +46,20 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link href={`/${lang}`} className="flex flex-col leading-none cursor-pointer">
-            <span className="font-serif text-cream text-xl tracking-wide">Harmony Life</span>
-            <span className="text-gold text-[10px] tracking-[0.25em] uppercase font-sans">Koh Samui</span>
+          <Link href={`/${lang}`} className="flex items-center gap-3 cursor-pointer">
+            <Image
+              src="/images/logo/logo-mark.webp"
+              alt="Harmony Life"
+              width={56}
+              height={40}
+              priority
+              unoptimized
+              className="h-9 w-auto md:h-10"
+            />
+            <span className="flex flex-col leading-none">
+              <span className="font-serif text-cream text-xl tracking-wide">Harmony Life</span>
+              <span className="text-gold text-[10px] tracking-[0.25em] uppercase font-sans">Koh Samui</span>
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -59,12 +72,14 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href={`/${lang}/contact`}
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-gold/60 text-gold hover:bg-gold hover:text-primary text-sm px-5 py-2 rounded-sm transition-all duration-300 tracking-wider cursor-pointer"
             >
               {dict.nav.bookConsultation}
-            </Link>
+            </a>
             <ThemeToggle />
             <LanguageSwitcher />
           </nav>
@@ -98,9 +113,9 @@ export default function Navigation() {
               </motion.div>
             ))}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-              <Link href={`/${lang}/contact`} onClick={() => setMenuOpen(false)} className="border border-gold text-gold px-8 py-3 text-sm tracking-widest uppercase cursor-pointer">
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="border border-gold text-gold px-8 py-3 text-sm tracking-widest uppercase cursor-pointer">
                 {dict.nav.bookConsultation}
-              </Link>
+              </a>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="flex items-center gap-4">
               <ThemeToggle />

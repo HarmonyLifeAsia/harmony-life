@@ -32,7 +32,7 @@ export default function PrivacyPage() {
               <p>Koh Samui 84320 District,</p>
               <p>Surat Thani Province, Thailand</p>
               <p className="pt-2">Tax ID: 08455670210090</p>
-              <p>E-mail: <a href="mailto:office@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">office@harmonylife.asia</a></p>
+              <p>E-mail: <a href="mailto:robert@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">robert@harmonylife.asia</a></p>
             </div>
             <p className="mt-4">Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób Harmony Life Samui Co. Ltd. zbiera, wykorzystuje, przechowuje i chroni dane osobowe osób korzystających ze strony internetowej www.harmonylife.co, kontaktujących się z firmą przez formularze, e-mail, telefon, komunikatory, reklamy internetowe oraz profile Harmony Life w serwisach Facebook, Instagram i innych produktach Meta.</p>
           </section>
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             <ol className="list-decimal list-inside space-y-2 pl-2">
               <li>korzystaniem ze strony internetowej www.harmonylife.co;</li>
               <li>wypełnieniem formularza kontaktowego lub inwestorskiego;</li>
-              <li>wysłaniem wiadomości e-mail, wiadomości przez Facebook Messenger, Instagram, WhatsApp lub inny komunikator;</li>
+              <li>wysłaniem wiadomości e-mail, wiadomości przez Facebook Messenger, Instagram lub inny komunikator;</li>
               <li>komentowaniem, polubieniem, obserwowaniem lub reagowaniem na treści publikowane przez Harmony Life w mediach społecznościowych;</li>
               <li>zapisaniem się do newslettera, listy oczekujących, konsultacji lub prezentacji inwestycyjnej;</li>
               <li>udziałem w kampaniach reklamowych, remarketingowych lub promocyjnych;</li>
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
               <li>prawo do wycofania zgody w dowolnym momencie;</li>
               <li>prawo do złożenia skargi do właściwego organu ochrony danych.</li>
             </ol>
-            <p className="mt-4">Aby skorzystać ze swoich praw, prosimy o kontakt: <a href="mailto:office@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">office@harmonylife.asia</a></p>
+            <p className="mt-4">Aby skorzystać ze swoich praw, prosimy o kontakt: <a href="mailto:robert@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">robert@harmonylife.asia</a></p>
           </section>
 
           <section>
@@ -173,12 +173,12 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="font-serif text-2xl text-cream mb-4">18. Newsletter i komunikacja marketingowa</h2>
-            <p>Jeżeli użytkownik zapisze się do newslettera, jego dane będą wykorzystywane do przesyłania informacji o Harmony Life. Rezygnacja jest możliwa w każdej chwili przez link w wiadomości e-mail lub kontakt pod adresem: <a href="mailto:office@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">office@harmonylife.asia</a></p>
+            <p>Jeżeli użytkownik zapisze się do newslettera, jego dane będą wykorzystywane do przesyłania informacji o Harmony Life. Rezygnacja jest możliwa w każdej chwili przez link w wiadomości e-mail lub kontakt pod adresem: <a href="mailto:robert@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">robert@harmonylife.asia</a></p>
           </section>
 
           <section>
             <h2 className="font-serif text-2xl text-cream mb-4">19. Kontakt przez komunikatory</h2>
-            <p>Kontaktując się z Harmony Life przez Messenger, WhatsApp, Instagram lub inne komunikatory, przetwarzamy dane niezbędne do prowadzenia rozmowy. Dostawcy tych komunikatorów mogą przetwarzać dane zgodnie z własnymi regulaminami.</p>
+            <p>Kontaktując się z Harmony Life przez Messenger, Instagram lub inne komunikatory, przetwarzamy dane niezbędne do prowadzenia rozmowy. Dostawcy tych komunikatorów mogą przetwarzać dane zgodnie z własnymi regulaminami.</p>
           </section>
 
           <section>
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
               <p>Koh Samui 84320 District,</p>
               <p>Surat Thani Province, Thailand</p>
               <p className="pt-2">Tax ID: 08455670210090</p>
-              <p>E-mail: <a href="mailto:office@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">office@harmonylife.asia</a></p>
+              <p>E-mail: <a href="mailto:robert@harmonylife.asia" className="text-gold hover:text-gold-light transition-colors">robert@harmonylife.asia</a></p>
             </div>
           </section>
 

@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   description:
     'Premium luxury villas and apartments on Koh Samui, Thailand. European construction standards meet tropical paradise. Invest with confidence — founded by Robert Jakub Szymański with 20+ years experience.',
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/images/logo/favicon.png',
+    apple: '/images/logo/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

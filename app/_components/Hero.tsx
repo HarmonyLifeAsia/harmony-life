@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useDict, useLocale } from './LangProvider'
+import { CALENDLY_URL } from '../_data/site'
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null)
@@ -60,9 +61,9 @@ export default function Hero() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
-          <Link href={`/${lang}/contact`} className="border border-cream/40 text-cream px-8 py-4 text-sm tracking-wider hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer">
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="border border-cream/40 text-cream px-8 py-4 text-sm tracking-wider hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer">
             {t.ctaBook}
-          </Link>
+          </a>
         </motion.div>
         <motion.div variants={itemVariants} className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="w-px h-12 bg-gradient-to-b from-gold/60 to-transparent" />
