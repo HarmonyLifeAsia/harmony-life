@@ -25,6 +25,7 @@ export interface Project {
   floorPlans?: string[] // floor-plan cards (replaces the generic floor-plan placeholder)
   youtubeId?: string // YouTube video (replaces the 3D visualisation placeholder)
   offer?: string // "OFFER" button link (e.g. Canva presentation)
+  realImages?: string[] // completed-development photos → "render vs reality" proof
 }
 
 export const projects: Project[] = [
@@ -70,6 +71,7 @@ export const projects: Project[] = [
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.5483084,100.0526437&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/JUGLbQrzHQAQDXbu7',
+    realImages: Array.from({ length: 26 }, (_, i) => `/images/projects/harmony-life-one/real/${String(i + 1).padStart(2, '0')}.webp`),
   },
   {
     slug: 'harmony-life-hill',

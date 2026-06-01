@@ -312,5 +312,12 @@
     "imageComing": "Image coming soon",
     "buildingLabel": "Building",
     "floorLabel": "Floor"
+  },
+  "compare": {
+    "eyebrow": "Proof, not a promise",
+    "title": "Render → reality",
+    "subtitle": "Harmony Life One — our debut, sold out on launch day. First the design renders, below the same development today, delivered. We build what we show.",
+    "renderLabel": "Visualisation (design)",
+    "realLabel": "Built & delivered — today"
   }
 }

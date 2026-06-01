@@ -121,12 +121,22 @@ export default async function ProjectPage({
               <SolayaMedia s={dict.solaya as unknown as Record<string, string>} />
             ) : (
               <>
-                {project.images.length > 0 && (
+                {project.realImages && project.realImages.length > 0 ? (
+                  <div>
+                    <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{dict.compare.eyebrow}</p>
+                    <p className="font-serif text-2xl md:text-3xl text-cream mb-3">{dict.compare.title}</p>
+                    <p className="text-cream/55 text-sm leading-relaxed mb-8 max-w-2xl">{dict.compare.subtitle}</p>
+                    <p className="text-cream/40 text-[10px] tracking-[0.3em] uppercase mb-3">{dict.compare.renderLabel}</p>
+                    <MediaGallery images={project.images} alt={`${project.name} — ${dict.compare.renderLabel}`} />
+                    <p className="text-gold text-[10px] tracking-[0.3em] uppercase mb-3 mt-10">{dict.compare.realLabel}</p>
+                    <MediaGallery images={project.realImages} alt={`${project.name} — ${dict.compare.realLabel}`} />
+                  </div>
+                ) : project.images.length > 0 ? (
                   <div>
                     <p className="font-serif text-2xl text-cream mb-6">{t.galleryTitle}</p>
                     <GalleryLightbox images={project.images} projectName={project.name} />
                   </div>
-                )}
+                ) : null}
 
                 <div>
                   <p className="font-serif text-2xl text-cream mb-6">{t.floorPlansTitle}</p>

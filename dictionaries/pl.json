@@ -312,5 +312,12 @@
     "imageComing": "Zdjęcie wkrótce",
     "buildingLabel": "Budynek",
     "floorLabel": "Piętro"
+  },
+  "compare": {
+    "eyebrow": "Dowód, nie obietnica",
+    "title": "Wizualizacja → rzeczywistość",
+    "subtitle": "Harmony Life One — nasz debiut, wyprzedany w dniu startu. Najpierw projekt na renderach, poniżej to samo osiedle dziś, po oddaniu. Dowozimy to, co pokazujemy.",
+    "renderLabel": "Wizualizacja (projekt)",
+    "realLabel": "Gotowe osiedle — dziś"
   }
 }

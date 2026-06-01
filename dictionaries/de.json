@@ -312,5 +312,12 @@
     "imageComing": "Bild folgt in Kürze",
     "buildingLabel": "Gebäude",
     "floorLabel": "Etage"
+  },
+  "compare": {
+    "eyebrow": "Beweis, kein Versprechen",
+    "title": "Visualisierung → Realität",
+    "subtitle": "Harmony Life One — unser Debüt, am Starttag ausverkauft. Zuerst die Entwurfs-Renderings, darunter dieselbe Anlage heute, fertiggestellt. Wir bauen, was wir zeigen.",
+    "renderLabel": "Visualisierung (Entwurf)",
+    "realLabel": "Fertiggestellt — heute"
   }
 }
