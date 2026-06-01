@@ -199,6 +199,16 @@ export default async function ProjectPage({
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.locationTitle}</p>
+              {project.locationImage && (
+                <div className="mb-6">
+                  <MediaGallery
+                    images={[project.locationImage]}
+                    alt={`${project.name} — ${t.locationTitle}`}
+                    cols="grid-cols-1"
+                    aspect="aspect-[4/3]"
+                  />
+                </div>
+              )}
               {project.mapEmbed ? (
                 <div className="rounded-xl border border-gold/20 overflow-hidden">
                   <iframe

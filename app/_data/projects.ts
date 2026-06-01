@@ -27,6 +27,7 @@ export interface Project {
   offer?: string // "OFFER" button link (e.g. Canva presentation)
   realImages?: string[] // completed-development photos → "render vs reality" proof
   construction?: string[] // construction-progress gallery
+  locationImage?: string // illustrated location map with key points
   inquiryOnly?: boolean // not a standard investment unit (hides payment schedule)
 }
 
@@ -274,6 +275,7 @@ export const projects: Project[] = [
       '/images/projects/solaya-residence/exterior/05.webp',
       '/images/projects/solaya-residence/exterior/06.webp',
     ],
+    locationImage: '/images/projects/solaya-residence/location-map.webp',
     mapEmbed: 'https://www.google.com/maps?q=9.565746,100.068217&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/gqBbTv8hdYpRrMdNA',
     offer: 'https://canva.link/98qt55epbh7v4pw',
