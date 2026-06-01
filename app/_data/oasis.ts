@@ -33,14 +33,14 @@ export interface OasisVilla {
 }
 
 export const OASIS_VILLAS: OasisVilla[] = [
-  { id: '1bed-a', nameKey: 'villa1' },
-  { id: '1bed-b-sea', nameKey: 'villa2' },
-  { id: '2bed', nameKey: 'villa3' },
-  { id: '3bed', nameKey: 'villa4' },
-  { id: '3bed-rooftop-sea', nameKey: 'villa5' },
-  { id: '4bed-sea', nameKey: 'villa6' },
+  { id: '1bed-a', nameKey: 'villa1', count: 16 },
+  { id: '1bed-b-sea', nameKey: 'villa2', count: 10 },
+  { id: '2bed', nameKey: 'villa3', count: 4 },
+  { id: '3bed', nameKey: 'villa4', count: 4 },
+  { id: '3bed-rooftop-sea', nameKey: 'villa5', count: 4 },
+  { id: '4bed-sea', nameKey: 'villa6', count: 4 },
 ].map(v => ({
   ...v,
   floorPlan: `${BASE}/villas/${v.id}/floorplan.webp`,
-  images: seq(4, `${BASE}/villas/${v.id}`),
+  images: seq(v.count, `${BASE}/villas/${v.id}`),
 }))
