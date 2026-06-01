@@ -33,7 +33,7 @@ export interface OasisVilla {
 }
 
 export const OASIS_VILLAS: OasisVilla[] = [
-  { id: '1bed-a', nameKey: 'villa1', count: 16 },
+  { id: '1bed-a', nameKey: 'villa1', count: 13 },
   { id: '1bed-b-sea', nameKey: 'villa2', count: 10 },
   { id: '2bed', nameKey: 'villa3', count: 4 },
   { id: '3bed', nameKey: 'villa4', count: 4 },
