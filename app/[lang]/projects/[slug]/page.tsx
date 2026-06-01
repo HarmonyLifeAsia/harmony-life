@@ -158,7 +158,7 @@ export default async function ProjectPage({
                   )}
                 </div>
 
-                {project.youtubeId ? (
+                {project.youtubeId && (
                   <div>
                     <p className="font-serif text-2xl text-cream mb-6">{dict.oasis.videoTitle}</p>
                     <div className="aspect-video w-full overflow-hidden rounded-xl border border-gold/20">
@@ -170,25 +170,6 @@ export default async function ProjectPage({
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <p className="font-serif text-2xl text-cream mb-2">{t.vizTitle}</p>
-                    <p className="text-cream/40 text-sm mb-6">{t.vizSubtitle}</p>
-                    <div
-                      className="rounded-xl border border-gold/20 flex items-center justify-center"
-                      style={{ minHeight: '320px', background: 'linear-gradient(135deg, #1a1a2e, #252542)' }}
-                    >
-                      <div className="text-center">
-                        <div className="w-16 h-16 border border-gold/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <svg className="w-8 h-8 text-gold/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                          </svg>
-                        </div>
-                        <p className="text-gold/40 text-sm tracking-widest uppercase">{t.vizTitle}</p>
-                        <p className="text-cream/20 text-xs mt-1">{t.vizComingSoon}</p>
-                      </div>
                     </div>
                   </div>
                 )}

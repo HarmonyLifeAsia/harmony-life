@@ -171,6 +171,10 @@ export const projects: Project[] = [
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.547485,100.049810&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/uxhTfe3ri1rPHRKe9',
+    floorPlans: [
+      '/images/projects/harmony-life-hill/plan-01.webp',
+      '/images/projects/harmony-life-hill/plan-02.webp',
+    ],
   },
   {
     slug: 'harmony-life-oasis',
