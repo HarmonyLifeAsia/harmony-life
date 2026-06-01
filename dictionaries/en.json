@@ -309,6 +309,7 @@
     "interiorTitle": "Interior",
     "unitTypesTitle": "Apartment Types",
     "videoTitle": "Development Video",
-    "imageComing": "Image coming soon"
+    "imageComing": "Image coming soon",
+    "buildingLabel": "Building"
   }
 }

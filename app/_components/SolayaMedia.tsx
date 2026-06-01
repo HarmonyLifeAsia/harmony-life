@@ -1,5 +1,5 @@
 import MediaGallery from './MediaGallery'
-import { SOLAYA_EXTERIOR, SOLAYA_INTERIOR, SOLAYA_CARDS, SOLAYA_YOUTUBE_ID } from '../_data/solaya'
+import { SOLAYA_EXTERIOR, SOLAYA_INTERIOR, SOLAYA_UNIT_GROUPS, SOLAYA_YOUTUBE_ID } from '../_data/solaya'
 
 // Solaya-only media: Exterior + Interior galleries, optional unit-type cards, and a film.
 // `s` is dict.solaya.
@@ -16,10 +16,17 @@ export default function SolayaMedia({ s }: { s: Record<string, string> }) {
         <MediaGallery images={SOLAYA_INTERIOR} alt="Solaya Residence — interior" placeholderLabel={s.imageComing} />
       </div>
 
-      {SOLAYA_CARDS.length > 0 && (
+      {SOLAYA_UNIT_GROUPS.length > 0 && (
         <div>
-          <p className="font-serif text-2xl text-cream mb-6">{s.unitTypesTitle}</p>
-          <MediaGallery images={SOLAYA_CARDS} alt={s.unitTypesTitle} placeholderLabel={s.imageComing} cols="grid-cols-1 sm:grid-cols-2" aspect="aspect-[4/3]" />
+          <p className="font-serif text-2xl text-cream mb-8">{s.unitTypesTitle}</p>
+          <div className="space-y-10">
+            {SOLAYA_UNIT_GROUPS.map((g) => (
+              <div key={g.building}>
+                <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{s.buildingLabel} {g.building}</p>
+                <MediaGallery images={g.images} alt={`Solaya — ${g.building}`} placeholderLabel={s.imageComing} cols="grid-cols-2 md:grid-cols-4" aspect="aspect-[7/5]" />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

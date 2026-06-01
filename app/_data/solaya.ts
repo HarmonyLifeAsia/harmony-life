@@ -7,7 +7,14 @@ const seq = (n: number, dir: string) =>
 
 export const SOLAYA_EXTERIOR = seq(30, `${BASE}/exterior`)
 export const SOLAYA_INTERIOR = seq(17, `${BASE}/interior`)
-// Unit-type cards — set the count once cards are uploaded to /cards (plan-01.webp …).
-export const SOLAYA_CARDS = seq(0, `${BASE}/cards`)
+
+// Apartment cards grouped by building (B1–B9).
+const UNIT_COUNTS: Record<string, number> = {
+  B1: 7, B2: 8, B3: 8, B4: 8, B5: 8, B6: 8, B7: 8, B8: 8, B9: 8,
+}
+export const SOLAYA_UNIT_GROUPS = Object.entries(UNIT_COUNTS).map(([building, n]) => ({
+  building,
+  images: seq(n, `${BASE}/cards/${building}`),
+}))
 
 export const SOLAYA_YOUTUBE_ID = '9gF-eVhj4Ng'
