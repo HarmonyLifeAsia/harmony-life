@@ -38,7 +38,7 @@ export const OASIS_VILLAS: OasisVilla[] = [
   { id: '2bed', nameKey: 'villa3', count: 10, plans: 1 },
   { id: '3bed', nameKey: 'villa4', count: 9, plans: 1 },
   { id: '3bed-rooftop-sea', nameKey: 'villa5', count: 7, plans: 2 },
-  { id: '4bed-sea', nameKey: 'villa6', count: 4, plans: 2 },
+  { id: '4bed-sea', nameKey: 'villa6', count: 10, plans: 2 },
 ].map(v => ({
   ...v,
   floorPlans: Array.from({ length: v.plans }, (_, i) => `${BASE}/villas/${v.id}/plan-${String(i + 1).padStart(2, '0')}.webp`),
