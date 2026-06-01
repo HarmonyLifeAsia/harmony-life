@@ -154,7 +154,7 @@ export const projects: Project[] = [
     accentColor: '#C9A876',
     gradientFrom: '#1a2e3a',
     gradientTo: '#0d1e2e',
-    thumbnail: '/images/projects/harmony-life-hill-2/02.webp',
+    thumbnail: '/images/projects/harmony-life-hill-2/01.webp',
     images: [
       '/images/projects/harmony-life-hill-2/01.webp',
       '/images/projects/harmony-life-hill-2/02.webp',
@@ -165,6 +165,9 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-hill-2/07.webp',
       '/images/projects/harmony-life-hill-2/08.webp',
       '/images/projects/harmony-life-hill-2/09.webp',
+      '/images/projects/harmony-life-hill-2/10.webp',
+      '/images/projects/harmony-life-hill-2/11.webp',
+      '/images/projects/harmony-life-hill-2/12.webp',
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.547485,100.049810&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/uxhTfe3ri1rPHRKe9',
