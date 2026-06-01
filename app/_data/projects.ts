@@ -68,6 +68,8 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-one/07.webp',
       '/images/projects/harmony-life-one/08.webp',
     ],
+    mapEmbed: 'https://www.google.com/maps?q=9.5483084,100.0526437&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/JUGLbQrzHQAQDXbu7',
   },
   {
     slug: 'harmony-life-hill',
@@ -164,6 +166,8 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-hill-2/08.webp',
       '/images/projects/harmony-life-hill-2/09.webp',
     ],
+    mapEmbed: 'https://www.google.com/maps?q=9.547741,100.049985&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/8sUwh8V3YPaLmvoPA',
   },
   {
     slug: 'harmony-life-oasis',
