@@ -6,7 +6,7 @@ import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import OasisMedia from '../../../_components/OasisMedia'
-import { OASIS_OFFER_URL } from '../../../_data/oasis'
+import { OASIS_OFFER_URL, OASIS_MAP_EMBED, OASIS_MAP_LINK } from '../../../_data/oasis'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 
 export function generateStaticParams() {
@@ -184,19 +184,46 @@ export default async function ProjectPage({
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.locationTitle}</p>
-              <div
-                className="rounded-xl border border-gold/20 overflow-hidden flex items-center justify-center"
-                style={{ height: '300px', background: 'linear-gradient(135deg, #1e2e2a, #1a1a2e)' }}
-              >
-                <div className="text-center">
-                  <svg className="w-10 h-10 text-gold/40 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="text-gold/50 text-xs tracking-widest uppercase">Google Maps</p>
-                  <p className="text-cream/30 text-xs mt-1">{project.location}</p>
+              {slug === 'harmony-life-oasis' ? (
+                <div className="rounded-xl border border-gold/20 overflow-hidden">
+                  <iframe
+                    src={OASIS_MAP_EMBED}
+                    title={`${project.name} — ${t.locationTitle}`}
+                    width="100%"
+                    height="320"
+                    style={{ border: 0, display: 'block', filter: 'grayscale(0.3) contrast(1.05)' }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                  <a
+                    href={OASIS_MAP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-charcoal/40 text-cream/70 hover:text-gold text-xs tracking-wider uppercase py-3 transition-colors cursor-pointer"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {dict.contactPage.openInMaps}
+                  </a>
                 </div>
-              </div>
+              ) : (
+                <div
+                  className="rounded-xl border border-gold/20 overflow-hidden flex items-center justify-center"
+                  style={{ height: '300px', background: 'linear-gradient(135deg, #1e2e2a, #1a1a2e)' }}
+                >
+                  <div className="text-center">
+                    <svg className="w-10 h-10 text-gold/40 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <p className="text-gold/50 text-xs tracking-widest uppercase">Google Maps</p>
+                    <p className="text-cream/30 text-xs mt-1">{project.location}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
