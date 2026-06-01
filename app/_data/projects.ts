@@ -26,6 +26,7 @@ export interface Project {
   youtubeId?: string // YouTube video (replaces the 3D visualisation placeholder)
   offer?: string // "OFFER" button link (e.g. Canva presentation)
   realImages?: string[] // completed-development photos → "render vs reality" proof
+  construction?: string[] // construction-progress gallery
   inquiryOnly?: boolean // not a standard investment unit (hides payment schedule)
 }
 
@@ -126,6 +127,17 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-hill/plan-01.webp',
       '/images/projects/harmony-life-hill/plan-02.webp',
     ],
+    construction: [
+      '/images/projects/harmony-life-hill/construction/01.webp',
+      '/images/projects/harmony-life-hill/construction/02.webp',
+      '/images/projects/harmony-life-hill/construction/03.webp',
+      '/images/projects/harmony-life-hill/construction/04.webp',
+      '/images/projects/harmony-life-hill/construction/05.webp',
+      '/images/projects/harmony-life-hill/construction/06.webp',
+      '/images/projects/harmony-life-hill/construction/07.webp',
+      '/images/projects/harmony-life-hill/construction/08.webp',
+      '/images/projects/harmony-life-hill/construction/09.webp',
+    ],
     youtubeId: 'oSSdVyCl41Q',
   },
   {
@@ -177,6 +189,9 @@ export const projects: Project[] = [
     floorPlans: [
       '/images/projects/harmony-life-hill/plan-01.webp',
       '/images/projects/harmony-life-hill/plan-02.webp',
+    ],
+    construction: [
+      '/images/projects/harmony-life-hill-2/construction/01.webp',
     ],
   },
   {

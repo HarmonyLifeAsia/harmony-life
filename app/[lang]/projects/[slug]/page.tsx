@@ -138,35 +138,29 @@ export default async function ProjectPage({
                   </div>
                 ) : null}
 
-                <div>
-                  <p className="font-serif text-2xl text-cream mb-6">{t.floorPlansTitle}</p>
-                  {project.floorPlans && project.floorPlans.length > 0 ? (
+                {project.floorPlans && project.floorPlans.length > 0 && (
+                  <div>
+                    <p className="font-serif text-2xl text-cream mb-6">{t.floorPlansTitle}</p>
                     <MediaGallery
                       images={project.floorPlans}
                       alt={`${project.name} — ${t.floorPlansTitle}`}
                       cols={project.floorPlans.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}
                       aspect="aspect-[4/3]"
                     />
-                  ) : (
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {[t.groundFloor, t.firstFloor].map((label) => (
-                        <div
-                          key={label}
-                          className="aspect-[4/3] rounded-sm border border-gold/20 flex items-center justify-center"
-                          style={{ background: 'linear-gradient(135deg, #252542, #1a1a2e)' }}
-                        >
-                          <div className="text-center">
-                            <svg className="w-8 h-8 text-gold/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                            </svg>
-                            <p className="text-gold/40 text-xs tracking-widest uppercase">{label}</p>
-                            <p className="text-cream/20 text-xs mt-1">{t.availableOnRequest}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
+
+                {project.construction && project.construction.length > 0 && (
+                  <div>
+                    <p className="font-serif text-2xl text-cream mb-6">{t.constructionTitle}</p>
+                    <MediaGallery
+                      images={project.construction}
+                      alt={`${project.name} — ${t.constructionTitle}`}
+                      cols="grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+                      aspect="aspect-[4/3]"
+                    />
+                  </div>
+                )}
 
                 {project.youtubeId && (
                   <div>
