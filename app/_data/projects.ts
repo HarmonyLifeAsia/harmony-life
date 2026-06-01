@@ -321,6 +321,8 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-wellness/12.webp',
     ],
     youtubeId: '9tuCrJfeEzk',
+    mapEmbed: 'https://www.google.com/maps?q=9.5688738,100.0618841&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/Kbf7tp4tnsQGu9558',
     inquiryOnly: true,
   },
 ]
