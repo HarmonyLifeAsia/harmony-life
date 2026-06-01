@@ -1,4 +1,3 @@
-import MediaImage from './MediaImage'
 import MediaGallery from './MediaGallery'
 import VillaQuickContact from './VillaQuickContact'
 import SentBanner from './SentBanner'
@@ -35,8 +34,14 @@ export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: R
               <h3 className="font-serif text-xl text-cream mb-5">{o[v.nameKey]}</h3>
 
               <p className="text-cream/40 text-[10px] tracking-widest uppercase mb-2">{o.floorPlanLabel}</p>
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-sm border border-gold/15 mb-6">
-                <MediaImage src={v.floorPlan} alt={`${o[v.nameKey]} — ${o.floorPlanLabel}`} label={o.imageComing} fit="contain" />
+              <div className="mb-6">
+                <MediaGallery
+                  images={v.floorPlans}
+                  alt={`${o[v.nameKey]} — ${o.floorPlanLabel}`}
+                  placeholderLabel={o.imageComing}
+                  cols={v.floorPlans.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}
+                  aspect="aspect-[4/3]"
+                />
               </div>
 
               <p className="text-cream/40 text-[10px] tracking-widest uppercase mb-2">{o.visualsLabel}</p>
