@@ -26,6 +26,7 @@ export interface Project {
   youtubeId?: string // YouTube video (replaces the 3D visualisation placeholder)
   offer?: string // "OFFER" button link (e.g. Canva presentation)
   realImages?: string[] // completed-development photos → "render vs reality" proof
+  inquiryOnly?: boolean // not a standard investment unit (hides payment schedule)
 }
 
 export const projects: Project[] = [
@@ -265,30 +266,47 @@ export const projects: Project[] = [
   {
     slug: 'harmony-life-wellness',
     name: 'Harmony Life Wellness & Caffe',
-    tagline: 'Wellness Sanctuary — Coming Soon',
-    description: 'A wellness sanctuary and artisan café experience — the next chapter in the Harmony Life story. Register your interest for priority updates.',
-    longDescription: 'Harmony Life Wellness & Caffe represents a new dimension of the Harmony Life vision — a dedicated wellness sanctuary and café experience. Full details will be revealed soon. Register your interest today to receive priority access to floor plans, pricing, and launch information.',
-    type: 'Wellness & Caffe',
-    bedrooms: 'TBA',
-    bathrooms: 'TBA',
-    priceFrom: 'TBA',
+    tagline: 'Wellness, Spa & Café — by individual arrangement',
+    description: 'A wellness sanctuary with spa, massage and an artisan café — for the residents and guests of Harmony Life. Available by individual arrangement, not a standard investment unit.',
+    longDescription: 'Harmony Life Wellness & Caffe is the calm, social heart of the Harmony Life world — a dedicated space for spa rituals, massage and body treatments, sauna and ice-bath recovery, and an artisan café to slow down in. It is designed for our owners and their guests, wellness travellers, and anyone on Koh Samui looking for genuine balance and rest. This is not a standard investment unit — any involvement is arranged individually, case by case. Reach out and we will walk you through the options.',
+    type: 'Wellness & Café',
+    bedrooms: '—',
+    bathrooms: '—',
+    priceFrom: 'On request',
     units: 0,
-    area: 'TBA',
-    landArea: 'TBA',
-    poolSize: 'TBA',
+    area: '—',
+    landArea: '—',
+    poolSize: 'Spa & pool',
     status: 'Under Construction',
     location: 'Koh Samui',
     features: [
-      'Wellness sanctuary',
+      'Spa & treatment rooms',
+      'Massage & body therapies',
+      'Sauna & ice-bath recovery',
       'Artisan café',
-      'Details coming soon',
-      'Register interest for priority access',
+      'For residents, guests & wellness travellers',
+      'By individual arrangement',
     ],
     accentColor: '#C9A876',
     gradientFrom: '#2e2a1a',
     gradientTo: '#1a160d',
-    thumbnail: '/images/about.webp',
-    images: [],
+    thumbnail: '/images/projects/harmony-life-wellness/01.webp',
+    images: [
+      '/images/projects/harmony-life-wellness/01.webp',
+      '/images/projects/harmony-life-wellness/02.webp',
+      '/images/projects/harmony-life-wellness/03.webp',
+      '/images/projects/harmony-life-wellness/04.webp',
+      '/images/projects/harmony-life-wellness/05.webp',
+      '/images/projects/harmony-life-wellness/06.webp',
+      '/images/projects/harmony-life-wellness/07.webp',
+      '/images/projects/harmony-life-wellness/08.webp',
+      '/images/projects/harmony-life-wellness/09.webp',
+      '/images/projects/harmony-life-wellness/10.webp',
+      '/images/projects/harmony-life-wellness/11.webp',
+      '/images/projects/harmony-life-wellness/12.webp',
+    ],
+    youtubeId: '9tuCrJfeEzk',
+    inquiryOnly: true,
   },
 ]
 

@@ -186,20 +186,22 @@ export default async function ProjectPage({
               </>
             )}
 
-            <div>
-              <p className="font-serif text-2xl text-cream mb-6">{t.paymentTitle}</p>
-              <div className="space-y-3">
-                {paymentSchedule.map(({ stage, percent, timing }) => (
-                  <div key={stage} className="flex items-center justify-between py-3 border-b border-gold/10">
-                    <div>
-                      <p className="text-cream text-sm font-medium">{stage}</p>
-                      <p className="text-cream/40 text-xs mt-0.5">{timing}</p>
+            {!project.inquiryOnly && (
+              <div>
+                <p className="font-serif text-2xl text-cream mb-6">{t.paymentTitle}</p>
+                <div className="space-y-3">
+                  {paymentSchedule.map(({ stage, percent, timing }) => (
+                    <div key={stage} className="flex items-center justify-between py-3 border-b border-gold/10">
+                      <div>
+                        <p className="text-cream text-sm font-medium">{stage}</p>
+                        <p className="text-cream/40 text-xs mt-0.5">{timing}</p>
+                      </div>
+                      <div className="font-serif text-xl text-gradient-gold">{percent}</div>
                     </div>
-                    <div className="font-serif text-xl text-gradient-gold">{percent}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.locationTitle}</p>
