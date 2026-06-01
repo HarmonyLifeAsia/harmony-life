@@ -20,6 +20,8 @@ export interface Project {
   gradientTo: string
   images: string[]
   thumbnail: string
+  mapEmbed?: string
+  mapLink?: string
 }
 
 export const projects: Project[] = [
@@ -104,7 +106,14 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-hill/07.webp',
       '/images/projects/harmony-life-hill/08.webp',
       '/images/projects/harmony-life-hill/09.webp',
+      '/images/projects/harmony-life-hill/10.webp',
+      '/images/projects/harmony-life-hill/11.webp',
+      '/images/projects/harmony-life-hill/12.webp',
+      '/images/projects/harmony-life-hill/13.webp',
+      '/images/projects/harmony-life-hill/14.webp',
     ],
+    mapEmbed: 'https://www.google.com/maps?q=9.547741,100.049985&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/8sUwh8V3YPaLmvoPA',
   },
   {
     slug: 'harmony-life-hill-2',
@@ -190,6 +199,8 @@ export const projects: Project[] = [
       '/images/projects/harmony-life-oasis/09.webp',
       '/images/projects/harmony-life-oasis/10.webp',
     ],
+    mapEmbed: 'https://www.google.com/maps?q=9.565041,100.070399&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/czYyjxXiJLCNtgww9',
   },
   {
     slug: 'solaya-residence',

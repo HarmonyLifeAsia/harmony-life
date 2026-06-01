@@ -6,7 +6,7 @@ import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import OasisMedia from '../../../_components/OasisMedia'
-import { OASIS_OFFER_URL, OASIS_MAP_EMBED, OASIS_MAP_LINK } from '../../../_data/oasis'
+import { OASIS_OFFER_URL } from '../../../_data/oasis'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 
 export function generateStaticParams() {
@@ -184,10 +184,10 @@ export default async function ProjectPage({
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.locationTitle}</p>
-              {slug === 'harmony-life-oasis' ? (
+              {project.mapEmbed ? (
                 <div className="rounded-xl border border-gold/20 overflow-hidden">
                   <iframe
-                    src={OASIS_MAP_EMBED}
+                    src={project.mapEmbed}
                     title={`${project.name} — ${t.locationTitle}`}
                     width="100%"
                     height="320"
@@ -197,7 +197,7 @@ export default async function ProjectPage({
                     allowFullScreen
                   />
                   <a
-                    href={OASIS_MAP_LINK}
+                    href={project.mapLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-charcoal/40 text-cream/70 hover:text-gold text-xs tracking-wider uppercase py-3 transition-colors cursor-pointer"
