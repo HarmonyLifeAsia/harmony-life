@@ -303,5 +303,12 @@
     "eyebrow": "Wir bleiben nach dem Verkauf",
     "title": "Wir verkaufen nicht und verschwinden",
     "body": "Nach dem Kauf bleiben Sie in Verbindung: vierteljährliche Netto-Abrechnungen, ein Online-Investorenpanel, Baufotos zweimal im Monat, Investor Days auf der Insel und Vorrang bei künftigen Projekten."
+  },
+  "solaya": {
+    "exteriorTitle": "Außenbereich",
+    "interiorTitle": "Innenräume",
+    "unitTypesTitle": "Wohnungstypen",
+    "videoTitle": "Video der Anlage",
+    "imageComing": "Bild folgt in Kürze"
   }
 }

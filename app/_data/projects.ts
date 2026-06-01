@@ -24,6 +24,7 @@ export interface Project {
   mapLink?: string
   floorPlans?: string[] // floor-plan cards (replaces the generic floor-plan placeholder)
   youtubeId?: string // YouTube video (replaces the 3D visualisation placeholder)
+  offer?: string // "OFFER" button link (e.g. Canva presentation)
 }
 
 export const projects: Project[] = [
@@ -204,6 +205,7 @@ export const projects: Project[] = [
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.565041,100.070399&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/czYyjxXiJLCNtgww9',
+    offer: 'https://canva.link/1fsfd05xf53qpy5',
   },
   {
     slug: 'solaya-residence',
@@ -234,19 +236,18 @@ export const projects: Project[] = [
     accentColor: '#C9A876',
     gradientFrom: '#2e1a2e',
     gradientTo: '#1a0d2e',
-    thumbnail: '/images/projects/solaya-residence/01.webp',
+    thumbnail: '/images/projects/solaya-residence/exterior/01.webp',
     images: [
-      '/images/projects/solaya-residence/01.webp',
-      '/images/projects/solaya-residence/02.webp',
-      '/images/projects/solaya-residence/03.webp',
-      '/images/projects/solaya-residence/04.webp',
-      '/images/projects/solaya-residence/05.webp',
-      '/images/projects/solaya-residence/06.webp',
-      '/images/projects/solaya-residence/07.webp',
-      '/images/projects/solaya-residence/08.webp',
-      '/images/projects/solaya-residence/09.webp',
-      '/images/projects/solaya-residence/10.webp',
+      '/images/projects/solaya-residence/exterior/01.webp',
+      '/images/projects/solaya-residence/exterior/02.webp',
+      '/images/projects/solaya-residence/exterior/03.webp',
+      '/images/projects/solaya-residence/exterior/04.webp',
+      '/images/projects/solaya-residence/exterior/05.webp',
+      '/images/projects/solaya-residence/exterior/06.webp',
     ],
+    mapEmbed: 'https://www.google.com/maps?q=9.565746,100.068217&z=16&output=embed',
+    mapLink: 'https://maps.app.goo.gl/gqBbTv8hdYpRrMdNA',
+    offer: 'https://canva.link/98qt55epbh7v4pw',
   },
   {
     slug: 'harmony-life-wellness',

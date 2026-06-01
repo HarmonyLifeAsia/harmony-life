@@ -7,7 +7,7 @@ import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import MediaGallery from '../../../_components/MediaGallery'
 import OasisMedia from '../../../_components/OasisMedia'
-import { OASIS_OFFER_URL } from '../../../_data/oasis'
+import SolayaMedia from '../../../_components/SolayaMedia'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 
 export function generateStaticParams() {
@@ -117,6 +117,8 @@ export default async function ProjectPage({
                 o={dict.oasis as unknown as Record<string, string>}
                 cf={dict.contactForm as unknown as Record<string, string>}
               />
+            ) : slug === 'solaya-residence' ? (
+              <SolayaMedia s={dict.solaya as unknown as Record<string, string>} />
             ) : (
               <>
                 {project.images.length > 0 && (
@@ -273,8 +275,8 @@ export default async function ProjectPage({
                     {dict.nav.bookConsultation}
                   </a>
                   <a
-                    href={slug === 'harmony-life-oasis' ? OASIS_OFFER_URL : `/${lang}/contact`}
-                    target={slug === 'harmony-life-oasis' ? '_blank' : undefined}
+                    href={project.offer ?? `/${lang}/contact`}
+                    target={project.offer ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full border border-gold/30 text-cream/70 hover:text-gold hover:border-gold py-3.5 text-sm transition-colors cursor-pointer"
                   >

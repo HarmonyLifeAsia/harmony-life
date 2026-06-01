@@ -303,5 +303,12 @@
     "eyebrow": "Po sprzedaży zostajemy",
     "title": "Nie sprzedajemy i nie znikamy",
     "body": "Po zakupie zostajesz w kontakcie: kwartalne rozliczenia netto, panel inwestora online, zdjęcia z budowy 2× w miesiącu, Investor Days na wyspie i pierwszeństwo w kolejnych projektach."
+  },
+  "solaya": {
+    "exteriorTitle": "Na zewnątrz",
+    "interiorTitle": "Wnętrza",
+    "unitTypesTitle": "Rodzaje lokali",
+    "videoTitle": "Film z inwestycji",
+    "imageComing": "Zdjęcie wkrótce"
   }
 }
