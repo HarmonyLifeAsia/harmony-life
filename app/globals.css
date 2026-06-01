@@ -5,6 +5,9 @@
   --color-primary-light: #252542;
   /* Fixed dark scrim for image/video overlays — stays dark in light mode too */
   --color-scrim: #1a1a2e;
+  /* Fixed text colors for content sitting on top of a scrim — match dark mode in both themes */
+  --color-onscrim: #F5F0E8;
+  --color-onscrim-gold: #C9A876;
   --color-gold: #C9A876;
   --color-gold-light: #DFC49A;
   --color-gold-dark: #A8894F;

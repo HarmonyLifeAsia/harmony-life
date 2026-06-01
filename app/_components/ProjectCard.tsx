@@ -59,13 +59,13 @@ export default function ProjectCard({ project, index, lang }: ProjectCardProps) 
             </div>
 
             <div className="absolute top-3 right-3 z-20">
-              <span className="text-[10px] text-cream/80 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm tracking-wide">
+              <span className="text-[10px] text-onscrim/80 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm tracking-wide">
                 {project.type}
               </span>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <span className="text-[10px] text-gold tracking-[0.3em] uppercase font-sans">{t.insideView}</span>
+              <span className="text-[10px] text-onscrim-gold tracking-[0.3em] uppercase font-sans">{t.insideView}</span>
             </div>
           </div>
 

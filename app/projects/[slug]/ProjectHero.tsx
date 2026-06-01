@@ -32,12 +32,12 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{project.type} — {project.location}</p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-cream leading-tight mb-4">
+          <p className="text-onscrim-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{project.type} — {project.location}</p>
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-onscrim leading-tight mb-4">
             {project.name}
           </h1>
-          <p className="text-gold text-lg mb-4">{project.tagline}</p>
-          <p className="text-cream/60 max-w-2xl text-base leading-relaxed">{project.description}</p>
+          <p className="text-onscrim-gold text-lg mb-4">{project.tagline}</p>
+          <p className="text-onscrim/60 max-w-2xl text-base leading-relaxed">{project.description}</p>
         </motion.div>
       </div>
     </section>

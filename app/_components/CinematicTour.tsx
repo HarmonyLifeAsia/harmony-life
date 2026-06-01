@@ -63,20 +63,20 @@ export default function CinematicTour({ lang }: Props) {
         <div className="absolute inset-0 bg-gradient-to-r from-scrim/55 via-transparent to-transparent pointer-events-none z-10" />
 
         <motion.div style={{ opacity: s1TxtO, y: s1TxtY }} className="absolute bottom-28 left-8 md:left-16 z-20 max-w-lg pointer-events-none">
-          <p className="text-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[0].eyebrow}</p>
-          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream leading-[1.05] whitespace-pre-line">{scenes[0].caption}</p>
+          <p className="text-onscrim-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[0].eyebrow}</p>
+          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.05] whitespace-pre-line">{scenes[0].caption}</p>
         </motion.div>
 
         <motion.div style={{ opacity: s2TxtO, y: s2TxtY }} className="absolute bottom-28 left-8 md:left-16 z-20 max-w-lg pointer-events-none">
-          <p className="text-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[1].eyebrow}</p>
-          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream leading-[1.05] whitespace-pre-line">{scenes[1].caption}</p>
+          <p className="text-onscrim-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[1].eyebrow}</p>
+          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.05] whitespace-pre-line">{scenes[1].caption}</p>
         </motion.div>
 
         <motion.div style={{ opacity: s3TxtO, y: s3TxtY }} className="absolute bottom-28 left-8 md:left-16 z-20 max-w-lg">
-          <p className="text-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[2].eyebrow}</p>
-          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream leading-[1.05] whitespace-pre-line mb-8">{scenes[2].caption}</p>
+          <p className="text-onscrim-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[2].eyebrow}</p>
+          <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.05] whitespace-pre-line mb-8">{scenes[2].caption}</p>
           <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
-            <Link href={`/${lang}/projects/harmony-life-hill-2`} className="inline-flex items-center gap-2 bg-gold text-primary px-7 py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors duration-300">
+            <Link href={`/${lang}/projects/harmony-life-hill-2`} className="inline-flex items-center gap-2 bg-gold text-scrim px-7 py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors duration-300">
               {t.cta}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -92,8 +92,8 @@ export default function CinematicTour({ lang }: Props) {
         </div>
 
         <div className="absolute top-8 right-8 z-20 text-right">
-          <p className="text-cream/25 text-[10px] tracking-[0.3em] uppercase font-sans">Harmony Life Hill 2</p>
-          <p className="text-cream/15 text-[9px] tracking-[0.25em] uppercase font-sans mt-0.5">Koh Samui, Thailand</p>
+          <p className="text-onscrim/25 text-[10px] tracking-[0.3em] uppercase font-sans">Harmony Life Hill 2</p>
+          <p className="text-onscrim/15 text-[9px] tracking-[0.25em] uppercase font-sans mt-0.5">Koh Samui, Thailand</p>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
