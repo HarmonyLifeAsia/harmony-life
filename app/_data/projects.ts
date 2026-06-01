@@ -22,6 +22,8 @@ export interface Project {
   thumbnail: string
   mapEmbed?: string
   mapLink?: string
+  floorPlans?: string[] // floor-plan cards (replaces the generic floor-plan placeholder)
+  youtubeId?: string // YouTube video (replaces the 3D visualisation placeholder)
 }
 
 export const projects: Project[] = [
@@ -114,6 +116,11 @@ export const projects: Project[] = [
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.547741,100.049985&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/8sUwh8V3YPaLmvoPA',
+    floorPlans: [
+      '/images/projects/harmony-life-hill/plan-01.webp',
+      '/images/projects/harmony-life-hill/plan-02.webp',
+    ],
+    youtubeId: 'oSSdVyCl41Q',
   },
   {
     slug: 'harmony-life-hill-2',
