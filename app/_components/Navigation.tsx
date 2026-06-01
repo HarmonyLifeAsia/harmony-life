@@ -57,8 +57,8 @@ export default function Navigation() {
               className="h-9 w-auto md:h-10"
             />
             <span className="flex flex-col leading-none">
-              <span className="font-serif text-cream text-xl tracking-wide">Harmony Life</span>
-              <span className="text-gold text-[10px] tracking-[0.25em] uppercase font-sans">Koh Samui</span>
+              <span className={`font-serif text-xl tracking-wide ${scrolled ? 'text-cream' : 'text-onscrim'}`}>Harmony Life</span>
+              <span className={`text-[10px] tracking-[0.25em] uppercase font-sans ${scrolled ? 'text-gold' : 'text-onscrim-gold'}`}>Koh Samui</span>
             </span>
           </Link>
 
@@ -67,7 +67,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-cream/80 hover:text-gold text-sm tracking-wide transition-colors duration-200 cursor-pointer"
+                className={`hover:text-gold text-sm tracking-wide transition-colors duration-200 cursor-pointer ${scrolled ? 'text-cream/80' : 'text-onscrim/80'}`}
               >
                 {link.label}
               </Link>
@@ -76,7 +76,7 @@ export default function Navigation() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-gold/60 text-gold hover:bg-gold hover:text-primary text-sm px-5 py-2 rounded-sm transition-all duration-300 tracking-wider cursor-pointer"
+              className={`border hover:bg-gold hover:text-scrim text-sm px-5 py-2 rounded-sm transition-all duration-300 tracking-wider cursor-pointer ${scrolled ? 'border-gold/60 text-gold' : 'border-onscrim-gold/60 text-onscrim-gold'}`}
             >
               {dict.nav.bookConsultation}
             </a>
@@ -89,9 +89,9 @@ export default function Navigation() {
             className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] cursor-pointer z-50"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            <motion.span animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }} className="block w-6 h-px bg-cream" />
-            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.2 }} className="block w-6 h-px bg-cream" />
-            <motion.span animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }} className="block w-6 h-px bg-cream" />
+            <motion.span animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }} className={`block w-6 h-px ${scrolled ? 'bg-cream' : 'bg-onscrim'}`} />
+            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.2 }} className={`block w-6 h-px ${scrolled ? 'bg-cream' : 'bg-onscrim'}`} />
+            <motion.span animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }} className={`block w-6 h-px ${scrolled ? 'bg-cream' : 'bg-onscrim'}`} />
           </button>
         </div>
       </motion.header>

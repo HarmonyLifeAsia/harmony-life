@@ -49,12 +49,12 @@ export default function Hero() {
         <motion.p variants={itemVariants} className="text-onscrim-gold text-xs tracking-[0.35em] uppercase font-sans mb-6">
           {t.eyebrow}
         </motion.p>
-        <motion.h1 variants={itemVariants} className="font-serif text-[2rem] sm:text-5xl md:text-7xl lg:text-8xl text-onscrim leading-[1.1] md:leading-[1.05] mb-6">
+        <motion.h1 variants={itemVariants} className="font-serif text-[1.6rem] sm:text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.15] md:leading-[1.08] mb-6">
           {t.title}
           <br />
           <span className="text-gradient-gold">{t.titleHighlight}</span>
         </motion.h1>
-        <motion.p variants={itemVariants} className="text-onscrim/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <motion.p variants={itemVariants} className="text-onscrim/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
           {t.subtitle}
         </motion.p>
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
