@@ -310,6 +310,7 @@
     "unitTypesTitle": "Apartment Types",
     "videoTitle": "Development Video",
     "imageComing": "Image coming soon",
-    "buildingLabel": "Building"
+    "buildingLabel": "Building",
+    "floorLabel": "Floor"
   }
 }

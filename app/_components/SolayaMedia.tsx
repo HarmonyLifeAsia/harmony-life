@@ -1,5 +1,7 @@
 import MediaGallery from './MediaGallery'
-import { SOLAYA_EXTERIOR, SOLAYA_INTERIOR, SOLAYA_UNIT_GROUPS, SOLAYA_YOUTUBE_ID } from '../_data/solaya'
+import SolayaUnits from './SolayaUnits'
+import { SOLAYA_EXTERIOR, SOLAYA_INTERIOR, SOLAYA_YOUTUBE_ID } from '../_data/solaya'
+import { SOLAYA_OVERVIEW, SOLAYA_BUILDINGS } from '../_data/solaya-units'
 
 // Solaya-only media: Exterior + Interior galleries, optional unit-type cards, and a film.
 // `s` is dict.solaya.
@@ -16,17 +18,14 @@ export default function SolayaMedia({ s }: { s: Record<string, string> }) {
         <MediaGallery images={SOLAYA_INTERIOR} alt="Solaya Residence — interior" placeholderLabel={s.imageComing} />
       </div>
 
-      {SOLAYA_UNIT_GROUPS.length > 0 && (
+      {SOLAYA_BUILDINGS.length > 0 && (
         <div>
-          <p className="font-serif text-2xl text-cream mb-8">{s.unitTypesTitle}</p>
-          <div className="space-y-10">
-            {SOLAYA_UNIT_GROUPS.map((g) => (
-              <div key={g.building}>
-                <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{s.buildingLabel} {g.building}</p>
-                <MediaGallery images={g.images} alt={`Solaya — ${g.building}`} placeholderLabel={s.imageComing} cols="grid-cols-2 md:grid-cols-4" aspect="aspect-[7/5]" />
-              </div>
-            ))}
+          <p className="font-serif text-2xl text-cream mb-6">{s.unitTypesTitle}</p>
+          {/* Estate overview with building numbers */}
+          <div className="mb-8">
+            <MediaGallery images={[SOLAYA_OVERVIEW]} alt={s.unitTypesTitle} placeholderLabel={s.imageComing} cols="grid-cols-1" aspect="aspect-video" />
           </div>
+          <SolayaUnits labels={{ building: s.buildingLabel, floor: s.floorLabel, imageComing: s.imageComing }} />
         </div>
       )}
 
