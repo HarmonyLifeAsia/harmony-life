@@ -478,5 +478,10 @@
     "Coming Soon": "Wkrótce",
     "Under Construction": "W budowie",
     "Sold Out": "Sprzedane"
+  },
+  "stickyCta": {
+    "text": "Rozważasz inwestycję na Koh Samui?",
+    "button": "Umów konsultację",
+    "dismiss": "Zamknij"
   }
 }

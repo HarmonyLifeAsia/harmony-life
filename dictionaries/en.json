@@ -478,5 +478,10 @@
     "Coming Soon": "Coming Soon",
     "Under Construction": "Under Construction",
     "Sold Out": "Sold Out"
+  },
+  "stickyCta": {
+    "text": "Considering an investment on Koh Samui?",
+    "button": "Book a consultation",
+    "dismiss": "Dismiss"
   }
 }

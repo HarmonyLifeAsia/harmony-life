@@ -4,6 +4,7 @@ import { LangProvider } from '../_components/LangProvider'
 import Navigation from '../_components/Navigation'
 import Footer from '../_components/Footer'
 import CookieBanner from '../_components/CookieBanner'
+import StickyCta from '../_components/StickyCta'
 
 export function generateStaticParams() {
   return locales.map(lang => ({ lang }))
@@ -26,6 +27,7 @@ export default async function LangLayout({
       <Navigation />
       <main>{children}</main>
       <Footer />
+      <StickyCta />
       <CookieBanner />
     </LangProvider>
   )
