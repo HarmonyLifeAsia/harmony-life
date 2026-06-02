@@ -189,12 +189,36 @@
     "payment6Stage": "Completion",
     "payment6Timing": "On completion of all interior and exterior works",
     "solayaPayment": [
-      { "percent": "—", "stage": "Reservation", "timing": "Initiation fee of THB 90,000, credited toward the leasehold payment" },
-      { "percent": "30%", "stage": "Developer agreement", "timing": "Upon signing the developer agreement" },
-      { "percent": "25%", "stage": "Foundations & first floor", "timing": "On completion of foundations and first-floor structure" },
-      { "percent": "30%", "stage": "Walls & roof", "timing": "On completion of 80% of walls and the roof structure" },
-      { "percent": "10%", "stage": "Interior finishing", "timing": "On completion of interior finishing — electrics, plaster, plumbing, windows" },
-      { "percent": "5%", "stage": "Completion", "timing": "On completion of all interior and exterior building works" }
+      {
+        "percent": "—",
+        "stage": "Reservation",
+        "timing": "Initiation fee of THB 90,000, credited toward the leasehold payment"
+      },
+      {
+        "percent": "30%",
+        "stage": "Developer agreement",
+        "timing": "Upon signing the developer agreement"
+      },
+      {
+        "percent": "25%",
+        "stage": "Foundations & first floor",
+        "timing": "On completion of foundations and first-floor structure"
+      },
+      {
+        "percent": "30%",
+        "stage": "Walls & roof",
+        "timing": "On completion of 80% of walls and the roof structure"
+      },
+      {
+        "percent": "10%",
+        "stage": "Interior finishing",
+        "timing": "On completion of interior finishing — electrics, plaster, plumbing, windows"
+      },
+      {
+        "percent": "5%",
+        "stage": "Completion",
+        "timing": "On completion of all interior and exterior building works"
+      }
     ]
   },
   "oasis": {
@@ -328,5 +352,131 @@
     "subtitle": "Harmony Life One — our debut, sold out on launch day. First the design renders, below the same development today, delivered. We build what we show.",
     "renderLabel": "Visualisation (design)",
     "realLabel": "Built & delivered — today"
+  },
+  "projectContent": {
+    "harmony-life-one": {
+      "tagline": "10 Boho Villas — Fully Sold Out",
+      "description": "Our debut project — 10 boho-style villas sold out on launch. The vision that started it all.",
+      "longDescription": "Harmony Life One was our first project and a resounding success — all 10 villas were sold before completion. Each villa was carefully designed with a boho aesthetic and European construction standards, offering 2–3 bedrooms and 136–197 m² of living space on Koh Samui. The project proved that international buyers were ready for European-quality builds on the island.",
+      "type": "Villas",
+      "priceFrom": "Sold Out",
+      "location": "Koh Samui",
+      "landArea": "N/A",
+      "poolSize": "Private pool",
+      "features": [
+        "Boho-style architecture",
+        "Private pool per villa",
+        "European construction standards",
+        "2–3 bedrooms",
+        "3 bathrooms",
+        "Tropical garden",
+        "Smart home system",
+        "Full management available"
+      ]
+    },
+    "harmony-life-hill": {
+      "tagline": "Hillside Pool Villas — Fully Sold Out",
+      "description": "6 exclusive hillside villas with panoramic ocean views — sold out. Perched above the island with breath-taking views.",
+      "longDescription": "Harmony Life Hill is a complex of exclusive villas set on the hills of Koh Samui, each with panoramic views of the ocean and tropical landscape. Every villa features 3 bedrooms, 3 bathrooms, 240 m² of living space, a private pool, and terraces with spectacular views. The project is fully sold out — a testament to the enduring demand for quality on Koh Samui.",
+      "type": "Pool Villas",
+      "priceFrom": "Sold Out",
+      "location": "Hillside, Koh Samui",
+      "landArea": "Hillside plot",
+      "poolSize": "Private infinity pool",
+      "features": [
+        "Panoramic ocean views",
+        "Private infinity pool",
+        "3 bedrooms + 3 bathrooms",
+        "240 m² living space",
+        "Private terraces",
+        "European construction",
+        "Modern architecture",
+        "Privacy & exclusivity"
+      ]
+    },
+    "harmony-life-hill-2": {
+      "tagline": "5 Premium Hillside Villas — Phase Two",
+      "description": "The second phase of our award-winning Hill project. 5 even more spacious premium villas with infinity pools and panoramic ocean terraces.",
+      "longDescription": "Harmony Life Hill 2 builds on the success of the first phase, offering 5 even more spacious and luxurious villas. Each property features 3 bedrooms, 3 bathrooms, 200 m² of living space, a private infinity pool, and expansive terraces with panoramic views of the ocean and tropical landscape. The project combines modern design with tropical elements and the finest finishing materials.",
+      "type": "Premium Villas",
+      "priceFrom": "Contact for pricing",
+      "location": "Hillside, Koh Samui",
+      "landArea": "Hillside plot",
+      "poolSize": "Private infinity pool",
+      "features": [
+        "Panoramic ocean & jungle views",
+        "Private infinity pool",
+        "3 bedrooms + 3 bathrooms",
+        "200 m² living space",
+        "Expansive ocean-view terraces",
+        "Top-grade finishing materials",
+        "Modern tropical architecture",
+        "European construction standards"
+      ]
+    },
+    "harmony-life-oasis": {
+      "tagline": "53 Sea-View Villas — Tropical Oasis",
+      "description": "A tropical oasis of 53 exclusive sea-view villas in diverse layouts from 1 to 4 bedrooms — for every investor and lifestyle buyer.",
+      "longDescription": "Harmony Life Oasis is an extraordinary project offering 53 luxury villas designed as a true tropical oasis. The development provides a wide range of layouts — from 1 to 4 bedrooms, with areas from 97 to 358 m² — each with breath-taking sea views. Onsite amenities include an exclusive café and a professional kids club, making this project ideal for both investors seeking rental yields and families planning to live on Koh Samui permanently.",
+      "type": "Premium Villas",
+      "priceFrom": "฿6.2M · $190,000",
+      "location": "Koh Samui",
+      "landArea": "Various",
+      "poolSize": "Private pool",
+      "features": [
+        "Sea views from all units",
+        "1–4 bedroom layouts",
+        "97–358 m² living areas",
+        "On-site café",
+        "Professional kids club",
+        "Private pool per villa",
+        "European quality construction",
+        "Rental management available"
+      ]
+    },
+    "solaya-residence": {
+      "tagline": "71 Sea-View Apartments in Plai Leam",
+      "description": "A modern complex of 71 premium apartments with sea views in Plai Leam — from intimate studios to spacious 2-bedroom apartments.",
+      "longDescription": "Solaya Residence is a modern complex of 71 premium apartments with stunning sea views in the sought-after Plai Leam district of Koh Samui. The project combines elegant design with functionality and the highest comfort standards. Layouts range from intimate studios to spacious 2-bedroom apartments, 39–92 m². The development stands out for its exceptional amenity infrastructure: a lagoon pool, fully equipped gym, saunas, luxury spa, and fine dining restaurant. The complex is also designed for professional retreats, making it an exceptional place on Koh Samui's map — perfect for living and as a high-yield investment.",
+      "type": "Premium Apartments",
+      "priceFrom": "Contact for pricing",
+      "location": "Plai Leam, Koh Samui",
+      "landArea": "N/A",
+      "poolSize": "Lagoon pool (shared)",
+      "features": [
+        "Sea views from all units",
+        "Studio, 1BR & 2BR layouts",
+        "39–92 m² living areas",
+        "Lagoon pool",
+        "Luxury spa",
+        "Fully equipped gym & saunas",
+        "Fine dining restaurant",
+        "Retreat-ready facilities"
+      ]
+    },
+    "harmony-life-wellness": {
+      "tagline": "Wellness, Spa & Café — by individual arrangement",
+      "description": "A wellness sanctuary with spa, massage and an artisan café — for the residents and guests of Harmony Life. Available by individual arrangement, not a standard investment unit.",
+      "longDescription": "Harmony Life Wellness & Caffe is the calm, social heart of the Harmony Life world — a dedicated space for spa rituals, massage and body treatments, sauna and ice-bath recovery, and an artisan café to slow down in. It is designed for our owners and their guests, wellness travellers, and anyone on Koh Samui looking for genuine balance and rest. This is not a standard investment unit — any involvement is arranged individually, case by case. Reach out and we will walk you through the options.",
+      "type": "Wellness & Café",
+      "priceFrom": "On request",
+      "location": "Koh Samui",
+      "landArea": "—",
+      "poolSize": "Spa & pool",
+      "features": [
+        "Spa & treatment rooms",
+        "Massage & body therapies",
+        "Sauna & ice-bath recovery",
+        "Artisan café",
+        "For residents, guests & wellness travellers",
+        "By individual arrangement"
+      ]
+    }
+  },
+  "statusLabels": {
+    "Selling": "Selling",
+    "Coming Soon": "Coming Soon",
+    "Under Construction": "Under Construction",
+    "Sold Out": "Sold Out"
   }
 }

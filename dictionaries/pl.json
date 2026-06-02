@@ -189,12 +189,36 @@
     "payment6Stage": "Zakończenie",
     "payment6Timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz willi",
     "solayaPayment": [
-      { "percent": "—", "stage": "Rezerwacja", "timing": "Opłata inicjacyjna 90 000 THB zaliczana na poczet opłaty leasingu" },
-      { "percent": "30%", "stage": "Umowa deweloperska", "timing": "Po podpisaniu umowy deweloperskiej" },
-      { "percent": "25%", "stage": "Fundamenty i pierwsze piętro", "timing": "Po zakończeniu budowy fundamentów oraz konstrukcji pierwszego piętra" },
-      { "percent": "30%", "stage": "Ściany i dach", "timing": "Po zakończeniu budowy 80% ścian i konstrukcji dachu" },
-      { "percent": "10%", "stage": "Wykończenie wewnętrzne", "timing": "Po pracach wykończeniowych wewnętrznych — elektryka, tynki, instalacje wodno-kanalizacyjne, okna" },
-      { "percent": "5%", "stage": "Zakończenie", "timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz budynku" }
+      {
+        "percent": "—",
+        "stage": "Rezerwacja",
+        "timing": "Opłata inicjacyjna 90 000 THB zaliczana na poczet opłaty leasingu"
+      },
+      {
+        "percent": "30%",
+        "stage": "Umowa deweloperska",
+        "timing": "Po podpisaniu umowy deweloperskiej"
+      },
+      {
+        "percent": "25%",
+        "stage": "Fundamenty i pierwsze piętro",
+        "timing": "Po zakończeniu budowy fundamentów oraz konstrukcji pierwszego piętra"
+      },
+      {
+        "percent": "30%",
+        "stage": "Ściany i dach",
+        "timing": "Po zakończeniu budowy 80% ścian i konstrukcji dachu"
+      },
+      {
+        "percent": "10%",
+        "stage": "Wykończenie wewnętrzne",
+        "timing": "Po pracach wykończeniowych wewnętrznych — elektryka, tynki, instalacje wodno-kanalizacyjne, okna"
+      },
+      {
+        "percent": "5%",
+        "stage": "Zakończenie",
+        "timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz budynku"
+      }
     ]
   },
   "oasis": {
@@ -328,5 +352,131 @@
     "subtitle": "Harmony Life One — nasz debiut, wyprzedany w dniu startu. Najpierw projekt na renderach, poniżej to samo osiedle dziś, po oddaniu. Dowozimy to, co pokazujemy.",
     "renderLabel": "Wizualizacja (projekt)",
     "realLabel": "Gotowe osiedle — dziś"
+  },
+  "projectContent": {
+    "harmony-life-one": {
+      "tagline": "10 willi w stylu boho — w całości sprzedane",
+      "description": "Nasz debiutancki projekt — 10 willi w stylu boho sprzedanych na starcie. Wizja, od której wszystko się zaczęło.",
+      "longDescription": "Harmony Life One był naszym pierwszym projektem i ogromnym sukcesem — wszystkie 10 willi sprzedano jeszcze przed ukończeniem budowy. Każda willa została starannie zaprojektowana w estetyce boho i z zachowaniem europejskich standardów budowlanych, oferując 2–3 sypialnie i 136–197 m² powierzchni mieszkalnej na Koh Samui. Projekt udowodnił, że zagraniczni nabywcy są gotowi na budownictwo o europejskiej jakości na wyspie.",
+      "type": "Wille",
+      "priceFrom": "Sprzedane",
+      "location": "Koh Samui",
+      "landArea": "Nie dotyczy",
+      "poolSize": "Prywatny basen",
+      "features": [
+        "Architektura w stylu boho",
+        "Prywatny basen przy każdej willi",
+        "Europejskie standardy budowlane",
+        "2–3 sypialnie",
+        "3 łazienki",
+        "Ogród tropikalny",
+        "System inteligentnego domu",
+        "Pełna obsługa zarządzania"
+      ]
+    },
+    "harmony-life-hill": {
+      "tagline": "Wille z basenem na wzgórzu — w całości sprzedane",
+      "description": "6 ekskluzywnych willi na wzgórzu z panoramicznym widokiem na ocean — sprzedane. Położone ponad wyspą, z zapierającymi dech widokami.",
+      "longDescription": "Harmony Life Hill to kompleks ekskluzywnych willi położonych na wzgórzach Koh Samui, każda z panoramicznym widokiem na ocean i tropikalny krajobraz. Każda willa oferuje 3 sypialnie, 3 łazienki, 240 m² powierzchni mieszkalnej, prywatny basen oraz tarasy ze spektakularnymi widokami. Projekt jest w całości sprzedany — to dowód na niesłabnący popyt na jakość na Koh Samui.",
+      "type": "Wille z basenem",
+      "priceFrom": "Sprzedane",
+      "location": "Wzgórze, Koh Samui",
+      "landArea": "Działka na wzgórzu",
+      "poolSize": "Prywatny basen infinity",
+      "features": [
+        "Panoramiczny widok na ocean",
+        "Prywatny basen infinity",
+        "3 sypialnie + 3 łazienki",
+        "240 m² powierzchni mieszkalnej",
+        "Prywatne tarasy",
+        "Budownictwo europejskie",
+        "Nowoczesna architektura",
+        "Prywatność i ekskluzywność"
+      ]
+    },
+    "harmony-life-hill-2": {
+      "tagline": "5 willi premium na wzgórzu — etap drugi",
+      "description": "Drugi etap nagradzanego projektu Hill. 5 jeszcze przestronniejszych willi premium z basenami infinity i panoramicznymi tarasami z widokiem na ocean.",
+      "longDescription": "Harmony Life Hill 2 rozwija sukces pierwszego etapu, oferując 5 jeszcze przestronniejszych i bardziej luksusowych willi. Każda nieruchomość oferuje 3 sypialnie, 3 łazienki, 200 m² powierzchni mieszkalnej, prywatny basen infinity oraz rozległe tarasy z panoramicznym widokiem na ocean i tropikalny krajobraz. Projekt łączy nowoczesny design z tropikalnymi elementami i najwyższej klasy materiałami wykończeniowymi.",
+      "type": "Wille premium",
+      "priceFrom": "Zapytaj o cenę",
+      "location": "Wzgórze, Koh Samui",
+      "landArea": "Działka na wzgórzu",
+      "poolSize": "Prywatny basen infinity",
+      "features": [
+        "Panoramiczny widok na ocean i dżunglę",
+        "Prywatny basen infinity",
+        "3 sypialnie + 3 łazienki",
+        "200 m² powierzchni mieszkalnej",
+        "Rozległe tarasy z widokiem na ocean",
+        "Najwyższej klasy materiały wykończeniowe",
+        "Nowoczesna architektura tropikalna",
+        "Europejskie standardy budowlane"
+      ]
+    },
+    "harmony-life-oasis": {
+      "tagline": "53 wille z widokiem na morze — tropikalna oaza",
+      "description": "Tropikalna oaza 53 ekskluzywnych willi z widokiem na morze, w różnych układach od 1 do 4 sypialni — dla każdego inwestora i nabywcy.",
+      "longDescription": "Harmony Life Oasis to wyjątkowy projekt oferujący 53 luksusowe wille zaprojektowane jako prawdziwa tropikalna oaza. Inwestycja zapewnia szeroki wybór układów — od 1 do 4 sypialni, o powierzchni od 97 do 358 m² — każda z zapierającym dech widokiem na morze. Na terenie osiedla znajdują się ekskluzywna kawiarnia i profesjonalny klub dla dzieci, co czyni projekt idealnym zarówno dla inwestorów szukających zysków z najmu, jak i dla rodzin planujących zamieszkać na Koh Samui na stałe.",
+      "type": "Wille premium",
+      "priceFrom": "฿6,2 mln · $190 000",
+      "location": "Koh Samui",
+      "landArea": "Różne",
+      "poolSize": "Prywatny basen",
+      "features": [
+        "Widok na morze ze wszystkich lokali",
+        "Układy od 1 do 4 sypialni",
+        "Powierzchnie 97–358 m²",
+        "Kawiarnia na terenie osiedla",
+        "Profesjonalny klub dla dzieci",
+        "Prywatny basen przy każdej willi",
+        "Budownictwo o europejskiej jakości",
+        "Możliwość zarządzania najmem"
+      ]
+    },
+    "solaya-residence": {
+      "tagline": "71 apartamentów z widokiem na morze w Plai Leam",
+      "description": "Nowoczesny kompleks 71 apartamentów premium z widokiem na morze w Plai Leam — od kameralnych studiów po przestronne apartamenty 2-sypialniane.",
+      "longDescription": "Solaya Residence to nowoczesny kompleks 71 apartamentów premium z zachwycającym widokiem na morze w cenionej dzielnicy Plai Leam na Koh Samui. Projekt łączy elegancki design z funkcjonalnością i najwyższymi standardami komfortu. Układy obejmują zakres od kameralnych studiów po przestronne apartamenty 2-sypialniane, 39–92 m². Inwestycja wyróżnia się wyjątkową infrastrukturą udogodnień: basenem-laguną, w pełni wyposażoną siłownią, saunami, luksusowym spa i restauracją fine dining. Kompleks jest również przystosowany do organizacji profesjonalnych retreatów, co czyni go wyjątkowym miejscem na mapie Koh Samui — idealnym do życia i jako wysokodochodowa inwestycja.",
+      "type": "Apartamenty premium",
+      "priceFrom": "Zapytaj o cenę",
+      "location": "Plai Leam, Koh Samui",
+      "landArea": "Nie dotyczy",
+      "poolSize": "Basen-laguna (wspólny)",
+      "features": [
+        "Widok na morze ze wszystkich lokali",
+        "Układy: studio, 1- i 2-sypialniane",
+        "Powierzchnie 39–92 m²",
+        "Basen-laguna",
+        "Luksusowe spa",
+        "W pełni wyposażona siłownia i sauny",
+        "Restauracja fine dining",
+        "Zaplecze gotowe na retreaty"
+      ]
+    },
+    "harmony-life-wellness": {
+      "tagline": "Wellness, spa i kawiarnia — na zapytanie indywidualne",
+      "description": "Strefa wellness ze spa, masażami i rzemieślniczą kawiarnią — dla mieszkańców i gości Harmony Life. Dostępna na zapytanie indywidualne, nie jest standardowym lokalem inwestycyjnym.",
+      "longDescription": "Harmony Life Wellness & Caffe to spokojne, towarzyskie serce świata Harmony Life — przestrzeń poświęcona rytuałom spa, masażom i zabiegom na ciało, regeneracji w saunie i kąpieli lodowej oraz rzemieślnicza kawiarnia, w której można zwolnić tempo. Powstała z myślą o naszych właścicielach i ich gościach, podróżnikach wellness i wszystkich, którzy na Koh Samui szukają prawdziwej równowagi i odpoczynku. To nie jest standardowy lokal inwestycyjny — każde zaangażowanie ustalane jest indywidualnie, przypadek po przypadku. Skontaktuj się z nami, a przedstawimy dostępne opcje.",
+      "type": "Wellness i kawiarnia",
+      "priceFrom": "Na zapytanie",
+      "location": "Koh Samui",
+      "landArea": "—",
+      "poolSize": "Spa i basen",
+      "features": [
+        "Spa i gabinety zabiegowe",
+        "Masaże i terapie ciała",
+        "Sauna i regeneracja w kąpieli lodowej",
+        "Rzemieślnicza kawiarnia",
+        "Dla mieszkańców, gości i podróżników wellness",
+        "Na zapytanie indywidualne"
+      ]
+    }
+  },
+  "statusLabels": {
+    "Selling": "W sprzedaży",
+    "Coming Soon": "Wkrótce",
+    "Under Construction": "W budowie",
+    "Sold Out": "Sprzedane"
   }
 }
