@@ -35,13 +35,27 @@
     "delivered": "Realisiert — ausverkauft"
   },
   "cinematic": {
-    "scene1Eyebrow": "Das Anwesen",
-    "scene1Caption": "Fünf private Villen\nhoch über der Insel.",
-    "scene2Eyebrow": "Die Terrasse",
-    "scene2Caption": "Ihr Pool.\nIhr Horizont.",
-    "scene3Eyebrow": "Das Interieur",
-    "scene3Caption": "Jedes Detail,\neuropäischer Standard.",
-    "cta": "Hill 2 entdecken"
+    "scenes": [
+      {
+        "eyebrow": "Die Anlage",
+        "caption": "53 Villen\nin einer tropischen Oase."
+      },
+      {
+        "eyebrow": "Der Pool",
+        "caption": "Ihr Pool.\nIhr Horizont."
+      },
+      {
+        "eyebrow": "Das Interieur",
+        "caption": "Europäische Handwerkskunst,\nbis ins Detail."
+      },
+      {
+        "eyebrow": "Die Dachterrasse",
+        "caption": "Abende\nüber dem Meer."
+      }
+    ],
+    "cta": "Oasis entdecken",
+    "label": "Harmony Life Oasis",
+    "sublabel": "Koh Samui, Thailand"
   },
   "whyInvest": {
     "eyebrow": "Investment-Argumente",

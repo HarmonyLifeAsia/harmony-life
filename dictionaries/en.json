@@ -35,13 +35,27 @@
     "delivered": "Delivered — sold out"
   },
   "cinematic": {
-    "scene1Eyebrow": "The Estate",
-    "scene1Caption": "Five private villas\nperched above the island.",
-    "scene2Eyebrow": "The Terrace",
-    "scene2Caption": "Your pool.\nYour horizon.",
-    "scene3Eyebrow": "The Interior",
-    "scene3Caption": "Every detail,\nEuropean standard.",
-    "cta": "Explore Hill 2"
+    "scenes": [
+      {
+        "eyebrow": "The Estate",
+        "caption": "53 villas\nin a tropical oasis."
+      },
+      {
+        "eyebrow": "The Pool",
+        "caption": "Your pool.\nYour horizon."
+      },
+      {
+        "eyebrow": "The Interior",
+        "caption": "European craft,\nin every detail."
+      },
+      {
+        "eyebrow": "The Rooftop",
+        "caption": "Evenings\nabove the sea."
+      }
+    ],
+    "cta": "Explore Oasis",
+    "label": "Harmony Life Oasis",
+    "sublabel": "Koh Samui, Thailand"
   },
   "whyInvest": {
     "eyebrow": "Investment Case",

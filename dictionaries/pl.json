@@ -35,13 +35,27 @@
     "delivered": "Zrealizowane — wyprzedane"
   },
   "cinematic": {
-    "scene1Eyebrow": "Posiadłość",
-    "scene1Caption": "Pięć prywatnych willi\nwzniesionych ponad wyspą.",
-    "scene2Eyebrow": "Taras",
-    "scene2Caption": "Twój basen.\nTwój horyzont.",
-    "scene3Eyebrow": "Wnętrze",
-    "scene3Caption": "Każdy detal,\neuropejski standard.",
-    "cta": "Odkryj Hill 2"
+    "scenes": [
+      {
+        "eyebrow": "Osiedle",
+        "caption": "53 wille\nw tropikalnej oazie."
+      },
+      {
+        "eyebrow": "Basen",
+        "caption": "Twój basen.\nTwój horyzont."
+      },
+      {
+        "eyebrow": "Wnętrze",
+        "caption": "Europejski detal\nw każdym calu."
+      },
+      {
+        "eyebrow": "Taras na dachu",
+        "caption": "Wieczory\nnad morzem."
+      }
+    ],
+    "cta": "Zobacz Oasis",
+    "label": "Harmony Life Oasis",
+    "sublabel": "Koh Samui, Tajlandia"
   },
   "whyInvest": {
     "eyebrow": "Uzasadnienie inwestycji",
