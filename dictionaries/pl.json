@@ -4,7 +4,8 @@
     "about": "O nas",
     "contact": "Kontakt",
     "bookConsultation": "Umów konsultację",
-    "guide": "Przewodnik inwestora"
+    "guide": "Przewodnik inwestora",
+    "bookStay": "Rezerwuj pobyt"
   },
   "hero": {
     "eyebrow": "Koh Samui, Tajlandia",
@@ -170,6 +171,8 @@
     "startingFrom": "Ceny od",
     "requestPricing": "Zapytaj o cenę",
     "downloadBrochure": "OFERTA",
+    "rentalEyebrow": "Dostępne na wynajem",
+    "rentalNote": "Sprzedane na własność — ale możesz tu zamieszkać na pobyt. Wille Harmony Life One są dostępne na wynajem krótkoterminowy.",
     "enquireTitle": "Zapytaj o ten projekt",
     "bedroomsLabel": "Sypialnie",
     "bathroomsLabel": "Łazienki",
@@ -337,6 +340,69 @@
     "eyebrow": "Po sprzedaży zostajemy",
     "title": "Nie sprzedajemy i nie znikamy",
     "body": "Po zakupie zostajesz w kontakcie: kwartalne rozliczenia netto, panel inwestora online, zdjęcia z budowy 2× w miesiącu, Investor Days na wyspie i pierwszeństwo w kolejnych projektach."
+  },
+  "stay": {
+    "eyebrow": "Pobyt — Harmony Life One",
+    "title": "Wille boho na Koh Samui, na wynajem",
+    "subtitle": "10 willi boho, 3 minuty od plaży. Klimat domu, nie hotelu — przestrzeń dla tych, którzy cenią autentyczność, spokój i harmonię z naturą.",
+    "p1": "Harmony Life One to nasz debiut — 10 willi w stylu boho, dziś dostępnych na pobyt. Każda willa łączy naturalne materiały, prywatny basen i uważność na detale z europejskim standardem wykończenia.",
+    "p2": "Do wyboru układy 2- i 3-sypialniane, każdy z tarasem, ogrodem i dostępem do wspólnych przestrzeni. Idealne na rodzinny urlop lub dłuższy pobyt na wyspie.",
+    "feature1": "Willa 2BR — do 4 osób",
+    "feature2": "Willa 3BR — do 6 osób",
+    "feature3": "3 minuty od plaży",
+    "cta": "Rezerwuj pobyt",
+    "note": "Rezerwacja prowadzi do naszego systemu."
+  },
+  "blog": {
+    "eyebrow": "Przewodnik po wyspie",
+    "title": "Odkryj Koh Samui",
+    "subtitle": "Praktyczne porady, ukryte perełki i inspiracje z naszego bloga.",
+    "readMore": "Czytaj więcej",
+    "allArticles": "Wszystkie artykuły",
+    "posts": [
+      {
+        "category": "Plaże",
+        "date": "15 marca 2024",
+        "readTime": "8 min",
+        "title": "Najlepsze Plaże na Koh Samui – Przewodnik 2024",
+        "excerpt": "Odkryj najpiękniejsze plaże Koh Samui. Od tętniącego życiem Chaweng po spokojne zatoczki Maenam."
+      },
+      {
+        "category": "Atrakcje",
+        "date": "10 marca 2024",
+        "readTime": "7 min",
+        "title": "Koh Samui Atrakcje Turystyczne – Co Warto Zobaczyć",
+        "excerpt": "Od majestatycznego Wielkiego Buddy po ukryte wodospady w dżungli. Poznaj najważniejsze atrakcje wyspy."
+      },
+      {
+        "category": "Gastronomia",
+        "date": "5 marca 2024",
+        "readTime": "6 min",
+        "title": "Gdzie Zjeść na Koh Samui – Najlepsze Restauracje i Kawiarnie",
+        "excerpt": "Kulinarna podróż po Koh Samui. Od autentycznego tajskiego street foodu po wykwintne restauracje z owocami morza."
+      },
+      {
+        "category": "Sporty",
+        "date": "28 lutego 2024",
+        "readTime": "7 min",
+        "title": "Aktywny Wypoczynek na Koh Samui – Sporty Wodne i Przygody",
+        "excerpt": "Nurkowanie, kitesurfing, trekking w dżungli i wycieczki quadami. Odkryj aktywną stronę wyspy."
+      },
+      {
+        "category": "Wellness",
+        "date": "20 lutego 2024",
+        "readTime": "5 min",
+        "title": "Relaksujący Wypoczynek na Koh Samui – Spa, Wellness i Joga",
+        "excerpt": "Przewodnik po najlepszych miejscach na masaż tajski, zajęcia jogi i holistyczne terapie na wyspie."
+      },
+      {
+        "category": "Nocne Życie",
+        "date": "15 lutego 2024",
+        "readTime": "6 min",
+        "title": "Życie Nocne na Koh Samui – Bary, Kluby i Imprezy",
+        "excerpt": "Przewodnik po najlepszych beach clubach, barach z muzyką na żywo i legendarnych imprezach."
+      }
+    ]
   },
   "solaya": {
     "exteriorTitle": "Na zewnątrz",

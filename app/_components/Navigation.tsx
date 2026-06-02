@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import LanguageSwitcher from './LanguageSwitcher'
 import ThemeToggle from './ThemeToggle'
 import { useDict, useLocale } from './LangProvider'
-import { CALENDLY_URL } from '../_data/site'
+import { CALENDLY_URL, bookingHref } from '../_data/site'
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -81,6 +81,14 @@ export default function Navigation() {
             >
               {dict.nav.bookConsultation}
             </a>
+            <a
+              href={bookingHref(lang)}
+              target={bookingHref(lang).startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className="bg-gold text-scrim hover:bg-gold-light text-sm px-5 py-2 rounded-sm transition-all duration-300 tracking-wider cursor-pointer"
+            >
+              {dict.nav.bookStay}
+            </a>
             <ThemeToggle />
             <LanguageSwitcher />
           </nav>
@@ -113,9 +121,12 @@ export default function Navigation() {
                 </Link>
               </motion.div>
             ))}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="flex flex-col items-center gap-4">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="border border-gold text-gold px-8 py-3 text-sm tracking-widest uppercase cursor-pointer">
                 {dict.nav.bookConsultation}
+              </a>
+              <a href={bookingHref(lang)} target={bookingHref(lang).startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="bg-gold text-scrim px-8 py-3 text-sm tracking-widest uppercase cursor-pointer">
+                {dict.nav.bookStay}
               </a>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="flex items-center gap-4">

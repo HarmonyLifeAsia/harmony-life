@@ -9,6 +9,8 @@ import CinematicTour from '../_components/CinematicTour'
 import MarqueeStrip from '../_components/MarqueeStrip'
 import WhyInvestSection from '../_components/WhyInvestSection'
 import LifestyleSection from '../_components/LifestyleSection'
+import StaySection from '../_components/StaySection'
+import BlogSection from '../_components/BlogSection'
 import FounderSection from '../_components/FounderSection'
 import TestimonialsCarousel from '../_components/TestimonialsCarousel'
 import ContactForm from '../_components/ContactForm'
@@ -86,6 +88,7 @@ export default async function HomePage({
       <MarqueeStrip />
       <WhyInvestSection />
       <LifestyleSection />
+      <StaySection />
       <FounderSection />
 
       {/* Commitment — we stay after the sale */}
@@ -98,6 +101,8 @@ export default async function HomePage({
       </section>
 
       <TestimonialsCarousel />
+
+      <BlogSection />
 
       {/* CTA / Contact */}
       <section className="py-24 px-6">

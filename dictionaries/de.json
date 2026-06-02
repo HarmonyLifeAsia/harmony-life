@@ -4,7 +4,8 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "bookConsultation": "Beratung buchen",
-    "guide": "Investoren-Leitfaden"
+    "guide": "Investoren-Leitfaden",
+    "bookStay": "Aufenthalt buchen"
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
@@ -170,6 +171,8 @@
     "startingFrom": "Ab",
     "requestPricing": "Preis anfragen",
     "downloadBrochure": "ANGEBOT",
+    "rentalEyebrow": "Zur Miete verfügbar",
+    "rentalNote": "Als Eigentum ausverkauft — aber Sie können hier wohnen. Die Harmony Life One Villen sind für Kurzzeitmiete verfügbar.",
     "enquireTitle": "Anfrage zu diesem Projekt",
     "bedroomsLabel": "Schlafzimmer",
     "bathroomsLabel": "Badezimmer",
@@ -337,6 +340,69 @@
     "eyebrow": "Wir bleiben nach dem Verkauf",
     "title": "Wir verkaufen nicht und verschwinden",
     "body": "Nach dem Kauf bleiben Sie in Verbindung: vierteljährliche Netto-Abrechnungen, ein Online-Investorenpanel, Baufotos zweimal im Monat, Investor Days auf der Insel und Vorrang bei künftigen Projekten."
+  },
+  "stay": {
+    "eyebrow": "Aufenthalt — Harmony Life One",
+    "title": "Boho-Villen auf Koh Samui, zur Miete",
+    "subtitle": "10 Boho-Villen, 3 Minuten vom Strand. Das Gefühl von Zuhause, kein Hotel — ein Ort für alle, die Authentizität, Ruhe und Harmonie mit der Natur schätzen.",
+    "p1": "Harmony Life One ist unser Debüt — 10 Villen im Boho-Stil, heute für Aufenthalte verfügbar. Jede Villa verbindet natürliche Materialien, einen privaten Pool und Liebe zum Detail mit europäischem Ausbaustandard.",
+    "p2": "Zur Wahl stehen 2- und 3-Schlafzimmer-Grundrisse, jeweils mit Terrasse, Garten und Zugang zu Gemeinschaftsflächen. Ideal für einen Familienurlaub oder einen längeren Aufenthalt auf der Insel.",
+    "feature1": "Villa 2BR — bis 4 Gäste",
+    "feature2": "Villa 3BR — bis 6 Gäste",
+    "feature3": "3 Minuten vom Strand",
+    "cta": "Aufenthalt buchen",
+    "note": "Die Buchung führt zu unserem System."
+  },
+  "blog": {
+    "eyebrow": "Inselführer",
+    "title": "Koh Samui entdecken",
+    "subtitle": "Praktische Tipps, versteckte Perlen und Inspiration aus unserem Blog.",
+    "readMore": "Weiterlesen",
+    "allArticles": "Alle Artikel",
+    "posts": [
+      {
+        "category": "Strände",
+        "date": "15. März 2024",
+        "readTime": "8 Min",
+        "title": "Die besten Strände auf Koh Samui – Guide 2024",
+        "excerpt": "Entdecken Sie die schönsten Strände von Koh Samui. Vom lebhaften Chaweng bis zu den ruhigen Buchten von Maenam."
+      },
+      {
+        "category": "Attraktionen",
+        "date": "10. März 2024",
+        "readTime": "7 Min",
+        "title": "Koh Samui Sehenswürdigkeiten – Was man sehen sollte",
+        "excerpt": "Vom majestätischen Big Buddha bis zu versteckten Dschungelwasserfällen. Entdecken Sie die Top-Attraktionen der Insel."
+      },
+      {
+        "category": "Kulinarik",
+        "date": "5. März 2024",
+        "readTime": "6 Min",
+        "title": "Wo essen auf Koh Samui – Beste Restaurants & Cafés",
+        "excerpt": "Eine kulinarische Reise über Koh Samui. Von authentischem Thai-Streetfood bis zu feinen Meeresfrüchte-Restaurants."
+      },
+      {
+        "category": "Sport",
+        "date": "28. Februar 2024",
+        "readTime": "7 Min",
+        "title": "Aktivurlaub auf Koh Samui – Wassersport & Abenteuer",
+        "excerpt": "Tauchen, Kitesurfen, Dschungel-Trekking und Quad-Touren. Entdecken Sie die aktive Seite der Insel."
+      },
+      {
+        "category": "Wellness",
+        "date": "20. Februar 2024",
+        "readTime": "5 Min",
+        "title": "Erholung auf Koh Samui – Spa, Wellness & Yoga",
+        "excerpt": "Ein Guide zu den besten Orten für Thai-Massage, Yoga und ganzheitliche Therapien auf der Insel."
+      },
+      {
+        "category": "Nachtleben",
+        "date": "15. Februar 2024",
+        "readTime": "6 Min",
+        "title": "Nachtleben auf Koh Samui – Bars, Clubs & Partys",
+        "excerpt": "Ein Guide zu den besten Beach Clubs, Live-Musik-Bars und legendären Partys."
+      }
+    ]
   },
   "solaya": {
     "exteriorTitle": "Außenbereich",
