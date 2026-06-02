@@ -3,7 +3,8 @@
     "projects": "Projects",
     "about": "About",
     "contact": "Contact",
-    "bookConsultation": "Book Consultation"
+    "bookConsultation": "Book Consultation",
+    "guide": "Investor Guide"
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
@@ -483,5 +484,223 @@
     "text": "Considering an investment on Koh Samui?",
     "button": "Book a consultation",
     "dismiss": "Dismiss"
+  },
+  "guide": {
+    "metaTitle": "Investor Guide | Harmony Life",
+    "heroEyebrow": "Investor Guide",
+    "heroTitle": "How to safely buy an investment property on Koh Samui",
+    "heroSubtitle": "From reservation through ownership structure to rental management and resale — the whole process, explained step by step.",
+    "heroCta": "Book a consultation",
+    "whyTitle": "Why this guide matters",
+    "whyText": "Buying property in Thailand differs from buying in Europe — land-ownership rules, legal structures and procedures are different. We have prepared a clear guide that walks through the whole process, so you know exactly what you are buying and on what terms.",
+    "flTitle": "Freehold vs Leasehold",
+    "flSubtitle": "The two core structures in Thailand — and what we use at Harmony Life.",
+    "flHeadFeature": "Feature",
+    "flHeadFreehold": "Freehold",
+    "flHeadLeasehold": "Leasehold",
+    "flHeadHarmony": "At Harmony Life",
+    "flRows": [
+      {
+        "feature": "What it is",
+        "freehold": "Full ownership",
+        "leasehold": "Long-term right to use",
+        "harmony": "Leasehold — right to use"
+      },
+      {
+        "feature": "For foreigners",
+        "freehold": "Condominium units only (49% quota)",
+        "leasehold": "Widely available",
+        "harmony": "Standard for our villas & apartments"
+      },
+      {
+        "feature": "Land",
+        "freehold": "Share via condominium",
+        "leasehold": "Land leased",
+        "harmony": "Land on a registered lease"
+      },
+      {
+        "feature": "Duration",
+        "freehold": "Indefinite",
+        "leasehold": "Typically 30 years + renewals",
+        "harmony": "30 years + 2×30 (per contract)"
+      },
+      {
+        "feature": "Typical use",
+        "freehold": "Apartments (condominium)",
+        "leasehold": "Villas & houses on land",
+        "harmony": "Primary structure for international investors"
+      }
+    ],
+    "ownTitle": "Ownership structure at Harmony Life",
+    "ownText": "For international investors the core structure is leasehold — a long-term right to use the property under a registered lease agreement. Depending on the project, you receive a full set of documents covering your right to the property, the rules of use and your participation in the rental programme.",
+    "ownPointsTitle": "The document set you receive:",
+    "ownPoints": [
+      "Reservation agreement",
+      "Main / developer agreement",
+      "Leasehold agreement (registered first term)",
+      "Rental management agreement",
+      "Common-area and cost regulations",
+      "Clear owner-use terms"
+    ],
+    "ownNote": "In selected cases a Thai-company structure can be analysed — always with an independent lawyer. We recommend transparent solutions, compliant with Thai law and matched to the specific property type.",
+    "processTitle": "The buying process, step by step",
+    "processSubtitle": "A transparent path — from choosing the property to handover into rental management.",
+    "steps": [
+      {
+        "title": "Choosing the property",
+        "text": "You choose a villa or apartment and receive the full information set: location, layout, price, payment schedule, completion date and the legal model."
+      },
+      {
+        "title": "Reservation",
+        "text": "You sign a simple reservation agreement and pay a reservation fee that takes the property off the market and locks the price."
+      },
+      {
+        "title": "Due diligence",
+        "text": "You verify the documents — on your own or with an independent lawyer. We share land documents, permits, agreements and the schedule."
+      },
+      {
+        "title": "Main agreement",
+        "text": "After verification you sign the main agreement: developer, leasehold and rental-management."
+      },
+      {
+        "title": "Staged payments",
+        "text": "You pay in stages according to an individual schedule linked to construction progress."
+      },
+      {
+        "title": "Construction & updates",
+        "text": "You receive construction-progress updates — photos and milestone reports, with a dedicated investor contact."
+      },
+      {
+        "title": "Handover",
+        "text": "You check the finish standard, note any snags, sign the handover protocol and receive the keys and documents."
+      },
+      {
+        "title": "Rental management",
+        "text": "If you choose the investment model, the property is taken under the team’s care and prepared for rental."
+      }
+    ],
+    "costsTitle": "Costs & taxes",
+    "costsSubtitle": "The full picture — beyond the purchase price, we show the additional costs.",
+    "costGroups": [
+      {
+        "title": "At purchase",
+        "items": [
+          "Reservation fee",
+          "Document preparation & translations",
+          "Independent lawyer (optional, recommended)"
+        ]
+      },
+      {
+        "title": "Registration & official fees",
+        "items": [
+          "Leasehold registration at the Land Office",
+          "Possible transfer / stamp duties",
+          "International transfer costs"
+        ]
+      },
+      {
+        "title": "Ongoing",
+        "items": [
+          "Common-area fees (pool, garden, security)",
+          "Utilities (electricity, water, internet)",
+          "Servicing, cleaning, insurance",
+          "Annual local taxes & fees"
+        ]
+      },
+      {
+        "title": "Rental",
+        "items": [
+          "Rental operator commission",
+          "Booking-platform commissions",
+          "Rental-income taxes (where applicable)"
+        ]
+      }
+    ],
+    "costsNote": "Before signing, you receive an estimated breakdown of the additional costs for the specific property. Annual local taxes are usually relatively low compared with Europe, but they depend on the property and current regulations.",
+    "rentalTitle": "Rental management",
+    "rentalText": "We don’t just sell property — we build an ecosystem in which your property can work for you while remaining part of a well-kept space. Rentals are handled by the local Harmony Life team on Koh Samui.",
+    "rentalPointsTitle": "What we handle:",
+    "rentalPoints": [
+      "Listing preparation & presentation",
+      "Booking and guest handling",
+      "Check-in / check-out, cleaning, servicing",
+      "Oversight of the property’s condition",
+      "Reporting and settlements"
+    ],
+    "rentalSettlement": "The recommended model is quarterly net settlement — after agreed operating costs and commissions are deducted, you receive a report and the amount due to the owner.",
+    "rentalReportTitle": "Your quarterly report includes:",
+    "rentalReport": [
+      "Nights booked and occupancy",
+      "Gross revenue and costs",
+      "Platform commissions",
+      "Net revenue and the owner’s amount"
+    ],
+    "rentalOwnerUse": "You can also use the property yourself — the terms and availability (including high season) are set out in the agreement.",
+    "exitTitle": "Exiting the investment",
+    "exitText": "An investment should have a clear entry point and a possible exit path. You can resell your rights to the property in line with the agreement — for leasehold, usually by transferring the rights under the contract.",
+    "exitHelp": "Harmony Life can support your resale: preparing the listing and photos, presenting to buyers from our investor base, and coordinating with the lawyer and documents.",
+    "exitFactorsTitle": "What most affects resale value:",
+    "exitFactors": [
+      "Good condition & upkeep",
+      "Transparent legal structure",
+      "A rental track record",
+      "A recognisable project and location",
+      "Access to shared infrastructure"
+    ],
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Can a foreigner buy property in Thailand?",
+        "a": "Yes, but the structure depends on the property type. A foreigner can own a condominium unit within the foreign-quota limit. For villas and houses on land, leasehold — a long-term right to use — is most common."
+      },
+      {
+        "q": "Can I own land on Koh Samui outright?",
+        "a": "As a rule, a foreigner cannot own land in Thailand directly. That is why villa projects use leasehold or other structures that require individual legal analysis."
+      },
+      {
+        "q": "How long is a leasehold granted for?",
+        "a": "Typically 30 years. The contract can provide for renewals of further terms, e.g. 2 × 30 years, where the project structure and documents allow. Every contract is worth checking with a lawyer."
+      },
+      {
+        "q": "Is leasehold safe?",
+        "a": "It is a widely used structure in Thailand for foreign investment, especially for villas. Safety depends on the quality of the documents, the land status, the contract terms and registration — which is why we recommend verification by an independent lawyer."
+      },
+      {
+        "q": "Can I rent the property to tourists?",
+        "a": "Yes, if the property is in the rental-management programme and meets the project’s operational requirements. The Harmony Life team handles bookings, guests, cleaning, servicing and settlements."
+      },
+      {
+        "q": "How often do I receive a rental settlement?",
+        "a": "The recommended model is quarterly net settlement. You receive a report with revenue, costs, occupancy and the amount due to the owner after agreed operating costs are deducted."
+      },
+      {
+        "q": "Can I use the property myself?",
+        "a": "Yes. Owner-use terms are set out in the agreement — you can book stays for yourself subject to availability and any seasonal limits."
+      },
+      {
+        "q": "Do you guarantee rental income?",
+        "a": "We do not communicate guaranteed income. The property can generate rental revenue, and the amount depends on occupancy, season, pricing, operating costs and market conditions."
+      },
+      {
+        "q": "What drives rental income?",
+        "a": "Primarily location, finish standard, the tourist season, the view, property size, photo quality, guest reviews, market pricing, marketing, service level and access to project infrastructure."
+      },
+      {
+        "q": "Can I sell the property later?",
+        "a": "Yes, you can resell your rights in line with the agreement. Harmony Life can support you in preparing the listing, presenting the property and reaching potential buyers."
+      },
+      {
+        "q": "What costs do I bear beyond the price?",
+        "a": "There may be legal, registration, administrative, banking and translation costs, furnishing costs, common-area fees, utilities, servicing, insurance and rental-management costs. We prepare a detailed breakdown individually."
+      },
+      {
+        "q": "Do I need a lawyer?",
+        "a": "Yes, we recommend an independent lawyer. Buying property abroad calls for understanding local law, the ownership structure, registration rules and the parties’ obligations."
+      }
+    ],
+    "disclaimer": "This guide is general and informational — it is not legal or tax advice. The details of every transaction depend on the specific property, the agreement and current regulations. We recommend verification of the documents by an independent lawyer.",
+    "ctaTitle": "See which property fits your strategy",
+    "ctaText": "Let’s talk about your goals, budget and how you plan to use the property. We will show the available options and explain the process before you decide.",
+    "ctaButton": "Book a consultation"
   }
 }

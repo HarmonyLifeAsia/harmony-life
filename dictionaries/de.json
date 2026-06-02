@@ -3,7 +3,8 @@
     "projects": "Projekte",
     "about": "Über uns",
     "contact": "Kontakt",
-    "bookConsultation": "Beratung buchen"
+    "bookConsultation": "Beratung buchen",
+    "guide": "Investoren-Leitfaden"
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
@@ -483,5 +484,223 @@
     "text": "Erwägen Sie eine Investition auf Koh Samui?",
     "button": "Beratung buchen",
     "dismiss": "Schließen"
+  },
+  "guide": {
+    "metaTitle": "Investoren-Leitfaden | Harmony Life",
+    "heroEyebrow": "Investoren-Leitfaden",
+    "heroTitle": "Wie Sie sicher eine Anlageimmobilie auf Koh Samui kaufen",
+    "heroSubtitle": "Von der Reservierung über die Eigentumsstruktur bis zu Vermietung und Wiederverkauf — der gesamte Prozess, Schritt für Schritt erklärt.",
+    "heroCta": "Beratung buchen",
+    "whyTitle": "Warum dieser Leitfaden wichtig ist",
+    "whyText": "Der Immobilienkauf in Thailand unterscheidet sich vom Kauf in Europa — Grundeigentumsregeln, Rechtsstrukturen und Verfahren sind anders. Wir haben einen klaren Leitfaden erstellt, der den gesamten Prozess zeigt, damit Sie genau wissen, was Sie kaufen und zu welchen Bedingungen.",
+    "flTitle": "Freehold vs. Leasehold",
+    "flSubtitle": "Die zwei zentralen Strukturen in Thailand — und was wir bei Harmony Life nutzen.",
+    "flHeadFeature": "Merkmal",
+    "flHeadFreehold": "Freehold",
+    "flHeadLeasehold": "Leasehold",
+    "flHeadHarmony": "Bei Harmony Life",
+    "flRows": [
+      {
+        "feature": "Was es ist",
+        "freehold": "Volles Eigentum",
+        "leasehold": "Langfristiges Nutzungsrecht",
+        "harmony": "Leasehold — Nutzungsrecht"
+      },
+      {
+        "feature": "Für Ausländer",
+        "freehold": "Nur Eigentumswohnungen (49%-Quote)",
+        "leasehold": "Allgemein verfügbar",
+        "harmony": "Standard für unsere Villen & Apartments"
+      },
+      {
+        "feature": "Grundstück",
+        "freehold": "Anteil über Condominium",
+        "leasehold": "Grundstück gepachtet",
+        "harmony": "Grundstück über registrierten Pachtvertrag"
+      },
+      {
+        "feature": "Dauer",
+        "freehold": "Unbefristet",
+        "leasehold": "Üblich 30 Jahre + Verlängerungen",
+        "harmony": "30 Jahre + 2×30 (vertragsgemäß)"
+      },
+      {
+        "feature": "Typische Nutzung",
+        "freehold": "Apartments (Condominium)",
+        "leasehold": "Villen & Häuser auf Grundstück",
+        "harmony": "Hauptstruktur für internationale Investoren"
+      }
+    ],
+    "ownTitle": "Eigentumsstruktur bei Harmony Life",
+    "ownText": "Für internationale Investoren ist die zentrale Struktur das Leasehold — ein langfristiges Nutzungsrecht an der Immobilie auf Basis eines registrierten Pachtvertrags. Je nach Projekt erhalten Sie einen vollständigen Dokumentensatz zu Ihrem Recht an der Immobilie, den Nutzungsregeln und Ihrer Teilnahme am Vermietungsprogramm.",
+    "ownPointsTitle": "Der Dokumentensatz, den Sie erhalten:",
+    "ownPoints": [
+      "Reservierungsvertrag",
+      "Haupt- / Bauträgervertrag",
+      "Leasehold-Vertrag (registrierter erster Zeitraum)",
+      "Vertrag über die Vermietungsverwaltung",
+      "Regelungen zu Gemeinschaftsflächen und Kosten",
+      "Klare Regeln zur Eigennutzung"
+    ],
+    "ownNote": "In ausgewählten Fällen kann eine Struktur über eine thailändische Gesellschaft geprüft werden — stets mit einem unabhängigen Anwalt. Wir empfehlen transparente, mit thailändischem Recht konforme Lösungen, abgestimmt auf den jeweiligen Immobilientyp.",
+    "processTitle": "Der Kaufprozess Schritt für Schritt",
+    "processSubtitle": "Ein transparenter Weg — von der Auswahl der Immobilie bis zur Übergabe in die Vermietungsverwaltung.",
+    "steps": [
+      {
+        "title": "Auswahl der Immobilie",
+        "text": "Sie wählen eine Villa oder ein Apartment und erhalten den vollständigen Informationssatz: Lage, Grundriss, Preis, Zahlungsplan, Fertigstellungstermin und das Rechtsmodell."
+      },
+      {
+        "title": "Reservierung",
+        "text": "Sie unterzeichnen einen einfachen Reservierungsvertrag und zahlen eine Reservierungsgebühr, die die Immobilie vom Markt nimmt und den Preis fixiert."
+      },
+      {
+        "title": "Due Diligence",
+        "text": "Sie prüfen die Dokumente — selbst oder mit einem unabhängigen Anwalt. Wir stellen Grundstücksdokumente, Genehmigungen, Verträge und den Zeitplan bereit."
+      },
+      {
+        "title": "Hauptvertrag",
+        "text": "Nach der Prüfung unterzeichnen Sie den Hauptvertrag: Bauträger-, Leasehold- und Vermietungsverwaltungsvertrag."
+      },
+      {
+        "title": "Etappenzahlungen",
+        "text": "Sie zahlen in Etappen gemäß einem individuellen Zeitplan, der an den Baufortschritt gekoppelt ist."
+      },
+      {
+        "title": "Bau & Berichte",
+        "text": "Sie erhalten Berichte zum Baufortschritt — Fotos und Meilensteinberichte, mit einem festen Investoren-Ansprechpartner."
+      },
+      {
+        "title": "Übergabe",
+        "text": "Sie prüfen den Ausbaustandard, vermerken etwaige Mängel, unterzeichnen das Übergabeprotokoll und erhalten Schlüssel und Dokumente."
+      },
+      {
+        "title": "Vermietungsverwaltung",
+        "text": "Wenn Sie das Investmentmodell wählen, wird die Immobilie vom Team betreut und für die Vermietung vorbereitet."
+      }
+    ],
+    "costsTitle": "Kosten & Steuern",
+    "costsSubtitle": "Das vollständige Bild — über den Kaufpreis hinaus zeigen wir die zusätzlichen Kosten.",
+    "costGroups": [
+      {
+        "title": "Beim Kauf",
+        "items": [
+          "Reservierungsgebühr",
+          "Dokumentenerstellung & Übersetzungen",
+          "Unabhängiger Anwalt (optional, empfohlen)"
+        ]
+      },
+      {
+        "title": "Registrierung & Amtsgebühren",
+        "items": [
+          "Leasehold-Registrierung im Land Office",
+          "Mögliche Transfer- / Stempelsteuern",
+          "Kosten internationaler Überweisungen"
+        ]
+      },
+      {
+        "title": "Laufend",
+        "items": [
+          "Gebühren für Gemeinschaftsflächen (Pool, Garten, Sicherheit)",
+          "Nebenkosten (Strom, Wasser, Internet)",
+          "Wartung, Reinigung, Versicherung",
+          "Jährliche lokale Steuern & Gebühren"
+        ]
+      },
+      {
+        "title": "Vermietung",
+        "items": [
+          "Provision des Vermietungsbetreibers",
+          "Provisionen der Buchungsplattformen",
+          "Steuern auf Mieteinnahmen (falls zutreffend)"
+        ]
+      }
+    ],
+    "costsNote": "Vor der Unterzeichnung erhalten Sie eine geschätzte Aufstellung der zusätzlichen Kosten für die konkrete Immobilie. Jährliche lokale Steuern sind im Vergleich zu Europa meist relativ niedrig, hängen aber von der Immobilie und den aktuellen Vorschriften ab.",
+    "rentalTitle": "Vermietungsverwaltung",
+    "rentalText": "Wir verkaufen nicht nur Immobilien — wir schaffen ein Ökosystem, in dem Ihre Immobilie für Sie arbeiten kann und zugleich Teil eines gepflegten Raums bleibt. Die Vermietung übernimmt das lokale Harmony-Life-Team auf Koh Samui.",
+    "rentalPointsTitle": "Was wir übernehmen:",
+    "rentalPoints": [
+      "Aufbereitung & Präsentation des Inserats",
+      "Buchungs- und Gästebetreuung",
+      "Check-in / Check-out, Reinigung, Service",
+      "Überwachung des Immobilienzustands",
+      "Berichterstattung und Abrechnungen"
+    ],
+    "rentalSettlement": "Das empfohlene Modell ist die quartalsweise Netto-Abrechnung — nach Abzug vereinbarter Betriebskosten und Provisionen erhalten Sie einen Bericht und den dem Eigentümer zustehenden Betrag.",
+    "rentalReportTitle": "Ihr Quartalsbericht enthält:",
+    "rentalReport": [
+      "Gebuchte Nächte und Auslastung",
+      "Bruttoumsatz und Kosten",
+      "Plattform-Provisionen",
+      "Nettoumsatz und Eigentümerbetrag"
+    ],
+    "rentalOwnerUse": "Sie können die Immobilie auch selbst nutzen — die Bedingungen und Verfügbarkeit (auch in der Hochsaison) regelt der Vertrag.",
+    "exitTitle": "Ausstieg aus der Investition",
+    "exitText": "Eine Investition sollte einen klaren Einstieg und einen möglichen Ausstiegsweg haben. Sie können Ihre Rechte an der Immobilie vertragsgemäß weiterverkaufen — beim Leasehold üblicherweise durch Übertragung der vertraglichen Rechte.",
+    "exitHelp": "Harmony Life kann Ihren Wiederverkauf unterstützen: Erstellung des Inserats und der Fotos, Präsentation gegenüber Käufern aus unserer Investorenbasis sowie Koordination mit Anwalt und Dokumenten.",
+    "exitFactorsTitle": "Was den Wiederverkaufswert am meisten beeinflusst:",
+    "exitFactors": [
+      "Guter Zustand & Pflege",
+      "Transparente Rechtsstruktur",
+      "Eine Vermietungs-Historie",
+      "Ein bekanntes Projekt und gute Lage",
+      "Zugang zur gemeinsamen Infrastruktur"
+    ],
+    "faqTitle": "Häufige Fragen",
+    "faq": [
+      {
+        "q": "Kann ein Ausländer in Thailand Immobilien kaufen?",
+        "a": "Ja, aber die Struktur hängt vom Immobilientyp ab. Ein Ausländer kann eine Eigentumswohnung innerhalb der Ausländerquote besitzen. Bei Villen und Häusern auf Grundstück ist Leasehold — ein langfristiges Nutzungsrecht — am häufigsten."
+      },
+      {
+        "q": "Kann ich auf Koh Samui Land direkt besitzen?",
+        "a": "Grundsätzlich kann ein Ausländer in Thailand kein Land direkt besitzen. Deshalb nutzen Villenprojekte Leasehold oder andere Strukturen, die eine individuelle rechtliche Prüfung erfordern."
+      },
+      {
+        "q": "Für wie viele Jahre wird Leasehold gewährt?",
+        "a": "Üblicherweise 30 Jahre. Der Vertrag kann Verlängerungen weiterer Zeiträume vorsehen, z. B. 2 × 30 Jahre, sofern Projektstruktur und Dokumente dies zulassen. Jeder Vertrag sollte mit einem Anwalt geprüft werden."
+      },
+      {
+        "q": "Ist Leasehold sicher?",
+        "a": "Es ist eine in Thailand weit verbreitete Struktur für ausländische Investitionen, besonders bei Villen. Die Sicherheit hängt von der Qualität der Dokumente, dem Grundstücksstatus, den Vertragsbedingungen und der Registrierung ab — daher empfehlen wir die Prüfung durch einen unabhängigen Anwalt."
+      },
+      {
+        "q": "Kann ich die Immobilie an Touristen vermieten?",
+        "a": "Ja, wenn die Immobilie am Vermietungsprogramm teilnimmt und die betrieblichen Anforderungen des Projekts erfüllt. Das Harmony-Life-Team übernimmt Buchungen, Gäste, Reinigung, Service und Abrechnungen."
+      },
+      {
+        "q": "Wie oft erhalte ich eine Mietabrechnung?",
+        "a": "Das empfohlene Modell ist die quartalsweise Netto-Abrechnung. Sie erhalten einen Bericht mit Umsatz, Kosten, Auslastung und dem dem Eigentümer zustehenden Betrag nach Abzug vereinbarter Betriebskosten."
+      },
+      {
+        "q": "Kann ich die Immobilie selbst nutzen?",
+        "a": "Ja. Die Bedingungen der Eigennutzung regelt der Vertrag — Sie können Aufenthalte für sich buchen, vorbehaltlich Verfügbarkeit und etwaiger saisonaler Grenzen."
+      },
+      {
+        "q": "Garantieren Sie Mieteinnahmen?",
+        "a": "Wir kommunizieren keine garantierten Einnahmen. Die Immobilie kann Mieteinnahmen erzielen; die Höhe hängt von Auslastung, Saison, Preisen, Betriebskosten und Marktlage ab."
+      },
+      {
+        "q": "Was bestimmt die Mieteinnahmen?",
+        "a": "Vor allem Lage, Ausbaustandard, die Tourismussaison, der Ausblick, die Größe, die Fotoqualität, Gästebewertungen, Marktpreise, Marketing, das Serviceniveau und der Zugang zur Projektinfrastruktur."
+      },
+      {
+        "q": "Kann ich die Immobilie später verkaufen?",
+        "a": "Ja, Sie können Ihre Rechte vertragsgemäß weiterverkaufen. Harmony Life kann Sie bei Inserat, Präsentation und der Ansprache potenzieller Käufer unterstützen."
+      },
+      {
+        "q": "Welche Kosten trage ich über den Preis hinaus?",
+        "a": "Es können Rechts-, Registrierungs-, Verwaltungs-, Bank- und Übersetzungskosten anfallen, Möblierungskosten, Gebühren für Gemeinschaftsflächen, Nebenkosten, Wartung, Versicherung und Kosten der Vermietungsverwaltung. Eine detaillierte Aufstellung erstellen wir individuell."
+      },
+      {
+        "q": "Brauche ich einen Anwalt?",
+        "a": "Ja, wir empfehlen einen unabhängigen Anwalt. Der Immobilienkauf im Ausland erfordert Verständnis für das lokale Recht, die Eigentumsstruktur, die Registrierungsregeln und die Pflichten der Parteien."
+      }
+    ],
+    "disclaimer": "Dieser Leitfaden ist allgemein und informativ — er stellt keine Rechts- oder Steuerberatung dar. Die Details jeder Transaktion hängen von der konkreten Immobilie, dem Vertrag und den aktuellen Vorschriften ab. Wir empfehlen die Prüfung der Dokumente durch einen unabhängigen Anwalt.",
+    "ctaTitle": "Finden Sie heraus, welche Immobilie zu Ihrer Strategie passt",
+    "ctaText": "Sprechen wir über Ihre Ziele, Ihr Budget und Ihre geplante Nutzung der Immobilie. Wir zeigen die verfügbaren Optionen und erklären den Prozess, bevor Sie entscheiden.",
+    "ctaButton": "Beratung buchen"
   }
 }

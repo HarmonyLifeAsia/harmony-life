@@ -3,7 +3,8 @@
     "projects": "Inwestycje",
     "about": "O nas",
     "contact": "Kontakt",
-    "bookConsultation": "Umów konsultację"
+    "bookConsultation": "Umów konsultację",
+    "guide": "Przewodnik inwestora"
   },
   "hero": {
     "eyebrow": "Koh Samui, Tajlandia",
@@ -483,5 +484,223 @@
     "text": "Rozważasz inwestycję na Koh Samui?",
     "button": "Umów konsultację",
     "dismiss": "Zamknij"
+  },
+  "guide": {
+    "metaTitle": "Przewodnik inwestora | Harmony Life",
+    "heroEyebrow": "Przewodnik inwestora",
+    "heroTitle": "Jak bezpiecznie kupić nieruchomość inwestycyjną na Koh Samui",
+    "heroSubtitle": "Od rezerwacji, przez strukturę własności, aż po zarządzanie najmem i odsprzedaż — cały proces wyjaśniony krok po kroku.",
+    "heroCta": "Umów konsultację",
+    "whyTitle": "Dlaczego ten przewodnik jest ważny",
+    "whyText": "Zakup nieruchomości w Tajlandii różni się od zakupu w Europie — inne są zasady własności gruntu, struktury prawne i procedury. Przygotowaliśmy przejrzysty przewodnik, który pokazuje cały proces, abyś dokładnie wiedział, co kupujesz i na jakich zasadach.",
+    "flTitle": "Freehold vs Leasehold",
+    "flSubtitle": "Dwie podstawowe struktury w Tajlandii — i to, co stosujemy w Harmony Life.",
+    "flHeadFeature": "Cecha",
+    "flHeadFreehold": "Freehold",
+    "flHeadLeasehold": "Leasehold",
+    "flHeadHarmony": "W Harmony Life",
+    "flRows": [
+      {
+        "feature": "Co to jest",
+        "freehold": "Pełna własność",
+        "leasehold": "Długoterminowe prawo korzystania",
+        "harmony": "Leasehold — prawo korzystania"
+      },
+      {
+        "feature": "Dla obcokrajowca",
+        "freehold": "Tylko lokale w condominium (limit 49%)",
+        "leasehold": "Powszechnie dostępny",
+        "harmony": "Standard dla naszych willi i apartamentów"
+      },
+      {
+        "feature": "Grunt",
+        "freehold": "Udział przez condominium",
+        "leasehold": "Grunt w dzierżawie",
+        "harmony": "Grunt na zarejestrowanej umowie dzierżawy"
+      },
+      {
+        "feature": "Okres",
+        "freehold": "Bezterminowo",
+        "leasehold": "Zwykle 30 lat + odnowienia",
+        "harmony": "30 lat + 2×30 (zgodnie z umową)"
+      },
+      {
+        "feature": "Typowe zastosowanie",
+        "freehold": "Apartamenty (condominium)",
+        "leasehold": "Wille i domy na gruncie",
+        "harmony": "Główna struktura dla inwestorów zagranicznych"
+      }
+    ],
+    "ownTitle": "Struktura własności w Harmony Life",
+    "ownText": "Dla inwestorów zagranicznych podstawową strukturą jest leasehold — długoterminowe prawo korzystania z nieruchomości na podstawie zarejestrowanej umowy dzierżawy. W zależności od projektu otrzymujesz komplet dokumentów obejmujący prawo do nieruchomości, zasady korzystania oraz udział w programie najmu.",
+    "ownPointsTitle": "Komplet dokumentów, który otrzymujesz:",
+    "ownPoints": [
+      "Umowa rezerwacyjna",
+      "Umowa główna / deweloperska",
+      "Umowa leasehold (rejestrowany pierwszy okres)",
+      "Umowa o zarządzanie najmem",
+      "Regulamin części wspólnych i kosztów",
+      "Jasne zasady korzystania właścicielskiego"
+    ],
+    "ownNote": "W wybranych przypadkach możliwa jest analiza struktury przez spółkę tajską — zawsze z niezależnym prawnikiem. Rekomendujemy rozwiązania przejrzyste i zgodne z tajskim prawem, dopasowane do konkretnego typu nieruchomości.",
+    "processTitle": "Proces zakupu krok po kroku",
+    "processSubtitle": "Przejrzysta ścieżka — od wyboru nieruchomości po przekazanie do zarządzania najmem.",
+    "steps": [
+      {
+        "title": "Wybór nieruchomości",
+        "text": "Wybierasz willę lub apartament i otrzymujesz pełen komplet informacji: lokalizację, plan, cenę, harmonogram płatności, termin realizacji oraz model prawny."
+      },
+      {
+        "title": "Rezerwacja",
+        "text": "Podpisujesz prostą umowę rezerwacyjną i wpłacasz opłatę rezerwacyjną, która zdejmuje nieruchomość ze sprzedaży i blokuje cenę."
+      },
+      {
+        "title": "Due diligence",
+        "text": "Weryfikujesz dokumenty — samodzielnie lub z niezależnym prawnikiem. Udostępniamy dokumenty gruntu, pozwolenia, umowy i harmonogram."
+      },
+      {
+        "title": "Umowa główna",
+        "text": "Po weryfikacji podpisujesz umowę główną: deweloperską, leasehold oraz o zarządzanie najmem."
+      },
+      {
+        "title": "Płatności etapowe",
+        "text": "Płacisz etapami zgodnie z indywidualnym harmonogramem powiązanym z postępem budowy."
+      },
+      {
+        "title": "Budowa i raporty",
+        "text": "Otrzymujesz raporty z postępu budowy — zdjęcia i informacje o zakończonych etapach, z kontaktem do opiekuna inwestora."
+      },
+      {
+        "title": "Odbiór",
+        "text": "Sprawdzasz standard wykończenia, zgłaszasz ewentualne poprawki, podpisujesz protokół i odbierasz klucze oraz dokumenty."
+      },
+      {
+        "title": "Zarządzanie najmem",
+        "text": "Jeśli wybierasz model inwestycyjny, nieruchomość trafia pod opiekę zespołu i zostaje przygotowana do wynajmu."
+      }
+    ],
+    "costsTitle": "Koszty i podatki",
+    "costsSubtitle": "Pełen obraz inwestycji — oprócz ceny zakupu pokazujemy koszty dodatkowe.",
+    "costGroups": [
+      {
+        "title": "Przy zakupie",
+        "items": [
+          "Opłata rezerwacyjna",
+          "Przygotowanie dokumentów i tłumaczenia",
+          "Niezależny prawnik (opcjonalnie, zalecane)"
+        ]
+      },
+      {
+        "title": "Rejestracja i opłaty urzędowe",
+        "items": [
+          "Rejestracja leasehold w Land Office",
+          "Ewentualne opłaty transferowe / skarbowe",
+          "Koszty przelewów międzynarodowych"
+        ]
+      },
+      {
+        "title": "Utrzymanie",
+        "items": [
+          "Opłaty za części wspólne (basen, ogród, ochrona)",
+          "Media (prąd, woda, internet)",
+          "Serwis, sprzątanie, ubezpieczenie",
+          "Roczne podatki i opłaty lokalne"
+        ]
+      },
+      {
+        "title": "Najem",
+        "items": [
+          "Prowizja operatora najmu",
+          "Prowizje platform rezerwacyjnych",
+          "Podatki od przychodu z najmu (jeśli występują)"
+        ]
+      }
+    ],
+    "costsNote": "Przed podpisaniem umowy otrzymujesz szacunkowe zestawienie kosztów dodatkowych dla konkretnej nieruchomości. Roczne podatki lokalne są zwykle relatywnie niskie w porównaniu z Europą, ale zależą od nieruchomości i aktualnych przepisów.",
+    "rentalTitle": "Zarządzanie najmem",
+    "rentalText": "Nie sprzedajemy tylko nieruchomości — tworzymy ekosystem, w którym Twoja nieruchomość może pracować, a jednocześnie pozostaje częścią zadbanej przestrzeni. Najmem zajmuje się lokalny zespół Harmony Life na Koh Samui.",
+    "rentalPointsTitle": "Co bierzemy na siebie:",
+    "rentalPoints": [
+      "Przygotowanie i prezentację oferty",
+      "Obsługę rezerwacji i gości",
+      "Check-in / check-out, sprzątanie, serwis",
+      "Nadzór nad stanem nieruchomości",
+      "Raportowanie i rozliczenia"
+    ],
+    "rentalSettlement": "Rekomendowany model to rozliczenie kwartalne netto — po odliczeniu uzgodnionych kosztów operacyjnych i prowizji otrzymujesz raport oraz kwotę należną właścicielowi.",
+    "rentalReportTitle": "Twój kwartalny raport zawiera:",
+    "rentalReport": [
+      "Liczbę nocy i obłożenie",
+      "Przychód brutto i koszty",
+      "Prowizje platform",
+      "Przychód netto i kwotę dla właściciela"
+    ],
+    "rentalOwnerUse": "Możesz też korzystać z nieruchomości samodzielnie — zasady i dostępność (w tym wysoki sezon) opisuje umowa.",
+    "exitTitle": "Wyjście z inwestycji",
+    "exitText": "Inwestycja powinna mieć jasny moment wejścia i możliwą ścieżkę wyjścia. Możesz odsprzedać swoje prawa do nieruchomości zgodnie z umową — w przypadku leasehold zwykle przez przeniesienie praw wynikających z umowy.",
+    "exitHelp": "Harmony Life może wesprzeć Cię w odsprzedaży: przygotowanie oferty i zdjęć, prezentację kupującym z naszej bazy inwestorów, koordynację z prawnikiem i dokumentami.",
+    "exitFactorsTitle": "Co najbardziej wpływa na wartość przy odsprzedaży:",
+    "exitFactors": [
+      "Dobry stan i utrzymanie",
+      "Przejrzysta struktura prawna",
+      "Historia przychodów z najmu",
+      "Rozpoznawalny projekt i lokalizacja",
+      "Dostęp do infrastruktury wspólnej"
+    ],
+    "faqTitle": "Najczęstsze pytania",
+    "faq": [
+      {
+        "q": "Czy obcokrajowiec może kupić nieruchomość w Tajlandii?",
+        "a": "Tak, ale struktura zależy od rodzaju nieruchomości. Obcokrajowiec może posiadać lokal w condominium w ramach limitu foreign quota. Przy willach i domach na gruncie najczęściej stosuje się leasehold — długoterminowe prawo korzystania."
+      },
+      {
+        "q": "Czy mogę posiadać ziemię na Koh Samui na własność?",
+        "a": "Co do zasady obcokrajowiec nie może posiadać ziemi w Tajlandii bezpośrednio na własność. Dlatego przy projektach willowych stosuje się leasehold lub inne struktury wymagające indywidualnej analizy prawnej."
+      },
+      {
+        "q": "Na ile lat zawierany jest leasehold?",
+        "a": "Standardowo na 30 lat. W umowie można przewidzieć odnowienia na kolejne okresy, np. 2 × 30 lat, jeżeli struktura i dokumenty projektu to przewidują. Każdą umowę warto sprawdzić z prawnikiem."
+      },
+      {
+        "q": "Czy leasehold jest bezpieczny?",
+        "a": "To powszechnie stosowana w Tajlandii struktura przy inwestycjach zagranicznych, szczególnie przy willach. Bezpieczeństwo zależy od jakości dokumentów, statusu gruntu, zapisów umowy i rejestracji — dlatego rekomendujemy weryfikację u niezależnego prawnika."
+      },
+      {
+        "q": "Czy mogę wynajmować nieruchomość turystom?",
+        "a": "Tak, jeżeli nieruchomość jest objęta programem zarządzania najmem i spełnia wymagania operacyjne projektu. Zespół Harmony Life zajmuje się rezerwacjami, gośćmi, sprzątaniem, serwisem i rozliczeniami."
+      },
+      {
+        "q": "Jak często otrzymuję rozliczenie z najmu?",
+        "a": "Rekomendowany model to rozliczenie kwartalne netto. Otrzymujesz raport z przychodami, kosztami, obłożeniem i kwotą należną właścicielowi po odliczeniu uzgodnionych kosztów operacyjnych."
+      },
+      {
+        "q": "Czy mogę sam korzystać z nieruchomości?",
+        "a": "Tak. Zasady korzystania właścicielskiego opisuje umowa — możesz rezerwować pobyt dla siebie zgodnie z dostępnością i ewentualnymi ograniczeniami sezonowymi."
+      },
+      {
+        "q": "Czy gwarantujecie zysk z najmu?",
+        "a": "Nie komunikujemy gwarantowanego zysku. Nieruchomość może generować przychody z najmu, a ich wysokość zależy od obłożenia, sezonu, cen, kosztów operacyjnych i sytuacji rynkowej."
+      },
+      {
+        "q": "Co wpływa na wysokość przychodów z najmu?",
+        "a": "Przede wszystkim lokalizacja, standard, sezon turystyczny, widok, wielkość nieruchomości, jakość zdjęć, opinie gości, ceny rynkowe, marketing, poziom obsługi i dostęp do infrastruktury projektu."
+      },
+      {
+        "q": "Czy mogę później sprzedać nieruchomość?",
+        "a": "Tak, możesz odsprzedać swoje prawa zgodnie z umową. Harmony Life może wesprzeć Cię w przygotowaniu oferty, prezentacji nieruchomości i kontakcie z potencjalnymi kupującymi."
+      },
+      {
+        "q": "Jakie koszty ponoszę poza ceną zakupu?",
+        "a": "Mogą wystąpić koszty prawne, rejestracyjne, administracyjne, bankowe i tłumaczeniowe, koszty wyposażenia, opłaty za części wspólne, media, serwis, ubezpieczenie oraz koszty zarządzania najmem. Szczegółowe zestawienie przygotowujemy indywidualnie."
+      },
+      {
+        "q": "Czy potrzebuję prawnika?",
+        "a": "Tak, rekomendujemy niezależnego prawnika. Zakup nieruchomości za granicą wymaga zrozumienia lokalnego prawa, struktury własności, zasad rejestracji i obowiązków stron."
+      }
+    ],
+    "disclaimer": "Niniejszy przewodnik ma charakter ogólny i informacyjny — nie stanowi porady prawnej ani podatkowej. Szczegóły każdej transakcji zależą od konkretnej nieruchomości, umowy i aktualnych przepisów. Zalecamy weryfikację dokumentów przez niezależnego prawnika.",
+    "ctaTitle": "Sprawdź, która nieruchomość pasuje do Twojej strategii",
+    "ctaText": "Porozmawiajmy o Twoich celach, budżecie i modelu korzystania z nieruchomości. Pokażemy dostępne opcje i wyjaśnimy proces, zanim podejmiesz decyzję.",
+    "ctaButton": "Umów konsultację"
   }
 }

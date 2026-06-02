@@ -17,6 +17,7 @@ export default function Navigation() {
 
   const navLinks = [
     { label: dict.nav.projects, href: `/${lang}/#projects` },
+    { label: dict.nav.guide, href: `/${lang}/guide` },
     { label: dict.nav.about, href: `/${lang}/about` },
     { label: dict.nav.contact, href: `/${lang}/contact` },
   ]
