@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
+import { SITE_URL } from './_data/site'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -15,6 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Harmony Life | Villas & Apartments on Koh Samui',
     template: '%s | Harmony Life Koh Samui',
@@ -22,6 +24,15 @@ export const metadata: Metadata = {
   description:
     'Villas and apartments on Koh Samui, Thailand, built to European construction standards — transparent ownership, one team from build to settlement. Founded by Robert Jakub Szymański with 20+ years of experience.',
   robots: { index: true, follow: true },
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: 'Harmony Life',
+    url: SITE_URL,
+    title: 'Harmony Life | Villas & Apartments on Koh Samui',
+    description:
+      'Villas and apartments on Koh Samui, built to European construction standards — transparent ownership, one team from build to settlement.',
+  },
   icons: {
     icon: '/images/logo/favicon.png',
     apple: '/images/logo/favicon.png',
