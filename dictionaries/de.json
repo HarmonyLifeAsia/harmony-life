@@ -187,7 +187,15 @@
     "payment5Stage": "Innenausbau",
     "payment5Timing": "Nach Abschluss des Innenausbaus — Elektrik, Putz, Sanitärinstallation, Fenster",
     "payment6Stage": "Fertigstellung",
-    "payment6Timing": "Nach Abschluss aller Innen- und Außenarbeiten"
+    "payment6Timing": "Nach Abschluss aller Innen- und Außenarbeiten",
+    "solayaPayment": [
+      { "percent": "—", "stage": "Reservierung", "timing": "Initiierungsgebühr von 90.000 THB, anrechenbar auf die Leasingzahlung" },
+      { "percent": "30%", "stage": "Bauträgervertrag", "timing": "Nach Unterzeichnung des Bauträgervertrags" },
+      { "percent": "25%", "stage": "Fundament & erstes Obergeschoss", "timing": "Nach Fertigstellung des Fundaments und der Konstruktion des ersten Obergeschosses" },
+      { "percent": "30%", "stage": "Wände & Dach", "timing": "Nach Fertigstellung von 80% der Wände und der Dachkonstruktion" },
+      { "percent": "10%", "stage": "Innenausbau", "timing": "Nach dem Innenausbau — Elektrik, Putz, Sanitärinstallation, Fenster" },
+      { "percent": "5%", "stage": "Fertigstellung", "timing": "Nach Abschluss aller Innen- und Außenarbeiten am Gebäude" }
+    ]
   },
   "oasis": {
     "mainGalleryTitle": "Galerie der Anlage",

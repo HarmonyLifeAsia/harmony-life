@@ -54,14 +54,16 @@ export default async function ProjectPage({
     'Sold Out': 'bg-cream/10 text-cream/60 border-cream/20',
   }
 
-  const paymentSchedule = [
-    { stage: t.payment1Stage, percent: '—',   timing: t.payment1Timing },
-    { stage: t.payment2Stage, percent: '30%', timing: t.payment2Timing },
-    { stage: t.payment3Stage, percent: '25%', timing: t.payment3Timing },
-    { stage: t.payment4Stage, percent: '30%', timing: t.payment4Timing },
-    { stage: t.payment5Stage, percent: '10%', timing: t.payment5Timing },
-    { stage: t.payment6Stage, percent: '5%',  timing: t.payment6Timing },
-  ]
+  const paymentSchedule = slug === 'solaya-residence' && t.solayaPayment
+    ? t.solayaPayment
+    : [
+        { stage: t.payment1Stage, percent: '—',   timing: t.payment1Timing },
+        { stage: t.payment2Stage, percent: '30%', timing: t.payment2Timing },
+        { stage: t.payment3Stage, percent: '25%', timing: t.payment3Timing },
+        { stage: t.payment4Stage, percent: '30%', timing: t.payment4Timing },
+        { stage: t.payment5Stage, percent: '10%', timing: t.payment5Timing },
+        { stage: t.payment6Stage, percent: '5%',  timing: t.payment6Timing },
+      ]
 
   return (
     <>

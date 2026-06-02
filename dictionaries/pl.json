@@ -187,7 +187,15 @@
     "payment5Stage": "Wykończenie wewnętrzne",
     "payment5Timing": "Po pracach wykończeniowych wewnętrznych — elektryka, tynki, instalacje wodno-kanalizacyjne, okna",
     "payment6Stage": "Zakończenie",
-    "payment6Timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz willi"
+    "payment6Timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz willi",
+    "solayaPayment": [
+      { "percent": "—", "stage": "Rezerwacja", "timing": "Opłata inicjacyjna 90 000 THB zaliczana na poczet opłaty leasingu" },
+      { "percent": "30%", "stage": "Umowa deweloperska", "timing": "Po podpisaniu umowy deweloperskiej" },
+      { "percent": "25%", "stage": "Fundamenty i pierwsze piętro", "timing": "Po zakończeniu budowy fundamentów oraz konstrukcji pierwszego piętra" },
+      { "percent": "30%", "stage": "Ściany i dach", "timing": "Po zakończeniu budowy 80% ścian i konstrukcji dachu" },
+      { "percent": "10%", "stage": "Wykończenie wewnętrzne", "timing": "Po pracach wykończeniowych wewnętrznych — elektryka, tynki, instalacje wodno-kanalizacyjne, okna" },
+      { "percent": "5%", "stage": "Zakończenie", "timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz budynku" }
+    ]
   },
   "oasis": {
     "mainGalleryTitle": "Galeria osiedla",

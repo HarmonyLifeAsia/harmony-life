@@ -187,7 +187,15 @@
     "payment5Stage": "Interior Finishing",
     "payment5Timing": "On completion of interior finishing — electrics, plaster, plumbing, windows",
     "payment6Stage": "Completion",
-    "payment6Timing": "On completion of all interior and exterior works"
+    "payment6Timing": "On completion of all interior and exterior works",
+    "solayaPayment": [
+      { "percent": "—", "stage": "Reservation", "timing": "Initiation fee of THB 90,000, credited toward the leasehold payment" },
+      { "percent": "30%", "stage": "Developer agreement", "timing": "Upon signing the developer agreement" },
+      { "percent": "25%", "stage": "Foundations & first floor", "timing": "On completion of foundations and first-floor structure" },
+      { "percent": "30%", "stage": "Walls & roof", "timing": "On completion of 80% of walls and the roof structure" },
+      { "percent": "10%", "stage": "Interior finishing", "timing": "On completion of interior finishing — electrics, plaster, plumbing, windows" },
+      { "percent": "5%", "stage": "Completion", "timing": "On completion of all interior and exterior building works" }
+    ]
   },
   "oasis": {
     "mainGalleryTitle": "Development Gallery",
