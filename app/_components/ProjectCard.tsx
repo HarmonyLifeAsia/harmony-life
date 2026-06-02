@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '../_data/projects'
+import { localizeProject, statusLabel } from '../_data/localizeProject'
 import { useDict } from './LangProvider'
 
 interface ProjectCardProps {
@@ -19,9 +20,10 @@ const statusColors = {
   'Sold Out': 'bg-cream/10 text-cream/60 border-cream/20',
 }
 
-export default function ProjectCard({ project, index, lang }: ProjectCardProps) {
+export default function ProjectCard({ project: rawProject, index, lang }: ProjectCardProps) {
   const dict = useDict()
   const t = dict.projects
+  const project = localizeProject(rawProject, dict)
 
   return (
     <motion.div
@@ -54,7 +56,7 @@ export default function ProjectCard({ project, index, lang }: ProjectCardProps) 
 
             <div className="absolute top-3 left-3 z-20">
               <span className={`inline-flex text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full border font-medium backdrop-blur-sm ${statusColors[project.status]}`}>
-                {project.status}
+                {statusLabel(project.status, dict)}
               </span>
             </div>
 

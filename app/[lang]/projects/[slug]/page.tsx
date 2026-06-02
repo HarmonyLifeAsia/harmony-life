@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug } from '../../../_data/projects'
+import { localizeProject, statusLabel } from '../../../_data/localizeProject'
 import { CALENDLY_URL } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
@@ -23,11 +24,12 @@ export async function generateMetadata({
 }: {
   params: Promise<{ lang: string; slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
-  const project = getProjectBySlug(slug)
-  if (!project) return {}
+  const { lang, slug } = await params
+  const raw = getProjectBySlug(slug)
+  if (!raw) return {}
+  const project = hasLocale(lang) ? localizeProject(raw, await getDictionary(lang)) : raw
   return {
-    title: project.name,
+    title: `${project.name} | Harmony Life`,
     description: project.description,
     openGraph: { title: `${project.name} | Harmony Life`, description: project.description },
   }
@@ -41,11 +43,12 @@ export default async function ProjectPage({
   const { lang, slug } = await params
   if (!hasLocale(lang)) notFound()
 
-  const project = getProjectBySlug(slug)
-  if (!project) notFound()
+  const rawProject = getProjectBySlug(slug)
+  if (!rawProject) notFound()
 
   const dict = await getDictionary(lang)
   const t = dict.projectDetail
+  const project = localizeProject(rawProject, dict)
 
   const statusColors = {
     'Selling': 'bg-jungle/20 text-jungle-light border-jungle/30',
@@ -261,7 +264,7 @@ export default async function ProjectPage({
                 <p className="text-cream/40 text-xs tracking-wider uppercase mb-1">{t.startingFrom}</p>
                 <p className="font-serif text-3xl text-gradient-gold mb-3">{project.priceFrom}</p>
                 <span className={`inline-flex text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full border font-medium ${statusColors[project.status]}`}>
-                  {project.status}
+                  {statusLabel(project.status, dict)}
                 </span>
 
                 <div className="mt-6 space-y-3">
