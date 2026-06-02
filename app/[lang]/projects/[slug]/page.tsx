@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug } from '../../../_data/projects'
 import { localizeProject, statusLabel } from '../../../_data/localizeProject'
-import { CALENDLY_URL } from '../../../_data/site'
+import { CALENDLY_URL, bookingHref } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
@@ -288,6 +288,22 @@ export default async function ProjectPage({
                     {t.downloadBrochure}
                   </a>
                 </div>
+
+                {/* Sold for ownership, but available as a short-stay rental */}
+                {slug === 'harmony-life-one' && (
+                  <div className="mt-6 pt-6 border-t border-gold/10">
+                    <p className="text-gold text-[10px] tracking-[0.3em] uppercase mb-2">{t.rentalEyebrow}</p>
+                    <p className="text-cream/60 text-sm leading-relaxed mb-4">{t.rentalNote}</p>
+                    <a
+                      href={bookingHref(lang)}
+                      target={bookingHref(lang).startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      className="block w-full text-center bg-gold text-primary py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors cursor-pointer"
+                    >
+                      {dict.nav.bookStay}
+                    </a>
+                  </div>
+                )}
               </div>
 
               <div className="bg-charcoal/30 border border-gold/10 rounded-xl p-6">

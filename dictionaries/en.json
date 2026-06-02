@@ -4,7 +4,8 @@
     "about": "About",
     "contact": "Contact",
     "bookConsultation": "Book Consultation",
-    "guide": "Investor Guide"
+    "guide": "Investor Guide",
+    "bookStay": "Book a Stay"
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
@@ -170,6 +171,8 @@
     "startingFrom": "Starting from",
     "requestPricing": "Request Pricing",
     "downloadBrochure": "OFFER",
+    "rentalEyebrow": "Available to rent",
+    "rentalNote": "Sold out for ownership — but you can still stay here. The Harmony Life One villas are available for short-term rental.",
     "enquireTitle": "Enquire About This Project",
     "bedroomsLabel": "Bedrooms",
     "bathroomsLabel": "Bathrooms",
@@ -337,6 +340,69 @@
     "eyebrow": "We stay after the sale",
     "title": "We don't sell and disappear",
     "body": "After your purchase you stay in the loop: net quarterly settlements, an online investor panel, construction photos twice a month, Investor Days on the island and priority on future projects."
+  },
+  "stay": {
+    "eyebrow": "Stay — Harmony Life One",
+    "title": "Boho villas on Koh Samui, to rent",
+    "subtitle": "10 boho villas, 3 minutes from the beach. The feel of a home, not a hotel — a space for those who value authenticity, calm and harmony with nature.",
+    "p1": "Harmony Life One is our debut — 10 boho-style villas, today available for stays. Each villa blends natural materials, a private pool and attention to detail with European finishing standards.",
+    "p2": "Choose between 2- and 3-bedroom layouts, each with a terrace, garden and access to shared spaces. Ideal for a family holiday or a longer stay on the island.",
+    "feature1": "Villa 2BR — up to 4 guests",
+    "feature2": "Villa 3BR — up to 6 guests",
+    "feature3": "3 minutes from the beach",
+    "cta": "Book a stay",
+    "note": "Booking leads to our system."
+  },
+  "blog": {
+    "eyebrow": "Island guide",
+    "title": "Discover Koh Samui",
+    "subtitle": "Practical tips, hidden gems and inspiration from our blog.",
+    "readMore": "Read more",
+    "allArticles": "All articles",
+    "posts": [
+      {
+        "category": "Beaches",
+        "date": "March 15, 2024",
+        "readTime": "8 min",
+        "title": "Best Beaches on Koh Samui – 2024 Guide",
+        "excerpt": "Discover the most beautiful beaches of Koh Samui. From vibrant Chaweng to the quiet bays of Maenam."
+      },
+      {
+        "category": "Attractions",
+        "date": "March 10, 2024",
+        "readTime": "7 min",
+        "title": "Koh Samui Attractions – What to See",
+        "excerpt": "From the majestic Big Buddha to hidden jungle waterfalls. Explore the island's top attractions."
+      },
+      {
+        "category": "Food",
+        "date": "March 5, 2024",
+        "readTime": "6 min",
+        "title": "Where to Eat on Koh Samui – Best Restaurants & Cafés",
+        "excerpt": "A culinary journey across Koh Samui. From authentic Thai street food to fine seafood restaurants."
+      },
+      {
+        "category": "Sports",
+        "date": "February 28, 2024",
+        "readTime": "7 min",
+        "title": "Active Holidays on Koh Samui – Water Sports & Adventure",
+        "excerpt": "Diving, kitesurfing, jungle trekking and quad tours. Discover the active side of the island."
+      },
+      {
+        "category": "Wellness",
+        "date": "February 20, 2024",
+        "readTime": "5 min",
+        "title": "Relaxing Holidays on Koh Samui – Spa, Wellness & Yoga",
+        "excerpt": "A guide to the best spots for Thai massage, yoga classes and holistic therapies on the island."
+      },
+      {
+        "category": "Nightlife",
+        "date": "February 15, 2024",
+        "readTime": "6 min",
+        "title": "Nightlife on Koh Samui – Bars, Clubs & Parties",
+        "excerpt": "A guide to the best beach clubs, live-music bars and legendary parties."
+      }
+    ]
   },
   "solaya": {
     "exteriorTitle": "Exterior",
