@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValueEvent, useMotionTemplate, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
 
@@ -80,21 +80,28 @@ export default function CinematicTour({ lang }: Props) {
 
   // Scene 2
   const s2O = useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [0, 1, 1, 0])
-  const s2S = useTransform(scrollYProgress, [0.20, 0.55], [1.0, 1.10])
+  const s2S = useTransform(scrollYProgress, [0.20, 0.55], [1.04, 1.12])
   const s2TO = useTransform(scrollYProgress, [0.31, 0.36, 0.45, 0.51], [0, 1, 1, 0])
   const s2TY = useTransform(scrollYProgress, [0.31, 0.36, 0.45, 0.51], [28, 0, 0, -18])
 
   // Scene 3
   const s3O = useTransform(scrollYProgress, [0.45, 0.55, 0.70, 0.80], [0, 1, 1, 0])
-  const s3S = useTransform(scrollYProgress, [0.45, 0.80], [1.0, 1.10])
+  const s3S = useTransform(scrollYProgress, [0.45, 0.80], [1.04, 1.12])
   const s3TO = useTransform(scrollYProgress, [0.56, 0.61, 0.70, 0.76], [0, 1, 1, 0])
   const s3TY = useTransform(scrollYProgress, [0.56, 0.61, 0.70, 0.76], [28, 0, 0, -18])
 
   // Scene 4 (stays to the end, holds CTA)
   const s4O = useTransform(scrollYProgress, [0.70, 0.80, 1.0], [0, 1, 1])
-  const s4S = useTransform(scrollYProgress, [0.70, 1.0], [1.0, 1.08])
+  const s4S = useTransform(scrollYProgress, [0.70, 1.0], [1.04, 1.10])
   const s4TO = useTransform(scrollYProgress, [0.81, 0.87, 1.0], [0, 1, 1])
   const s4TY = useTransform(scrollYProgress, [0.81, 0.87, 1.0], [28, 0, 0])
+
+  // Soft focus-pull during each transition — masks the cross-fade "double exposure"
+  // so unrelated shots melt together instead of ghosting.
+  const s1B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.20, 0.30], [0, 10])}px)`
+  const s2B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [10, 0, 0, 10])}px)`
+  const s3B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.45, 0.55, 0.70, 0.80], [10, 0, 0, 10])}px)`
+  const s4B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.70, 0.80, 1.0], [10, 0, 0])}px)`
 
   const dot1 = useTransform(scrollYProgress, [0, 0.20, 0.30], [1, 1, 0.25])
   const dot2 = useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [0.25, 1, 1, 0.25])
@@ -105,10 +112,10 @@ export default function CinematicTour({ lang }: Props) {
   const ctaY = useTransform(scrollYProgress, [0.90, 1.0], [16, 0])
 
   const layers = [
-    { o: s1O, s: s1S, to: s1TO, ty: s1TY },
-    { o: s2O, s: s2S, to: s2TO, ty: s2TY },
-    { o: s3O, s: s3S, to: s3TO, ty: s3TY },
-    { o: s4O, s: s4S, to: s4TO, ty: s4TY },
+    { o: s1O, s: s1S, f: s1B, to: s1TO, ty: s1TY },
+    { o: s2O, s: s2S, f: s2B, to: s2TO, ty: s2TY },
+    { o: s3O, s: s3S, f: s3B, to: s3TO, ty: s3TY },
+    { o: s4O, s: s4S, f: s4B, to: s4TO, ty: s4TY },
   ]
   const dots = [dot1, dot2, dot3, dot4]
 
@@ -116,7 +123,7 @@ export default function CinematicTour({ lang }: Props) {
     <section ref={containerRef} className="relative" style={{ height: '400vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
-          <motion.div key={i} style={{ opacity: l.o, scale: l.s }} className="absolute inset-0 will-change-transform">
+          <motion.div key={i} style={{ opacity: l.o, scale: l.s, filter: l.f }} className="absolute inset-0 will-change-transform">
             {/* Mobile only — the still. On desktop the scroll-scrubbed video (with its own
                 poster) is the sole layer, so no still flashes through during seeking. */}
             <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
