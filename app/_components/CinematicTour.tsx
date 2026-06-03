@@ -42,36 +42,17 @@ export default function CinematicTour({ lang }: Props) {
     return () => mq.removeEventListener?.('change', apply)
   }, [])
 
-  // Mobile montage: play the active clip from the start and advance to the next scene
-  // after its duration (looping through all four). A duration timer is more reliable on
-  // phones than the 'ended' event; scroll plays no part — the section is one screen tall.
+  // Mobile: one pre-stitched file (all four clips joined) plays + loops as a single
+  // video — far more reliable on phones than switching between four <video> elements.
+  // Captions follow its playhead. Kick off playback once we know we're on mobile.
+  const montageRef = useRef<HTMLVideoElement | null>(null)
   useEffect(() => {
     if (!isMobile) return
-    const v = videoRefs.current[active]
+    const v = montageRef.current
     if (!v) return
-    videoRefs.current.forEach((el, i) => { if (el && i !== active) { try { el.pause() } catch { /* noop */ } } })
-    v.loop = false
     v.muted = true
-    try { v.currentTime = 0 } catch { /* noop */ }
-
-    let timer: ReturnType<typeof setTimeout> | undefined
-    const advance = () => setActive((a) => (a + 1) % scenes.length)
-    const start = () => {
-      v.play?.()?.catch?.(() => {})
-      const dur = Number.isFinite(v.duration) && v.duration > 0 ? v.duration : 5
-      timer = setTimeout(advance, dur * 1000 + 250)
-    }
-
-    if (Number.isFinite(v.duration) && v.duration > 0) {
-      start()
-    } else {
-      const onMeta = () => start()
-      v.addEventListener('loadedmetadata', onMeta, { once: true })
-      v.play?.()?.catch?.(() => {})
-      return () => { v.removeEventListener('loadedmetadata', onMeta); if (timer) clearTimeout(timer) }
-    }
-    return () => { if (timer) clearTimeout(timer) }
-  }, [isMobile, active, scenes.length])
+    v.play?.()?.catch?.(() => {})
+  }, [isMobile])
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
 
@@ -121,28 +102,49 @@ export default function CinematicTour({ lang }: Props) {
   return (
     <section ref={containerRef} className="relative h-screen md:h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
-        {scenes.map((scene, i) => (
-          <motion.div
-            key={i}
-            style={isMobile ? { opacity: active === i ? 1 : 0 } : { opacity: layerO[i] }}
-            className="absolute inset-0 will-change-[opacity] transition-opacity duration-700 ease-in-out md:transition-none"
-          >
-            {/* Mobile: still underneath as fallback. Desktop: video only (no flash). */}
-            <img src={scene.image} alt={scene.alt} className="w-full h-full object-cover md:hidden" />
+        {isMobile ? (
+          /* Mobile — one stitched file, autoplay + loop; captions follow its playhead. */
+          <div className="absolute inset-0">
+            <img src={scenes[0].image} alt={scenes[0].alt} className="absolute inset-0 w-full h-full object-cover" />
             <video
-              ref={(el) => { videoRefs.current[i] = el }}
+              ref={montageRef}
               className="absolute inset-0 w-full h-full object-cover"
+              autoPlay
+              loop
               muted
               playsInline
               preload="auto"
-              poster={scene.image}
+              poster={scenes[0].image}
               aria-hidden="true"
-              onLoadedMetadata={(e) => { if (!isMobile) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } } }}
+              onTimeUpdate={(e) => {
+                const v = e.currentTarget
+                const per = (Number.isFinite(v.duration) && v.duration > 0 ? v.duration : 20.17) / scenes.length
+                const idx = Math.min(scenes.length - 1, Math.floor(v.currentTime / per))
+                if (idx !== active) setActive(idx)
+              }}
             >
-              <source src={scene.video} type="video/mp4" />
+              <source src="/video-tour/tour-all.mp4" type="video/mp4" />
             </video>
-          </motion.div>
-        ))}
+          </div>
+        ) : (
+          /* Desktop — four clips, each scrubbed by scroll, cross-fading at the cuts. */
+          scenes.map((scene, i) => (
+            <motion.div key={i} style={{ opacity: layerO[i] }} className="absolute inset-0 will-change-[opacity]">
+              <video
+                ref={(el) => { videoRefs.current[i] = el }}
+                className="absolute inset-0 w-full h-full object-cover"
+                muted
+                playsInline
+                preload="auto"
+                poster={scene.image}
+                aria-hidden="true"
+                onLoadedMetadata={(e) => { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }}
+              >
+                <source src={scene.video} type="video/mp4" />
+              </video>
+            </motion.div>
+          ))
+        )}
 
         {/* Soft shadow only in the bottom-left corner (behind the captions); rest stays clean. */}
         <div
