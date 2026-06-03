@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent, useMotionTemplate, type MotionValue } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
 
@@ -9,7 +9,7 @@ interface Props {
   lang: string
 }
 
-// Image (poster / mobile) + looping video (desktop) per scene; captions come from dict.
+// Image (poster / mobile) + scroll-scrubbed video (desktop) per scene; captions from dict.
 const SCENE_MEDIA = [
   { image: '/images/projects/harmony-life-oasis/gallery/01.webp', video: '/video-tour/tour-1.mp4', alt: 'Harmony Life Oasis — aerial view of the estate' },
   { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/04.webp', video: '/video-tour/tour-2.mp4', alt: 'Harmony Life Oasis — private pool with sea horizon' },
@@ -17,13 +17,13 @@ const SCENE_MEDIA = [
   { image: '/images/projects/harmony-life-oasis/villas/3bed-rooftop-sea/01.webp', video: '/video-tour/tour-4.mp4', alt: 'Harmony Life Oasis — rooftop terrace with sea view' },
 ]
 
-// Scroll sub-range (of the whole section, 0..1) that scrubs each clip start→end.
-// Ranges overlap the cross-fades so BOTH clips keep moving through a transition.
+// Scroll sub-range that scrubs each clip start→end. Spans slightly past the cut so
+// both shots are still in motion through the (very short) switch — a clean editorial cut.
 const SCRUB_RANGES: [number, number][] = [
-  [0.00, 0.30],
-  [0.20, 0.55],
-  [0.45, 0.80],
-  [0.70, 1.00],
+  [0.00, 0.26],
+  [0.24, 0.51],
+  [0.49, 0.76],
+  [0.74, 1.00],
 ]
 
 // A muted video whose playhead is driven by scroll position instead of autoplay.
@@ -71,51 +71,44 @@ export default function CinematicTour({ lang }: Props) {
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
 
-  // Long cross-fades (0.10 windows) so scenes melt into one another rather than cut.
+  // Clean cuts: each scene holds full opacity across its band, with a ~0.02 switch.
   // Scene 1 (starts visible)
-  const s1O = useTransform(scrollYProgress, [0, 0.20, 0.30], [1, 1, 0])
-  const s1S = useTransform(scrollYProgress, [0, 0.30], [1.0, 1.10])
-  const s1TO = useTransform(scrollYProgress, [0, 0.04, 0.15, 0.21], [0, 1, 1, 0])
-  const s1TY = useTransform(scrollYProgress, [0, 0.04, 0.15, 0.21], [28, 0, 0, -18])
+  const s1O = useTransform(scrollYProgress, [0, 0.24, 0.26], [1, 1, 0])
+  const s1S = useTransform(scrollYProgress, [0, 0.26], [1.0, 1.08])
+  const s1TO = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [0, 1, 1, 0])
+  const s1TY = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [28, 0, 0, -18])
 
   // Scene 2
-  const s2O = useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [0, 1, 1, 0])
-  const s2S = useTransform(scrollYProgress, [0.20, 0.55], [1.04, 1.12])
-  const s2TO = useTransform(scrollYProgress, [0.31, 0.36, 0.45, 0.51], [0, 1, 1, 0])
-  const s2TY = useTransform(scrollYProgress, [0.31, 0.36, 0.45, 0.51], [28, 0, 0, -18])
+  const s2O = useTransform(scrollYProgress, [0.24, 0.26, 0.49, 0.51], [0, 1, 1, 0])
+  const s2S = useTransform(scrollYProgress, [0.24, 0.51], [1.0, 1.08])
+  const s2TO = useTransform(scrollYProgress, [0.27, 0.31, 0.45, 0.50], [0, 1, 1, 0])
+  const s2TY = useTransform(scrollYProgress, [0.27, 0.31, 0.45, 0.50], [28, 0, 0, -18])
 
   // Scene 3
-  const s3O = useTransform(scrollYProgress, [0.45, 0.55, 0.70, 0.80], [0, 1, 1, 0])
-  const s3S = useTransform(scrollYProgress, [0.45, 0.80], [1.04, 1.12])
-  const s3TO = useTransform(scrollYProgress, [0.56, 0.61, 0.70, 0.76], [0, 1, 1, 0])
-  const s3TY = useTransform(scrollYProgress, [0.56, 0.61, 0.70, 0.76], [28, 0, 0, -18])
+  const s3O = useTransform(scrollYProgress, [0.49, 0.51, 0.74, 0.76], [0, 1, 1, 0])
+  const s3S = useTransform(scrollYProgress, [0.49, 0.76], [1.0, 1.08])
+  const s3TO = useTransform(scrollYProgress, [0.52, 0.56, 0.70, 0.75], [0, 1, 1, 0])
+  const s3TY = useTransform(scrollYProgress, [0.52, 0.56, 0.70, 0.75], [28, 0, 0, -18])
 
   // Scene 4 (stays to the end, holds CTA)
-  const s4O = useTransform(scrollYProgress, [0.70, 0.80, 1.0], [0, 1, 1])
-  const s4S = useTransform(scrollYProgress, [0.70, 1.0], [1.04, 1.10])
-  const s4TO = useTransform(scrollYProgress, [0.81, 0.87, 1.0], [0, 1, 1])
-  const s4TY = useTransform(scrollYProgress, [0.81, 0.87, 1.0], [28, 0, 0])
+  const s4O = useTransform(scrollYProgress, [0.74, 0.76, 1.0], [0, 1, 1])
+  const s4S = useTransform(scrollYProgress, [0.74, 1.0], [1.0, 1.07])
+  const s4TO = useTransform(scrollYProgress, [0.77, 0.82, 1.0], [0, 1, 1])
+  const s4TY = useTransform(scrollYProgress, [0.77, 0.82, 1.0], [28, 0, 0])
 
-  // Soft focus-pull during each transition — masks the cross-fade "double exposure"
-  // so unrelated shots melt together instead of ghosting.
-  const s1B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.20, 0.30], [0, 10])}px)`
-  const s2B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [10, 0, 0, 10])}px)`
-  const s3B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.45, 0.55, 0.70, 0.80], [10, 0, 0, 10])}px)`
-  const s4B = useMotionTemplate`blur(${useTransform(scrollYProgress, [0.70, 0.80, 1.0], [10, 0, 0])}px)`
-
-  const dot1 = useTransform(scrollYProgress, [0, 0.20, 0.30], [1, 1, 0.25])
-  const dot2 = useTransform(scrollYProgress, [0.20, 0.30, 0.45, 0.55], [0.25, 1, 1, 0.25])
-  const dot3 = useTransform(scrollYProgress, [0.45, 0.55, 0.70, 0.80], [0.25, 1, 1, 0.25])
-  const dot4 = useTransform(scrollYProgress, [0.70, 0.80, 1.0], [0.25, 1, 1])
+  const dot1 = useTransform(scrollYProgress, [0, 0.24, 0.26], [1, 1, 0.25])
+  const dot2 = useTransform(scrollYProgress, [0.24, 0.26, 0.49, 0.51], [0.25, 1, 1, 0.25])
+  const dot3 = useTransform(scrollYProgress, [0.49, 0.51, 0.74, 0.76], [0.25, 1, 1, 0.25])
+  const dot4 = useTransform(scrollYProgress, [0.74, 0.76, 1.0], [0.25, 1, 1])
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
   const ctaOpacity = useTransform(scrollYProgress, [0.90, 1.0], [0, 1])
   const ctaY = useTransform(scrollYProgress, [0.90, 1.0], [16, 0])
 
   const layers = [
-    { o: s1O, s: s1S, f: s1B, to: s1TO, ty: s1TY },
-    { o: s2O, s: s2S, f: s2B, to: s2TO, ty: s2TY },
-    { o: s3O, s: s3S, f: s3B, to: s3TO, ty: s3TY },
-    { o: s4O, s: s4S, f: s4B, to: s4TO, ty: s4TY },
+    { o: s1O, s: s1S, to: s1TO, ty: s1TY },
+    { o: s2O, s: s2S, to: s2TO, ty: s2TY },
+    { o: s3O, s: s3S, to: s3TO, ty: s3TY },
+    { o: s4O, s: s4S, to: s4TO, ty: s4TY },
   ]
   const dots = [dot1, dot2, dot3, dot4]
 
@@ -123,9 +116,8 @@ export default function CinematicTour({ lang }: Props) {
     <section ref={containerRef} className="relative" style={{ height: '400vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
-          <motion.div key={i} style={{ opacity: l.o, scale: l.s, filter: l.f }} className="absolute inset-0 will-change-transform">
-            {/* Mobile only — the still. On desktop the scroll-scrubbed video (with its own
-                poster) is the sole layer, so no still flashes through during seeking. */}
+          <motion.div key={i} style={{ opacity: l.o, scale: l.s }} className="absolute inset-0 will-change-transform">
+            {/* Mobile only — the still. On desktop the scroll-scrubbed video is the sole layer. */}
             <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
             <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
           </motion.div>
