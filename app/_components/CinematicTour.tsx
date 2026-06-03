@@ -31,27 +31,35 @@ const SCRUB_RANGES: [number, number][] = [
 function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null)
   const durRef = useRef(0)
+  const mobileRef = useRef(false)
 
-  // Prime the decoder (muted play → pause) so seeking renders frames on mobile/iOS,
-  // where a never-played video stays black when you only set currentTime.
+  // Mobile: play the currently-visible clip (loop), pause the rest — reliable on
+  // phones/iOS. Desktop: scrub the playhead with scroll.
   useEffect(() => {
     const v = ref.current
-    if (!v) return
-    const prime = () => {
-      const pr = v.play?.()
-      if (pr && typeof pr.then === 'function') pr.then(() => { try { v.pause() } catch { /* noop */ } }).catch(() => {})
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    mobileRef.current = isMobile
+    if (isMobile && v) {
+      v.loop = true
+      v.muted = true
+      if (range[0] <= 0.001) v.play?.()?.catch?.(() => {}) // scene 1 is visible on load
     }
-    if (v.readyState >= 2) prime()
-    else v.addEventListener('loadeddata', prime, { once: true })
-  }, [])
+  }, [range])
 
-  // Scrub the playhead with scroll on every screen (desktop and mobile).
   useMotionValueEvent(progress, 'change', (p) => {
     const v = ref.current
     if (!v) return
+    const [a, b] = range
+
+    if (mobileRef.current) {
+      const active = p >= a - 0.03 && p <= b + 0.03
+      if (active) { if (v.paused) v.play?.()?.catch?.(() => {}) }
+      else if (!v.paused) v.pause()
+      return
+    }
+
     const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
     if (!dur) return
-    const [a, b] = range
     const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
     const target = Math.min(local * dur, dur - 0.02) // land on the true last frame (match-cut), but never seek to exact end
     if (Math.abs(v.currentTime - target) > 0.02) {
@@ -70,7 +78,7 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
       aria-hidden="true"
       onLoadedMetadata={(e) => {
         durRef.current = e.currentTarget.duration
-        try { e.currentTarget.currentTime = 0 } catch { /* noop */ }
+        if (!mobileRef.current) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }
       }}
     >
       <source src={src} type="video/mp4" />
