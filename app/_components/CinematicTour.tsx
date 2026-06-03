@@ -40,22 +40,21 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     mobileRef.current = isMobile
     if (isMobile && v) {
+      // Native looped autoplay — the most reliable way to get clips running on phones.
       v.loop = true
-      if (range[0] <= 0.001) { v.play?.()?.catch?.(() => {}) } // first scene is visible on load
+      v.muted = true
+      v.autoplay = true
+      const tryPlay = () => { v.play?.()?.catch?.(() => {}) }
+      tryPlay()
+      v.addEventListener('canplay', tryPlay, { once: true })
     }
   }, [range])
 
   useMotionValueEvent(progress, 'change', (p) => {
     const v = ref.current
     if (!v) return
+    if (mobileRef.current) return // mobile: clips autoplay+loop natively; no scroll-scrub
     const [a, b] = range
-
-    if (mobileRef.current) {
-      const active = p >= a - 0.02 && p <= b + 0.02
-      if (active && v.paused) v.play?.()?.catch?.(() => {})
-      else if (!active && !v.paused) v.pause()
-      return
-    }
 
     const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
     if (!dur) return

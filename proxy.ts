@@ -12,7 +12,7 @@ export function proxy(request: NextRequest) {
 
   if (pathnameHasLocale) return
 
-  request.nextUrl.pathname = `/en${pathname}`
+  request.nextUrl.pathname = `/pl${pathname}`
   return NextResponse.redirect(request.nextUrl)
 }
 

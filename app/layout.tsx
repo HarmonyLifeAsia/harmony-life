@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="pl" className={`${playfair.variable} ${inter.variable}`}>
       <head>
         {/* Prevent flash of wrong theme on first load */}
         <script dangerouslySetInnerHTML={{ __html: `
