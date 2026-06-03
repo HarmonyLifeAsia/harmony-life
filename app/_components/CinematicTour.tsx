@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
@@ -31,13 +31,34 @@ const SCRUB_RANGES: [number, number][] = [
 function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null)
   const durRef = useRef(0)
+  const mobileRef = useRef(false)
+
+  // Desktop: scrub the playhead with scroll. Mobile: scrubbing stutters and iOS
+  // limits simultaneous video — so instead loop only the currently-visible clip.
+  useEffect(() => {
+    const v = ref.current
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    mobileRef.current = isMobile
+    if (isMobile && v) {
+      v.loop = true
+      if (range[0] <= 0.001) { v.play?.()?.catch?.(() => {}) } // first scene is visible on load
+    }
+  }, [range])
 
   useMotionValueEvent(progress, 'change', (p) => {
     const v = ref.current
     if (!v) return
+    const [a, b] = range
+
+    if (mobileRef.current) {
+      const active = p >= a - 0.02 && p <= b + 0.02
+      if (active && v.paused) v.play?.()?.catch?.(() => {})
+      else if (!active && !v.paused) v.pause()
+      return
+    }
+
     const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
     if (!dur) return
-    const [a, b] = range
     const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
     const target = Math.min(local * dur, dur - 0.02) // land on the true last frame (match-cut), but never seek to exact end
     if (Math.abs(v.currentTime - target) > 0.02) {
@@ -48,7 +69,7 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
   return (
     <video
       ref={ref}
-      className="hidden md:block absolute inset-0 w-full h-full object-cover"
+      className="absolute inset-0 w-full h-full object-cover"
       muted
       playsInline
       preload="auto"
@@ -56,7 +77,7 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
       aria-hidden="true"
       onLoadedMetadata={(e) => {
         durRef.current = e.currentTarget.duration
-        try { e.currentTarget.currentTime = 0 } catch { /* noop */ }
+        if (!mobileRef.current) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }
       }}
     >
       <source src={src} type="video/mp4" />
@@ -111,8 +132,8 @@ export default function CinematicTour({ lang }: Props) {
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
           <motion.div key={i} style={{ opacity: l.o }} className="absolute inset-0 will-change-[opacity]">
-            {/* Mobile only — the still. On desktop the scroll-scrubbed video is the sole layer. */}
-            <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
+            {/* Video (with its poster image) is the sole layer on every screen:
+                desktop scrubs with scroll, mobile loops the visible clip. */}
             <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
           </motion.div>
         ))}
