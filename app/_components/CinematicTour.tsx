@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
@@ -31,33 +31,14 @@ const SCRUB_RANGES: [number, number][] = [
 function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null)
   const durRef = useRef(0)
-  const mobileRef = useRef(false)
 
-  // Desktop: scrub the playhead with scroll. Mobile: scrubbing stutters and iOS
-  // limits simultaneous video — so instead loop only the currently-visible clip.
-  useEffect(() => {
-    const v = ref.current
-    const isMobile = window.matchMedia('(max-width: 767px)').matches
-    mobileRef.current = isMobile
-    if (isMobile && v) {
-      // Native looped autoplay — the most reliable way to get clips running on phones.
-      v.loop = true
-      v.muted = true
-      v.autoplay = true
-      const tryPlay = () => { v.play?.()?.catch?.(() => {}) }
-      tryPlay()
-      v.addEventListener('canplay', tryPlay, { once: true })
-    }
-  }, [range])
-
+  // Scrub the playhead with scroll on every screen (desktop and mobile).
   useMotionValueEvent(progress, 'change', (p) => {
     const v = ref.current
     if (!v) return
-    if (mobileRef.current) return // mobile: clips autoplay+loop natively; no scroll-scrub
-    const [a, b] = range
-
     const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
     if (!dur) return
+    const [a, b] = range
     const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
     const target = Math.min(local * dur, dur - 0.02) // land on the true last frame (match-cut), but never seek to exact end
     if (Math.abs(v.currentTime - target) > 0.02) {
@@ -76,7 +57,7 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
       aria-hidden="true"
       onLoadedMetadata={(e) => {
         durRef.current = e.currentTarget.duration
-        if (!mobileRef.current) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }
+        try { e.currentTarget.currentTime = 0 } catch { /* noop */ }
       }}
     >
       <source src={src} type="video/mp4" />
@@ -117,6 +98,7 @@ export default function CinematicTour({ lang }: Props) {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
   const ctaOpacity = useTransform(scrollYProgress, [0.90, 1.0], [0, 1])
   const ctaY = useTransform(scrollYProgress, [0.90, 1.0], [16, 0])
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]) // mobile scroll hint fades once scrolling starts
 
   const layers = [
     { o: s1O, to: s1TO, ty: s1TY },
@@ -173,6 +155,18 @@ export default function CinematicTour({ lang }: Props) {
           <p className="text-onscrim/25 text-[10px] tracking-[0.3em] uppercase font-sans">{t.label}</p>
           <p className="text-onscrim/15 text-[9px] tracking-[0.25em] uppercase font-sans mt-0.5">{t.sublabel}</p>
         </div>
+
+        {/* Mobile scroll hint — animated finger on the right-centre, fades once you scroll */}
+        <motion.div style={{ opacity: hintOpacity }} className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none">
+          <motion.div
+            animate={{ y: [0, -14, 0] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+            className="text-3xl drop-shadow-lg"
+          >
+            👆
+          </motion.div>
+          <span className="text-onscrim/80 text-[9px] tracking-[0.25em] uppercase">{dict.hero.scroll}</span>
+        </motion.div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="w-px h-10 bg-gradient-to-b from-gold/50 to-transparent" />
