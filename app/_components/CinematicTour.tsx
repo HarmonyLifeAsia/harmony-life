@@ -42,8 +42,9 @@ export default function CinematicTour({ lang }: Props) {
     return () => mq.removeEventListener?.('change', apply)
   }, [])
 
-  // Mobile montage: play the active clip from the start; when it ends, advance to the
-  // next scene (looping). Scroll plays no part — the section is one screen tall.
+  // Mobile montage: play the active clip from the start and advance to the next scene
+  // after its duration (looping through all four). A duration timer is more reliable on
+  // phones than the 'ended' event; scroll plays no part — the section is one screen tall.
   useEffect(() => {
     if (!isMobile) return
     const v = videoRefs.current[active]
@@ -52,10 +53,24 @@ export default function CinematicTour({ lang }: Props) {
     v.loop = false
     v.muted = true
     try { v.currentTime = 0 } catch { /* noop */ }
-    const onEnded = () => setActive((a) => (a + 1) % scenes.length)
-    v.addEventListener('ended', onEnded)
-    v.play?.()?.catch?.(() => {})
-    return () => v.removeEventListener('ended', onEnded)
+
+    let timer: ReturnType<typeof setTimeout> | undefined
+    const advance = () => setActive((a) => (a + 1) % scenes.length)
+    const start = () => {
+      v.play?.()?.catch?.(() => {})
+      const dur = Number.isFinite(v.duration) && v.duration > 0 ? v.duration : 5
+      timer = setTimeout(advance, dur * 1000 + 250)
+    }
+
+    if (Number.isFinite(v.duration) && v.duration > 0) {
+      start()
+    } else {
+      const onMeta = () => start()
+      v.addEventListener('loadedmetadata', onMeta, { once: true })
+      v.play?.()?.catch?.(() => {})
+      return () => { v.removeEventListener('loadedmetadata', onMeta); if (timer) clearTimeout(timer) }
+    }
+    return () => { if (timer) clearTimeout(timer) }
   }, [isMobile, active, scenes.length])
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
@@ -97,7 +112,6 @@ export default function CinematicTour({ lang }: Props) {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
   const ctaOpacity = useTransform(scrollYProgress, [0.90, 1.0], [0, 1])
   const ctaY = useTransform(scrollYProgress, [0.90, 1.0], [16, 0])
-  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0])
 
   const layerO = [s1O, s2O, s3O, s4O]
   const textO = [s1TO, s2TO, s3TO, s4TO]
@@ -170,12 +184,6 @@ export default function CinematicTour({ lang }: Props) {
           <p className="text-onscrim/25 text-[10px] tracking-[0.3em] uppercase font-sans">{t.label}</p>
           <p className="text-onscrim/15 text-[9px] tracking-[0.25em] uppercase font-sans mt-0.5">{t.sublabel}</p>
         </div>
-
-        {/* Mobile scroll hint — animated finger on the right-centre, fades once you scroll */}
-        <motion.div style={{ opacity: hintOpacity }} className="md:hidden absolute right-4 top-[38%] z-20 flex flex-col items-center gap-2 pointer-events-none">
-          <motion.div animate={{ y: [0, -14, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }} className="text-3xl drop-shadow-lg">👆</motion.div>
-          <span className="text-onscrim/80 text-[9px] tracking-[0.25em] uppercase">{dict.hero.scroll}</span>
-        </motion.div>
 
         {/* Desktop-only scroll progress cues */}
         <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2">
