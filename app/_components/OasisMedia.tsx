@@ -1,6 +1,7 @@
 import MediaGallery from './MediaGallery'
 import VillaQuickContact from './VillaQuickContact'
 import SentBanner from './SentBanner'
+import OasisVillaMapSection from './OasisVillaMapSection'
 import {
   OASIS_MAIN_GALLERY,
   OASIS_CONSTRUCTION,
@@ -17,6 +18,9 @@ export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: R
   return (
     <>
       <SentBanner title={cf.successTitle} text={cf.successText} />
+
+      {/* Interactive villa site plan (WIP) */}
+      <OasisVillaMapSection />
 
       {/* Development gallery */}
       <div>
