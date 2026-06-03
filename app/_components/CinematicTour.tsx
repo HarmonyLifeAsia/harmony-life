@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
@@ -31,6 +31,19 @@ const SCRUB_RANGES: [number, number][] = [
 function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null)
   const durRef = useRef(0)
+
+  // Prime the decoder (muted play → pause) so seeking renders frames on mobile/iOS,
+  // where a never-played video stays black when you only set currentTime.
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    const prime = () => {
+      const pr = v.play?.()
+      if (pr && typeof pr.then === 'function') pr.then(() => { try { v.pause() } catch { /* noop */ } }).catch(() => {})
+    }
+    if (v.readyState >= 2) prime()
+    else v.addEventListener('loadeddata', prime, { once: true })
+  }, [])
 
   // Scrub the playhead with scroll on every screen (desktop and mobile).
   useMotionValueEvent(progress, 'change', (p) => {
@@ -113,8 +126,9 @@ export default function CinematicTour({ lang }: Props) {
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
           <motion.div key={i} style={{ opacity: l.o }} className="absolute inset-0 will-change-[opacity]">
-            {/* Video (with its poster image) is the sole layer on every screen:
-                desktop scrubs with scroll, mobile loops the visible clip. */}
+            {/* Mobile: still image underneath guarantees something always shows even if
+                the device can't render a scrubbed frame. Desktop: video only (no flash). */}
+            <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
             <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
           </motion.div>
         ))}
