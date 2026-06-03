@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
 
@@ -16,6 +16,51 @@ const SCENE_MEDIA = [
   { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/08.webp', video: '/video-tour/tour-3.mp4', alt: 'Harmony Life Oasis — open-plan living interior' },
   { image: '/images/projects/harmony-life-oasis/villas/3bed-rooftop-sea/01.webp', video: '/video-tour/tour-4.mp4', alt: 'Harmony Life Oasis — rooftop terrace with sea view' },
 ]
+
+// Scroll sub-range (of the whole section, 0..1) that scrubs each clip start→end.
+const SCRUB_RANGES: [number, number][] = [
+  [0.00, 0.24],
+  [0.27, 0.49],
+  [0.52, 0.74],
+  [0.77, 1.00],
+]
+
+// A muted video whose playhead is driven by scroll position instead of autoplay.
+function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const durRef = useRef(0)
+
+  useMotionValueEvent(progress, 'change', (p) => {
+    const v = ref.current
+    if (!v) return
+    const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
+    if (!dur) return
+    const [a, b] = range
+    const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
+    const target = local * dur
+    if (Math.abs(v.currentTime - target) > 0.02) {
+      try { v.currentTime = target } catch { /* seeking before ready */ }
+    }
+  })
+
+  return (
+    <video
+      ref={ref}
+      className="hidden md:block absolute inset-0 w-full h-full object-cover"
+      muted
+      playsInline
+      preload="auto"
+      poster={poster}
+      aria-hidden="true"
+      onLoadedMetadata={(e) => {
+        durRef.current = e.currentTarget.duration
+        try { e.currentTarget.currentTime = 0 } catch { /* noop */ }
+      }}
+    >
+      <source src={src} type="video/mp4" />
+    </video>
+  )
+}
 
 export default function CinematicTour({ lang }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -70,15 +115,9 @@ export default function CinematicTour({ lang }: Props) {
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
           <motion.div key={i} style={{ opacity: l.o, scale: l.s }} className="absolute inset-0 will-change-transform">
-            {/* Poster image (always; sole media on mobile). Looping video overlays on desktop. */}
+            {/* Poster image (always; sole media on mobile). Scroll-scrubbed video overlays on desktop. */}
             <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover" />
-            <video
-              className="hidden md:block absolute inset-0 w-full h-full object-cover"
-              autoPlay muted loop playsInline preload="auto" poster={scenes[i].image}
-              aria-hidden="true"
-            >
-              <source src={scenes[i].video} type="video/mp4" />
-            </video>
+            <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
           </motion.div>
         ))}
 
