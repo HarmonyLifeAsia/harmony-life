@@ -71,21 +71,23 @@ export default function CinematicTour({ lang }: Props) {
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
 
-  // Clean cuts: each scene holds full opacity across its band, with a ~0.02 switch.
+  // Seamless cuts with no background dip: the outgoing scene stays fully opaque
+  // until the incoming one (stacked on top) has completely faded in, then drops
+  // underneath it — so the two shots always "touch", never revealing the bg.
   // Scene 1 (starts visible)
-  const s1O = useTransform(scrollYProgress, [0, 0.24, 0.26], [1, 1, 0])
+  const s1O = useTransform(scrollYProgress, [0, 0.26, 0.262], [1, 1, 0])
   const s1S = useTransform(scrollYProgress, [0, 0.26], [1.0, 1.08])
   const s1TO = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [0, 1, 1, 0])
   const s1TY = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [28, 0, 0, -18])
 
   // Scene 2
-  const s2O = useTransform(scrollYProgress, [0.24, 0.26, 0.49, 0.51], [0, 1, 1, 0])
+  const s2O = useTransform(scrollYProgress, [0.24, 0.26, 0.51, 0.512], [0, 1, 1, 0])
   const s2S = useTransform(scrollYProgress, [0.24, 0.51], [1.0, 1.08])
   const s2TO = useTransform(scrollYProgress, [0.27, 0.31, 0.45, 0.50], [0, 1, 1, 0])
   const s2TY = useTransform(scrollYProgress, [0.27, 0.31, 0.45, 0.50], [28, 0, 0, -18])
 
   // Scene 3
-  const s3O = useTransform(scrollYProgress, [0.49, 0.51, 0.74, 0.76], [0, 1, 1, 0])
+  const s3O = useTransform(scrollYProgress, [0.49, 0.51, 0.76, 0.762], [0, 1, 1, 0])
   const s3S = useTransform(scrollYProgress, [0.49, 0.76], [1.0, 1.08])
   const s3TO = useTransform(scrollYProgress, [0.52, 0.56, 0.70, 0.75], [0, 1, 1, 0])
   const s3TY = useTransform(scrollYProgress, [0.52, 0.56, 0.70, 0.75], [28, 0, 0, -18])
