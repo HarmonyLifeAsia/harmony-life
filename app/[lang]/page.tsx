@@ -48,7 +48,7 @@ export default async function HomePage({
 
   return (
     <>
-      <Hero />
+      <CinematicTour lang={lang} />
       <CounterBar />
 
       {/* Projects */}
@@ -82,7 +82,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <CinematicTour lang={lang} />
+      <Hero />
       <MarqueeStrip />
       <WhyInvestSection />
       <LifestyleSection />
