@@ -63,7 +63,7 @@ export default async function HomePage({
           </div>
           {/* Available now — shown first */}
           <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-6">{dict.projects.availableNow}</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {projects.filter((p) => p.status !== 'Sold Out').map((project, i) => (
               <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
             ))}
@@ -72,7 +72,7 @@ export default async function HomePage({
           {projects.some((p) => p.status === 'Sold Out') && (
             <>
               <p className="text-cream/40 text-xs tracking-[0.3em] uppercase font-sans mt-16 mb-6">{dict.projects.delivered}</p>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6">
                 {projects.filter((p) => p.status === 'Sold Out').map((project, i) => (
                   <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
                 ))}
