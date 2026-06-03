@@ -9,12 +9,12 @@ interface Props {
   lang: string
 }
 
-// Image + alt per scene (not localized); captions/eyebrows come from dict.cinematic.scenes.
+// Image (poster / mobile) + looping video (desktop) per scene; captions come from dict.
 const SCENE_MEDIA = [
-  { image: '/images/projects/harmony-life-oasis/gallery/01.webp', alt: 'Harmony Life Oasis — aerial view of the estate' },
-  { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/04.webp', alt: 'Harmony Life Oasis — private pool with sea horizon' },
-  { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/08.webp', alt: 'Harmony Life Oasis — open-plan living interior' },
-  { image: '/images/projects/harmony-life-oasis/villas/3bed-rooftop-sea/01.webp', alt: 'Harmony Life Oasis — rooftop terrace with sea view' },
+  { image: '/images/projects/harmony-life-oasis/gallery/01.webp', video: '/video-tour/tour-1.mp4', alt: 'Harmony Life Oasis — aerial view of the estate' },
+  { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/04.webp', video: '/video-tour/tour-2.mp4', alt: 'Harmony Life Oasis — private pool with sea horizon' },
+  { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/08.webp', video: '/video-tour/tour-3.mp4', alt: 'Harmony Life Oasis — open-plan living interior' },
+  { image: '/images/projects/harmony-life-oasis/villas/3bed-rooftop-sea/01.webp', video: '/video-tour/tour-4.mp4', alt: 'Harmony Life Oasis — rooftop terrace with sea view' },
 ]
 
 export default function CinematicTour({ lang }: Props) {
@@ -70,7 +70,15 @@ export default function CinematicTour({ lang }: Props) {
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
           <motion.div key={i} style={{ opacity: l.o, scale: l.s }} className="absolute inset-0 will-change-transform">
+            {/* Poster image (always; sole media on mobile). Looping video overlays on desktop. */}
             <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover" />
+            <video
+              className="hidden md:block absolute inset-0 w-full h-full object-cover"
+              autoPlay muted loop playsInline preload="auto" poster={scenes[i].image}
+              aria-hidden="true"
+            >
+              <source src={scenes[i].video} type="video/mp4" />
+            </video>
           </motion.div>
         ))}
 
