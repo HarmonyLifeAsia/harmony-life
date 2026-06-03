@@ -117,8 +117,11 @@ export default function CinematicTour({ lang }: Props) {
           </motion.div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-scrim/85 via-scrim/10 to-scrim/35 pointer-events-none z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-scrim/55 via-transparent to-transparent pointer-events-none z-10" />
+        {/* Soft shadow only in the bottom-left corner (behind the captions); rest of the frame stays clean. */}
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{ background: 'radial-gradient(115% 100% at 0% 100%, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.45) 20%, rgba(26,26,46,0) 52%)' }}
+        />
 
         {layers.map((l, i) => {
           const isLast = i === layers.length - 1
