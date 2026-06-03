@@ -115,8 +115,9 @@ export default function CinematicTour({ lang }: Props) {
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {layers.map((l, i) => (
           <motion.div key={i} style={{ opacity: l.o, scale: l.s }} className="absolute inset-0 will-change-transform">
-            {/* Poster image (always; sole media on mobile). Scroll-scrubbed video overlays on desktop. */}
-            <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover" />
+            {/* Mobile only — the still. On desktop the scroll-scrubbed video (with its own
+                poster) is the sole layer, so no still flashes through during seeking. */}
+            <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
             <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
           </motion.div>
         ))}
