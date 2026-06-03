@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent, type MotionValue } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import Link from 'next/link'
 import { useDict } from './LangProvider'
 
@@ -9,7 +9,6 @@ interface Props {
   lang: string
 }
 
-// Image (poster / mobile) + scroll-scrubbed video (desktop) per scene; captions from dict.
 const SCENE_MEDIA = [
   { image: '/images/projects/harmony-life-oasis/gallery/01.webp', video: '/video-tour/tour-1.mp4', alt: 'Harmony Life Oasis — aerial view of the estate' },
   { image: '/images/projects/harmony-life-oasis/villas/4bed-sea/04.webp', video: '/video-tour/tour-2.mp4', alt: 'Harmony Life Oasis — private pool with sea horizon' },
@@ -17,10 +16,7 @@ const SCENE_MEDIA = [
   { image: '/images/projects/harmony-life-oasis/villas/3bed-rooftop-sea/01.webp', video: '/video-tour/tour-4.mp4', alt: 'Harmony Life Oasis — rooftop terrace with sea view' },
 ]
 
-// Each clip scrubs start→end within its own band, NO overlap: clip N reaches its
-// last frame exactly at the cut and clip N+1 begins at its first frame. The clips
-// are authored so end-of-N == start-of-(N+1), so the switch is invisible.
-const CUT = [0.25, 0.50, 0.75]
+// Desktop: each clip scrubs start→end within its own band (match-cut at the boundary).
 const SCRUB_RANGES: [number, number][] = [
   [0.00, 0.25],
   [0.25, 0.50],
@@ -28,133 +24,130 @@ const SCRUB_RANGES: [number, number][] = [
   [0.75, 1.00],
 ]
 
-function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<number>; range: [number, number]; src: string; poster: string }) {
-  const ref = useRef<HTMLVideoElement>(null)
-  const durRef = useRef(0)
-  const mobileRef = useRef(false)
-
-  // Mobile: play the currently-visible clip (loop), pause the rest — reliable on
-  // phones/iOS. Desktop: scrub the playhead with scroll.
-  useEffect(() => {
-    const v = ref.current
-    const isMobile = window.matchMedia('(max-width: 767px)').matches
-    mobileRef.current = isMobile
-    if (isMobile && v) {
-      v.loop = true
-      v.muted = true
-      if (range[0] <= 0.001) v.play?.()?.catch?.(() => {}) // scene 1 is visible on load
-    }
-  }, [range])
-
-  useMotionValueEvent(progress, 'change', (p) => {
-    const v = ref.current
-    if (!v) return
-    const [a, b] = range
-
-    if (mobileRef.current) {
-      const active = p >= a - 0.03 && p <= b + 0.03
-      if (active) { if (v.paused) v.play?.()?.catch?.(() => {}) }
-      else if (!v.paused) v.pause()
-      return
-    }
-
-    const dur = durRef.current || (Number.isFinite(v.duration) ? v.duration : 0)
-    if (!dur) return
-    const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
-    const target = Math.min(local * dur, dur - 0.02) // land on the true last frame (match-cut), but never seek to exact end
-    if (Math.abs(v.currentTime - target) > 0.02) {
-      try { v.currentTime = target } catch { /* seeking before ready */ }
-    }
-  })
-
-  return (
-    <video
-      ref={ref}
-      className="absolute inset-0 w-full h-full object-cover"
-      muted
-      playsInline
-      preload="auto"
-      poster={poster}
-      aria-hidden="true"
-      onLoadedMetadata={(e) => {
-        durRef.current = e.currentTarget.duration
-        if (!mobileRef.current) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }
-      }}
-    >
-      <source src={src} type="video/mp4" />
-    </video>
-  )
-}
-
 export default function CinematicTour({ lang }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const dict = useDict()
   const t = dict.cinematic
   const scenes = SCENE_MEDIA.map((m, i) => ({ ...m, ...t.scenes[i] }))
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+
+  const [isMobile, setIsMobile] = useState(false)
+  const [active, setActive] = useState(0) // mobile montage: which scene is showing
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const apply = () => setIsMobile(mq.matches)
+    apply()
+    mq.addEventListener?.('change', apply)
+    return () => mq.removeEventListener?.('change', apply)
+  }, [])
+
+  // Mobile montage: play the active clip from the start; when it ends, advance to the
+  // next scene (looping). Scroll plays no part — the section is one screen tall.
+  useEffect(() => {
+    if (!isMobile) return
+    const v = videoRefs.current[active]
+    if (!v) return
+    videoRefs.current.forEach((el, i) => { if (el && i !== active) { try { el.pause() } catch { /* noop */ } } })
+    v.loop = false
+    v.muted = true
+    try { v.currentTime = 0 } catch { /* noop */ }
+    const onEnded = () => setActive((a) => (a + 1) % scenes.length)
+    v.addEventListener('ended', onEnded)
+    v.play?.()?.catch?.(() => {})
+    return () => v.removeEventListener('ended', onEnded)
+  }, [isMobile, active, scenes.length])
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
 
-  // Near-instant switch at each cut, no scale/zoom. Outgoing holds opaque until the
-  // incoming (stacked above) is fully in, so the background never shows.
-  const s1O = useTransform(scrollYProgress, [0, CUT[0], CUT[0] + 0.002], [1, 1, 0])
+  // Desktop scrub — drive each clip's playhead from scroll.
+  useMotionValueEvent(scrollYProgress, 'change', (p) => {
+    if (isMobile) return
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return
+      const dur = Number.isFinite(v.duration) ? v.duration : 0
+      if (!dur) return
+      const [a, b] = SCRUB_RANGES[i]
+      const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
+      const target = Math.min(local * dur, dur - 0.02)
+      if (Math.abs(v.currentTime - target) > 0.02) {
+        try { v.currentTime = target } catch { /* seeking before ready */ }
+      }
+    })
+  })
+
+  // Desktop cross-fade / scale / text transforms (no background dip).
+  const s1O = useTransform(scrollYProgress, [0, 0.25, 0.252], [1, 1, 0])
   const s1TO = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [0, 1, 1, 0])
   const s1TY = useTransform(scrollYProgress, [0, 0.03, 0.19, 0.24], [28, 0, 0, -18])
-
-  const s2O = useTransform(scrollYProgress, [CUT[0] - 0.002, CUT[0], CUT[1], CUT[1] + 0.002], [0, 1, 1, 0])
+  const s2O = useTransform(scrollYProgress, [0.248, 0.25, 0.50, 0.502], [0, 1, 1, 0])
   const s2TO = useTransform(scrollYProgress, [0.28, 0.31, 0.44, 0.49], [0, 1, 1, 0])
   const s2TY = useTransform(scrollYProgress, [0.28, 0.31, 0.44, 0.49], [28, 0, 0, -18])
-
-  const s3O = useTransform(scrollYProgress, [CUT[1] - 0.002, CUT[1], CUT[2], CUT[2] + 0.002], [0, 1, 1, 0])
+  const s3O = useTransform(scrollYProgress, [0.498, 0.50, 0.75, 0.752], [0, 1, 1, 0])
   const s3TO = useTransform(scrollYProgress, [0.53, 0.56, 0.69, 0.74], [0, 1, 1, 0])
   const s3TY = useTransform(scrollYProgress, [0.53, 0.56, 0.69, 0.74], [28, 0, 0, -18])
-
-  const s4O = useTransform(scrollYProgress, [CUT[2] - 0.002, CUT[2], 1.0], [0, 1, 1])
+  const s4O = useTransform(scrollYProgress, [0.748, 0.75, 1.0], [0, 1, 1])
   const s4TO = useTransform(scrollYProgress, [0.78, 0.82, 1.0], [0, 1, 1])
   const s4TY = useTransform(scrollYProgress, [0.78, 0.82, 1.0], [28, 0, 0])
 
-  const dot1 = useTransform(scrollYProgress, [0, CUT[0], CUT[0] + 0.002], [1, 1, 0.25])
-  const dot2 = useTransform(scrollYProgress, [CUT[0], CUT[0] + 0.002, CUT[1], CUT[1] + 0.002], [0.25, 1, 1, 0.25])
-  const dot3 = useTransform(scrollYProgress, [CUT[1], CUT[1] + 0.002, CUT[2], CUT[2] + 0.002], [0.25, 1, 1, 0.25])
-  const dot4 = useTransform(scrollYProgress, [CUT[2], CUT[2] + 0.002, 1.0], [0.25, 1, 1])
+  const dot1 = useTransform(scrollYProgress, [0, 0.25, 0.252], [1, 1, 0.25])
+  const dot2 = useTransform(scrollYProgress, [0.248, 0.25, 0.50, 0.502], [0.25, 1, 1, 0.25])
+  const dot3 = useTransform(scrollYProgress, [0.498, 0.50, 0.75, 0.752], [0.25, 1, 1, 0.25])
+  const dot4 = useTransform(scrollYProgress, [0.748, 0.75, 1.0], [0.25, 1, 1])
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
   const ctaOpacity = useTransform(scrollYProgress, [0.90, 1.0], [0, 1])
   const ctaY = useTransform(scrollYProgress, [0.90, 1.0], [16, 0])
-  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]) // mobile scroll hint fades once scrolling starts
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0])
 
-  const layers = [
-    { o: s1O, to: s1TO, ty: s1TY },
-    { o: s2O, to: s2TO, ty: s2TY },
-    { o: s3O, to: s3TO, ty: s3TY },
-    { o: s4O, to: s4TO, ty: s4TY },
-  ]
-  const dots = [dot1, dot2, dot3, dot4]
+  const layerO = [s1O, s2O, s3O, s4O]
+  const textO = [s1TO, s2TO, s3TO, s4TO]
+  const textY = [s1TY, s2TY, s3TY, s4TY]
+  const dotsMV = [dot1, dot2, dot3, dot4]
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: '400vh' }}>
+    <section ref={containerRef} className="relative h-screen md:h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
-        {layers.map((l, i) => (
-          <motion.div key={i} style={{ opacity: l.o }} className="absolute inset-0 will-change-[opacity]">
-            {/* Mobile: still image underneath guarantees something always shows even if
-                the device can't render a scrubbed frame. Desktop: video only (no flash). */}
-            <img src={scenes[i].image} alt={scenes[i].alt} className="w-full h-full object-cover md:hidden" />
-            <ScrubVideo progress={scrollYProgress} range={SCRUB_RANGES[i]} src={scenes[i].video} poster={scenes[i].image} />
+        {scenes.map((scene, i) => (
+          <motion.div
+            key={i}
+            style={isMobile ? { opacity: active === i ? 1 : 0 } : { opacity: layerO[i] }}
+            className="absolute inset-0 will-change-[opacity] transition-opacity duration-700 ease-in-out md:transition-none"
+          >
+            {/* Mobile: still underneath as fallback. Desktop: video only (no flash). */}
+            <img src={scene.image} alt={scene.alt} className="w-full h-full object-cover md:hidden" />
+            <video
+              ref={(el) => { videoRefs.current[i] = el }}
+              className="absolute inset-0 w-full h-full object-cover"
+              muted
+              playsInline
+              preload="auto"
+              poster={scene.image}
+              aria-hidden="true"
+              onLoadedMetadata={(e) => { if (!isMobile) { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } } }}
+            >
+              <source src={scene.video} type="video/mp4" />
+            </video>
           </motion.div>
         ))}
 
-        {/* Soft shadow only in the bottom-left corner (behind the captions); rest of the frame stays clean. */}
+        {/* Soft shadow only in the bottom-left corner (behind the captions); rest stays clean. */}
         <div
           className="absolute inset-0 pointer-events-none z-10"
           style={{ background: 'radial-gradient(115% 100% at 0% 100%, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.45) 20%, rgba(26,26,46,0) 52%)' }}
         />
 
-        {layers.map((l, i) => {
-          const isLast = i === layers.length - 1
+        {scenes.map((scene, i) => {
+          const isLast = i === scenes.length - 1
           return (
-            <motion.div key={i} style={{ opacity: l.to, y: l.ty }} className={`absolute bottom-28 left-8 md:left-16 z-20 max-w-lg ${isLast ? '' : 'pointer-events-none'}`}>
-              <p className="text-onscrim-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scenes[i].eyebrow}</p>
-              <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.05] whitespace-pre-line mb-8">{scenes[i].caption}</p>
+            <motion.div
+              key={i}
+              style={isMobile ? { opacity: active === i ? 1 : 0 } : { opacity: textO[i], y: textY[i] }}
+              className={`absolute bottom-28 left-8 md:left-16 z-20 max-w-lg transition-opacity duration-500 md:transition-none ${isLast ? '' : 'pointer-events-none'}`}
+            >
+              <p className="text-onscrim-gold text-xs tracking-[0.38em] uppercase font-sans mb-4">{scene.eyebrow}</p>
+              <p className="font-serif text-4xl md:text-6xl lg:text-7xl text-onscrim leading-[1.05] whitespace-pre-line mb-8">{scene.caption}</p>
               {isLast && (
-                <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
+                <motion.div style={isMobile ? { opacity: 1 } : { opacity: ctaOpacity, y: ctaY }}>
                   <Link href={`/${lang}/projects/harmony-life-oasis`} className="inline-flex items-center gap-2 bg-gold text-scrim px-7 py-3.5 text-sm font-medium tracking-wider hover:bg-gold-light transition-colors duration-300">
                     {t.cta}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,8 +161,8 @@ export default function CinematicTour({ lang }: Props) {
         })}
 
         <div className="absolute top-1/2 -translate-y-1/2 right-6 md:right-10 z-20 flex flex-col items-center gap-3">
-          {dots.map((dot, i) => (
-            <motion.div key={i} style={{ opacity: dot }} className="w-1 h-1 rounded-full bg-gold" />
+          {scenes.map((_, i) => (
+            <motion.div key={i} style={isMobile ? { opacity: active === i ? 1 : 0.25 } : { opacity: dotsMV[i] }} className="w-1 h-1 rounded-full bg-gold transition-opacity duration-500 md:transition-none" />
           ))}
         </div>
 
@@ -179,22 +172,16 @@ export default function CinematicTour({ lang }: Props) {
         </div>
 
         {/* Mobile scroll hint — animated finger on the right-centre, fades once you scroll */}
-        <motion.div style={{ opacity: hintOpacity }} className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none">
-          <motion.div
-            animate={{ y: [0, -14, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-            className="text-3xl drop-shadow-lg"
-          >
-            👆
-          </motion.div>
+        <motion.div style={{ opacity: hintOpacity }} className="md:hidden absolute right-4 top-[38%] z-20 flex flex-col items-center gap-2 pointer-events-none">
+          <motion.div animate={{ y: [0, -14, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }} className="text-3xl drop-shadow-lg">👆</motion.div>
           <span className="text-onscrim/80 text-[9px] tracking-[0.25em] uppercase">{dict.hero.scroll}</span>
         </motion.div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+        {/* Desktop-only scroll progress cues */}
+        <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2">
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }} className="w-px h-10 bg-gradient-to-b from-gold/50 to-transparent" />
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 z-20">
+        <div className="hidden md:block absolute bottom-0 left-0 right-0 h-px bg-white/10 z-20">
           <motion.div style={{ scaleX: lineScale, transformOrigin: 'left center' }} className="h-full w-full bg-gold/60" />
         </div>
       </div>
