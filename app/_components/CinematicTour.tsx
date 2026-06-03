@@ -39,7 +39,7 @@ function ScrubVideo({ progress, range, src, poster }: { progress: MotionValue<nu
     if (!dur) return
     const [a, b] = range
     const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
-    const target = Math.min(local * dur, dur - 0.05) // avoid seeking to exact end (black frame)
+    const target = Math.min(local * dur, dur - 0.02) // land on the true last frame (match-cut), but never seek to exact end
     if (Math.abs(v.currentTime - target) > 0.02) {
       try { v.currentTime = target } catch { /* seeking before ready */ }
     }
