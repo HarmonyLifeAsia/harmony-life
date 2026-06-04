@@ -65,6 +65,7 @@ export default function HarmonyVillaMap({ onInquire }) {
   const [positions, setPositions] = useState(() =>
     FALLBACK_VILLAS.reduce((a, v) => ((a[v.n] = { x: v.x, y: v.y }), a), {})
   );
+  const [cafePos, setCafePos] = useState({ x: CAFE_POS[0], y: CAFE_POS[1] });
   const stageRef = useRef(null);
   const dragRef = useRef(null);
 
@@ -126,14 +127,15 @@ export default function HarmonyVillaMap({ onInquire }) {
     const r = stageRef.current.getBoundingClientRect();
     const x = Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width) * 100));
     const y = Math.min(100, Math.max(0, ((e.clientY - r.top) / r.height) * 100));
-    setPositions((p) => ({ ...p, [dragRef.current]: { x: +x.toFixed(1), y: +y.toFixed(1) } }));
+    if (dragRef.current === "cafe") setCafePos({ x: +x.toFixed(1), y: +y.toFixed(1) });
+    else setPositions((p) => ({ ...p, [dragRef.current]: { x: +x.toFixed(1), y: +y.toFixed(1) } }));
   }, [calibrate]);
   const onPointerUp = () => { dragRef.current = null; };
 
   const exportText = useMemo(() => {
     const lines = Object.keys(positions).sort((a, b) => a - b).map((n) => `  ${n}:[${positions[n].x},${positions[n].y}],`);
-    return "const POS = {\n" + lines.join("\n") + "\n};";
-  }, [positions]);
+    return "const POS = {\n" + lines.join("\n") + "\n};\nconst CAFE_POS = [" + cafePos.x + "," + cafePos.y + "];";
+  }, [positions, cafePos]);
   const copyExport = async () => {
     try { await navigator.clipboard.writeText(exportText); flash("Skopiowano do schowka"); }
     catch { flash("Zaznacz i skopiuj ręcznie"); }
@@ -195,8 +197,12 @@ export default function HarmonyVillaMap({ onInquire }) {
       >
         <div className="hl-veil" />
 
-        {/* cafe */}
-        <div className="hl-cafe" style={{ left: `${CAFE_POS[0]}%`, top: `${CAFE_POS[1]}%` }}>
+        {/* cafe — draggable in calibration mode */}
+        <div
+          className={"hl-cafe" + (calibrate ? " grab" : "")}
+          style={{ left: `${cafePos.x}%`, top: `${cafePos.y}%` }}
+          onPointerDown={onPointerDown("cafe")}
+        >
           café
         </div>
 
@@ -339,6 +345,8 @@ const css = `
 .hl-cafe{ position:absolute; transform:translate(-50%,-50%); font-family:'Fraunces',serif;
   font-style:italic; font-size:2.3cqw; color:#fff; letter-spacing:.02em;
   text-shadow:0 2px 8px rgba(0,0,0,.6); pointer-events:none; }
+.hl-cafe.grab{ pointer-events:auto; cursor:grab; }
+.hl-cafe.grab:active{ cursor:grabbing; }
 
 /* Small status-coloured dots; number/price reveal in a tooltip on hover. */
 .marker{ position:absolute; transform:translate(-50%,-50%); width:0.95cqw; height:0.95cqw;
