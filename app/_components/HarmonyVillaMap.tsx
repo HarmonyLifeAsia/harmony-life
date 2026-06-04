@@ -34,7 +34,7 @@ const POS = {
   38:[46.2,34.2], 39:[49.7,40.9], 40:[42,39.3], 41:[47.5,46.9], 42:[39.7,45.2], 43:[44,54.9], 44:[37,52.1],
   45:[55.6,42.4], 46:[59.7,44], 47:[58.4,51.7], 48:[54.2,50], 49:[56.9,60.4], 50:[52.3,58.4], 51:[54.7,71.4], 52:[50,68.7], 53:[50.1,84.8],
 };
-const CAFE_POS = [46, 89];
+const CAFE_POS = [40, 64.6];
 
 const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
 const UNITS_API = "/api/oasis-units"; // live data proxied from the CRM panel
