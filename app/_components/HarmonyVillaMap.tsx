@@ -36,22 +36,13 @@ const POS = {
 };
 const CAFE_POS = [46, 89];
 
-const SOLD = new Set([1, 5, 9, 12, 17, 22, 28, 33, 40, 49]);
-const RESERVED = new Set([3, 7, 11, 15, 19, 24, 30, 36, 43, 47, 52]);
+const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
+const UNITS_API = "/api/oasis-units"; // live data proxied from the CRM panel
 
-// metraż / sypialnie / cena — PRZYKŁADOWE, podmień na realne
-function metaFor(n) {
-  const beds = (n % 3) + 1;                 // 1–3 sypialnie
-  const area = 95 + beds * 35 + (n % 4) * 8; // m²
-  const priceFrom = (area * 95000);          // THB (przykład)
-  return { beds, area, priceFrom };
-}
-
-const VILLAS = Object.entries(POS).map(([k, [x, y]]) => {
-  const n = Number(k);
-  const status = SOLD.has(n) ? "sold" : RESERVED.has(n) ? "reserved" : "available";
-  return { n, x, y, status, ...metaFor(n) };
-});
+// Positions come from calibration (POS); status / specs / prices are LIVE from the CRM.
+const FALLBACK_VILLAS = Object.entries(POS).map(([k, [x, y]]) => ({
+  n: Number(k), x, y, status: "available", beds: null, area: null, plot: null, priceFrom: null, lease: null,
+}));
 
 const STATUS = {
   available: { label: "Dostępna", color: "#3E6B4F", short: "dostępne" },
@@ -59,11 +50,12 @@ const STATUS = {
   sold:      { label: "Sprzedana", color: "#8C8275", short: "sprzedane" },
 };
 
-const thb = (v) => "฿" + Math.round(v).toLocaleString("pl-PL");
+const thb = (v) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
 
 export default function HarmonyVillaMap({ onInquire }) {
+  const [villas, setVillas] = useState(FALLBACK_VILLAS);
   const [positions, setPositions] = useState(() =>
-    VILLAS.reduce((a, v) => ((a[v.n] = { x: v.x, y: v.y }), a), {})
+    FALLBACK_VILLAS.reduce((a, v) => ((a[v.n] = { x: v.x, y: v.y }), a), {})
   );
   const [active, setActive] = useState(null);
   const [hover, setHover] = useState(null);
@@ -76,8 +68,39 @@ export default function HarmonyVillaMap({ onInquire }) {
 
   const counts = useMemo(() => {
     const c = { available: 0, reserved: 0, sold: 0 };
-    VILLAS.forEach((v) => c[v.status]++);
+    villas.forEach((v) => c[v.status]++);
     return c;
+  }, [villas]);
+
+  // Live villa data (status / specs / prices) from the CRM — fetched on mount and
+  // refreshed periodically so the map always reflects current availability.
+  useEffect(() => {
+    let alive = true;
+    const load = async () => {
+      try {
+        const res = await fetch(UNITS_API, { cache: "no-store" });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!alive || !Array.isArray(data.units)) return;
+        const byNum = {};
+        data.units.forEach((u) => { byNum[String(u.unitNumber)] = u; });
+        setVillas(Object.entries(POS).map(([k, [x, y]]) => {
+          const u = byNum[String(k)];
+          return {
+            n: Number(k), x, y,
+            status: u ? (STATUS_MAP[u.status] || "available") : "available",
+            beds: u?.bedrooms ?? null,
+            area: u?.areaSqm != null ? Math.round(Number(u.areaSqm)) : null,
+            plot: u?.plotAreaSqm != null ? Math.round(Number(u.plotAreaSqm)) : null,
+            priceFrom: u?.basePriceTHB != null ? Number(u.basePriceTHB) : null,
+            lease: u?.yearlyLeaseTHB != null ? Number(u.yearlyLeaseTHB) : null,
+          };
+        }));
+      } catch { /* keep fallback */ }
+    };
+    load();
+    const id = setInterval(load, 180000);
+    return () => { alive = false; clearInterval(id); };
   }, []);
 
   useEffect(() => {
@@ -117,7 +140,7 @@ export default function HarmonyVillaMap({ onInquire }) {
     catch { flash("Zaznacz i skopiuj ręcznie"); }
   };
 
-  const activeVilla = active != null ? VILLAS.find((v) => v.n === active) : null;
+  const activeVilla = active != null ? villas.find((v) => v.n === active) : null;
 
   return (
     <div className="hl-wrap">
@@ -152,7 +175,7 @@ export default function HarmonyVillaMap({ onInquire }) {
           className={"chip " + (filter === null ? "active" : "")}
           onClick={() => setFilter(null)}
         >
-          Wszystkie <b>{VILLAS.length}</b>
+          Wszystkie <b>{villas.length}</b>
         </button>
         {Object.entries(STATUS).map(([k, s]) => (
           <button
@@ -182,7 +205,7 @@ export default function HarmonyVillaMap({ onInquire }) {
           café
         </div>
 
-        {VILLAS.map((v) => {
+        {villas.map((v) => {
           const p = positions[v.n] || { x: v.x, y: v.y };
           const dim = filter && v.status !== filter;
           const isActive = active === v.n;
@@ -227,9 +250,15 @@ export default function HarmonyVillaMap({ onInquire }) {
             </span>
             <h3 className="hl-pname">Willa nr {activeVilla.n}</h3>
             <ul className="hl-specs">
-              <li><span>Sypialnie</span><b>{activeVilla.beds}</b></li>
-              <li><span>Powierzchnia</span><b>{activeVilla.area} m²</b></li>
-              <li><span>Cena od</span><b>{thb(activeVilla.priceFrom)}</b></li>
+              <li><span>Sypialnie</span><b>{activeVilla.beds ?? "—"}</b></li>
+              <li><span>Powierzchnia</span><b>{activeVilla.area != null ? activeVilla.area + " m²" : "—"}</b></li>
+              {activeVilla.plot != null && (
+                <li><span>Działka</span><b>{activeVilla.plot} m²</b></li>
+              )}
+              <li><span>Cena od</span><b>{activeVilla.priceFrom != null ? thb(activeVilla.priceFrom) : "—"}</b></li>
+              {activeVilla.lease != null && (
+                <li><span>Leasing / rok</span><b>{thb(activeVilla.lease)}</b></li>
+              )}
             </ul>
             <button
               className="hl-cta"
