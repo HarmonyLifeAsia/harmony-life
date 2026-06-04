@@ -347,16 +347,16 @@ const css = `
   text-shadow:0 2px 8px rgba(0,0,0,.6); pointer-events:none; }
 
 /* Small status-coloured dots; number/price reveal in a tooltip on hover. */
-.marker{ position:absolute; transform:translate(-50%,-50%); width:1.0cqw; height:1.0cqw;
-  min-width:11px; min-height:11px; border-radius:50%; border:0; cursor:pointer; padding:0;
+.marker{ position:absolute; transform:translate(-50%,-50%); width:0.68cqw; height:0.68cqw;
+  min-width:7px; min-height:7px; border-radius:50%; border:0; cursor:pointer; padding:0;
   background:var(--c); display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 0 .1cqw rgba(255,255,255,.92), 0 1px 3px rgba(0,0,0,.45);
+  box-shadow:0 0 0 .06cqw rgba(255,255,255,.9), 0 1px 2px rgba(0,0,0,.4);
   transition:transform .16s cubic-bezier(.2,.8,.3,1.2), box-shadow .16s, opacity .2s; }
 .marker .m-num{ display:none; }
-.marker:hover{ transform:translate(-50%,-50%) scale(2.0); z-index:60;
-  box-shadow:0 0 0 .12cqw #fff, 0 3px 10px rgba(0,0,0,.55); }
-.marker.active{ transform:translate(-50%,-50%) scale(2.1); z-index:60;
-  box-shadow:0 0 0 .12cqw #fff, 0 0 0 .4cqw var(--c), 0 5px 12px rgba(0,0,0,.55); }
+.marker:hover{ transform:translate(-50%,-50%) scale(2.8); z-index:60;
+  box-shadow:0 0 0 .08cqw #fff, 0 3px 10px rgba(0,0,0,.55); }
+.marker.active{ transform:translate(-50%,-50%) scale(3.0); z-index:60;
+  box-shadow:0 0 0 .08cqw #fff, 0 0 0 .28cqw var(--c), 0 5px 12px rgba(0,0,0,.55); }
 .marker.dim{ opacity:.3; pointer-events:none; filter:saturate(.5); }
 .marker.grab{ cursor:grab; }
 .marker.grab:active{ cursor:grabbing; }
