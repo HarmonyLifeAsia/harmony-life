@@ -217,21 +217,26 @@ export default function HarmonyVillaMap({ onInquire }) {
                 "marker" +
                 (dim ? " dim" : "") +
                 (isActive ? " active" : "") +
-                (calibrate ? " grab" : "")
+                (calibrate ? " grab" : "") +
+                (p.y < 20 ? " tip-below" : "")
               }
               style={{
                 left: `${p.x}%`,
                 top: `${p.y}%`,
                 "--c": STATUS[v.status].color,
-                zIndex: isActive || isHover ? 40 : dim ? 5 : 10,
+                zIndex: isActive || isHover ? 60 : dim ? 5 : 10,
               }}
               onPointerDown={onPointerDown(v.n)}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
               onClick={() => { if (!calibrate) setActive(v.n); }}
-              aria-label={`Willa ${v.n} — ${STATUS[v.status].label}`}
+              aria-label={`Willa ${v.n} — ${STATUS[v.status].label}${v.priceFrom != null ? ` — od ${thb(v.priceFrom)}` : ""}`}
             >
-              {v.n}
+              <span className="m-num">{v.n}</span>
+              <span className="m-tip">
+                <b>Willa {v.n}</b> · {STATUS[v.status].label}
+                {v.priceFrom != null ? <> · <span className="t-price">od {thb(v.priceFrom)}</span></> : null}
+              </span>
             </button>
           );
         })}
@@ -341,20 +346,42 @@ const css = `
   font-style:italic; font-size:2.3cqw; color:#fff; letter-spacing:.02em;
   text-shadow:0 2px 8px rgba(0,0,0,.6); pointer-events:none; }
 
-.marker{ position:absolute; transform:translate(-50%,-50%); width:1.7cqw; height:1.7cqw;
-  min-width:15px; min-height:15px; border-radius:50%; border:0; cursor:pointer;
-  font-family:'Hanken Grotesk',sans-serif; font-weight:600; color:#fff;
-  font-size:clamp(8px,1.0cqw,12px); letter-spacing:-.02em;
-  background:var(--hl-mark); display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 0 .12cqw rgba(255,255,255,.85), 0 1px 4px rgba(0,0,0,.4);
-  transition:transform .16s cubic-bezier(.2,.8,.3,1.2), filter .16s, opacity .2s; }
-.marker:hover{ transform:translate(-50%,-50%) scale(1.55); z-index:40;
-  box-shadow:0 0 0 .14cqw #fff, 0 3px 9px rgba(0,0,0,.5); }
-.marker.active{ transform:translate(-50%,-50%) scale(1.65);
-  box-shadow:0 0 0 .14cqw #fff, 0 0 0 .42cqw var(--hl-mark), 0 5px 12px rgba(0,0,0,.5); }
-.marker.dim{ opacity:.26; pointer-events:none; filter:saturate(.4); }
+/* Small status-coloured dots; number/price reveal in a tooltip on hover. */
+.marker{ position:absolute; transform:translate(-50%,-50%); width:1.0cqw; height:1.0cqw;
+  min-width:11px; min-height:11px; border-radius:50%; border:0; cursor:pointer; padding:0;
+  background:var(--c); display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 0 .1cqw rgba(255,255,255,.92), 0 1px 3px rgba(0,0,0,.45);
+  transition:transform .16s cubic-bezier(.2,.8,.3,1.2), box-shadow .16s, opacity .2s; }
+.marker .m-num{ display:none; }
+.marker:hover{ transform:translate(-50%,-50%) scale(2.0); z-index:60;
+  box-shadow:0 0 0 .12cqw #fff, 0 3px 10px rgba(0,0,0,.55); }
+.marker.active{ transform:translate(-50%,-50%) scale(2.1); z-index:60;
+  box-shadow:0 0 0 .12cqw #fff, 0 0 0 .4cqw var(--c), 0 5px 12px rgba(0,0,0,.55); }
+.marker.dim{ opacity:.3; pointer-events:none; filter:saturate(.5); }
 .marker.grab{ cursor:grab; }
 .marker.grab:active{ cursor:grabbing; }
+
+/* Hover tooltip (mini leader): number + status + price */
+.m-tip{ position:absolute; left:50%; bottom:150%; transform:translateX(-50%) translateY(6px);
+  background:rgba(20,24,18,.96); color:#fff; padding:6px 9px; border-radius:8px;
+  font-family:'Hanken Grotesk',sans-serif; font-size:11px; line-height:1.2; white-space:nowrap;
+  border:1px solid rgba(255,255,255,.14); box-shadow:0 8px 20px rgba(0,0,0,.45);
+  opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; z-index:70; }
+.m-tip b{ font-family:'Fraunces',serif; font-weight:600; }
+.m-tip .t-price{ color:#DFC49A; }
+.m-tip::after{ content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  border:5px solid transparent; border-top-color:rgba(20,24,18,.96); }
+.marker:hover .m-tip{ opacity:1; transform:translateX(-50%) translateY(0); }
+/* flip tooltip below for top-row markers (stage clips overflow) */
+.marker.tip-below .m-tip{ bottom:auto; top:150%; transform:translateX(-50%) translateY(-6px); }
+.marker.tip-below .m-tip::after{ top:auto; bottom:100%; border-top-color:transparent; border-bottom-color:rgba(20,24,18,.96); }
+.marker.tip-below:hover .m-tip{ transform:translateX(-50%) translateY(0); }
+
+/* Calibration: enlarge dots and show numbers to identify them */
+.hl-stage.calibrate .marker{ width:1.7cqw; height:1.7cqw; min-width:17px; min-height:17px; }
+.hl-stage.calibrate .marker .m-num{ display:block; font-family:'Hanken Grotesk',sans-serif;
+  font-weight:700; color:#fff; font-size:clamp(8px,1cqw,11px); }
+.hl-stage.calibrate .m-tip{ display:none; }
 
 .hl-panel-bg{ position:fixed; inset:0; background:rgba(25,30,22,.5);
   backdrop-filter:blur(3px); display:flex; justify-content:flex-end; z-index:200;
