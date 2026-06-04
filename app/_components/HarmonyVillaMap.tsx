@@ -20,7 +20,7 @@
   - kliknij "Eksportuj pozycje" i wklej JSON z powrotem do VILLAS.
 */
 
-import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 const BACKGROUND = "/images/projects/harmony-life-oasis/harmony-oasis-plan.jpg";
 
@@ -45,26 +45,19 @@ const FALLBACK_VILLAS = Object.entries(POS).map(([k, [x, y]]) => ({
 }));
 
 const STATUS = {
-  available: { label: "Dostępna", color: "#3E6B4F", short: "dostępne" },
-  reserved:  { label: "Rezerwacja", color: "#C9A24B", short: "rezerwacja" },
-  sold:      { label: "Sprzedana", color: "#8C8275", short: "sprzedane" },
+  available: { label: "Dostępna", color: "#3E9B5F", short: "dostępne" },
+  reserved:  { label: "Rezerwacja", color: "#E08A2B", short: "rezerwacja" },
+  sold:      { label: "Sprzedana", color: "#D23B36", short: "sprzedane" },
 };
 
 const thb = (v) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
 
 export default function HarmonyVillaMap({ onInquire }) {
   const [villas, setVillas] = useState(FALLBACK_VILLAS);
-  const [positions, setPositions] = useState(() =>
-    FALLBACK_VILLAS.reduce((a, v) => ((a[v.n] = { x: v.x, y: v.y }), a), {})
-  );
   const [active, setActive] = useState(null);
   const [hover, setHover] = useState(null);
   const [filter, setFilter] = useState(null);      // null | status key
-  const [calibrate, setCalibrate] = useState(false);
-  const [exportOpen, setExportOpen] = useState(false);
   const [toast, setToast] = useState(null);
-  const stageRef = useRef(null);
-  const dragRef = useRef(null);
 
   const counts = useMemo(() => {
     const c = { available: 0, reserved: 0, sold: 0 };
@@ -104,41 +97,12 @@ export default function HarmonyVillaMap({ onInquire }) {
   }, []);
 
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key.toLowerCase() === "c" && !exportOpen) setCalibrate((s) => !s);
-      if (e.key === "Escape") { setActive(null); setExportOpen(false); }
-    };
+    const onKey = (e) => { if (e.key === "Escape") setActive(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [exportOpen]);
+  }, []);
 
   const flash = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
-
-  const onPointerDown = (n) => (e) => {
-    if (!calibrate) return;
-    e.preventDefault();
-    dragRef.current = n;
-  };
-  const onPointerMove = useCallback((e) => {
-    if (!calibrate || dragRef.current == null || !stageRef.current) return;
-    const r = stageRef.current.getBoundingClientRect();
-    const x = Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width) * 100));
-    const y = Math.min(100, Math.max(0, ((e.clientY - r.top) / r.height) * 100));
-    setPositions((p) => ({ ...p, [dragRef.current]: { x: +x.toFixed(1), y: +y.toFixed(1) } }));
-  }, [calibrate]);
-  const onPointerUp = () => { dragRef.current = null; };
-
-  const exportText = useMemo(() => {
-    const lines = Object.keys(positions)
-      .sort((a, b) => a - b)
-      .map((n) => `  ${n}:[${positions[n].x},${positions[n].y}],`);
-    return "const POS = {\n" + lines.join("\n") + "\n};";
-  }, [positions]);
-
-  const copyExport = async () => {
-    try { await navigator.clipboard.writeText(exportText); flash("Skopiowano do schowka"); }
-    catch { flash("Zaznacz i skopiuj ręcznie"); }
-  };
 
   const activeVilla = active != null ? villas.find((v) => v.n === active) : null;
 
@@ -152,20 +116,6 @@ export default function HarmonyVillaMap({ onInquire }) {
           <div className="hl-brand">HARMONY&nbsp;LIFE</div>
           <h2 className="hl-title">Plan osiedla</h2>
           <p className="hl-sub">Wybierz willę na mapie — Live in harmony.</p>
-        </div>
-        <div className="hl-tools">
-          <button
-            className={"hl-cal " + (calibrate ? "on" : "")}
-            onClick={() => setCalibrate((s) => !s)}
-            title="Tryb kalibracji (klawisz C)"
-          >
-            {calibrate ? "● Kalibracja" : "Kalibracja"}
-          </button>
-          {calibrate && (
-            <button className="hl-cal alt" onClick={() => setExportOpen(true)}>
-              Eksportuj pozycje
-            </button>
-          )}
         </div>
       </div>
 
@@ -191,12 +141,8 @@ export default function HarmonyVillaMap({ onInquire }) {
 
       {/* SCENA */}
       <div
-        ref={stageRef}
-        className={"hl-stage " + (calibrate ? "calibrate" : "")}
+        className="hl-stage"
         style={{ backgroundImage: `url("${BACKGROUND}")` }}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
       >
         <div className="hl-veil" />
 
@@ -206,7 +152,7 @@ export default function HarmonyVillaMap({ onInquire }) {
         </div>
 
         {villas.map((v) => {
-          const p = positions[v.n] || { x: v.x, y: v.y };
+          const p = { x: v.x, y: v.y };
           const dim = filter && v.status !== filter;
           const isActive = active === v.n;
           const isHover = hover === v.n;
@@ -217,7 +163,6 @@ export default function HarmonyVillaMap({ onInquire }) {
                 "marker" +
                 (dim ? " dim" : "") +
                 (isActive ? " active" : "") +
-                (calibrate ? " grab" : "") +
                 (p.y < 20 ? " tip-below" : "")
               }
               style={{
@@ -226,10 +171,9 @@ export default function HarmonyVillaMap({ onInquire }) {
                 "--c": STATUS[v.status].color,
                 zIndex: isActive || isHover ? 60 : dim ? 5 : 10,
               }}
-              onPointerDown={onPointerDown(v.n)}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
-              onClick={() => { if (!calibrate) setActive(v.n); }}
+              onClick={() => setActive(v.n)}
               aria-label={`Willa ${v.n} — ${STATUS[v.status].label}${v.priceFrom != null ? ` — od ${thb(v.priceFrom)}` : ""}`}
             >
               <span className="m-num">{v.n}</span>
@@ -278,24 +222,6 @@ export default function HarmonyVillaMap({ onInquire }) {
         </div>
       )}
 
-      {/* EKSPORT POZYCJI */}
-      {exportOpen && (
-        <div className="hl-panel-bg" onClick={() => setExportOpen(false)}>
-          <div className="hl-export" onClick={(e) => e.stopPropagation()}>
-            <h3>Pozycje markerów</h3>
-            <p>Skopiuj i wklej do tablicy <code>POS</code> w komponencie.</p>
-            <textarea readOnly value={exportText} onFocus={(e) => e.target.select()} />
-            <div className="hl-export-row">
-              <button className="hl-cta sm" onClick={copyExport}>Kopiuj</button>
-              <button className="hl-cal" onClick={() => setExportOpen(false)}>Zamknij</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {calibrate && (
-        <div className="hl-hint">Tryb kalibracji — przeciągnij markery. Wyłącz klawiszem C.</div>
-      )}
       {toast && <div className="hl-toast">{toast}</div>}
     </div>
   );
@@ -347,16 +273,16 @@ const css = `
   text-shadow:0 2px 8px rgba(0,0,0,.6); pointer-events:none; }
 
 /* Small status-coloured dots; number/price reveal in a tooltip on hover. */
-.marker{ position:absolute; transform:translate(-50%,-50%); width:0.68cqw; height:0.68cqw;
-  min-width:7px; min-height:7px; border-radius:50%; border:0; cursor:pointer; padding:0;
+.marker{ position:absolute; transform:translate(-50%,-50%); width:0.95cqw; height:0.95cqw;
+  min-width:9px; min-height:9px; border-radius:50%; border:0; cursor:pointer; padding:0;
   background:var(--c); display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 0 .06cqw rgba(255,255,255,.9), 0 1px 2px rgba(0,0,0,.4);
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
   transition:transform .16s cubic-bezier(.2,.8,.3,1.2), box-shadow .16s, opacity .2s; }
 .marker .m-num{ display:none; }
-.marker:hover{ transform:translate(-50%,-50%) scale(2.8); z-index:60;
-  box-shadow:0 0 0 .08cqw #fff, 0 3px 10px rgba(0,0,0,.55); }
-.marker.active{ transform:translate(-50%,-50%) scale(3.0); z-index:60;
-  box-shadow:0 0 0 .08cqw #fff, 0 0 0 .28cqw var(--c), 0 5px 12px rgba(0,0,0,.55); }
+.marker:hover{ transform:translate(-50%,-50%) scale(2.2); z-index:60;
+  box-shadow:0 3px 10px rgba(0,0,0,.55); }
+.marker.active{ transform:translate(-50%,-50%) scale(2.4); z-index:60;
+  box-shadow:0 0 0 .26cqw color-mix(in srgb, var(--c) 55%, transparent), 0 5px 12px rgba(0,0,0,.55); }
 .marker.dim{ opacity:.3; pointer-events:none; filter:saturate(.5); }
 .marker.grab{ cursor:grab; }
 .marker.grab:active{ cursor:grabbing; }
