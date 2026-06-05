@@ -35,11 +35,10 @@ export default function CinematicTour({ lang }: Props) {
   const [active, setActive] = useState(0) // mobile montage: which scene is showing
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)')
-    const apply = () => setIsMobile(mq.matches)
+    const apply = () => setIsMobile(window.innerWidth < 768)
     apply()
-    mq.addEventListener?.('change', apply)
-    return () => mq.removeEventListener?.('change', apply)
+    window.addEventListener('resize', apply)
+    return () => window.removeEventListener('resize', apply)
   }, [])
 
   // Mobile: one pre-stitched file (all four clips joined) plays + loops as a single
@@ -104,7 +103,7 @@ export default function CinematicTour({ lang }: Props) {
   const dotsMV = [dot1, dot2, dot3, dot4]
 
   return (
-    <section ref={containerRef} className="relative h-screen md:h-[400vh]">
+    <section ref={containerRef} className="relative" style={{ height: isMobile ? '100vh' : '400vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-primary">
         {isMobile ? (
           /* Mobile — one stitched file, autoplay + loop; captions follow its playhead. */
