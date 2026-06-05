@@ -17,7 +17,7 @@ export default function FounderSection() {
         <div ref={ref} className="grid lg:grid-cols-5 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7 }} className="lg:col-span-2">
             <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
-              <Image src="/images/about.webp" alt="Robert Jakub Szymański — Founder of Harmony Life" fill sizes="(max-width:1024px) 100vw, 40vw" className="object-cover" />
+              <Image src="/images/about.webp" alt="Robert Szymański — Founder of Harmony Life" fill sizes="(max-width:1024px) 100vw, 40vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-scrim/60 via-transparent to-transparent" />
               <div className="absolute top-0 right-0 w-16 h-px bg-gold/40" />
               <div className="absolute top-0 right-0 w-px h-16 bg-gold/40" />
@@ -29,7 +29,7 @@ export default function FounderSection() {
           <motion.div initial={{ opacity: 0, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.15 }} className="lg:col-span-3">
             <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{t.eyebrow}</p>
             <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-6">
-              Robert Jakub<br />Szymański
+              Robert<br />Szymański
             </h2>
             <p className="text-cream/65 text-base leading-relaxed mb-4">{t.p1}</p>
             <p className="text-cream/65 text-base leading-relaxed mb-8">{t.p2}</p>

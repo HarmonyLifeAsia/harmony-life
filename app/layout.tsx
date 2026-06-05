@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | Harmony Life Koh Samui',
   },
   description:
-    'Villas and apartments on Koh Samui, Thailand, built to European construction standards — transparent ownership, one team from build to settlement. Founded by Robert Jakub Szymański with 20+ years of experience.',
+    'Villas and apartments on Koh Samui, Thailand, built to European construction standards — transparent ownership, one team from build to settlement. Founded by Robert Szymański with 20+ years of experience.',
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   openGraph: {

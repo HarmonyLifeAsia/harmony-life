@@ -33,7 +33,7 @@ export default function AboutContent() {
   ]
 
   const team = [
-    { name: 'Robert Jakub Szymański', role: t.teamFounderRole, bio: t.teamFounderBio },
+    { name: 'Robert Szymański', role: t.teamFounderRole, bio: t.teamFounderBio },
     { name: 'Team Member', role: t.teamMember2Role, bio: t.teamMember2Bio },
     { name: 'Team Member', role: t.teamMember3Role, bio: t.teamMember3Bio },
     { name: 'Team Member', role: t.teamMember4Role, bio: t.teamMember4Bio },
@@ -107,13 +107,13 @@ export default function AboutContent() {
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
                 <Image
                   src="/images/about.webp"
-                  alt="Robert Jakub Szymański — Founder & CEO, Harmony Life"
+                  alt="Robert Szymański — Founder & CEO, Harmony Life"
                   fill sizes="(max-width:1024px) 100vw, 40vw"
                   className="object-cover"
                 />
               </div>
               <div className="mt-4 bg-charcoal/30 border border-gold/10 rounded-lg p-4">
-                <p className="text-cream text-sm font-medium">Robert Jakub Szymański</p>
+                <p className="text-cream text-sm font-medium">Robert Szymański</p>
                 <p className="text-gold text-xs mt-0.5">Founder & CEO, Harmony Life</p>
                 <div className="mt-3 pt-3 border-t border-gold/10 flex flex-col gap-1.5">
                   {founderBullets.map((item) => (
@@ -144,7 +144,7 @@ export default function AboutContent() {
               </div>
               <blockquote className="mt-8 pl-6 border-l-2 border-gold/40">
                 <p className="font-serif text-xl text-cream/80 italic">"{t.founderQuote}"</p>
-                <p className="text-gold/60 text-sm mt-3">— Robert Jakub Szymański</p>
+                <p className="text-gold/60 text-sm mt-3">— Robert Szymański</p>
               </blockquote>
             </motion.div>
           </div>
