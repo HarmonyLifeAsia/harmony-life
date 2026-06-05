@@ -97,7 +97,7 @@ export default async function PoradnikPage({ params }: { params: Promise<{ lang:
           <Prompt>„Zoptymalizuj zdjęcia z folderu: zmień rozmiar (max ~1672 px), konwertuj do WebP (jakość 80–86), usuń duplikaty, popraw orientację EXIF i podepnij do galerii projektu."</Prompt>
         </Step>
 
-        <Step n="6" title="Filmowe hero (efekt „wow")">
+        <Step n="6" title="Filmowe hero — efekt wow">
           <p><b className="text-cream/90">A.</b> Zapętlone wideo w tle (np. z YouTube, bez brandingu, na telefonie statyczne zdjęcie).</p>
           <p><b className="text-cream/90">B.</b> Sekcja filmowa sterowana scrollem. Krótkie klipy generujesz w Kling (image-to-video) tak, by ostatnia klatka jednego = pierwsza następnego — wtedy cięcia są niewidoczne.</p>
           <Prompt>(do Kling) „Slow cinematic aerial drone shot over a luxury villa estate, palms swaying softly, subtle parallax, smooth slow motion, no text, no titles. 4K, photorealistic, no morphing faces."</Prompt>
