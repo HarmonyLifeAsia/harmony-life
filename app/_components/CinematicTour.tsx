@@ -59,17 +59,21 @@ export default function CinematicTour({ lang }: Props) {
   // Desktop scrub — drive each clip's playhead from scroll.
   useMotionValueEvent(scrollYProgress, 'change', (p) => {
     if (isMobile) return
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return
-      const dur = Number.isFinite(v.duration) ? v.duration : 0
-      if (!dur) return
+    // Seek ONLY the clip(s) near the current scroll band — seeking all four 1080p
+    // videos every frame is what made the scrub stutter.
+    for (let i = 0; i < videoRefs.current.length; i++) {
       const [a, b] = SCRUB_RANGES[i]
+      if (p < a - 0.03 || p > b + 0.03) continue
+      const v = videoRefs.current[i]
+      if (!v) continue
+      const dur = Number.isFinite(v.duration) ? v.duration : 0
+      if (!dur) continue
       const local = Math.max(0, Math.min(1, (p - a) / (b - a)))
       const target = Math.min(local * dur, dur - 0.02)
-      if (Math.abs(v.currentTime - target) > 0.02) {
+      if (Math.abs(v.currentTime - target) > 0.03) {
         try { v.currentTime = target } catch { /* seeking before ready */ }
       }
-    })
+    }
   })
 
   // Desktop cross-fade / scale / text transforms (no background dip).
