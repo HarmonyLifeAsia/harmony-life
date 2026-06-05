@@ -106,10 +106,10 @@ export default function AboutContent() {
             >
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
                 <Image
-                  src="/images/about.webp"
+                  src="/images/robert-szymanski.webp"
                   alt="Robert Szymański — Founder & CEO, Harmony Life"
                   fill sizes="(max-width:1024px) 100vw, 40vw"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div className="mt-4 bg-charcoal/30 border border-gold/10 rounded-lg p-4">
