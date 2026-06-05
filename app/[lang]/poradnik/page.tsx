@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from '../../_i18n/dictionaries'
+import CopyPrompt from '../../_components/CopyPrompt'
 
 export const metadata: Metadata = {
-  title: 'Jak zbudować taką stronę z AI — przewodnik | Harmony Life',
-  description: 'Krok po kroku: jak powstała strona harmonylife.co — Next.js, filmowe hero, interaktywna mapa willi z danymi na żywo, formularz i deploy. Z gotowymi promptami.',
+  title: 'Jak zbudować nowoczesną stronę dla swojego biznesu z AI — przewodnik',
+  description: 'Uniwersalny przewodnik krok po kroku: jak z pomocą AI zbudować i wdrożyć profesjonalną stronę dla dowolnego biznesu. Gotowe prompty do skopiowania i linki do narzędzi.',
 }
 
-function Prompt({ children }: { children: React.ReactNode }) {
+function A({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div className="my-4 rounded-lg border border-gold/20 bg-charcoal/30 px-5 py-4">
-      <p className="text-gold text-[10px] tracking-[0.3em] uppercase mb-2">Prompt</p>
-      <p className="text-cream/80 text-sm leading-relaxed italic">{children}</p>
-    </div>
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light underline underline-offset-2 cursor-pointer">
+      {children}
+    </a>
   )
 }
 
@@ -37,90 +37,138 @@ export default async function PoradnikPage({ params }: { params: Promise<{ lang:
       {/* Hero */}
       <section className="relative pt-32 pb-16 px-6" style={{ background: 'linear-gradient(160deg, #1a2e3a, #1a1a2e)' }}>
         <div className="max-w-3xl mx-auto">
-          <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">Przewodnik dla społeczności</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-5">Jak zbudować taką stronę z AI — krok po kroku</h1>
+          <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">Przewodnik · AI + strona WWW</p>
+          <h1 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-5">Jak zbudować nowoczesną stronę dla swojego biznesu z AI</h1>
           <p className="text-cream/65 text-lg leading-relaxed">
-            Tak powstała ta strona: wielojęzyczna, z filmowym hero, interaktywną mapą willi pobierającą dane na żywo, formularzem i przewodnikiem. Poniżej cały proces — od zera do wdrożenia — z gotowymi promptami do skopiowania.
+            Praktyczny przewodnik krok po kroku — od pustego folderu do strony w internecie z własną domeną. Działa dla <b className="text-cream/90">dowolnego biznesu</b>: usług, sklepu, restauracji, gabinetu, agencji, twórcy. Nie musisz umieć programować. Każdy prompt możesz skopiować jednym kliknięciem i wkleić swoje treści.
           </p>
         </div>
       </section>
 
       <div className="max-w-3xl mx-auto px-6 py-14 space-y-10">
-        <div className="rounded-xl border border-gold/20 bg-charcoal/20 p-6">
-          <p className="text-cream/75 text-base leading-relaxed">
-            <span className="text-gold font-medium">Filozofia:</span> wygrywasz profesjonalizmem i transparentnością, nie agresją. Bez „gwarantowanego ROI", bez słów „luksus/raj", bez nachalnych popupów. Konkrety, dowody (zdjęcia z budowy, render → rzeczywistość) i spokojny ton „do Ciebie".
+        {/* Jak używać */}
+        <div className="rounded-xl border border-gold/20 bg-charcoal/20 p-6 space-y-3">
+          <p className="text-cream/80 text-base leading-relaxed">
+            <span className="text-gold font-medium">Jak używać tego przewodnika:</span> idź krok po kroku. W każdym kroku jest gotowy <b className="text-cream/90">prompt</b> (polecenie dla AI). Skopiuj go przyciskiem „Kopiuj", a w miejscach w <b className="text-cream/90">[nawiasach kwadratowych]</b> wpisz dane swojego biznesu. Wklej do AI i zobacz efekt. Poprawiasz, prosząc o zmiany zwykłym językiem.
+          </p>
+          <p className="text-cream/55 text-sm leading-relaxed">
+            Zasada nadrzędna: <b className="text-cream/80">buduj zaufanie, nie krzykiem.</b> Spokojny, konkretny ton działa lepiej niż agresywna sprzedaż.
           </p>
         </div>
 
         {/* Narzędzia */}
         <section>
-          <h2 className="font-serif text-2xl text-cream mb-4">Czego potrzebujesz</h2>
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-cream/70 text-sm">
-            {[
-              ['Claude Code', 'asystent AI piszący kod'],
-              ['Node.js (LTS)', 'środowisko uruchomieniowe'],
-              ['GitHub', 'repozytorium kodu'],
-              ['Vercel', 'hosting + darmowe SSL'],
-              ['Rejestrator domeny', 'np. GoDaddy'],
-              ['Kling AI', 'filmy z Twoich zdjęć'],
-              ['Web3Forms', 'formularz na e-mail bez backendu'],
-              ['Calendly', 'rezerwacja konsultacji'],
-            ].map(([t, d]) => (
-              <li key={t} className="flex gap-2"><span className="text-gold">·</span><span><b className="text-cream/90">{t}</b> — {d}</span></li>
-            ))}
+          <h2 className="font-serif text-2xl text-cream mb-4">Czego potrzebujesz (wszystko z darmowym startem)</h2>
+          <ul className="space-y-2.5 text-cream/70 text-sm">
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://claude.com/claude-code">Claude Code</A> — asystent AI, który pisze i wdraża kod (alternatywa: <A href="https://cursor.com">Cursor</A>)</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://nodejs.org">Node.js</A> (wersja LTS) — środowisko uruchomieniowe</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://github.com">GitHub</A> — przechowywanie kodu</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://vercel.com">Vercel</A> — hosting strony + darmowe SSL (kłódka)</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span>Rejestrator domeny — np. <A href="https://godaddy.com">GoDaddy</A>, <A href="https://www.namecheap.com">Namecheap</A> lub <A href="https://nazwa.pl">nazwa.pl</A></span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://web3forms.com">Web3Forms</A> — wysyłka formularza na e-mail bez backendu</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://calendly.com">Calendly</A> — rezerwacja spotkań (opcjonalnie)</span></li>
+            <li className="flex gap-2"><span className="text-gold">·</span><span><A href="https://klingai.com">Kling AI</A> — filmy z Twoich zdjęć (opcjonalnie)</span></li>
           </ul>
-          <p className="text-cream/50 text-sm mt-4">Stack: Next.js (App Router) + Tailwind CSS + framer-motion + TypeScript. Hosting: Vercel.</p>
+          <p className="text-cream/50 text-sm mt-4">
+            Stack, który polecam: <A href="https://nextjs.org">Next.js</A> + <A href="https://tailwindcss.com">Tailwind CSS</A> + framer-motion (animacje). Nie musisz tego rozumieć — wystarczy, że poprosisz o to AI.
+          </p>
         </section>
 
         <Step n="1" title="Start projektu">
-          <p>W terminalu uruchamiasz Claude Code i opisujesz cel — nie musisz znać kodu.</p>
-          <Prompt>„Zbuduj stronę premium dewelopera nieruchomości w Next.js (App Router) + Tailwind + framer-motion. Dark-first, akcent złota. Strona główna: hero, liczniki, portfolio, sekcja filmowa, dlaczego inwestować, lifestyle, założyciel, opinie, kontakt. Routing pod 3 języki (PL/EN/DE)."</Prompt>
+          <p>Zainstaluj Node.js i Claude Code (instrukcje na ich stronach), załóż konto na GitHub i Vercel. Potem otwórz Claude Code w nowym, pustym folderze i wklej prompt poniżej — wpisując opis swojego biznesu i sekcje, które chcesz mieć.</p>
+          <CopyPrompt text={`Zbuduj nowoczesną, profesjonalną stronę WWW w Next.js (App Router) + Tailwind CSS + framer-motion (animacje), TypeScript.
+
+Mój biznes: [krótko opisz: czym się zajmujesz, dla kogo, co Cię wyróżnia].
+Styl: elegancki, czytelny, z dużą ilością przestrzeni; [tu wpisz preferencje, np. jasny i minimalistyczny / ciemny i premium].
+
+Sekcje strony głównej (dostosuj do siebie):
+1. Hero (duży nagłówek + jedno zdanie korzyści + przycisk akcji)
+2. O nas / o mnie
+3. Oferta / usługi / produkty
+4. Dlaczego my (3 powody)
+5. Opinie klientów
+6. Najczęstsze pytania (FAQ)
+7. Kontakt
+
+Przygotuj czystą strukturę i powiedz mi, jak uruchomić podgląd lokalnie.`} />
         </Step>
 
-        <Step n="2" title="System wizualny (raz, działa wszędzie)">
-          <p>Kolory i fonty trzymaj w jednym miejscu — spójność za darmo. Granat tła, złoto jako akcent, elegancki serif na nagłówki.</p>
-          <Prompt>„Ustaw motyw: dark-first, granat #1a1a2e + złoto #C9A876 + cream #F5F0E8, fonty Playfair Display (nagłówki) i Inter (tekst), tryb jasny/ciemny z przełącznikiem."</Prompt>
+        <Step n="2" title="Kolory, fonty, charakter (raz — działa wszędzie)">
+          <p>Ustal motyw w jednym miejscu, żeby cała strona była spójna. Podaj swoje kolory marki (albo poproś o propozycję).</p>
+          <CopyPrompt text={`Ustaw spójny motyw strony w jednym miejscu (globals.css):
+- kolory marki: [podaj 2–3 kolory, np. granatowy #1a1a2e + złoty #C9A876 + jasny #F5F0E8, albo napisz "zaproponuj elegancką paletę dla mojej branży"]
+- fonty: elegancki nagłówkowy + czysty do tekstu (z Google Fonts)
+- zaokrąglenia, odstępy i subtelne animacje pojawiania się przy przewijaniu
+- dodaj przełącznik trybu jasny/ciemny.`} />
+          <p className="text-cream/50 text-sm">Gotowe palety i fonty znajdziesz na <A href="https://fonts.google.com">Google Fonts</A>.</p>
         </Step>
 
-        <Step n="3" title="Wielojęzyczność (PL/EN/DE)">
-          <p>Wszystkie teksty w słownikach JSON, wczytywane zależnie od języka. Adresy /pl, /en, /de.</p>
-          <Prompt>„Dodaj i18n: słowniki JSON dla PL/EN/DE, przełącznik w menu, routing /[lang]/. Język główny: polski (wejście na / przekierowuje na /pl)."</Prompt>
+        <Step n="3" title="Treści i ton (najważniejszy etap)">
+          <p>To odróżnia stronę od tysięcy innych. Przekaż AI fakty o swoim biznesie i ton, w jakim chcesz mówić.</p>
+          <CopyPrompt text={`Napisz teksty na stronę w tonie: spokojnym, konkretnym i skierowanym do klienta („Ty"), bez przesadnych obietnic i pustych superlatyw. Buduj zaufanie konkretami i dowodami.
+
+Wykorzystaj te informacje o moim biznesie:
+- czym się zajmujemy: [...]
+- dla kogo: [...]
+- co nas wyróżnia / dlaczego klienci nam ufają: [...]
+- liczby/dowody (lata, realizacje, klienci): [...]
+- czego NIE chcę obiecywać: [...]
+
+Napisz: nagłówek hero, sekcję o nas, opisy oferty, 3 powody „dlaczego my", 3–4 przykładowe opinie i 6 pytań FAQ.`} />
         </Step>
 
-        <Step n="4" title="Treści i ton (najważniejsze)">
-          <p>To odróżnia stronę od konkurencji. Przekaż AI swoje wytyczne marki.</p>
-          <Prompt>„Pisz spokojnie, konkretnie, »do Ciebie«. Bez obietnic gwarantowanego zysku, bez słów »luksus/raj«. Buduj zaufanie liczbami, jakością budowy, transparentnym modelem najmu i przekazem »nie znikamy po sprzedaży«. Najpierw PL, potem tłumaczenie na EN i DE."</Prompt>
+        <Step n="4" title="Zdjęcia — zawsze optymalizuj">
+          <p>Duże zdjęcia to najczęstszy powód wolnej strony. Wrzucasz pliki do folderu, AI je zmniejsza i konwertuje do lekkiego formatu WebP.</p>
+          <CopyPrompt text={`Wgrałem zdjęcia do folderu [ścieżka, np. public/images]. Zoptymalizuj je:
+- zmień rozmiar do max ~1600 px,
+- konwertuj do WebP (jakość 80–86),
+- usuń duplikaty i popraw orientację,
+i podepnij je w odpowiednich sekcjach/galeriach.`} />
         </Step>
 
-        <Step n="5" title="Zdjęcia — optymalizacja">
-          <p>Duże pliki = wolna strona. AI zmniejsza i konwertuje do WebP.</p>
-          <Prompt>„Zoptymalizuj zdjęcia z folderu: zmień rozmiar (max ~1672 px), konwertuj do WebP (jakość 80–86), usuń duplikaty, popraw orientację EXIF i podepnij do galerii projektu."</Prompt>
+        <Step n="5" title="Sekcja „wow" — wideo lub galeria (opcjonalnie)">
+          <p>Filmowy akcent buduje prestiż. Możesz użyć gotowego wideo albo wygenerować krótkie ujęcia ze swoich zdjęć w <A href="https://klingai.com">Kling AI</A> (funkcja image-to-video).</p>
+          <CopyPrompt text={`Dodaj sekcję z zapętlonym, wyciszonym filmem w tle (bez sterowania i logo), z nagłówkiem na wierzchu. Na telefonie pokaż statyczne zdjęcie zamiast filmu (oszczędność danych). Skompresuj wideo do 1080p, żeby strona ładowała się szybko.`} />
+          <p className="text-cream/55 text-sm">Przykładowy prompt do Kling (image-to-video), podmień opis sceny:</p>
+          <CopyPrompt text={`Slow, cinematic camera move over [opis Twojego ujęcia, np. a cozy café interior / a modern office / a product on a table], soft natural light, subtle motion, smooth slow motion, no text, no logos. 4K, photorealistic, no warping.`} />
+          <p className="text-cream/50 text-sm">⚠️ Pliki 4K bywają ogromne (30–60 MB). Zawsze proś o kompresję do 1080p.</p>
         </Step>
 
-        <Step n="6" title="Filmowe hero — efekt wow">
-          <p><b className="text-cream/90">A.</b> Zapętlone wideo w tle (np. z YouTube, bez brandingu, na telefonie statyczne zdjęcie).</p>
-          <p><b className="text-cream/90">B.</b> Sekcja filmowa sterowana scrollem. Krótkie klipy generujesz w Kling (image-to-video) tak, by ostatnia klatka jednego = pierwsza następnego — wtedy cięcia są niewidoczne.</p>
-          <Prompt>(do Kling) „Slow cinematic aerial drone shot over a luxury villa estate, palms swaying softly, subtle parallax, smooth slow motion, no text, no titles. 4K, photorealistic, no morphing faces."</Prompt>
-          <Prompt>„Z tych klipów zrób sekcję filmową: desktop = przewijana scrollem (match-cut), telefon = automatyczny montaż w pętli. Skompresuj wideo do 1080p, zdjęcia jako poster."</Prompt>
-          <p className="text-cream/50 text-sm">⚠️ Filmy 4K mają ~30–60 MB. Zawsze każ je skompresować (1080p) — inaczej strona ładuje się wieczność.</p>
+        <Step n="6" title="Dane na żywo / oferta (opcjonalnie)">
+          <p>Jeśli masz cennik, produkty albo dostępność w jakimś systemie/arkuszu, strona może pobierać je automatycznie — żeby nie aktualizować ręcznie.</p>
+          <CopyPrompt text={`Chcę, żeby sekcja [oferta/cennik/dostępność] pobierała dane na żywo z [adres mojego API / arkusza / systemu] i odświeżała się automatycznie. Pokaż je w czytelnej formie (karty/lista) i zadbaj o sytuację, gdy dane się nie wczytają (pokaż wersję zapasową).`} />
         </Step>
 
-        <Step n="7" title="Interaktywna mapa z danymi na żywo">
-          <p>Plan osiedla z klikalnymi willami; status i ceny pobierane w czasie rzeczywistym z Twojego panelu/CRM.</p>
-          <Prompt>„Dodaj interaktywną mapę: plan w tle, kropki willi (kolor wg statusu: zielony=dostępna, pomarańczowy=rezerwacja, czerwony=sprzedana), panel po kliknięciu. Dane (status, metraż, cena) pobieraj na żywo z API [adres] i odświeżaj co kilka minut. Ukryty tryb kalibracji ?calibrate=1 do ustawienia pozycji markerów."</Prompt>
+        <Step n="7" title="Formularz kontaktowy (bez serwera)">
+          <p>Najprościej przez <A href="https://web3forms.com">Web3Forms</A> — zgłoszenia trafiają prosto na Twój e-mail. Załóż darmowy klucz na ich stronie.</p>
+          <CopyPrompt text={`Zrób formularz kontaktowy: imię, e-mail, telefon, wiadomość [dodaj swoje pola, np. wybór usługi, budżet]. Wyślij zgłoszenia przez Web3Forms na adres [twój e-mail], natywnym wysłaniem formularza (działa też po wdrożeniu). Po wysłaniu pokaż podziękowanie. Dodaj też przycisk „Umów spotkanie" linkujący do mojego Calendly: [link].`} />
         </Step>
 
-        <Step n="8" title="Formularz (bez backendu)">
-          <Prompt>„Formularz: imię, e-mail, telefon (wymagany), wybór inwestycji, budżet, preferencje. Wysyłka przez Web3Forms na [twój e-mail], natywnym POST. CTA »Umów konsultację« → Calendly."</Prompt>
+        <Step n="8" title="Treści budujące zaufanie (blog / FAQ / przewodnik)">
+          <p>Strona, która odpowiada na pytania klientów, sprzedaje sama. Dodaj sekcję wiedzy.</p>
+          <CopyPrompt text={`Zbuduj podstronę „Przewodnik / FAQ" dla mojej branży [branża]: najczęstsze pytania klientów z odpowiedziami (rozwijane), jak wygląda współpraca krok po kroku, czego się spodziewać, ile to kosztuje (ogólnie). Ton rzeczowy i pomocny.`} />
         </Step>
 
-        <Step n="9" title="Przewodnik inwestora (buduje zaufanie)">
-          <Prompt>„Zbuduj stronę »Przewodnik inwestora«: proces zakupu krok po kroku, tabela porównawcza, FAQ (akordeon), koszty, zarządzanie najmem. Spokojny ton, z zastrzeżeniem prawnym. PL/EN/DE."</Prompt>
+        <Step n="9" title="Wielojęzyczność (jeśli potrzebujesz)">
+          <CopyPrompt text={`Dodaj wersje językowe [np. PL i EN]: przełącznik języka w menu, osobne adresy /pl i /en, wszystkie teksty w słownikach. Język główny: [polski]. Przetłumacz istniejące treści.`} />
         </Step>
 
-        <Step n="10" title="Wdrożenie + domena">
-          <p>Vercel: połącz repo, Deploy → adres .vercel.app. Domena: w rejestratorze ustaw nameservery <code className="text-gold/80">ns1.vercel-dns.com</code> / <code className="text-gold/80">ns2.vercel-dns.com</code>. SSL Vercel założy sam.</p>
-          <Prompt>„Przygotuj do wdrożenia: metadataBase na [domena], sitemap.xml (strony × języki), robots.txt, tytuły i opisy meta. Wdróż na Vercel."</Prompt>
+        <Step n="10" title="Wdrożenie (publikacja) + domena">
+          <p>Publikujesz przez <A href="https://vercel.com">Vercel</A> (połącz repozytorium z GitHub → Deploy). Dostajesz adres typu <code className="text-gold/80">nazwa.vercel.app</code>. Potem podpinasz własną domenę.</p>
+          <CopyPrompt text={`Przygotuj stronę do publikacji: ustaw adres strony (metadataBase) na [twoja domena], wygeneruj sitemap.xml i robots.txt, dodaj tytuły i opisy meta (SEO) dla podstron. Następnie wdróż na Vercel i podaj mi link.`} />
+          <p className="text-cream/70 text-base leading-relaxed">
+            <b className="text-cream/90">Domena:</b> w panelu Vercel → Settings → Domains dodaj swój adres. Vercel pokaże, co ustawić u rejestratora (zwykle: zmiana <i>nameserverów</i> na Vercel, albo rekordy A/CNAME). Kłódka SSL pojawi się automatycznie. Pełne kroki znajdziesz w <A href="https://vercel.com/docs/projects/domains">dokumentacji Vercel</A>.
+          </p>
+        </Step>
+
+        <Step n="11" title="Pracuj iteracyjnie (najlepszy nawyk)">
+          <p>Nie planuj wszystkiego naraz. Mów krótko, co poprawić — AI wprowadza, buduje i wdraża, a Ty oglądasz efekt:</p>
+          <ul className="list-disc pl-5 space-y-1 text-cream/70">
+            <li>„zmień nagłówek hero na…",</li>
+            <li>„powiększ zdjęcia w galerii",</li>
+            <li>„dodaj sekcję z cennikiem",</li>
+            <li>„na telefonie menu ma się chować".</li>
+          </ul>
         </Step>
 
         {/* Pułapki */}
@@ -128,19 +176,20 @@ export default async function PoradnikPage({ params }: { params: Promise<{ lang:
           <h2 className="font-serif text-2xl text-cream mb-4">Najczęstsze pułapki</h2>
           <ol className="space-y-2 text-cream/70 text-base list-decimal pl-5">
             <li><b className="text-cream/90">Ciężkie pliki</b> — zawsze WebP (zdjęcia) i 1080p (wideo). To #1 zabójca szybkości.</li>
-            <li><b className="text-cream/90">Wideo na telefonie</b> — scroll-scrub bywa „rwany" na iOS; pewniejszy jest automatyczny montaż (jeden sklejony plik, autoplay + pętla).</li>
-            <li><b className="text-cream/90">Responsywność</b> — wysokość sekcji i logika (mobile/desktop) muszą iść z jednego źródła, inaczej przy zmianie okna „przeskakuje".</li>
-            <li><b className="text-cream/90">Klucze/maile</b> — publiczne możesz commitować, prywatne trzymaj w zmiennych środowiskowych.</li>
-            <li><b className="text-cream/90">Nie kopiuj agresji konkurencji</b> — popupy, „gwarantowane ROI", czerwone bannery. Profesjonalizm wygrywa długofalowo.</li>
+            <li><b className="text-cream/90">Za dużo naraz</b> — buduj sekcjami, sprawdzaj efekt po każdej zmianie.</li>
+            <li><b className="text-cream/90">Responsywność</b> — proś o sprawdzenie wyglądu na telefonie po każdej większej zmianie.</li>
+            <li><b className="text-cream/90">Hasła i klucze prywatne</b> — trzymaj w zmiennych środowiskowych, nie w kodzie.</li>
+            <li><b className="text-cream/90">Bez agresji</b> — popupy na wejściu i puste obietnice odstraszają. Wygrywa konkret i zaufanie.</li>
           </ol>
         </section>
 
+        {/* Skrót */}
         <section className="border-t border-gold/10 pt-8">
-          <h2 className="font-serif text-2xl text-cream mb-3">Skrót: 10 kroków</h2>
+          <h2 className="font-serif text-2xl text-cream mb-3">Skrót: cała ścieżka</h2>
           <p className="text-cream/70 leading-relaxed">
-            1. Start (Next.js + Tailwind) → 2. Motyw/fonty → 3. i18n → 4. Treści/ton → 5. Zdjęcia (WebP) → 6. Filmowe hero (Kling) → 7. Mapa + API → 8. Formularz → 9. Przewodnik → 10. Deploy + domena + SEO.
+            Start → kolory/fonty → treści/ton → zdjęcia (WebP) → sekcja „wow" → dane/oferta → formularz → blog/FAQ → języki → wdrożenie + domena → iteracja.
           </p>
-          <p className="text-cream/50 text-sm mt-4">Wszystkie prompty możesz kopiować 1:1 i dostosować do swojego projektu. Powodzenia! 🌴</p>
+          <p className="text-cream/50 text-sm mt-4">Wszystkie prompty możesz kopiować i dostosować do siebie. Powodzenia z Twoją stroną! 🚀</p>
         </section>
       </div>
     </>
