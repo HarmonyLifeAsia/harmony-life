@@ -126,7 +126,7 @@ Napisz: nagłówek hero, sekcję o nas, opisy oferty, 3 powody „dlaczego my", 
 i podepnij je w odpowiednich sekcjach/galeriach.`} />
         </Step>
 
-        <Step n="5" title="Sekcja „wow" — wideo lub galeria (opcjonalnie)">
+        <Step n="5" title="Efektowna sekcja — wideo lub galeria (opcjonalnie)">
           <p>Filmowy akcent buduje prestiż. Możesz użyć gotowego wideo albo wygenerować krótkie ujęcia ze swoich zdjęć w <A href="https://klingai.com">Kling AI</A> (funkcja image-to-video).</p>
           <CopyPrompt text={`Dodaj sekcję z zapętlonym, wyciszonym filmem w tle (bez sterowania i logo), z nagłówkiem na wierzchu. Na telefonie pokaż statyczne zdjęcie zamiast filmu (oszczędność danych). Skompresuj wideo do 1080p, żeby strona ładowała się szybko.`} />
           <p className="text-cream/55 text-sm">Przykładowy prompt do Kling (image-to-video), podmień opis sceny:</p>
