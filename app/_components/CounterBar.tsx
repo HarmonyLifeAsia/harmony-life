@@ -37,7 +37,7 @@ export default function CounterBar() {
 
   const stats = [
     { numeric: 5,   suffix: '',  label: t.developments },
-    { numeric: 20,  suffix: '+', label: t.experience },
+    { numeric: 10,  suffix: '+', label: t.experience },
     { numeric: 150, suffix: '+', label: t.projectsEurope },
     { numeric: 300, suffix: '+', label: t.sunnyDays },
   ]

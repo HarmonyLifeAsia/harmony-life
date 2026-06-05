@@ -39,7 +39,7 @@ export default function FounderSection() {
             </div>
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/10">
               {[
-                { n: '20+', label: t.stat1Label },
+                { n: '10+', label: t.stat1Label },
                 { n: '150+', label: t.stat2Label },
                 { n: '5', label: t.stat3Label },
               ].map(({ n, label }) => (
