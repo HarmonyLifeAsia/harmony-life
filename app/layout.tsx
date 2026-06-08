@@ -42,15 +42,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${playfair.variable} ${inter.variable}`}>
-      <head>
-        {/* Prevent flash of wrong theme on first load */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          try {
-            var t = localStorage.getItem('hl-theme');
-            if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
-          } catch(e) {}
-        `}} />
-      </head>
       <body className="bg-primary text-cream font-sans antialiased grain-overlay">
         {children}
       </body>

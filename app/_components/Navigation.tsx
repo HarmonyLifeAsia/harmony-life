@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import LanguageSwitcher from './LanguageSwitcher'
-import ThemeToggle from './ThemeToggle'
 import { useDict, useLocale } from './LangProvider'
 import { CALENDLY_URL } from '../_data/site'
 
@@ -81,7 +80,6 @@ export default function Navigation() {
             >
               {dict.nav.bookConsultation}
             </a>
-            <ThemeToggle />
             <LanguageSwitcher />
           </nav>
 
@@ -119,7 +117,6 @@ export default function Navigation() {
               </a>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="flex items-center gap-4">
-              <ThemeToggle />
               <LanguageSwitcher />
             </motion.div>
           </motion.div>
