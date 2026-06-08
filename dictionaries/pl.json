@@ -234,7 +234,9 @@
         "stage": "Zakończenie",
         "timing": "Po zakończeniu prac budowlanych wewnątrz i na zewnątrz budynku"
       }
-    ]
+    ],
+    "bookStayTitle": "Twój pobyt",
+    "bookStayCta": "Zarezerwuj swój pobyt"
   },
   "oasis": {
     "mainGalleryTitle": "Galeria osiedla",

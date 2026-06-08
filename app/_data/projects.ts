@@ -29,6 +29,7 @@ export interface Project {
   construction?: string[] // construction-progress gallery
   locationImage?: string // illustrated location map with key points
   inquiryOnly?: boolean // not a standard investment unit (hides payment schedule)
+  bookingUrl?: string // delivered/rentable project — show a "book your stay" CTA instead of payment schedule
 }
 
 export const projects: Project[] = [
@@ -75,6 +76,7 @@ export const projects: Project[] = [
     mapEmbed: 'https://www.google.com/maps?q=9.5483084,100.0526437&z=16&output=embed',
     mapLink: 'https://maps.app.goo.gl/JUGLbQrzHQAQDXbu7',
     realImages: Array.from({ length: 26 }, (_, i) => `/images/projects/harmony-life-one/real/${String(i + 1).padStart(2, '0')}.webp`),
+    bookingUrl: 'https://www.harmonylife.asia',
   },
   {
     slug: 'harmony-life-hill',

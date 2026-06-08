@@ -185,7 +185,22 @@ export default async function ProjectPage({
               </>
             )}
 
-            {!project.inquiryOnly && (
+            {project.bookingUrl ? (
+              <div>
+                <p className="font-serif text-2xl text-cream mb-4">{t.bookStayTitle}</p>
+                <a
+                  href={project.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-gold text-primary px-7 py-3.5 text-sm font-medium tracking-wider uppercase hover:bg-gold-light transition-colors duration-300 rounded-md cursor-pointer"
+                >
+                  {t.bookStayCta}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            ) : !project.inquiryOnly ? (
               <div>
                 <p className="font-serif text-2xl text-cream mb-6">{t.paymentTitle}</p>
                 <div className="space-y-3">
@@ -200,7 +215,7 @@ export default async function ProjectPage({
                   ))}
                 </div>
               </div>
-            )}
+            ) : null}
 
             <div>
               <p className="font-serif text-2xl text-cream mb-6">{t.locationTitle}</p>

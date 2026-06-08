@@ -234,7 +234,9 @@
         "stage": "Fertigstellung",
         "timing": "Nach Abschluss aller Innen- und Außenarbeiten am Gebäude"
       }
-    ]
+    ],
+    "bookStayTitle": "Ihr Aufenthalt",
+    "bookStayCta": "Aufenthalt buchen"
   },
   "oasis": {
     "mainGalleryTitle": "Galerie der Anlage",

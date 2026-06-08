@@ -234,7 +234,9 @@
         "stage": "Completion",
         "timing": "On completion of all interior and exterior building works"
       }
-    ]
+    ],
+    "bookStayTitle": "Your stay",
+    "bookStayCta": "Book your stay"
   },
   "oasis": {
     "mainGalleryTitle": "Development Gallery",
