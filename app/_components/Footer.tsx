@@ -52,6 +52,7 @@ export default function Footer() {
               {[
                 { label: nav.projects, href: `/${lang}/#projects` },
                 { label: nav.about, href: `/${lang}/about` },
+                { label: nav.insurance, href: `/pl/ubezpieczenia` },
                 { label: nav.contact, href: `/${lang}/contact` },
               ].map(({ label, href }) => (
                 <li key={label}>
