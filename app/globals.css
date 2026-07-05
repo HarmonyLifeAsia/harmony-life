@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: "Manrope", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-graphite font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(191, 160, 106, 0.28);
+    color: #2a2a26;
+  }
+
+  /* Refined focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid rgba(169, 136, 78, 0.7);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-[0.72rem] font-medium uppercase tracking-eyebrow text-champagne-deep;
+  }
+
+  .headline {
+    @apply font-serif font-medium leading-[1.08] text-graphite;
+  }
+
+  .lead {
+    @apply text-graphite-soft leading-relaxed;
+  }
+
+  /* Premium button system */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
+      text-sm font-medium tracking-wide transition-all duration-300
+      focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply btn text-ivory shadow-soft;
+    background: linear-gradient(135deg, #bfa06a 0%, #a9884e 100%);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 18px 40px -18px rgba(169, 136, 78, 0.65);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    @apply btn border border-champagne/40 bg-white/40 text-graphite backdrop-blur-sm;
+  }
+  .btn-ghost:hover {
+    @apply border-champagne/70 bg-white/70;
+    transform: translateY(-2px);
+  }
+
+  /* Glass / premium card */
+  .card {
+    @apply rounded-3xl border border-white/60 bg-white/60 p-8 shadow-card backdrop-blur-sm
+      transition-all duration-500;
+  }
+  .card:hover {
+    @apply border-champagne/40 bg-white/80;
+    transform: translateY(-6px);
+  }
+
+  .gold-divider {
+    @apply h-px w-full bg-gold-line;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Scroll reveal — initial + revealed states */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
