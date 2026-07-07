@@ -18,7 +18,6 @@ const structuredData = {
   description:
     "Przestrzeń dla świadomych ludzi, którzy chcą rozwijać się duchowo, budować dobrostan i tworzyć wspólnotę opartą na obecności, wsparciu i głębszym sensie.",
   slogan: "Nowa Era Świadomych Ludzi",
-  email: "kontakt@newage.life",
 };
 
 export default function Home() {

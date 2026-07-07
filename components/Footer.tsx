@@ -6,12 +6,6 @@ const NAV = [
   { label: "Dołącz", href: "#dolacz" },
 ];
 
-const SOCIALS = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "YouTube", href: "#" },
-];
-
 export default function Footer() {
   const year = 2026;
 
@@ -22,7 +16,7 @@ export default function Footer() {
         className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[36rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(216,195,154,0.3),transparent_70%)] blur-3xl"
       />
       <div className="container-page relative py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr]">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
@@ -57,31 +51,6 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-
-          {/* Contact & socials */}
-          <div>
-            <h3 className="eyebrow mb-5">Kontakt</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:kontakt@newage.life"
-                  className="text-graphite-soft transition-colors hover:text-champagne-deep"
-                >
-                  kontakt@newage.life
-                </a>
-              </li>
-              {SOCIALS.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    className="text-graphite-soft transition-colors hover:text-champagne-deep"
-                  >
-                    {social.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         <div className="mt-14 gold-divider opacity-50" />
