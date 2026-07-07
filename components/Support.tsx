@@ -2,25 +2,45 @@
 
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { IconSupport } from "./icons";
+import { IconSupport, IconCopy, IconCheck } from "./icons";
 
 const RECIPIENT = "Gmina Wyznaniowa Nowej Ery Warszawa";
+const TITLE = "Darowizna na cele statutowe";
 const IBAN = "PL82 1140 2004 0000 3202 8534 0294";
 const BIC = "BREXPLPWMBK";
 
-export default function Support() {
+/** Small round icon button that copies `value` to the clipboard. */
+function CopyButton({ label, value }: { label: string; value: string }) {
   const [copied, setCopied] = useState(false);
 
-  async function copyIban() {
+  async function copy() {
     try {
-      await navigator.clipboard.writeText(IBAN.replace(/\s/g, ""));
+      await navigator.clipboard.writeText(value);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
+      window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Clipboard unavailable — the number stays visible for manual copy.
+      // Clipboard unavailable — the value stays visible for manual copy.
     }
   }
 
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={copied ? `Skopiowano: ${label}` : `Kopiuj: ${label}`}
+      title={copied ? "Skopiowano" : "Kopiuj"}
+      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-champagne/30 bg-white/70 text-champagne-deep transition-all hover:border-champagne/60 hover:bg-white focus-visible:outline-offset-2"
+    >
+      {copied ? (
+        <IconCheck className="h-4 w-4 text-sage-deep" />
+      ) : (
+        <IconCopy className="h-4 w-4" />
+      )}
+    </button>
+  );
+}
+
+export default function Support() {
   return (
     <section
       id="wesprzyj"
@@ -48,14 +68,17 @@ export default function Support() {
         </Reveal>
 
         <Reveal delay={120} className="mx-auto mt-14 max-w-xl">
-          <div className="card">
+          <div className="card p-6 sm:p-8">
             <span className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cream to-sand text-champagne-deep shadow-inner">
               <IconSupport className="h-7 w-7" />
             </span>
 
-            <dl className="space-y-6">
+            <dl className="space-y-5">
               <div>
-                <dt className="eyebrow">Odbiorca</dt>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="eyebrow">Odbiorca</dt>
+                  <CopyButton label="Odbiorca" value={RECIPIENT} />
+                </div>
                 <dd className="mt-2 font-serif text-lg text-graphite">
                   {RECIPIENT}
                 </dd>
@@ -64,26 +87,35 @@ export default function Support() {
               <div className="gold-divider opacity-50" />
 
               <div>
-                <dt className="eyebrow">Numer rachunku · IBAN</dt>
-                <dd className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <span className="font-mono text-base tracking-wide text-graphite sm:text-lg">
-                    {IBAN}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={copyIban}
-                    className="btn-ghost shrink-0 px-5 py-2.5 text-xs"
-                    aria-live="polite"
-                  >
-                    {copied ? "Skopiowano ✓" : "Kopiuj numer"}
-                  </button>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="eyebrow">Tytuł przelewu</dt>
+                  <CopyButton label="Tytuł przelewu" value={TITLE} />
+                </div>
+                <dd className="mt-2 text-base text-graphite">{TITLE}</dd>
+              </div>
+
+              <div className="gold-divider opacity-50" />
+
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="eyebrow">Numer rachunku · IBAN</dt>
+                  <CopyButton
+                    label="Numer rachunku IBAN"
+                    value={IBAN.replace(/\s/g, "")}
+                  />
+                </div>
+                <dd className="mt-2 overflow-x-auto whitespace-nowrap font-mono text-[clamp(0.72rem,3.4vw,1.05rem)] tracking-tight text-graphite [scrollbar-width:none]">
+                  {IBAN}
                 </dd>
               </div>
 
               <div className="gold-divider opacity-50" />
 
               <div>
-                <dt className="eyebrow">BIC / SWIFT</dt>
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="eyebrow">BIC / SWIFT</dt>
+                  <CopyButton label="BIC / SWIFT" value={BIC} />
+                </div>
                 <dd className="mt-2 font-mono text-base tracking-wide text-graphite">
                   {BIC}{" "}
                   <span className="font-sans text-sm text-graphite-muted">

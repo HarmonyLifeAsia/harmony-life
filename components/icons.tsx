@@ -213,3 +213,22 @@ export function IconArrow(props: IconProps) {
     </Base>
   );
 }
+
+/** Copy — clipboard duplicate */
+export function IconCopy(props: IconProps) {
+  return (
+    <Base {...props}>
+      <rect x="9" y="9" width="10.5" height="10.5" rx="2.2" />
+      <path d="M6.5 15H5.5A2 2 0 0 1 3.5 13V5.5A2 2 0 0 1 5.5 3.5H13A2 2 0 0 1 15 5.5V6.5" />
+    </Base>
+  );
+}
+
+/** Check — copied confirmation */
+export function IconCheck(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M5 12.5l4 4L19 7" />
+    </Base>
+  );
+}
