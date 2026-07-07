@@ -1,47 +1,96 @@
-# Moniter.asia — prezentacja dla inwestora
+# Nowa Era · New Age Life
 
-Jednostronicowa (single-page) prezentacja inwestorska dla **Moniter.asia** — inteligentnego
-monitoringu ogłoszeń i marketplace'ów, zwalidowanego w Polsce i celującego w rynek azjatycki.
+Premium landing page dla **Nowej Ery** — społeczności świadomych ludzi, którzy
+wspierają się nawzajem w rozwoju duchowym, dobrostanie i głębszym połączeniu ze
+sobą.
 
-Strona przedstawia produkt i trakcję, wielkość rynku, ścieżkę ekspansji, model przychodowy,
-trzy scenariusze finansowe (konserwatywny / bazowy / agresywny), szacowany zwrot dla inwestora
-oraz formularz zapisu na rundę.
+Strona jest elegancka, spokojna i „dopracowana jak przez butikowe studio” —
+jasna paleta (kość słoniowa, piaskowy beż, szampański złoty, delikatna szałwia),
+refined serif w nagłówkach, czysty sans w treści, dużo przestrzeni, subtelne
+animacje i pełna responsywność (mobile-first).
 
 ## Stack
 
-Czysty front-end, bez kroku budowania:
+- **[Next.js 16](https://nextjs.org/)** — App Router, komponenty serwerowe/klienckie
+- **TypeScript** — pełne typowanie, `strict` mode
+- **Tailwind CSS 3** — własny design system (paleta, cienie, animacje)
+- **next/font** — self-hosted **Playfair Display** (serif) + **Manrope** (sans)
+- Animacje scroll-reveal na `IntersectionObserver` (bez dodatkowych bibliotek)
+- Respektuje `prefers-reduced-motion`
 
-- **HTML + CSS** — jeden plik `index.html` (motyw jasny/ciemny).
-- **JavaScript (vanilla)** — interaktywne scenariusze, kalkulator pakietów, obsługa formularza.
-- **[Chart.js 4](https://www.chartjs.org/)** — ładowany z CDN, wizualizacje rynku i prognoz.
-- **[web3forms](https://web3forms.com/)** — wysyłka deklaracji zapisu na e-mail.
-- Tło hero — osadzony film z YouTube (YouTube IFrame API).
+## Struktura
 
-## Pliki
-
-| Plik | Opis |
-|------|------|
-| `index.html` | Cała strona (struktura, style i logika). |
-| `moniter-logo.svg` | Logo / favicona. |
-
-### Zasoby opcjonalne
-
-Sekcja zespołu odwołuje się do zdjęć `pamula.jpg`, `szymanski.jpg`, `bosek.jpg`.
-Jeśli ich brak, strona automatycznie pokazuje placeholder „zdjęcie wkrótce" —
-dodaj pliki do katalogu głównego, aby je wyświetlić.
-
-## Uruchomienie lokalne
-
-Wystarczy otworzyć `index.html` w przeglądarce. Dla pełnej funkcjonalności
-(osadzenia, fetch) lepiej podać stronę przez prosty serwer HTTP:
-
-```bash
-python3 -m http.server 8000
-# następnie otwórz http://localhost:8000
+```
+app/
+  layout.tsx        # metadane SEO, fonty, <html lang="pl">
+  page.tsx          # kompozycja sekcji + dane strukturalne (JSON-LD)
+  globals.css       # design system: zmienne, komponenty, utilities
+components/
+  Header.tsx        # sticky, transparentny na górze, szklany po scrollu, menu mobilne
+  Hero.tsx          # cinematic hero + abstrakcyjny wizual
+  AuraVisual.tsx    # aura / mandala z czystego CSS + SVG (bez stocków)
+  Mission.tsx       # idea + 3 karty (Świadomość, Wspólnota, Dobrostan)
+  Audience.tsx      # „Dla kogo jest Nowa Era?” — 4 karty
+  Pillars.tsx       # 5 filarów + kafelek-zaproszenie
+  Experience.tsx    # „Co znajdziesz w środku?”
+  Manifest.tsx      # editorial quote — Manifest Nowej Ery
+  Community.tsx     # „Nie musisz iść tą drogą sam” + CTA
+  JoinForm.tsx      # formularz zapisu (imię, e-mail, intencja)
+  Footer.tsx        # misja, nawigacja, kontakt, social, copyright
+  SectionHeading.tsx / Reveal.tsx / icons.tsx  # elementy współdzielone
+public/
+  favicon.svg
 ```
 
-## Uwaga
+## Uruchomienie
 
-Materiał ma charakter poglądowy i marketingowy. Prognozy finansowe są scenariuszami
-opartymi na założeniach i nie stanowią gwarancji wyników ani oferty w rozumieniu
-przepisów o instrumentach finansowych.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
+
+Produkcyjnie:
+
+```bash
+npm run build
+npm run start
+```
+
+Kontrola jakości:
+
+```bash
+npm run typecheck   # tsc --noEmit
+npm run lint        # eslint (flat config, next/core-web-vitals)
+```
+
+## Formularz zapisu
+
+`components/JoinForm.tsx` wysyła zgłoszenie **bezpośrednio z przeglądarki** do
+**[Web3Forms](https://web3forms.com)**, które dostarcza je e-mailem na skrzynkę
+**robert@harmonylife.asia**. Formularz ma walidację, ukryty honeypot antyspamowy
+oraz stany `submitting`/`success`/`error`.
+
+> Dlaczego z przeglądarki, a nie z backendu? Darmowy plan Web3Forms akceptuje
+> wyłącznie żądania client-side (z IP przeglądarki użytkownika); wywołania
+> server-side wymagają planu Pro. Klucz dostępu jest **publiczny z założenia** —
+> to jego normalny, bezpieczny model użycia.
+
+Konfiguracja — jedna zmienna środowiskowa:
+
+```bash
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=...   # klucz utworzony dla robert@harmonylife.asia
+```
+
+- **Lokalnie:** skopiuj `.env.example` do `.env.local` i uzupełnij klucz.
+- **Produkcja (Vercel):** Project → Settings → Environment Variables → dodaj
+  `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`, a następnie redeploy (zmienne `NEXT_PUBLIC_*`
+  są wstrzykiwane na etapie budowania).
+
+Klucz tworzysz za darmo na [web3forms.com](https://web3forms.com) podając adres
+`robert@harmonylife.asia` — od tego momentu każde zgłoszenie trafia na tę skrzynkę.
+
+## SEO
+
+- `title`: „Nowa Era | Społeczność Świadomych Ludzi”
+- `description`, Open Graph, Twitter Card, `lang="pl"`, dane strukturalne JSON-LD
+  (`Organization`), semantyczne nagłówki i landmarki.
