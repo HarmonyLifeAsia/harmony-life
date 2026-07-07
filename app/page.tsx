@@ -7,6 +7,7 @@ import Experience from "@/components/Experience";
 import Manifest from "@/components/Manifest";
 import Community from "@/components/Community";
 import JoinForm from "@/components/JoinForm";
+import Support from "@/components/Support";
 import Footer from "@/components/Footer";
 
 const structuredData = {
@@ -37,6 +38,7 @@ export default function Home() {
         <Manifest />
         <Community />
         <JoinForm />
+        <Support />
       </main>
       <Footer />
     </>

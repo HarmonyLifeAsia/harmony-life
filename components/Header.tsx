@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "Filary", href: "#filary" },
   { label: "Społeczność", href: "#spolecznosc" },
   { label: "Dołącz", href: "#dolacz" },
+  { label: "Wesprzyj", href: "#wesprzyj" },
 ];
 
 export default function Header() {
@@ -53,7 +54,7 @@ export default function Header() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-9 lg:flex" aria-label="Główna nawigacja">
+        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex" aria-label="Główna nawigacja">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
