@@ -13,24 +13,46 @@ export default function JoinForm() {
     setStatus("submitting");
 
     const form = event.currentTarget;
-    const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement)?.value ?? "",
-      email: (form.elements.namedItem("email") as HTMLInputElement)?.value ?? "",
-      intention:
-        (form.elements.namedItem("intention") as HTMLTextAreaElement)?.value ?? "",
-      // Honeypot — real users never fill this hidden field.
-      website: (form.elements.namedItem("website") as HTMLInputElement)?.value ?? "",
-    };
+    const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim() ?? "";
+    const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim() ?? "";
+    const intention =
+      (form.elements.namedItem("intention") as HTMLTextAreaElement)?.value.trim() ?? "";
+    // Honeypot — real users never fill this hidden field. Silently drop bots.
+    const honeypot = (form.elements.namedItem("website") as HTMLInputElement)?.value ?? "";
+    if (honeypot) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setStatus("error");
+      return;
+    }
 
     try {
-      const res = await fetch("/api/join", {
+      // Submitted directly from the browser — Web3Forms' free plan only accepts
+      // client-side requests. The access key is public by design; delivery goes
+      // to the inbox the key was created for (robert@harmonylife.asia).
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Nowa Era — nowe zgłoszenie od ${name}`,
+          from_name: "Nowa Era — formularz",
+          replyto: email,
+          Imię: name,
+          Email: email,
+          Intencja: intention || "—",
+        }),
       });
 
-      if (!res.ok) {
-        throw new Error("Request failed");
+      const result = (await res.json().catch(() => ({}))) as { success?: boolean };
+
+      if (!res.ok || !result.success) {
+        throw new Error("Web3Forms rejected the submission");
       }
 
       setStatus("success");

@@ -65,24 +65,29 @@ npm run lint        # eslint (flat config, next/core-web-vitals)
 
 ## Formularz zapisu
 
-`components/JoinForm.tsx` wysyła zgłoszenie do API route `app/api/join/route.ts`,
-które przekazuje je e-mailem przez **[Web3Forms](https://web3forms.com)** na
-skrzynkę **robert@harmonylife.asia**. Formularz ma walidację po stronie serwera,
-ukryty honeypot antyspamowy oraz stany `submitting`/`success`/`error`.
+`components/JoinForm.tsx` wysyła zgłoszenie **bezpośrednio z przeglądarki** do
+**[Web3Forms](https://web3forms.com)**, które dostarcza je e-mailem na skrzynkę
+**robert@harmonylife.asia**. Formularz ma walidację, ukryty honeypot antyspamowy
+oraz stany `submitting`/`success`/`error`.
+
+> Dlaczego z przeglądarki, a nie z backendu? Darmowy plan Web3Forms akceptuje
+> wyłącznie żądania client-side (z IP przeglądarki użytkownika); wywołania
+> server-side wymagają planu Pro. Klucz dostępu jest **publiczny z założenia** —
+> to jego normalny, bezpieczny model użycia.
 
 Konfiguracja — jedna zmienna środowiskowa:
 
 ```bash
-WEB3FORMS_ACCESS_KEY=...   # klucz utworzony dla robert@harmonylife.asia
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=...   # klucz utworzony dla robert@harmonylife.asia
 ```
 
 - **Lokalnie:** skopiuj `.env.example` do `.env.local` i uzupełnij klucz.
 - **Produkcja (Vercel):** Project → Settings → Environment Variables → dodaj
-  `WEB3FORMS_ACCESS_KEY`, a następnie redeploy.
+  `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`, a następnie redeploy (zmienne `NEXT_PUBLIC_*`
+  są wstrzykiwane na etapie budowania).
 
 Klucz tworzysz za darmo na [web3forms.com](https://web3forms.com) podając adres
 `robert@harmonylife.asia` — od tego momentu każde zgłoszenie trafia na tę skrzynkę.
-Bez ustawionego klucza route zwraca `503`, a formularz pokazuje komunikat o błędzie.
 
 ## SEO
 
