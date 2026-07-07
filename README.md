@@ -65,10 +65,24 @@ npm run lint        # eslint (flat config, next/core-web-vitals)
 
 ## Formularz zapisu
 
-`components/JoinForm.tsx` jest w pełni interaktywny (walidacja, stany
-`submitting`/`success`/`error`), ale nie jest jeszcze podłączony do backendu.
-Miejsce integracji jest oznaczone komentarzem `// TODO` — wystarczy podpiąć
-własne API route lub usługę e-mail (np. Resend, Mailchimp, web3forms).
+`components/JoinForm.tsx` wysyła zgłoszenie do API route `app/api/join/route.ts`,
+które przekazuje je e-mailem przez **[Web3Forms](https://web3forms.com)** na
+skrzynkę **robert@harmonylife.asia**. Formularz ma walidację po stronie serwera,
+ukryty honeypot antyspamowy oraz stany `submitting`/`success`/`error`.
+
+Konfiguracja — jedna zmienna środowiskowa:
+
+```bash
+WEB3FORMS_ACCESS_KEY=...   # klucz utworzony dla robert@harmonylife.asia
+```
+
+- **Lokalnie:** skopiuj `.env.example` do `.env.local` i uzupełnij klucz.
+- **Produkcja (Vercel):** Project → Settings → Environment Variables → dodaj
+  `WEB3FORMS_ACCESS_KEY`, a następnie redeploy.
+
+Klucz tworzysz za darmo na [web3forms.com](https://web3forms.com) podając adres
+`robert@harmonylife.asia` — od tego momentu każde zgłoszenie trafia na tę skrzynkę.
+Bez ustawionego klucza route zwraca `503`, a formularz pokazuje komunikat o błędzie.
 
 ## SEO
 

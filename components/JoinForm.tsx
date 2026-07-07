@@ -18,20 +18,21 @@ export default function JoinForm() {
       email: (form.elements.namedItem("email") as HTMLInputElement)?.value ?? "",
       intention:
         (form.elements.namedItem("intention") as HTMLTextAreaElement)?.value ?? "",
+      // Honeypot — real users never fill this hidden field.
+      website: (form.elements.namedItem("website") as HTMLInputElement)?.value ?? "",
     };
 
     try {
-      // TODO: Connect to a real backend / email service (e.g. an API route,
-      // Resend, Mailchimp or web3forms). For now we simulate a successful
-      // submission so the form is fully interactive and visually ready.
-      // Example:
-      //   await fetch("/api/join", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(data),
-      //   });
-      void data;
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      const res = await fetch("/api/join", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error("Request failed");
+      }
+
       setStatus("success");
       form.reset();
     } catch {
@@ -107,6 +108,15 @@ export default function JoinForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                {/* Honeypot — visually hidden, ignored by humans, filled by bots. */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-medium text-graphite">
                     Imię
