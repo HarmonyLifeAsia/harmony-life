@@ -9,11 +9,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const projectPaths = projects.map((p) => `/projects/${p.slug}`)
   const allPaths = [...staticPaths, ...projectPaths]
 
-  return locales.flatMap((lang) =>
+  const localized = locales.flatMap((lang) =>
     allPaths.map((path) => ({
       url: `${SITE_URL}/${lang}${path}`,
       changeFrequency: 'monthly' as const,
       priority: path === '' ? 1 : 0.7,
     }))
   )
+
+  // Polski-only strony (jak /ubezpieczenia i /membership) — tylko wariant PL.
+  const plOnly = ['/membership'].map((path) => ({
+    url: `${SITE_URL}/pl${path}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...localized, ...plOnly]
 }

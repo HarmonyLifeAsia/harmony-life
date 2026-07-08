@@ -16,6 +16,7 @@ export default function Navigation() {
 
   const navLinks = [
     { label: dict.nav.projects, href: `/${lang}/#projects` },
+    { label: 'Membership', href: `/pl/membership`, highlight: true },
     { label: dict.nav.guide, href: `/${lang}/guide` },
     { label: dict.nav.about, href: `/${lang}/about` },
     { label: dict.nav.contact, href: `/${lang}/contact` },
@@ -67,7 +68,11 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`hover:text-gold text-sm tracking-wide transition-colors duration-200 cursor-pointer ${scrolled ? 'text-cream/80' : 'text-onscrim/80'}`}
+                className={`hover:text-gold text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
+                  link.highlight
+                    ? (scrolled ? 'text-gold' : 'text-onscrim-gold')
+                    : (scrolled ? 'text-cream/80' : 'text-onscrim/80')
+                }`}
               >
                 {link.label}
               </Link>
