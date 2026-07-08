@@ -7,7 +7,7 @@ export const CALENDLY_URL =
 // Web3Forms — obsługa formularza zgłoszeniowego (Membership).
 // Klucz jest z założenia publiczny (osadzany w HTML). Wygeneruj go na
 // https://web3forms.com wpisując adres MEMBERSHIP_LEADS_EMAIL, potem wklej tutaj.
-export const WEB3FORMS_ACCESS_KEY = '4e74606e-aa83-4830-b740-63b82440a3f9'
+export const WEB3FORMS_ACCESS_KEY: string = '4e74606e-aa83-4830-b740-63b82440a3f9'
 export const MEMBERSHIP_LEADS_EMAIL = 'robert@harmonylife.asia'
 
 // Office location (Harmony Life One, Bo Phut, Koh Samui).
