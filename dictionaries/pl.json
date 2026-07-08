@@ -165,7 +165,8 @@
     "terms": "Regulamin",
     "rights": "Wszelkie prawa zastrzeżone.",
     "subscribeSuccess": "Dziękujemy za subskrypcję!",
-    "joinButton": "Dołącz"
+    "joinButton": "Dołącz",
+    "partnerDeck": "Prezentacja do druku (dla partnerów)"
   },
   "projectDetail": {
     "aboutEyebrow": "O tym projekcie",

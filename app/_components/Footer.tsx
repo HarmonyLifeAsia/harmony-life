@@ -86,7 +86,8 @@ export default function Footer() {
 
         <div className="border-t border-gold/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-cream/30 text-xs">© {new Date().getFullYear()} Harmony Life Samui Co., Ltd. {t.rights}</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center gap-6">
+            <a href="/prezentacje/harmony-life-oasis.pdf" target="_blank" rel="noopener noreferrer" className="text-gold/50 hover:text-gold text-xs transition-colors cursor-pointer">{t.partnerDeck}</a>
             <Link href={`/${lang}/privacy`} className="text-cream/30 hover:text-cream/60 text-xs transition-colors cursor-pointer">{t.privacy}</Link>
             <a href="#" className="text-cream/30 hover:text-cream/60 text-xs transition-colors cursor-pointer">{t.terms}</a>
           </div>

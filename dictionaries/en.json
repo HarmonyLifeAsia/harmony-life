@@ -165,7 +165,8 @@
     "terms": "Terms & Conditions",
     "rights": "All rights reserved.",
     "subscribeSuccess": "Thank you for subscribing!",
-    "joinButton": "Join"
+    "joinButton": "Join",
+    "partnerDeck": "Print presentation (for partners)"
   },
   "projectDetail": {
     "aboutEyebrow": "About this Project",
