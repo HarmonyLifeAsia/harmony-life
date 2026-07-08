@@ -1,9 +1,36 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '../_data/site'
+import MembershipForm from './MembershipForm'
 
 const PDF = '/prezentacje/harmony-life-membership.pdf'
+
+// Transparentne FAQ — wspiera SEO na frazę „willa w Tajlandii za 1,5 mln THB
+// z widokiem na morze" i jednocześnie jasno tłumaczy model współwłasności.
+const FAQ = [
+  {
+    q: 'Ile kosztuje willa w Tajlandii z widokiem na morze w tym modelu?',
+    a: 'W programie Membership kupujesz udział we współwłasności willi z widokiem na morze na Koh Samui. Cena jednego z 12 udziałów w willi to 1,5 mln THB. Pełna wartość rynkowa całej willi wynosi ok. 18 mln THB — udział daje Ci realny współudział, a nie samodzielną własność całego domu.',
+  },
+  {
+    q: 'Co dokładnie otrzymuję za 1,5 mln THB?',
+    a: 'Realny współudział we własności willi (1/12), udział w rzeczywistych zyskach z najmu wypłacany co roku, prawo do 14 dni własnego pobytu rocznie poza szczytem sezonu oraz pełne zarządzanie operacyjne po stronie Harmony Life. Dodatkowo dołączasz do społeczności inwestorów Harmony Life.',
+  },
+  {
+    q: 'Gdzie leży willa i jaki ma widok?',
+    a: 'Willa znajduje się na Koh Samui w Tajlandii, na osiedlu z willami z widokiem na morze. Lokalizacja łączy bliskość plaż i infrastruktury wyspy z prywatnością i tropikalnym otoczeniem.',
+  },
+  {
+    q: 'Czy to gwarantowany zysk?',
+    a: 'Nie. Wszystkie prezentowane liczby (m.in. dochód z najmu i stopy zwrotu) to prognozy wynikające z założeń modelu finansowego i nie stanowią gwarancji. Struktura udziału dla obcokrajowców opiera się zwykle na leasehold i wymaga weryfikacji u niezależnego prawnika.',
+  },
+  {
+    q: 'Jak mogę zgłosić zainteresowanie?',
+    a: 'Wypełnij formularz zgłoszeniowy na tej stronie albo pobierz szczegółowy model finansowy (PDF). Skontaktujemy się z Tobą i przejdziemy przez cały model — bez zobowiązań.',
+  },
+]
 
 const fade = {
   initial: { opacity: 0, y: 26 },
@@ -56,6 +83,7 @@ const PROJECTIONS = [
 ]
 
 export default function MembershipContent() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
   return (
     <>
       {/* Hero */}
@@ -69,18 +97,18 @@ export default function MembershipContent() {
             Harmony Life · Membership
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="font-serif text-4xl md:text-6xl text-onscrim leading-[1.08] mb-6">
-            Współwłasność willi na Koh Samui
+            Willa w Tajlandii z widokiem na morze — udział od 1,5 mln THB
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-onscrim/75 text-lg leading-relaxed max-w-2xl mx-auto mb-9">
-            Przejrzysty model inwestycyjny: realny udział w nieruchomości, dochód z najmu i Twoje miejsce na wypoczynek. A do tego społeczność inwestorów, która wspiera się nawzajem.
+            Przejrzysty model współwłasności willi z widokiem na morze na Koh Samui: realny udział w nieruchomości, dochód z najmu i Twoje miejsce na wypoczynek. A do tego społeczność inwestorów, która wspiera się nawzajem.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={PDF} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-primary text-sm font-medium tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-gold-light transition-colors duration-300 cursor-pointer">
               Pobierz model finansowy (PDF)
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" /></svg>
             </a>
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-onscrim-gold/60 text-onscrim-gold text-sm tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-onscrim-gold hover:text-scrim transition-all duration-300 cursor-pointer">
-              Umów konsultację
+            <a href="#zgloszenie" className="inline-flex items-center gap-2 border border-onscrim-gold/60 text-onscrim-gold text-sm tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-onscrim-gold hover:text-scrim transition-all duration-300 cursor-pointer">
+              Zostaw zgłoszenie
             </a>
           </motion.div>
         </div>
@@ -232,6 +260,51 @@ export default function MembershipContent() {
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-onscrim-gold/60 text-onscrim-gold text-sm tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-onscrim-gold hover:text-scrim transition-all duration-300 cursor-pointer">
               Umów konsultację
             </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ — transparentne + SEO */}
+      <section className="px-6 py-24">
+        <div className="max-w-3xl mx-auto">
+          <motion.div {...fade} className="mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Najczęstsze pytania</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight">Willa w Tajlandii za 1,5 mln THB — jak to działa</h2>
+          </motion.div>
+          <div className="space-y-2">
+            {FAQ.map((item, i) => {
+              const open = openFaq === i
+              return (
+                <div key={i} className="border border-gold/12 rounded-lg overflow-hidden bg-charcoal/20">
+                  <button type="button" onClick={() => setOpenFaq(open ? null : i)} aria-expanded={open}
+                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/5 transition-colors cursor-pointer">
+                    <span className="text-cream text-sm md:text-base font-medium">{item.q}</span>
+                    <span className={`text-gold text-xl leading-none transition-transform duration-300 flex-shrink-0 ${open ? 'rotate-45' : ''}`}>+</span>
+                  </button>
+                  <div className={`grid transition-all duration-300 ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                    <div className="overflow-hidden">
+                      <p className="px-5 pb-4 text-cream/60 text-sm leading-relaxed">{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Formularz zgłoszeniowy */}
+      <section id="zgloszenie" className="scroll-mt-24 px-6 py-24" style={{ background: 'linear-gradient(160deg, #252542, #1a1a2e)' }}>
+        <div className="max-w-3xl mx-auto">
+          <motion.div {...fade} className="text-center mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Zgłoszenie</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-4">Zostaw zgłoszenie do programu</h2>
+            <p className="text-cream/60 text-base leading-relaxed max-w-xl mx-auto">
+              Wypełnij formularz — odezwiemy się z pełnymi informacjami o współwłasności willi z widokiem na morze na Koh Samui. Bez zobowiązań.
+            </p>
+          </motion.div>
+          <motion.div {...fade}>
+            <MembershipForm />
           </motion.div>
         </div>
       </section>

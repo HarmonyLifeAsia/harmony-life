@@ -51,6 +51,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: nav.projects, href: `/${lang}/#projects` },
+                { label: 'Membership', href: `/pl/membership` },
                 { label: nav.about, href: `/${lang}/about` },
                 { label: nav.insurance, href: `/pl/ubezpieczenia` },
                 { label: nav.contact, href: `/${lang}/contact` },
