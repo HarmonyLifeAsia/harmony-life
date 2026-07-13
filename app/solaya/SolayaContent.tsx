@@ -131,6 +131,19 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
         </div>
       </section>
 
+      {/* Estate aerials */}
+      <section className="px-6 py-24" style={{ background: 'linear-gradient(160deg, #252542, #1a1a2e)' }}>
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fade} className="mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{c.aerials.eyebrow}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight">{c.aerials.title}</h2>
+          </motion.div>
+          <motion.div {...fade}>
+            <VillaGallery images={SOLAYA_IMAGES.estate} alt="SOLAYA — osiedle z lotu ptaka, Plai Laem, Koh Samui" />
+          </motion.div>
+        </div>
+      </section>
+
       {/* 5. Villas */}
       <section className="px-6 py-24">
         <div className="max-w-6xl mx-auto">

@@ -18,6 +18,7 @@ export interface SolayaCopy {
   about: { eyebrow: string; title: string; paragraphs: string[] }
   location: { eyebrow: string; title: string; intro: string; times: { label: string; time: string }[]; note: string; openMap: string }
   masterplan: { eyebrow: string; title: string; intro: string; note: string }
+  aerials: { eyebrow: string; title: string }
   villas: { eyebrow: string; title: string; intro: string; panelCta: string; note: string; types: VillaType[] }
   finishing: { eyebrow: string; title: string; intro: string; items: { title: string; desc: string }[] }
   invest: { eyebrow: string; title: string; leaseTitle: string; leaseDesc: string; points: { title: string; desc: string }[]; scheduleTitle: string; scheduleIntro: string; stages: string[]; scheduleNote: string }
@@ -40,6 +41,13 @@ export const SOLAYA_IMAGES = {
   aboutAerial: '/images/projects/solaya/aerial/02.webp',
   locationAerial: '/images/projects/solaya/aerial/03.webp',
   masterplan: '/images/projects/solaya/masterplan.webp',
+  estate: [
+    '/images/projects/solaya/aerial/hero.webp',
+    '/images/projects/solaya/aerial/04.webp',
+    '/images/projects/solaya/aerial/02.webp',
+    '/images/projects/solaya/aerial/03.webp',
+    '/images/projects/solaya/aerial/05.webp',
+  ],
   villa: {
     '2bed': ['/images/projects/solaya/2bed/01.webp', '/images/projects/solaya/2bed/02.webp', '/images/projects/solaya/2bed/03.webp', '/images/projects/solaya/2bed/04.webp', '/images/projects/solaya/2bed/05.webp'],
     '3bed': ['/images/projects/solaya/3bed/01.webp', '/images/projects/solaya/3bed/02.webp', '/images/projects/solaya/3bed/03.webp', '/images/projects/solaya/3bed/04.webp', '/images/projects/solaya/3bed/05.webp'],
@@ -101,6 +109,7 @@ const pl: SolayaCopy = {
     intro: '19 willi rozmieszczonych tarasowo na zboczu — tak, by każda miała otwarty, panoramiczny widok na morze, góry i świątynie Buddy, przy zachowaniu prywatności. Numeracja, układ i dostępność poszczególnych willi w panelu ofertowym.',
     note: 'Plan zagospodarowania terenu (PZT).',
   },
+  aerials: { eyebrow: 'Z lotu ptaka', title: 'Osiedle wtopione w zbocze' },
   villas: {
     eyebrow: 'Wille',
     title: 'Trzy typy, jeden standard',
@@ -254,6 +263,7 @@ const en: SolayaCopy = {
     intro: '19 villas arranged in terraces down the slope — so that each enjoys an open, panoramic view of the sea, mountains and Buddha temples while keeping its privacy. The numbering, layout and availability of individual villas are in the offer panel.',
     note: 'Site development plan (PZT).',
   },
+  aerials: { eyebrow: 'From above', title: 'An estate woven into the hillside' },
   villas: {
     eyebrow: 'The villas',
     title: 'Three types, one standard',
@@ -407,6 +417,7 @@ const de: SolayaCopy = {
     intro: '19 Villen terrassenförmig am Hang angeordnet — so, dass jede einen offenen Panoramablick auf Meer, Berge und Buddha-Tempel genießt und dabei ihre Privatsphäre behält. Nummerierung, Anordnung und Verfügbarkeit der einzelnen Villen finden Sie im Angebots-Panel.',
     note: 'Bebauungsplan (PZT).',
   },
+  aerials: { eyebrow: 'Aus der Vogelperspektive', title: 'Eine in den Hang eingebettete Anlage' },
   villas: {
     eyebrow: 'Die Villen',
     title: 'Drei Typen, ein Standard',
