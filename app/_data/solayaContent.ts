@@ -46,8 +46,8 @@ export interface FormLabels {
 }
 
 export const SOLAYA_IMAGES = {
-  heroAerial: '/images/projects/solaya/aerial/hero.webp',
-  aboutAerial: '/images/projects/solaya/aerial/02.webp',
+  heroAerial: '/images/projects/solaya/aerial/04.webp',
+  aboutAerial: '/images/projects/solaya/aerial/hero.webp',
   locationAerial: '/images/projects/solaya/aerial/03.webp',
   masterplan: '/images/projects/solaya/masterplan.webp',
   estate: [
@@ -65,7 +65,7 @@ export const SOLAYA_IMAGES = {
 }
 
 export const SOLAYA_LINKS = {
-  panel: 'https://panel.harmonylife.asia/p/HLOASIS/units',
+  panel: 'https://panel.harmonylife.asia/p/SOLV/units',
   map: 'https://maps.app.goo.gl/WUvviriZTrdL1kSb7',
   mapEmbed: 'https://www.google.com/maps?q=9.566021,100.068411&z=15&output=embed',
   instagram: 'https://www.instagram.com/robert_samui',

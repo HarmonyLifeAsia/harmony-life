@@ -17,6 +17,27 @@ const ArrowDown = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
 )
 
+const Icon = ({ d, className = 'w-6 h-6' }: { d: string; className?: string }) => (
+  <svg className={`${className} text-gold`} fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24" aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d={d} />
+  </svg>
+)
+
+// Ikony do opisów — kolejność zgodna z finishing.items / mgmt.groups.
+const FINISH_ICONS = [
+  'M4 6l8-3 8 3M4 6v4m16-4v4M6 10h12M6 10v8m12-8v8M4 18h16',                         // izolacja dachu i fundamentów
+  'M3 8h11a2.5 2.5 0 100-5M3 12h15a2.5 2.5 0 110 5M3 16h8a2.5 2.5 0 11-2.5 2.5',      // klimatyzacja / wentylacja
+  'M3 10.5L12 4l9 6.5M5 9.5V20h14V9.5M3 13h18M3 16.5h18',                             // sufity z drewna tekowego
+  'M8.5 3C7 5 7 7 8.5 9c-3 1-4 6 0 8.5C10 19 14 19 15.5 17.5c3-3 1.5-7-1-9C13 6.5 12 4.5 8.5 3z', // kuchnia
+  'M12 3.75c-2 3-4 5-4 8a4 4 0 108 0c0-3-2-5-4-8z',                                   // łazienki
+  'M12 3v2m6.4.6l-1.4 1.4M21 12h-2M6.4 5.6L5 7M5 12H3m9 6a4 4 0 100-8 4 4 0 000 8zm0 0v3', // tarasy / basen
+]
+const MGMT_ICONS = [
+  'M11.4 15.2l5.8 5.8a2.65 2.65 0 003.8-3.8l-5.9-5.9m-3.7 3.9l2.5-3a3 3 0 011.2-.8m-3.7 3.8l-4.7 5.7a2.5 2.5 0 11-3.6-3.6l6.8-5.6m5.1-.2c.6-.2 1.2-.2 1.7-.1a4.5 4.5 0 004.5-6.3l-3.3 3.3a3 3 0 01-2.2-2.3l3.3-3.3a4.5 4.5 0 00-6.3 4.5c.1 1-.1 2.3-.9 3', // utrzymanie
+  'M15 19.1a9.4 9.4 0 002.6.4 9.3 9.3 0 004.1-1 4.1 4.1 0 00-7.5-2.5M15 19.1v-.1c0-1.1-.3-2.1-.8-3M15 19.1A12.3 12.3 0 018.6 21c-2.3 0-4.5-.6-6.4-1.8a6.4 6.4 0 0112-3.1M12 6.4a3.4 3.4 0 11-6.8 0 3.4 3.4 0 016.8 0zm8.2 2.2a2.6 2.6 0 11-5.2 0 2.6 2.6 0 015.2 0z', // najem i goście
+  'M3 13.1V19a2 2 0 002 2h14a2 2 0 002-2v-5.9M3 13.1V6a2 2 0 012-2h6l2 2.5h6a2 2 0 012 2v4.6M9 16.5h6', // rozliczenia
+]
+
 function VillaGallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0)
   return (
@@ -188,8 +209,9 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             <p className="text-cream/65 text-base leading-relaxed">{c.finishing.intro}</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {c.finishing.items.map((it) => (
+            {c.finishing.items.map((it, i) => (
               <motion.div key={it.title} {...fade} className="border-t border-gold/20 pt-5">
+                {FINISH_ICONS[i] && <div className="mb-3"><Icon d={FINISH_ICONS[i]} /></div>}
                 <h3 className="font-serif text-lg text-cream mb-2">{it.title}</h3>
                 <p className="text-cream/55 text-sm leading-relaxed">{it.desc}</p>
               </motion.div>
@@ -242,8 +264,9 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             <p className="text-cream/65 text-base leading-relaxed">{c.mgmt.intro}</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {c.mgmt.groups.map((g) => (
+            {c.mgmt.groups.map((g, i) => (
               <motion.div key={g.title} {...fade} className="bg-charcoal/30 border border-gold/12 rounded-xl p-7">
+                {MGMT_ICONS[i] && <div className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center mb-4"><Icon d={MGMT_ICONS[i]} /></div>}
                 <h3 className="font-serif text-xl text-cream mb-3">{g.title}</h3>
                 <p className="text-cream/55 text-sm leading-relaxed">{g.desc}</p>
               </motion.div>

@@ -277,7 +277,7 @@ export const projects: Project[] = [
     ],
     mapEmbed: 'https://www.google.com/maps?q=9.566021,100.068411&z=15&output=embed',
     mapLink: 'https://maps.app.goo.gl/WUvviriZTrdL1kSb7',
-    offer: 'https://panel.harmonylife.asia/p/HLOASIS/units',
+    offer: 'https://panel.harmonylife.asia/p/SOLV/units',
   },
   {
     slug: 'harmony-life-wellness',
