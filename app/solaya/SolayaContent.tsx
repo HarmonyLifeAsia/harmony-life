@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '../_data/site'
 import { SOLAYA_COPY, SOLAYA_IMAGES, SOLAYA_LINKS, type SolayaLocale } from '../_data/solayaContent'
 import SolayaForm from './SolayaForm'
+import SolayaVillaMap from '../_components/SolayaVillaMap'
 
 const fade = {
   initial: { opacity: 0, y: 26 },
@@ -151,10 +152,10 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             <h2 className="font-serif text-3xl md:text-4xl text-cream mb-5 leading-tight">{c.masterplan.title}</h2>
             <p className="text-cream/65 text-base leading-relaxed">{c.masterplan.intro}</p>
           </motion.div>
-          <motion.figure {...fade} className="rounded-2xl border border-gold/15 overflow-hidden bg-cream/5">
-            <img src={SOLAYA_IMAGES.masterplan} alt="SOLAYA — plan zagospodarowania terenu (PZT), 19 willi na zboczu z widokiem na morze" loading="lazy" decoding="async" className="w-full object-contain" />
-            <figcaption className="text-cream/40 text-xs px-5 py-3 border-t border-gold/10">{c.masterplan.note}</figcaption>
-          </motion.figure>
+          <motion.div {...fade} className="rounded-2xl border border-gold/15 overflow-hidden">
+            <SolayaVillaMap onInquire={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })} />
+          </motion.div>
+          <p className="text-cream/40 text-xs mt-4">{c.masterplan.note} · {c.villas.note}</p>
         </div>
       </section>
 
