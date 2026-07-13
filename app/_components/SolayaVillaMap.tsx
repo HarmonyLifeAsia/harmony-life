@@ -20,7 +20,7 @@
   - kliknij "Eksportuj pozycje" i wklej JSON z powrotem do VILLAS.
 */
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 
 const BACKGROUND = "/images/projects/solaya/aerial/04.webp";
 
@@ -54,6 +54,10 @@ export default function SolayaVillaMap({ onInquire }) {
   const [hover, setHover] = useState(null);
   const [filter, setFilter] = useState(null);      // null | status key
   const [toast, setToast] = useState(null);
+  const [edit, setEdit] = useState(false);         // tryb ustawiania pozycji
+  const [pos, setPos] = useState(POS);             // edytowalne pozycje markerów
+  const stageRef = useRef(null);
+  const dragRef = useRef(null);
 
   const counts = useMemo(() => {
     const c = { available: 0, reserved: 0, sold: 0 };
@@ -100,6 +104,30 @@ export default function SolayaVillaMap({ onInquire }) {
 
   const flash = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
 
+  // Tryb edycji: przeciąganie markerów po planie + eksport współrzędnych.
+  useEffect(() => {
+    if (!edit) return;
+    const move = (e) => {
+      const n = dragRef.current;
+      if (n == null || !stageRef.current) return;
+      const r = stageRef.current.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100));
+      const y = Math.max(0, Math.min(100, ((e.clientY - r.top) / r.height) * 100));
+      setPos((p) => ({ ...p, [n]: [Math.round(x * 10) / 10, Math.round(y * 10) / 10] }));
+    };
+    const up = () => { dragRef.current = null; };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
+  }, [edit]);
+
+  const copyPositions = () => {
+    const json = "{ " + Object.keys(pos).sort((a, b) => a - b).map((k) => `${k}:[${pos[k][0]},${pos[k][1]}]`).join(", ") + " }";
+    console.log("SOLAYA POS:", json);
+    try { navigator.clipboard.writeText(json); flash("Skopiowano współrzędne — wklej je w czacie"); }
+    catch { flash("Współrzędne w konsoli (F12)"); }
+  };
+
   const activeVilla = active != null ? villas.find((v) => v.n === active) : null;
 
   return (
@@ -113,7 +141,12 @@ export default function SolayaVillaMap({ onInquire }) {
           <h2 className="hl-title">Dostępność willi</h2>
           <p className="hl-sub">Wybierz willę na planie — status i ceny na żywo.</p>
         </div>
+        <div className="hl-tools">
+          <button className={"hl-tool " + (edit ? "on" : "")} onClick={() => setEdit((e) => !e)}>{edit ? "Zakończ edycję" : "Ustaw pozycje"}</button>
+          {edit && <button className="hl-tool" onClick={copyPositions}>Kopiuj współrzędne</button>}
+        </div>
       </div>
+      {edit && <p className="hl-edithint">Przeciągnij kropki na właściwe wille, potem „Kopiuj współrzędne" i wklej mi je w czacie.</p>}
 
       {/* LEGENDA / FILTRY */}
       <div className="hl-legend">
@@ -137,13 +170,15 @@ export default function SolayaVillaMap({ onInquire }) {
 
       {/* SCENA */}
       <div
-        className="hl-stage"
+        ref={stageRef}
+        className={"hl-stage" + (edit ? " editing" : "")}
         style={{ backgroundImage: `url("${BACKGROUND}")` }}
       >
         <div className="hl-veil" />
 
         {villas.map((v) => {
-          const p = { x: v.x, y: v.y };
+          const pr = pos[v.n] || [v.x, v.y];
+          const p = { x: pr[0], y: pr[1] };
           const dim = filter && v.status !== filter;
           const isActive = active === v.n;
           const isHover = hover === v.n;
@@ -164,7 +199,8 @@ export default function SolayaVillaMap({ onInquire }) {
               }}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
-              onClick={() => setActive(v.n)}
+              onPointerDown={(e) => { if (edit) { e.preventDefault(); dragRef.current = v.n; } }}
+              onClick={() => { if (!edit) setActive(v.n); }}
               aria-label={`Willa ${v.n} — ${STATUS[v.status].label}${v.priceFrom != null ? ` — od ${thb(v.priceFrom)}` : ""}`}
             >
               <span className="m-num">{v.n}</span>
@@ -234,6 +270,17 @@ const css = `
 .hl-sub{ margin:6px 0 0; font-size:13.5px; color:#6b6a60; font-style:italic;
   font-family:'Fraunces',serif; }
 .hl-tools{ display:flex; gap:8px; }
+.hl-tool{ font:inherit; font-size:12.5px; font-weight:600; padding:7px 12px; border-radius:20px;
+  border:1px solid var(--sand); background:#fff; color:var(--forest); cursor:pointer; white-space:nowrap; }
+.hl-tool:hover{ background:var(--cream); }
+.hl-tool.on{ background:var(--forest); color:#fff; border-color:var(--forest); }
+.hl-edithint{ margin:10px 4px 0; font-size:12.5px; color:var(--forest); font-weight:500;
+  background:color-mix(in srgb, var(--gold) 18%, #fff); border:1px dashed var(--sand); border-radius:10px; padding:8px 12px; }
+.hl-stage.editing{ cursor:crosshair; }
+.hl-stage.editing .marker{ cursor:grab; }
+.hl-stage.editing .marker:active{ cursor:grabbing; }
+.hl-stage.editing .marker.dim{ opacity:1; pointer-events:auto; filter:none; }
+.hl-stage.editing .m-tip{ display:none; }
 .hl-cal{ font:inherit; font-size:12.5px; font-weight:600; padding:9px 15px; border-radius:999px;
   border:1px solid #d8cfb8; background:#fff; color:var(--forest); cursor:pointer;
   transition:.18s; }
@@ -266,17 +313,17 @@ const css = `
 .hl-cafe.grab:active{ cursor:grabbing; }
 
 /* Small status-coloured dots; number/price reveal in a tooltip on hover. */
-.marker{ position:absolute; transform:translate(-50%,-50%); width:2cqw; height:2cqw;
-  min-width:18px; min-height:18px; border-radius:50%; border:2px solid rgba(255,255,255,.9); cursor:pointer; padding:0;
-  box-shadow:0 2px 8px rgba(0,0,0,.5);
-  background:var(--c); display:flex; align-items:center; justify-content:center;
-  box-shadow:0 1px 3px rgba(0,0,0,.5);
+.marker{ position:absolute; transform:translate(-50%,-50%); min-width:30px; height:30px; padding:0 6px;
+  border-radius:16px; border:2px solid rgba(255,255,255,.94); cursor:pointer;
+  background:var(--c); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-weight:600; font-size:15px; line-height:1;
+  box-shadow:0 3px 9px rgba(0,0,0,.45);
   transition:transform .16s cubic-bezier(.2,.8,.3,1.2), box-shadow .16s, opacity .2s; }
-.marker .m-num{ display:none; }
-.marker:hover{ transform:translate(-50%,-50%) scale(2.2); z-index:60;
-  box-shadow:0 3px 10px rgba(0,0,0,.55); }
-.marker.active{ transform:translate(-50%,-50%) scale(2.4); z-index:60;
-  box-shadow:0 0 0 .26cqw color-mix(in srgb, var(--c) 55%, transparent), 0 5px 12px rgba(0,0,0,.55); }
+.marker .m-num{ display:block; }
+.marker:hover{ transform:translate(-50%,-50%) scale(1.16); z-index:60;
+  box-shadow:0 5px 14px rgba(0,0,0,.55); }
+.marker.active{ transform:translate(-50%,-50%) scale(1.2); z-index:60;
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--c) 40%, transparent), 0 6px 16px rgba(0,0,0,.55); }
 .marker.dim{ opacity:.3; pointer-events:none; filter:saturate(.5); }
 .marker.grab{ cursor:grab; }
 .marker.grab:active{ cursor:grabbing; }
