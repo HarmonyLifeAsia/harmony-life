@@ -2,14 +2,15 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug } from '../../../_data/projects'
 import { localizeProject, statusLabel } from '../../../_data/localizeProject'
-import { CALENDLY_URL } from '../../../_data/site'
+import { CALENDLY_URL, SITE_URL } from '../../../_data/site'
 import { getDictionary, hasLocale } from '../../../_i18n/dictionaries'
 import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import MediaGallery from '../../../_components/MediaGallery'
 import OasisMedia from '../../../_components/OasisMedia'
-import SolayaMedia from '../../../_components/SolayaMedia'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
+import SolayaContent from '../../../solaya/SolayaContent'
+import { SOLAYA_COPY, SOLAYA_IMAGES, type SolayaLocale } from '../../../_data/solayaContent'
 
 export function generateStaticParams() {
   return projects.flatMap(p => [
@@ -27,6 +28,24 @@ export async function generateMetadata({
   const { lang, slug } = await params
   const raw = getProjectBySlug(slug)
   if (!raw) return {}
+
+  if (slug === 'solaya-residence' && hasLocale(lang)) {
+    const c = SOLAYA_COPY[lang]
+    const url = `${SITE_URL}/${lang}/projects/solaya-residence`
+    const img = `${SITE_URL}${SOLAYA_IMAGES.heroAerial}`
+    const desc = `${c.hero.subtitle} ${c.about.paragraphs[0]}`
+    return {
+      title: `SOLAYA — ${c.hero.title} | Harmony Life`,
+      description: desc,
+      alternates: { canonical: url },
+      openGraph: {
+        type: 'website', url, siteName: 'Harmony Life',
+        title: `SOLAYA — ${c.hero.title}`, description: c.hero.subtitle,
+        images: [{ url: img, width: 1200, height: 630, alt: 'SOLAYA — Plai Laem, Koh Samui' }],
+      },
+    }
+  }
+
   const project = hasLocale(lang) ? localizeProject(raw, await getDictionary(lang)) : raw
   return {
     title: `${project.name} | Harmony Life`,
@@ -45,6 +64,39 @@ export default async function ProjectPage({
 
   const rawProject = getProjectBySlug(slug)
   if (!rawProject) notFound()
+
+  // SOLAYA uses a dedicated, full bespoke sales page (12 sections) instead of
+  // the generic project template.
+  if (slug === 'solaya-residence') {
+    const c = SOLAYA_COPY[lang as SolayaLocale]
+    const solayaLd = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Product',
+          name: 'SOLAYA — Harmony Life',
+          description: c.hero.subtitle,
+          image: `${SITE_URL}${SOLAYA_IMAGES.heroAerial}`,
+          brand: { '@type': 'Brand', name: 'Harmony Life' },
+          category: 'Sea-view villas, Koh Samui',
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: c.faq.items.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        },
+      ],
+    }
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(solayaLd) }} />
+        <SolayaContent lang={lang as SolayaLocale} />
+      </>
+    )
+  }
 
   const dict = await getDictionary(lang)
   const t = dict.projectDetail
@@ -122,8 +174,6 @@ export default async function ProjectPage({
                 o={dict.oasis as unknown as Record<string, string>}
                 cf={dict.contactForm as unknown as Record<string, string>}
               />
-            ) : slug === 'solaya-residence' ? (
-              <SolayaMedia s={dict.solaya as unknown as Record<string, string>} />
             ) : (
               <>
                 {project.realImages && project.realImages.length > 0 ? (

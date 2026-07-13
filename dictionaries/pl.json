@@ -454,23 +454,21 @@
       ]
     },
     "solaya-residence": {
-      "tagline": "71 apartamentów z widokiem na morze w Plai Leam",
-      "description": "Nowoczesny kompleks 71 apartamentów premium z widokiem na morze w Plai Leam — od kameralnych studiów po przestronne apartamenty 2-sypialniane.",
-      "longDescription": "Solaya Residence to nowoczesny kompleks 71 apartamentów premium z zachwycającym widokiem na morze w cenionej dzielnicy Plai Leam na Koh Samui. Projekt łączy elegancki design z funkcjonalnością i najwyższymi standardami komfortu. Układy obejmują zakres od kameralnych studiów po przestronne apartamenty 2-sypialniane, 39–92 m². Inwestycja wyróżnia się wyjątkową infrastrukturą udogodnień: basenem-laguną, w pełni wyposażoną siłownią, saunami, luksusowym spa i restauracją fine dining. Kompleks jest również przystosowany do organizacji profesjonalnych retreatów, co czyni go wyjątkowym miejscem na mapie Koh Samui — idealnym do życia i jako wysokodochodowa inwestycja.",
-      "type": "Apartamenty premium",
-      "priceFrom": "Zapytaj o cenę",
-      "location": "Plai Leam, Koh Samui",
+      "tagline": "Wille z widokiem na morze · Plai Laem",
+      "description": "Nowoczesne wille 2–3 sypialnie z widokiem na morze w Plai Laem — europejski standard, pełne zarządzanie Harmony Life.",
+      "longDescription": "SOLAYA to nowy projekt willowy Harmony Life w prestiżowej dzielnicy Plai Laem na Koh Samui: wille 2–3 sypialnie, w tym typ flagowy z prywatnym tarasem na dachu. Każda willa ma widok na morze lub panoramę, prywatny basen i tropikalny ogród. Europejski standard, leasehold rejestrowany w Land Department i pełne zarządzanie najmem przez jeden zespół — od budowy po kwartalne rozliczenia.",
+      "type": "Wille",
+      "priceFrom": "Zapytaj",
+      "location": "Plai Laem, Koh Samui",
       "landArea": "Nie dotyczy",
       "poolSize": "Basen-laguna (wspólny)",
       "features": [
-        "Widok na morze ze wszystkich lokali",
-        "Układy: studio, 1- i 2-sypialniane",
-        "Powierzchnie 39–92 m²",
-        "Basen-laguna",
-        "Luksusowe spa",
-        "W pełni wyposażona siłownia i sauny",
-        "Restauracja fine dining",
-        "Zaplecze gotowe na retreaty"
+        "Widok na morze lub panorama",
+        "Wille 2–3 sypialnie",
+        "Prywatny basen i ogród",
+        "Typ flagowy z tarasem na dachu",
+        "Europejski standard wykonania",
+        "Pełne zarządzanie najmem"
       ]
     },
     "harmony-life-wellness": {

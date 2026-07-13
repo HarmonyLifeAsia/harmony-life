@@ -454,23 +454,21 @@
       ]
     },
     "solaya-residence": {
-      "tagline": "71 Apartments mit Meerblick in Plai Leam",
-      "description": "Ein moderner Komplex aus 71 Premium-Apartments mit Meerblick in Plai Leam — von kompakten Studios bis zu großzügigen 2-Zimmer-Apartments.",
-      "longDescription": "Solaya Residence ist ein moderner Komplex aus 71 Premium-Apartments mit atemberaubendem Meerblick im begehrten Stadtteil Plai Leam auf Koh Samui. Das Projekt verbindet elegantes Design mit Funktionalität und höchsten Komfortstandards. Die Grundrisse reichen von kompakten Studios bis zu großzügigen 2-Zimmer-Apartments, 39–92 m². Die Anlage besticht durch ihre außergewöhnliche Ausstattungsinfrastruktur: einen Lagunenpool, ein voll ausgestattetes Fitnessstudio, Saunen, ein luxuriöses Spa und ein Fine-Dining-Restaurant. Der Komplex ist zudem für professionelle Retreats ausgelegt und damit ein außergewöhnlicher Ort auf der Karte von Koh Samui — perfekt zum Leben und als renditestarke Investition.",
-      "type": "Premium-Apartments",
-      "priceFrom": "Preis auf Anfrage",
-      "location": "Plai Leam, Koh Samui",
+      "tagline": "Villen mit Meerblick · Plai Laem",
+      "description": "Moderne Villen mit 2–3 Schlafzimmern und Meerblick in Plai Laem — europäische Bauqualität, vollständig verwaltet von Harmony Life.",
+      "longDescription": "SOLAYA ist ein neues Villenprojekt von Harmony Life im prestigeträchtigen Viertel Plai Laem auf Koh Samui: Villen mit 2–3 Schlafzimmern, inklusive eines Flaggschiff-Typs mit privater Dachterrasse. Jede Villa hat Meer- oder Panoramablick, einen privaten Pool und tropischen Garten. Europäische Bauqualität, eine im Land Department registrierte Leasehold-Struktur und volles Vermietungsmanagement durch ein Team — vom Bau bis zur Quartalsabrechnung.",
+      "type": "Villen",
+      "priceFrom": "Auf Anfrage",
+      "location": "Plai Laem, Koh Samui",
       "landArea": "k. A.",
       "poolSize": "Lagunenpool (gemeinschaftlich)",
       "features": [
-        "Meerblick aus allen Einheiten",
-        "Grundrisse: Studio, 1- & 2-Zimmer",
-        "Wohnflächen 39–92 m²",
-        "Lagunenpool",
-        "Luxuriöses Spa",
-        "Voll ausgestattetes Fitnessstudio & Saunen",
-        "Fine-Dining-Restaurant",
-        "Ausstattung für Retreats"
+        "Meer- oder Panoramablick",
+        "Villen mit 2–3 Schlafzimmern",
+        "Privater Pool & tropischer Garten",
+        "Flaggschiff-Typ mit Dachterrasse",
+        "Europäische Bauqualität",
+        "Volles Vermietungsmanagement"
       ]
     },
     "harmony-life-wellness": {

@@ -244,7 +244,7 @@ export default function MembershipContent() {
       {/* CTA */}
       <section className="relative px-6 py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/projects/solaya-residence/exterior/01.webp" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <img src="/images/projects/solaya/aerial/02.webp" alt="" aria-hidden="true" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/85" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">
