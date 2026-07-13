@@ -35,7 +35,7 @@ export interface SolayaCopy {
   founder: { eyebrow: string; title: string; paragraphs: string[]; quote: string; bullets: string[] }
   team: { eyebrow: string; title: string; members: { name: string; role: string }[] }
   faq: { eyebrow: string; title: string; items: { q: string; a: string }[] }
-  cta: { eyebrow: string; title: string; steps: { n: string; title: string; desc: string }[]; ctaConsult: string; ctaPanel: string; formTitle: string; formNote: string; form: FormLabels }
+  cta: { eyebrow: string; title: string; steps: { n: string; title: string; desc: string }[]; ctaConsult: string; ctaPanel: string; ctaDeck: string; formTitle: string; formNote: string; form: FormLabels }
   disclaimer: string
 }
 
@@ -66,6 +66,7 @@ export const SOLAYA_IMAGES = {
 
 export const SOLAYA_LINKS = {
   panel: 'https://panel.harmonylife.asia/p/SOLV/units',
+  deck: '/prezentacje/solaya.pdf',
   map: 'https://maps.app.goo.gl/WUvviriZTrdL1kSb7',
   mapEmbed: 'https://www.google.com/maps?q=9.566021,100.068411&z=15&output=embed',
   instagram: 'https://www.instagram.com/robert_samui',
@@ -239,6 +240,7 @@ const pl: SolayaCopy = {
     ],
     ctaConsult: 'Umów bezpłatną konsultację',
     ctaPanel: 'Sprawdź ceny i dostępność',
+    ctaDeck: 'Pobierz prezentację (PDF)',
     formTitle: 'Zostaw kontakt — oddzwonimy',
     formNote: 'Zgłoszenie nie jest zobowiązujące. Dane wykorzystamy wyłącznie do kontaktu w sprawie SOLAYA.',
     form: {
@@ -416,6 +418,7 @@ const en: SolayaCopy = {
     ],
     ctaConsult: 'Book a free consultation',
     ctaPanel: 'Check prices & availability',
+    ctaDeck: 'Download the presentation (PDF)',
     formTitle: 'Leave your details — we’ll call you back',
     formNote: 'The enquiry is non-binding. We’ll use your details only to contact you about SOLAYA.',
     form: {
@@ -593,6 +596,7 @@ const de: SolayaCopy = {
     ],
     ctaConsult: 'Kostenlose Beratung vereinbaren',
     ctaPanel: 'Preise & Verfügbarkeit prüfen',
+    ctaDeck: 'Präsentation herunterladen (PDF)',
     formTitle: 'Hinterlassen Sie Ihre Kontaktdaten — wir rufen zurück',
     formNote: 'Die Anfrage ist unverbindlich. Wir nutzen Ihre Daten ausschließlich zur Kontaktaufnahme wegen SOLAYA.',
     form: {
