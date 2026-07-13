@@ -22,16 +22,14 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 
-const BACKGROUND = "/images/projects/solaya/masterplan.webp";
+const BACKGROUND = "/images/projects/solaya/aerial/04.webp";
 
-/* ---- POZYCJE WILL na PZT (x%, y%) — status/ceny są LIVE z panelu SOLV ---- */
+/* ---- POZYCJE WILL na aerialu (x%, y%) — status/ceny są LIVE z panelu SOLV ---- */
 const POS = {
-  1:[6.8,26.9], 2:[7,46.3], 3:[7.8,65.7],
-  4:[18.8,26.9], 5:[20.1,43.5], 6:[20.8,61.1],
-  7:[32.3,29.2], 8:[34.4,45.4], 9:[35.7,60.6],
-  10:[41.7,27.8], 11:[42.7,43.5], 12:[44.5,59.3],
-  13:[54.2,27.8], 14:[56,44.4],
-  15:[59.4,59.7], 16:[68.2,59.7], 17:[76,59.7], 18:[83.9,59.7], 19:[92.7,60.6],
+  1:[24,29], 4:[34,24], 7:[43,21], 10:[51,19], 13:[59,22],
+  2:[27,42], 5:[32,37], 8:[45,34], 11:[54,32], 14:[63,33],
+  3:[23,55], 6:[36,49], 9:[48,47], 12:[59,46],
+  15:[63,56], 16:[69,63], 17:[75,71], 18:[82,79], 19:[88,87],
 };
 
 const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
@@ -253,7 +251,7 @@ const css = `
 .chip .dot{ width:9px; height:9px; border-radius:50%; background:var(--dot,var(--sand)); }
 .chip.active .dot{ box-shadow:0 0 0 2px rgba(255,255,255,.4); }
 
-.hl-stage{ position:relative; width:100%; aspect-ratio:16/9; border-radius:18px;
+.hl-stage{ position:relative; width:100%; aspect-ratio:4/3; border-radius:18px;
   overflow:hidden; background-size:cover; background-position:center;
   box-shadow:0 24px 60px -28px rgba(35,40,30,.55), inset 0 0 0 1px rgba(255,255,255,.18);
   container-type:inline-size; user-select:none; touch-action:none; }
@@ -268,8 +266,9 @@ const css = `
 .hl-cafe.grab:active{ cursor:grabbing; }
 
 /* Small status-coloured dots; number/price reveal in a tooltip on hover. */
-.marker{ position:absolute; transform:translate(-50%,-50%); width:0.95cqw; height:0.95cqw;
-  min-width:9px; min-height:9px; border-radius:50%; border:0; cursor:pointer; padding:0;
+.marker{ position:absolute; transform:translate(-50%,-50%); width:2cqw; height:2cqw;
+  min-width:18px; min-height:18px; border-radius:50%; border:2px solid rgba(255,255,255,.9); cursor:pointer; padding:0;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
   background:var(--c); display:flex; align-items:center; justify-content:center;
   box-shadow:0 1px 3px rgba(0,0,0,.5);
   transition:transform .16s cubic-bezier(.2,.8,.3,1.2), box-shadow .16s, opacity .2s; }
