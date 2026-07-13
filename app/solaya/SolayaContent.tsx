@@ -76,6 +76,10 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={SOLAYA_LINKS.panel} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-primary text-sm font-medium tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-gold-light transition-colors duration-300 cursor-pointer">{c.hero.ctaPanel}<ArrowDown /></a>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-onscrim-gold/60 text-onscrim-gold text-sm tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-onscrim-gold hover:text-scrim transition-all duration-300 cursor-pointer">{c.hero.ctaConsult}</a>
+            <a href={SOLAYA_LINKS.deck} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-onscrim/85 hover:text-onscrim-gold text-sm tracking-wider uppercase px-2 py-3.5 underline underline-offset-4 decoration-onscrim-gold/40 transition-colors cursor-pointer">
+              {c.cta.ctaDeck}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" /></svg>
+            </a>
           </motion.div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
