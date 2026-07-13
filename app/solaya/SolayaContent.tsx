@@ -257,6 +257,76 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
         </div>
       </section>
 
+      {/* Return on investment + occupancy chart */}
+      <section className="px-6 py-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fade} className="max-w-2xl mb-12">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{c.roi.eyebrow}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream mb-5 leading-tight">{c.roi.title}</h2>
+            <p className="text-cream/65 text-base leading-relaxed">{c.roi.intro}</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-16">
+            {c.roi.villas.map((v) => (
+              <motion.div key={v.name} {...fade} className="bg-charcoal/30 border border-gold/15 rounded-2xl p-8">
+                <h3 className="font-serif text-xl text-cream mb-6">{v.name}</h3>
+                <div className="flex items-end justify-between gap-6">
+                  <div>
+                    <p className="text-cream/40 text-xs uppercase tracking-wide mb-1">{c.roi.rateLabel}</p>
+                    <p className="font-serif text-5xl md:text-6xl text-gradient-gold leading-none">{v.rate}</p>
+                    <p className="text-cream/35 text-[11px] mt-2">{c.roi.rateNote}</p>
+                  </div>
+                  <div className="text-right space-y-3 shrink-0">
+                    <div>
+                      <p className="text-cream/40 text-[11px] uppercase tracking-wide">{c.roi.revenueLabel}</p>
+                      <p className="text-cream text-sm font-medium">{v.revenue}</p>
+                    </div>
+                    <div>
+                      <p className="text-cream/40 text-[11px] uppercase tracking-wide">{c.roi.netLabel}</p>
+                      <p className="text-gold text-sm font-medium">{v.net}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Occupancy chart */}
+          <motion.div {...fade} className="bg-charcoal/20 border border-gold/12 rounded-2xl p-7 md:p-9 mb-10">
+            <h3 className="font-serif text-xl md:text-2xl text-cream mb-8">{c.roi.chartTitle}</h3>
+            <div className="flex items-end justify-around gap-3 sm:gap-8 mb-3">
+              {c.roi.seasons.map((s, i) => (
+                <div key={s.name} className="flex-1 flex flex-col items-center justify-end max-w-[150px]">
+                  <span className="text-gold text-sm font-medium mb-2">{s.occ}</span>
+                  <div className="w-full rounded-t-md" style={{ height: [180, 140, 100][i], background: 'linear-gradient(180deg, #DFC49A, #8a6d3b)' }} />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-around gap-3 sm:gap-8 border-t border-gold/15 pt-3">
+              {c.roi.seasons.map((s) => (
+                <div key={s.name} className="flex-1 text-center max-w-[150px]">
+                  <p className="text-cream text-sm">{s.name}</p>
+                  <p className="text-cream/40 text-xs">{s.months}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-cream/55 text-sm leading-relaxed mt-8">{c.roi.chartNote}</p>
+          </motion.div>
+
+          {/* Costs deducted */}
+          <motion.div {...fade} className="mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{c.roi.costsTitle}</p>
+            <ul className="grid sm:grid-cols-3 gap-x-8 gap-y-3">
+              {c.roi.costs.map((x) => (
+                <li key={x} className="border-t border-gold/20 pt-3 text-cream/70 text-sm leading-relaxed">{x}</li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.p {...fade} className="text-cream/40 text-xs leading-relaxed border-t border-gold/10 pt-6">{c.roi.disclaimer}</motion.p>
+        </div>
+      </section>
+
       {/* 9. Founder */}
       <section className="px-6 py-24">
         <div className="max-w-4xl mx-auto">

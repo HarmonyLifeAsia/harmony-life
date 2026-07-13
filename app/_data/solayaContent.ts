@@ -23,6 +23,15 @@ export interface SolayaCopy {
   finishing: { eyebrow: string; title: string; intro: string; items: { title: string; desc: string }[] }
   invest: { eyebrow: string; title: string; leaseTitle: string; leaseDesc: string; points: { title: string; desc: string }[]; scheduleTitle: string; scheduleIntro: string; stages: string[]; scheduleNote: string }
   mgmt: { eyebrow: string; title: string; intro: string; groups: { title: string; desc: string }[]; poolingTitle: string; poolingDesc: string; keyLine: string }
+  roi: {
+    eyebrow: string; title: string; intro: string
+    revenueLabel: string; netLabel: string; rateLabel: string; rateNote: string
+    villas: { name: string; revenue: string; net: string; rate: string }[]
+    chartTitle: string; chartNote: string
+    seasons: { name: string; months: string; occ: string }[]
+    costsTitle: string; costs: string[]
+    disclaimer: string
+  }
   founder: { eyebrow: string; title: string; paragraphs: string[]; quote: string; bullets: string[] }
   team: { eyebrow: string; title: string; members: { name: string; role: string }[] }
   faq: { eyebrow: string; title: string; items: { q: string; a: string }[] }
@@ -162,6 +171,29 @@ const pl: SolayaCopy = {
     poolingTitle: 'Model pooling',
     poolingDesc: 'Wynik dzielony w porównywalnych grupach willi (osobno wille z tarasem, 3-sypialniowe i 2-sypialniowe). Korzystasz z siły całej grupy — wynik jest stabilniejszy, niezależny od pojedynczych rezerwacji.',
     keyLine: 'Inwestycja bezobsługowa — od budowy po kwartalne rozliczenia.',
+  },
+  roi: {
+    eyebrow: 'Zwrot z inwestycji',
+    title: 'Realny zwrot — po kosztach',
+    intro: 'Wartości netto: po kosztach operacyjnych i zarządzaniu, na bazie lokalnego potencjału najmu i modelu kosztów z programu Membership. To prognoza dla scenariusza górnego (wysokie obłożenie), nie gwarancja.',
+    revenueLabel: 'Przychód brutto / rok',
+    netLabel: 'Zysk netto / rok',
+    rateLabel: 'Zwrot netto',
+    rateNote: 'scenariusz górny (wysokie obłożenie)',
+    villas: [
+      { name: 'Willa 2 sypialnie', revenue: '3,8 mln THB', net: '~2,2 mln THB', rate: '~20%' },
+      { name: 'Willa 3 sypialnie', revenue: '4,8 mln THB', net: '~2,9 mln THB', rate: '~22%' },
+    ],
+    chartTitle: 'Dlaczego sezon ma znaczenie',
+    chartNote: 'Wysoki sezon (gru–mar) generuje największą część przychodu — wysokie obłożenie przy najwyższych stawkach za noc. Poza szczytem willa dalej pracuje, ale wynik robi zima.',
+    seasons: [
+      { name: 'Wysoki sezon', months: 'gru–mar', occ: '80–90%' },
+      { name: 'Średni sezon', months: 'kwi–sie', occ: '55–70%' },
+      { name: 'Niski sezon', months: 'wrz–lis', occ: '35–50%' },
+    ],
+    costsTitle: 'Co odejmujemy od przychodu',
+    costs: ['Koszty stałe ~447 000 THB / rok', 'Koszty zmienne 10,5% przychodu (fundusz remontowy + OTA)', 'Zarządzanie (operator) 25% zysku operacyjnego'],
+    disclaimer: 'Dane mają charakter orientacyjny i marketingowy. Finalne wyniki zależą od standardu wykończenia, jakości zarządzania, strategii cenowej, sezonowości i realnego obłożenia. Nie stanowią gwarancji zysku ani oferty w rozumieniu prawa.',
   },
   founder: {
     eyebrow: 'Od założyciela',
@@ -317,6 +349,29 @@ const en: SolayaCopy = {
     poolingDesc: 'Results are shared within comparable groups of villas (rooftop villas, 3-bedroom and 2-bedroom separately). You benefit from the strength of the whole group — a steadier result, independent of single bookings.',
     keyLine: 'A hands-off investment — from construction to quarterly settlements.',
   },
+  roi: {
+    eyebrow: 'Return on investment',
+    title: 'The real return — after costs',
+    intro: 'Net figures: after operating costs and management, based on the local rental potential and the cost model from the Membership programme. This is a projection for the upper scenario (high occupancy), not a guarantee.',
+    revenueLabel: 'Gross revenue / year',
+    netLabel: 'Net profit / year',
+    rateLabel: 'Net return',
+    rateNote: 'upper scenario (high occupancy)',
+    villas: [
+      { name: '2-bedroom villa', revenue: '3.8M THB', net: '~2.2M THB', rate: '~20%' },
+      { name: '3-bedroom villa', revenue: '4.8M THB', net: '~2.9M THB', rate: '~22%' },
+    ],
+    chartTitle: 'Why the season matters',
+    chartNote: 'High season (Dec–Mar) generates the largest share of revenue — high occupancy at the highest nightly rates. Off-peak the villa keeps working, but winter drives the result.',
+    seasons: [
+      { name: 'High season', months: 'Dec–Mar', occ: '80–90%' },
+      { name: 'Mid season', months: 'Apr–Aug', occ: '55–70%' },
+      { name: 'Low season', months: 'Sep–Nov', occ: '35–50%' },
+    ],
+    costsTitle: 'What we deduct from revenue',
+    costs: ['Fixed costs ~447,000 THB / year', 'Variable costs 10.5% of revenue (renovation fund + OTA)', 'Management (operator) 25% of operating profit'],
+    disclaimer: 'Figures are indicative and for marketing purposes. Final results depend on the finishing standard, management quality, pricing strategy, seasonality and actual occupancy. They are not a guarantee of profit or an offer in the legal sense.',
+  },
   founder: {
     eyebrow: 'From the founder',
     title: 'Robert Jakub Szymański',
@@ -470,6 +525,29 @@ const de: SolayaCopy = {
     poolingTitle: 'Pooling-Modell',
     poolingDesc: 'Das Ergebnis wird innerhalb vergleichbarer Villengruppen geteilt (Dachterrassen-, 3-Schlafzimmer- und 2-Schlafzimmer-Villen getrennt). Sie profitieren von der Stärke der ganzen Gruppe — ein stabileres Ergebnis, unabhängig von einzelnen Buchungen.',
     keyLine: 'Eine wartungsfreie Investition — vom Bau bis zur Quartalsabrechnung.',
+  },
+  roi: {
+    eyebrow: 'Rendite',
+    title: 'Die reale Rendite — nach Kosten',
+    intro: 'Netto-Werte: nach Betriebskosten und Management, auf Basis des lokalen Mietpotenzials und des Kostenmodells aus dem Membership-Programm. Dies ist eine Prognose für das obere Szenario (hohe Auslastung), keine Garantie.',
+    revenueLabel: 'Bruttoeinnahmen / Jahr',
+    netLabel: 'Nettogewinn / Jahr',
+    rateLabel: 'Netto-Rendite',
+    rateNote: 'oberes Szenario (hohe Auslastung)',
+    villas: [
+      { name: '2-Schlafzimmer-Villa', revenue: '3,8 Mio. THB', net: '~2,2 Mio. THB', rate: '~20%' },
+      { name: '3-Schlafzimmer-Villa', revenue: '4,8 Mio. THB', net: '~2,9 Mio. THB', rate: '~22%' },
+    ],
+    chartTitle: 'Warum die Saison zählt',
+    chartNote: 'Die Hauptsaison (Dez–Mär) erzeugt den größten Teil der Einnahmen — hohe Auslastung zu den höchsten Übernachtungspreisen. Außerhalb der Saison arbeitet die Villa weiter, aber der Winter macht das Ergebnis.',
+    seasons: [
+      { name: 'Hauptsaison', months: 'Dez–Mär', occ: '80–90%' },
+      { name: 'Nebensaison', months: 'Apr–Aug', occ: '55–70%' },
+      { name: 'Niedrigsaison', months: 'Sep–Nov', occ: '35–50%' },
+    ],
+    costsTitle: 'Was wir vom Umsatz abziehen',
+    costs: ['Fixkosten ~447.000 THB / Jahr', 'Variable Kosten 10,5% des Umsatzes (Renovierungsfonds + OTA)', 'Management (Betreiber) 25% des Betriebsgewinns'],
+    disclaimer: 'Die Angaben sind Richtwerte zu Marketingzwecken. Die tatsächlichen Ergebnisse hängen vom Ausbaustandard, der Managementqualität, der Preisstrategie, der Saisonalität und der realen Auslastung ab. Sie stellen keine Gewinngarantie und kein rechtsverbindliches Angebot dar.',
   },
   founder: {
     eyebrow: 'Vom Gründer',
