@@ -38,18 +38,20 @@ const MGMT_ICONS = [
   'M3 13.1V19a2 2 0 002 2h14a2 2 0 002-2v-5.9M3 13.1V6a2 2 0 012-2h6l2 2.5h6a2 2 0 012 2v4.6M9 16.5h6', // rozliczenia
 ]
 
+const thumb = (s: string) => s.replace(/\.webp$/, '-t.webp')
+
 function VillaGallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0)
   return (
     <div>
       <div className="overflow-hidden rounded-2xl border border-gold/10">
-        <img src={images[active]} alt={alt} className="w-full aspect-[16/10] object-cover" />
+        <img src={images[active]} alt={alt} loading="lazy" decoding="async" className="w-full aspect-[16/10] object-cover" />
       </div>
       <div className="mt-3 grid grid-cols-5 gap-2">
         {images.map((src, i) => (
           <button key={src} type="button" onClick={() => setActive(i)} aria-label={`${alt} ${i + 1}`}
             className={`overflow-hidden rounded-md border transition-colors ${i === active ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100'}`}>
-            <img src={src} alt="" className="w-full aspect-square object-cover" />
+            <img src={thumb(src)} alt="" loading="lazy" decoding="async" className="w-full aspect-square object-cover" />
           </button>
         ))}
       </div>
@@ -66,7 +68,7 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
       {/* 1. Hero */}
       <section className="relative min-h-[92vh] flex items-center px-6 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={SOLAYA_IMAGES.heroAerial} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <img src={SOLAYA_IMAGES.heroAerial} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim via-scrim/70 to-scrim/45" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -109,7 +111,7 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             {c.about.paragraphs.map((p, i) => (<p key={i} className="text-cream/65 text-base leading-relaxed mb-4">{p}</p>))}
           </motion.div>
           <motion.div {...fade}>
-            <img src={SOLAYA_IMAGES.aboutAerial} alt="SOLAYA — Plai Laem, Koh Samui" className="w-full h-[420px] object-cover rounded-2xl" />
+            <img src={SOLAYA_IMAGES.aboutAerial} alt="SOLAYA — Plai Laem, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
           </motion.div>
         </div>
       </section>
@@ -150,7 +152,7 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             <p className="text-cream/65 text-base leading-relaxed">{c.masterplan.intro}</p>
           </motion.div>
           <motion.figure {...fade} className="rounded-2xl border border-gold/15 overflow-hidden bg-cream/5">
-            <img src={SOLAYA_IMAGES.masterplan} alt="SOLAYA — plan zagospodarowania terenu (PZT), 19 willi na zboczu z widokiem na morze" className="w-full object-contain" />
+            <img src={SOLAYA_IMAGES.masterplan} alt="SOLAYA — plan zagospodarowania terenu (PZT), 19 willi na zboczu z widokiem na morze" loading="lazy" decoding="async" className="w-full object-contain" />
             <figcaption className="text-cream/40 text-xs px-5 py-3 border-t border-gold/10">{c.masterplan.note}</figcaption>
           </motion.figure>
         </div>
