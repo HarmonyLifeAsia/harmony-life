@@ -116,6 +116,21 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
         </div>
       </section>
 
+      {/* Masterplan (PZT) */}
+      <section className="px-6 py-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fade} className="max-w-2xl mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{c.masterplan.eyebrow}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream mb-5 leading-tight">{c.masterplan.title}</h2>
+            <p className="text-cream/65 text-base leading-relaxed">{c.masterplan.intro}</p>
+          </motion.div>
+          <motion.figure {...fade} className="rounded-2xl border border-gold/15 overflow-hidden bg-cream/5">
+            <img src={SOLAYA_IMAGES.masterplan} alt="SOLAYA — plan zagospodarowania terenu (PZT), 19 willi na zboczu z widokiem na morze" className="w-full object-contain" />
+            <figcaption className="text-cream/40 text-xs px-5 py-3 border-t border-gold/10">{c.masterplan.note}</figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       {/* 5. Villas */}
       <section className="px-6 py-24">
         <div className="max-w-6xl mx-auto">
