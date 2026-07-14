@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -24,6 +25,7 @@ export default function ProjectCard({ project: rawProject, index, lang }: Projec
   const dict = useDict()
   const t = dict.projects
   const project = localizeProject(rawProject, dict)
+  const [showHover, setShowHover] = useState(false)
 
   return (
     <motion.div
@@ -35,7 +37,7 @@ export default function ProjectCard({ project: rawProject, index, lang }: Projec
     >
       <Link href={`/${lang}/projects/${project.slug}`} className="block cursor-pointer">
         <div className="relative bg-charcoal/40 border border-gold/10 rounded-lg overflow-hidden hover:border-gold/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
-          <div className="relative h-56 overflow-hidden">
+          <div className="relative h-56 overflow-hidden" onMouseEnter={() => setShowHover(true)}>
             <Image
               src={project.thumbnail}
               alt={project.name}
@@ -43,7 +45,7 @@ export default function ProjectCard({ project: rawProject, index, lang }: Projec
               sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
               className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-0"
             />
-            {project.images[3] && (
+            {showHover && project.images[3] && (
               <Image
                 src={project.images[3]}
                 alt={`${project.name} — interior`}

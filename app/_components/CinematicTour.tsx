@@ -116,7 +116,7 @@ export default function CinematicTour({ lang }: Props) {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               poster={scenes[0].image}
               aria-hidden="true"
               onTimeUpdate={(e) => {
@@ -138,7 +138,7 @@ export default function CinematicTour({ lang }: Props) {
                 className="absolute inset-0 w-full h-full object-cover"
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 poster={scene.image}
                 aria-hidden="true"
                 onLoadedMetadata={(e) => { try { e.currentTarget.currentTime = 0 } catch { /* noop */ } }}
