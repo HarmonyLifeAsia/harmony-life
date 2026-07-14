@@ -1,4 +1,4 @@
-// Bespoke, self-contained copy for the SOLAYA sales subpage (PL/EN/DE).
+// Bespoke, self-contained copy for the SOLAYA Residence sales subpage (PL/EN/DE).
 // Rules from brief: no prices, no m², no fixed villa count (→ offer panel);
 // payment shown as named stages without %; amenities described generally.
 
@@ -76,7 +76,7 @@ export const SOLAYA_LINKS = {
 
 const pl: SolayaCopy = {
   hero: {
-    eyebrow: 'SOLAYA · Harmony Life',
+    eyebrow: 'SOLAYA Residence · Harmony Life',
     title: 'Europejski standard na wyspie marzeń',
     subtitle: 'Wille 2–3 sypialnie z panoramicznym widokiem na morze, góry i świątynie Buddy · Plai Laem, Koh Samui · pełne zarządzanie przez Harmony Life.',
     ctaPanel: 'Sprawdź ceny i dostępność',
@@ -93,14 +93,14 @@ const pl: SolayaCopy = {
     eyebrow: 'O projekcie',
     title: 'Styl życia z dojrzałą logiką inwestycyjną',
     paragraphs: [
-      'SOLAYA to nowy projekt willowy Harmony Life w prestiżowej dzielnicy Plai Laem na Koh Samui — kolejna inwestycja marki po Harmony Life Hill i OASIS. Łączy trzy obietnice: europejski standard wykonania, tropikalny styl życia i bezpieczną, w pełni zarządzaną inwestycję.',
+      'SOLAYA Residence to nowy projekt willowy Harmony Life w prestiżowej dzielnicy Plai Laem na Koh Samui — kolejna inwestycja marki po Harmony Life Hill i OASIS. Łączy trzy obietnice: europejski standard wykonania, tropikalny styl życia i bezpieczną, w pełni zarządzaną inwestycję.',
       'Nie kupujesz tu po prostu nieruchomości. Kupujesz piękne miejsce na wyspie i bezobsługowy produkt inwestycyjny, którym w całości opiekuje się jeden zespół — od budowy, przez wynajem, po rozliczenia. Kameralne osiedle nowoczesnych willi z prywatnym basenem, tropikalnym ogrodem i widokiem na morze.',
     ],
   },
   location: {
     eyebrow: 'Lokalizacja',
     title: 'Plai Laem — spokój tuż obok wszystkiego',
-    intro: 'SOLAYA powstaje w prestiżowej dzielnicy Plai Laem na północno-wschodnim wybrzeżu Koh Samui, tuż przy słynnej świątyni Wat Plai Laem. To lokalizacja, która łączy prywatność z doskonałą dostępnością plaż, restauracji i usług — i realnie „trzyma cenę", zarówno do życia, jak i pod wynajem.',
+    intro: 'SOLAYA Residence powstaje w prestiżowej dzielnicy Plai Laem na północno-wschodnim wybrzeżu Koh Samui, tuż przy słynnej świątyni Wat Plai Laem. To lokalizacja, która łączy prywatność z doskonałą dostępnością plaż, restauracji i usług — i realnie „trzyma cenę", zarówno do życia, jak i pod wynajem.',
     times: [
       { label: 'Świątynia Wat Plai Laem', time: '2 min pieszo' },
       { label: 'Plaża Choeng Mon', time: '5 min skuterem' },
@@ -242,19 +242,19 @@ const pl: SolayaCopy = {
     ctaPanel: 'Sprawdź ceny i dostępność',
     ctaDeck: 'Pobierz prezentację (PDF)',
     formTitle: 'Zostaw kontakt — oddzwonimy',
-    formNote: 'Zgłoszenie nie jest zobowiązujące. Dane wykorzystamy wyłącznie do kontaktu w sprawie SOLAYA.',
+    formNote: 'Zgłoszenie nie jest zobowiązujące. Dane wykorzystamy wyłącznie do kontaktu w sprawie SOLAYA Residence.',
     form: {
       name: 'Imię i nazwisko', email: 'E-mail', phone: 'Telefon', interest: 'Interesujący typ willi', message: 'Wiadomość',
       interestOptions: ['— wybierz —', 'Willa 2 sypialnie', 'Willa 3 sypialnie', 'Willa 3 syp. + taras na dachu', 'Najpierw chcę poznać szczegóły'],
-      submit: 'Wyślij zgłoszenie', sending: 'Wysyłanie…', okTitle: 'Dziękujemy za zgłoszenie', okBody: 'Odezwiemy się z pełnymi informacjami o SOLAYA. Zwykle odpowiadamy w ciągu 24 godzin.', error: 'Nie udało się wysłać. Spróbuj ponownie lub napisz na robert@harmonylife.asia.', consent: 'Wysyłając formularz zgadzasz się na kontakt w sprawie projektu SOLAYA.',
+      submit: 'Wyślij zgłoszenie', sending: 'Wysyłanie…', okTitle: 'Dziękujemy za zgłoszenie', okBody: 'Odezwiemy się z pełnymi informacjami o SOLAYA Residence. Zwykle odpowiadamy w ciągu 24 godzin.', error: 'Nie udało się wysłać. Spróbuj ponownie lub napisz na robert@harmonylife.asia.', consent: 'Wysyłając formularz zgadzasz się na kontakt w sprawie projektu SOLAYA Residence.',
     },
   },
-  disclaimer: 'SOLAYA to projekt realizowany przez Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani), reprezentowaną przez Roberta Jakuba Szymańskiego. Struktura własności dla inwestorów zagranicznych opiera się na leasehold zgodnie z prawem tajskim; szczegóły prawne i podatkowe wymagają weryfikacji u niezależnego prawnika. Ceny, metraże i dostępność podaje panel ofertowy. Niniejsza strona ma charakter informacyjny i nie stanowi oferty w rozumieniu prawa.',
+  disclaimer: 'SOLAYA Residence to projekt realizowany przez Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani), reprezentowaną przez Roberta Jakuba Szymańskiego. Struktura własności dla inwestorów zagranicznych opiera się na leasehold zgodnie z prawem tajskim; szczegóły prawne i podatkowe wymagają weryfikacji u niezależnego prawnika. Ceny, metraże i dostępność podaje panel ofertowy. Niniejsza strona ma charakter informacyjny i nie stanowi oferty w rozumieniu prawa.',
 }
 
 const en: SolayaCopy = {
   hero: {
-    eyebrow: 'SOLAYA · Harmony Life',
+    eyebrow: 'SOLAYA Residence · Harmony Life',
     title: 'European standards on your dream island',
     subtitle: '2–3 bedroom villas with panoramic views of the sea, mountains and Buddha temples · Plai Laem, Koh Samui · fully managed by Harmony Life.',
     ctaPanel: 'Check prices & availability',
@@ -271,14 +271,14 @@ const en: SolayaCopy = {
     eyebrow: 'About the project',
     title: 'A lifestyle with mature investment logic',
     paragraphs: [
-      'SOLAYA is a new villa project by Harmony Life in the prestigious Plai Laem district of Koh Samui — the brand’s next development after Harmony Life Hill and OASIS. It brings together three promises: European build quality, a tropical lifestyle, and a safe, fully managed investment.',
+      'SOLAYA Residence is a new villa project by Harmony Life in the prestigious Plai Laem district of Koh Samui — the brand’s next development after Harmony Life Hill and OASIS. It brings together three promises: European build quality, a tropical lifestyle, and a safe, fully managed investment.',
       'You are not simply buying a property. You are buying a beautiful place on the island and a hands-off investment product managed end to end by a single team — from construction through rental to settlements. An intimate community of modern villas with a private pool, tropical garden and sea views.',
     ],
   },
   location: {
     eyebrow: 'Location',
     title: 'Plai Laem — calm, next to everything',
-    intro: 'SOLAYA is rising in the prestigious Plai Laem district on the north-eastern coast of Koh Samui, right by the famous Wat Plai Laem temple. It combines privacy with excellent access to beaches, restaurants and services — a location that holds its value both to live in and to rent out.',
+    intro: 'SOLAYA Residence is rising in the prestigious Plai Laem district on the north-eastern coast of Koh Samui, right by the famous Wat Plai Laem temple. It combines privacy with excellent access to beaches, restaurants and services — a location that holds its value both to live in and to rent out.',
     times: [
       { label: 'Wat Plai Laem temple', time: '2 min on foot' },
       { label: 'Choeng Mon beach', time: '5 min by scooter' },
@@ -420,19 +420,19 @@ const en: SolayaCopy = {
     ctaPanel: 'Check prices & availability',
     ctaDeck: 'Download the presentation (PDF)',
     formTitle: 'Leave your details — we’ll call you back',
-    formNote: 'The enquiry is non-binding. We’ll use your details only to contact you about SOLAYA.',
+    formNote: 'The enquiry is non-binding. We’ll use your details only to contact you about SOLAYA Residence.',
     form: {
       name: 'Full name', email: 'Email', phone: 'Phone', interest: 'Villa type of interest', message: 'Message',
       interestOptions: ['— select —', '2-bedroom villa', '3-bedroom villa', '3-bedroom + rooftop terrace', 'I’d like the details first'],
-      submit: 'Send enquiry', sending: 'Sending…', okTitle: 'Thank you for your enquiry', okBody: 'We’ll get back to you with full information about SOLAYA. We usually reply within 24 hours.', error: 'Sending failed. Please try again or write to robert@harmonylife.asia.', consent: 'By submitting, you agree to be contacted about the SOLAYA project.',
+      submit: 'Send enquiry', sending: 'Sending…', okTitle: 'Thank you for your enquiry', okBody: 'We’ll get back to you with full information about SOLAYA Residence. We usually reply within 24 hours.', error: 'Sending failed. Please try again or write to robert@harmonylife.asia.', consent: 'By submitting, you agree to be contacted about the SOLAYA Residence project.',
     },
   },
-  disclaimer: 'SOLAYA is developed by Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani), represented by Robert Jakub Szymański. Ownership for foreign investors is based on leasehold under Thai law; legal and tax details require verification with an independent lawyer. Prices, sizes and availability are provided by the offer panel. This page is informational and does not constitute an offer in the legal sense.',
+  disclaimer: 'SOLAYA Residence is developed by Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani), represented by Robert Jakub Szymański. Ownership for foreign investors is based on leasehold under Thai law; legal and tax details require verification with an independent lawyer. Prices, sizes and availability are provided by the offer panel. This page is informational and does not constitute an offer in the legal sense.',
 }
 
 const de: SolayaCopy = {
   hero: {
-    eyebrow: 'SOLAYA · Harmony Life',
+    eyebrow: 'SOLAYA Residence · Harmony Life',
     title: 'Europäischer Standard auf der Trauminsel',
     subtitle: 'Villen mit 2–3 Schlafzimmern und Panoramablick auf Meer, Berge und Buddha-Tempel · Plai Laem, Koh Samui · vollständig verwaltet von Harmony Life.',
     ctaPanel: 'Preise & Verfügbarkeit prüfen',
@@ -449,14 +449,14 @@ const de: SolayaCopy = {
     eyebrow: 'Über das Projekt',
     title: 'Ein Lebensstil mit reifer Investitionslogik',
     paragraphs: [
-      'SOLAYA ist ein neues Villenprojekt von Harmony Life im prestigeträchtigen Viertel Plai Laem auf Koh Samui — das nächste Projekt der Marke nach Harmony Life Hill und OASIS. Es vereint drei Versprechen: europäische Bauqualität, tropischen Lebensstil und eine sichere, vollständig verwaltete Investition.',
+      'SOLAYA Residence ist ein neues Villenprojekt von Harmony Life im prestigeträchtigen Viertel Plai Laem auf Koh Samui — das nächste Projekt der Marke nach Harmony Life Hill und OASIS. Es vereint drei Versprechen: europäische Bauqualität, tropischen Lebensstil und eine sichere, vollständig verwaltete Investition.',
       'Sie kaufen hier nicht einfach eine Immobilie. Sie kaufen einen schönen Ort auf der Insel und ein wartungsfreies Investitionsprodukt, um das sich ein einziges Team von A bis Z kümmert — vom Bau über die Vermietung bis zur Abrechnung. Eine überschaubare Anlage moderner Villen mit privatem Pool, tropischem Garten und Meerblick.',
     ],
   },
   location: {
     eyebrow: 'Lage',
     title: 'Plai Laem — Ruhe, direkt neben allem',
-    intro: 'SOLAYA entsteht im prestigeträchtigen Viertel Plai Laem an der Nordostküste von Koh Samui, direkt am berühmten Tempel Wat Plai Laem. Die Lage verbindet Privatsphäre mit hervorragender Erreichbarkeit von Stränden, Restaurants und Services — und hält ihren Wert, sowohl zum Wohnen als auch zur Vermietung.',
+    intro: 'SOLAYA Residence entsteht im prestigeträchtigen Viertel Plai Laem an der Nordostküste von Koh Samui, direkt am berühmten Tempel Wat Plai Laem. Die Lage verbindet Privatsphäre mit hervorragender Erreichbarkeit von Stränden, Restaurants und Services — und hält ihren Wert, sowohl zum Wohnen als auch zur Vermietung.',
     times: [
       { label: 'Tempel Wat Plai Laem', time: '2 Min. zu Fuß' },
       { label: 'Choeng-Mon-Strand', time: '5 Min. mit dem Roller' },
@@ -598,14 +598,14 @@ const de: SolayaCopy = {
     ctaPanel: 'Preise & Verfügbarkeit prüfen',
     ctaDeck: 'Präsentation herunterladen (PDF)',
     formTitle: 'Hinterlassen Sie Ihre Kontaktdaten — wir rufen zurück',
-    formNote: 'Die Anfrage ist unverbindlich. Wir nutzen Ihre Daten ausschließlich zur Kontaktaufnahme wegen SOLAYA.',
+    formNote: 'Die Anfrage ist unverbindlich. Wir nutzen Ihre Daten ausschließlich zur Kontaktaufnahme wegen SOLAYA Residence.',
     form: {
       name: 'Vor- und Nachname', email: 'E-Mail', phone: 'Telefon', interest: 'Interessanter Villentyp', message: 'Nachricht',
       interestOptions: ['— auswählen —', 'Villa mit 2 Schlafzimmern', 'Villa mit 3 Schlafzimmern', '3 Schlafzimmer + Dachterrasse', 'Ich möchte zuerst die Details'],
-      submit: 'Anfrage senden', sending: 'Senden…', okTitle: 'Danke für Ihre Anfrage', okBody: 'Wir melden uns mit allen Informationen zu SOLAYA. In der Regel antworten wir innerhalb von 24 Stunden.', error: 'Senden fehlgeschlagen. Bitte erneut versuchen oder an robert@harmonylife.asia schreiben.', consent: 'Mit dem Absenden stimmen Sie der Kontaktaufnahme zum Projekt SOLAYA zu.',
+      submit: 'Anfrage senden', sending: 'Senden…', okTitle: 'Danke für Ihre Anfrage', okBody: 'Wir melden uns mit allen Informationen zu SOLAYA Residence. In der Regel antworten wir innerhalb von 24 Stunden.', error: 'Senden fehlgeschlagen. Bitte erneut versuchen oder an robert@harmonylife.asia schreiben.', consent: 'Mit dem Absenden stimmen Sie der Kontaktaufnahme zum Projekt SOLAYA Residence zu.',
     },
   },
-  disclaimer: 'SOLAYA wird von Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani) entwickelt, vertreten durch Robert Jakub Szymański. Das Eigentum für ausländische Investoren basiert auf Leasehold nach thailändischem Recht; rechtliche und steuerliche Details erfordern die Prüfung durch einen unabhängigen Anwalt. Preise, Größen und Verfügbarkeit liefert das Angebots-Panel. Diese Seite dient der Information und stellt kein rechtsverbindliches Angebot dar.',
+  disclaimer: 'SOLAYA Residence wird von Harmony Life Samui Co., Ltd. (120/12 Moo 1, Bo Phut, Koh Samui, Surat Thani) entwickelt, vertreten durch Robert Jakub Szymański. Das Eigentum für ausländische Investoren basiert auf Leasehold nach thailändischem Recht; rechtliche und steuerliche Details erfordern die Prüfung durch einen unabhängigen Anwalt. Preise, Größen und Verfügbarkeit liefert das Angebots-Panel. Diese Seite dient der Information und stellt kein rechtsverbindliches Angebot dar.',
 }
 
 export const SOLAYA_COPY: Record<SolayaLocale, SolayaCopy> = { pl, en, de }

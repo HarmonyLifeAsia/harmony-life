@@ -108,7 +108,7 @@ export default function SolayaVillaMap({ onInquire }) {
       {/* HEADER */}
       <div className="hl-head">
         <div>
-          <div className="hl-brand">SOLAYA</div>
+          <div className="hl-brand">SOLAYA Residence</div>
           <h2 className="hl-title">Dostępność willi</h2>
           <p className="hl-sub">Wybierz willę na planie — status i ceny na żywo.</p>
         </div>
