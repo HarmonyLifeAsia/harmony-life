@@ -89,7 +89,7 @@ export default function MembershipContent() {
       {/* Hero */}
       <section className="relative min-h-[88vh] flex items-center px-6 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hero/bg.webp" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <img src="/images/projects/solaya/aerial/hero.webp" alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim via-scrim/75 to-scrim/55" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -132,7 +132,7 @@ export default function MembershipContent() {
             </p>
           </motion.div>
           <motion.div {...fade} className="relative">
-            <img src="/images/projects/harmony-life-oasis/gallery/01.webp" alt="Osiedle willi Harmony Life z widokiem na morze na Koh Samui" className="w-full h-[420px] object-cover rounded-2xl" />
+            <img src="/images/projects/solaya/3bed-terrace/01.webp" alt="Willa SOLAYA z prywatnym basenem i widokiem na morze, Plai Laem, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
           </motion.div>
         </div>
 
@@ -143,6 +143,31 @@ export default function MembershipContent() {
               <p className="text-cream/55 text-sm leading-relaxed">{c.d}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Galeria SOLAYA — projekt objęty programem */}
+      <section className="px-6 pb-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fade} className="mb-10 max-w-2xl">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Projekt objęty programem</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4 leading-tight">Wille SOLAYA — Plai Laem, Koh Samui</h2>
+            <p className="text-cream/65 text-base leading-relaxed">
+              Program Membership dotyczy willi w projekcie{' '}
+              <a href="/pl/projects/solaya-residence" className="text-gold hover:text-gold-light underline underline-offset-2 cursor-pointer">SOLAYA</a>{' '}
+              — nowoczesnych rezydencji 2–3 sypialnie z prywatnym basenem i panoramicznym widokiem na morze, w pełni zarządzanych przez Harmony Life.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              ['/images/projects/solaya/aerial/04.webp', 'Osiedle SOLAYA z lotu ptaka'],
+              ['/images/projects/solaya/3bed-terrace/01.webp', 'Willa SOLAYA z tarasem na dachu'],
+              ['/images/projects/solaya/2bed/01.webp', 'Willa SOLAYA — basen i taras'],
+              ['/images/projects/solaya/3bed/02.webp', 'Wnętrze willi SOLAYA'],
+            ].map(([src, alt]) => (
+              <motion.img key={src} {...fade} src={src} alt={alt} loading="lazy" decoding="async" className="w-full h-44 sm:h-56 object-cover rounded-xl border border-gold/10" />
+            ))}
+          </div>
         </div>
       </section>
 
