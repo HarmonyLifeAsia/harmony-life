@@ -356,6 +356,16 @@
     "title": "We don't sell and disappear",
     "body": "After your purchase you stay in the loop: net quarterly settlements, an online investor panel, construction photos twice a month, Investor Days on the island and priority on future projects."
   },
+  "trust": {
+    "eyebrow": "Why it's safe",
+    "title": "Polish developer, European standards, legal structure",
+    "items": [
+      { "title": "Polish developer", "desc": "The project is run by a Polish developer who delivered 100+ investment apartments in Poland and manages 200+ tenants — now building on Koh Samui to European finishing and quality standards." },
+      { "title": "Legal and transparent", "desc": "The legal structure is based on official recommendations of the Thai government and handled with lawyers. Fully compliant, with no hidden catches." },
+      { "title": "Full management", "desc": "We handle the rental end to end — marketing, guests, service and transparent quarterly settlements. You receive the report and the payout." },
+      { "title": "Harmony Life community", "desc": "As an investor you join Harmony Life Membership — a community of Polish entrepreneurs where we share experience, contacts and knowledge." }
+    ]
+  },
   "solaya": {
     "exteriorTitle": "Exterior",
     "interiorTitle": "Interior",

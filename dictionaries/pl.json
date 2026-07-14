@@ -356,6 +356,16 @@
     "title": "Nie sprzedajemy i nie znikamy",
     "body": "Po zakupie zostajesz w kontakcie: kwartalne rozliczenia netto, panel inwestora online, zdjęcia z budowy 2× w miesiącu, Investor Days na wyspie i pierwszeństwo w kolejnych projektach."
   },
+  "trust": {
+    "eyebrow": "Dlaczego to bezpieczne",
+    "title": "Polski deweloper, europejskie standardy, legalna struktura",
+    "items": [
+      { "title": "Polski deweloper", "desc": "Za projektem stoi polski deweloper, który w Polsce zrealizował 100+ mieszkań inwestycyjnych i zarządza 200+ najemcami — dziś buduje na Koh Samui w europejskich standardach wykończenia i jakości." },
+      { "title": "Legalnie i przejrzyście", "desc": "Konstrukcja prawna oparta jest na oficjalnych rekomendacjach tajskiego rządu i prowadzona z prawnikami. Wszystko zgodnie z prawem, bez ukrytych haczyków." },
+      { "title": "Pełne zarządzanie", "desc": "Zajmujemy się najmem od A do Z — marketing, goście, serwis i przejrzyste kwartalne rozliczenia. Ty odbierasz raport i przelew." },
+      { "title": "Społeczność Harmony Life", "desc": "Jako inwestor dołączasz do Harmony Life Membership — społeczności polskich przedsiębiorców, w której wymieniamy się doświadczeniem, kontaktami i wiedzą." }
+    ]
+  },
   "solaya": {
     "exteriorTitle": "Na zewnątrz",
     "interiorTitle": "Wnętrza",

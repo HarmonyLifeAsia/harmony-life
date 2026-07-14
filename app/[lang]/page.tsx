@@ -92,6 +92,25 @@ export default async function HomePage({
       <Hero />
       <MarqueeStrip />
       <WhyInvestSection />
+
+      {/* Trust — polish developer, legal, community */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{dict.trust.eyebrow}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight">{dict.trust.title}</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {dict.trust.items.map((item) => (
+              <div key={item.title} className="border border-gold/15 rounded-xl p-8 hover:border-gold/35 transition-colors duration-300">
+                <h3 className="font-serif text-xl text-cream mb-3">{item.title}</h3>
+                <p className="text-cream/60 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <LifestyleSection />
       <FounderSection />
 

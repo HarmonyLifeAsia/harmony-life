@@ -356,6 +356,16 @@
     "title": "Wir verkaufen nicht und verschwinden",
     "body": "Nach dem Kauf bleiben Sie in Verbindung: vierteljährliche Netto-Abrechnungen, ein Online-Investorenpanel, Baufotos zweimal im Monat, Investor Days auf der Insel und Vorrang bei künftigen Projekten."
   },
+  "trust": {
+    "eyebrow": "Warum es sicher ist",
+    "title": "Polnischer Bauträger, europäische Standards, legale Struktur",
+    "items": [
+      { "title": "Polnischer Bauträger", "desc": "Hinter dem Projekt steht ein polnischer Bauträger, der in Polen 100+ Anlagewohnungen realisiert und 200+ Mieter verwaltet — heute baut er auf Koh Samui nach europäischen Ausbau- und Qualitätsstandards." },
+      { "title": "Legal und transparent", "desc": "Die rechtliche Struktur basiert auf den offiziellen Empfehlungen der thailändischen Regierung und wird mit Anwälten umgesetzt. Alles rechtskonform, ohne versteckte Haken." },
+      { "title": "Volle Verwaltung", "desc": "Wir übernehmen die Vermietung von A bis Z — Marketing, Gäste, Service und transparente vierteljährliche Abrechnungen. Sie erhalten den Bericht und die Auszahlung." },
+      { "title": "Harmony-Life-Gemeinschaft", "desc": "Als Investor treten Sie der Harmony Life Membership bei — einer Gemeinschaft polnischer Unternehmer, in der wir Erfahrung, Kontakte und Wissen austauschen." }
+    ]
+  },
   "solaya": {
     "exteriorTitle": "Außenbereich",
     "interiorTitle": "Innenräume",
