@@ -35,13 +35,13 @@ export async function generateMetadata({
     const img = `${SITE_URL}${SOLAYA_IMAGES.heroAerial}`
     const desc = `${c.hero.subtitle} ${c.about.paragraphs[0]}`
     return {
-      title: `SOLAYA — ${c.hero.title} | Harmony Life`,
+      title: `SOLAYA Residence — ${c.hero.title} | Harmony Life`,
       description: desc,
       alternates: { canonical: url },
       openGraph: {
         type: 'website', url, siteName: 'Harmony Life',
-        title: `SOLAYA — ${c.hero.title}`, description: c.hero.subtitle,
-        images: [{ url: img, width: 1200, height: 630, alt: 'SOLAYA — Plai Laem, Koh Samui' }],
+        title: `SOLAYA Residence — ${c.hero.title}`, description: c.hero.subtitle,
+        images: [{ url: img, width: 1200, height: 630, alt: 'SOLAYA Residence — Plai Laem, Koh Samui' }],
       },
     }
   }
@@ -74,7 +74,7 @@ export default async function ProjectPage({
       '@graph': [
         {
           '@type': 'Product',
-          name: 'SOLAYA — Harmony Life',
+          name: 'SOLAYA Residence — Harmony Life',
           description: c.hero.subtitle,
           image: `${SITE_URL}${SOLAYA_IMAGES.heroAerial}`,
           brand: { '@type': 'Brand', name: 'Harmony Life' },
