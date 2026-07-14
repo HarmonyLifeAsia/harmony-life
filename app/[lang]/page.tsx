@@ -64,9 +64,16 @@ export default async function HomePage({
           {/* Available now — shown first */}
           <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-6">{dict.projects.availableNow}</p>
           <div className="grid sm:grid-cols-2 gap-6">
-            {projects.filter((p) => p.status !== 'Sold Out').map((project, i) => (
-              <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
-            ))}
+            {projects
+              .filter((p) => p.status !== 'Sold Out')
+              .sort((a, b) => {
+                const order = ['solaya-residence', 'harmony-life-oasis', 'harmony-life-hill-2']
+                const ia = order.indexOf(a.slug), ib = order.indexOf(b.slug)
+                return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
+              })
+              .map((project, i) => (
+                <ProjectCard key={project.slug} project={project} index={i} lang={lang} />
+              ))}
           </div>
           {/* Delivered / sold out — proof, shown below */}
           {projects.some((p) => p.status === 'Sold Out') && (
