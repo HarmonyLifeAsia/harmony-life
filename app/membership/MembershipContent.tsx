@@ -76,10 +76,10 @@ const BENEFITS = [
 
 // Prognozy z modelu finansowego — zawsze prezentowane jako projekcje, nie gwarancja.
 const PROJECTIONS = [
-  { v: '9,3%', l: 'prognozowanego dochodu gotówkowego rocznie' },
-  { v: '18,7%', l: 'prognozowanej łącznej korzyści (dochód + wartość pobytu)' },
-  { v: '~5,1 roku', l: 'do prognozowanego zwrotu kapitału (z pobytem)' },
-  { v: '11,37 mln THB', l: 'prognozowanej wartości ekonomicznej w 30 lat' },
+  { v: '16,0%', l: 'prognozowanego dochodu gotówkowego rocznie' },
+  { v: '27,7%', l: 'prognozowanej łącznej korzyści (dochód + wartość pobytu)' },
+  { v: '~3,5 roku', l: 'do prognozowanego zwrotu kapitału (z pobytem)' },
+  { v: '~16,9 mln THB', l: 'prognozowanej wartości ekonomicznej w 30 lat' },
 ]
 
 export default function MembershipContent() {
@@ -211,7 +211,7 @@ export default function MembershipContent() {
             <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Prognozowany zwrot dla inwestora</p>
             <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-4">Liczby z modelu finansowego</h2>
             <p className="text-cream/55 text-sm leading-relaxed">
-              Poniższe wartości są <span className="text-cream/80">prognozami</span> wynikającymi z założeń modelu — nie stanowią gwarancji zysku. Pełne wyliczenia, koszty i projekcja 30-letnia znajdują się w PDF.
+              Poniższe wartości to <span className="text-cream/80">prognozy dla scenariusza górnego</span> (wysokie obłożenie), na bazie tego samego cennika najmu co w projekcie SOLAYA — nie stanowią gwarancji zysku. Pełne wyliczenia, koszty i projekcja 30-letnia znajdują się w PDF.
             </p>
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
