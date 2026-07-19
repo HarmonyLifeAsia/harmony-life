@@ -5,33 +5,32 @@ import { SITE_URL } from '../../_data/site'
 import MembershipContent from '../../membership/MembershipContent'
 
 const URL = `${SITE_URL}/pl/membership`
-const OG_IMAGE = `${SITE_URL}/images/projects/harmony-life-oasis/gallery/01.webp`
+const OG_IMAGE = `${SITE_URL}/images/projects/solaya/aerial/hero.webp`
 
 export const metadata: Metadata = {
-  title: 'Willa w Tajlandii z widokiem na morze — udział od 1,5 mln THB | Harmony Life Membership',
+  title: 'Klub Inwestora Harmony Life — społeczność inwestorów na Koh Samui',
   description:
-    'Współwłasność willi z widokiem na morze na Koh Samui (Tajlandia) — udział w luksusowej willi już od 1,5 mln THB. Dochód z najmu, 14 dni pobytu rocznie i społeczność inwestorów Harmony Life. Prognozy, nie gwarancja. Pobierz model finansowy (PDF).',
+    'Klub Inwestora Harmony Life — społeczność polskich przedsiębiorców inwestujących na Koh Samui. Coroczne spotkania na wyspie, grupy mentoringowe oraz pierwszeństwo do nowych okazji i wspólnych inwestycji. Bezpłatny benefit dla inwestorów Harmony Life.',
   keywords: [
-    'willa w Tajlandii',
-    'willa w Tajlandii z widokiem na morze',
-    'willa Koh Samui',
-    'willa w Tajlandii za 1,5 mln THB',
-    'współwłasność willi Tajlandia',
-    'inwestycja Koh Samui',
-    'udział w willi z widokiem na morze',
+    'klub inwestora',
+    'społeczność inwestorów',
+    'inwestycje Koh Samui',
+    'inwestycje w Tajlandii',
     'nieruchomości Koh Samui',
-    'Harmony Life Membership',
+    'mentoring inwestycyjny',
+    'polscy inwestorzy Tajlandia',
+    'Harmony Life',
   ],
   alternates: { canonical: URL },
   openGraph: {
     type: 'website',
     url: URL,
-    title: 'Willa w Tajlandii z widokiem na morze — udział od 1,5 mln THB',
+    title: 'Klub Inwestora Harmony Life — nie inwestujesz sam',
     description:
-      'Współwłasność willi z widokiem na morze na Koh Samui — udział już od 1,5 mln THB. Dochód z najmu + 14 dni pobytu rocznie + społeczność inwestorów Harmony Life.',
+      'Społeczność polskich przedsiębiorców na Koh Samui: coroczne spotkania, grupy mentoringowe i pierwszeństwo do nowych okazji oraz wspólnych inwestycji.',
     locale: 'pl_PL',
     siteName: 'Harmony Life',
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Willa z widokiem na morze na Koh Samui — Harmony Life' }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Klub Inwestora Harmony Life — Koh Samui' }],
   },
 }
 
@@ -39,24 +38,24 @@ export const metadata: Metadata = {
 // odpowiadać sekcji FAQ widocznej na stronie (MembershipContent).
 const FAQ_LD = [
   {
-    q: 'Ile kosztuje willa w Tajlandii z widokiem na morze w tym modelu?',
-    a: 'W programie Membership kupujesz udział we współwłasności willi z widokiem na morze na Koh Samui. Cena jednego z 12 udziałów w willi to 1,5 mln THB. Pełna wartość rynkowa całej willi wynosi ok. 18 mln THB — udział daje realny współudział, a nie samodzielną własność całego domu.',
+    q: 'Czym jest Klub Inwestora Harmony Life?',
+    a: 'To społeczność inwestorów Harmony Life — polskich przedsiębiorców inwestujących na Koh Samui. Daje dostęp do corocznych spotkań na wyspie, grup mentoringowych oraz pierwszeństwa do nowych okazji i wspólnych inwestycji.',
   },
   {
-    q: 'Co dokładnie otrzymuję za 1,5 mln THB?',
-    a: 'Realny współudział we własności willi (1/12), udział w rzeczywistych zyskach z najmu wypłacany co roku, prawo do 14 dni własnego pobytu rocznie poza szczytem sezonu oraz pełne zarządzanie operacyjne po stronie Harmony Life. Dodatkowo dołączasz do społeczności inwestorów Harmony Life.',
+    q: 'Ile kosztuje członkostwo?',
+    a: 'Nic. Klub to benefit dla naszych inwestorów — dołączasz automatycznie, gdy inwestujesz z Harmony Life. Udział we wszystkich aktywnościach jest dobrowolny i bezpłatny.',
   },
   {
-    q: 'Gdzie leży willa i jaki ma widok?',
-    a: 'Willa znajduje się na Koh Samui w Tajlandii, na osiedlu z willami z widokiem na morze. Lokalizacja łączy bliskość plaż i infrastruktury wyspy z prywatnością i tropikalnym otoczeniem.',
+    q: 'Kto może dołączyć?',
+    a: 'Klub jest dla osób, które inwestują z Harmony Life. Jeśli dopiero rozważasz inwestycję, zostaw zgłoszenie — opowiemy o projektach i o tym, jak wygląda wejście do klubu.',
   },
   {
-    q: 'Czy to gwarantowany zysk?',
-    a: 'Nie. Wszystkie prezentowane liczby to prognozy wynikające z założeń modelu finansowego i nie stanowią gwarancji. Struktura udziału dla obcokrajowców opiera się zwykle na leasehold i wymaga weryfikacji u niezależnego prawnika.',
+    q: 'Jak wyglądają coroczne spotkania?',
+    a: 'Raz w roku spotykamy się na Koh Samui: networking, wspólny czas, aktualizacje projektów i wiedza z pierwszej ręki. Przyjazd jest dobrowolny — przyjechać może każdy inwestor, który chce.',
   },
   {
-    q: 'Jak mogę zgłosić zainteresowanie?',
-    a: 'Wypełnij formularz zgłoszeniowy na tej stronie albo pobierz szczegółowy model finansowy (PDF). Skontaktujemy się z Tobą i przejdziemy przez cały model — bez zobowiązań.',
+    q: 'Czym są wspólne inwestycje?',
+    a: 'To możliwość wchodzenia w większe projekty razem z innymi członkami klubu. Nowe okazje trafiają najpierw do społeczności, zanim staną się publiczne.',
   },
 ]
 
@@ -64,20 +63,14 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Product',
-      name: 'Współwłasność willi z widokiem na morze na Koh Samui — Harmony Life Membership',
+      '@type': 'Service',
+      name: 'Klub Inwestora Harmony Life',
+      serviceType: 'Investor community',
       description:
-        'Udział we współwłasności luksusowej willi z widokiem na morze na Koh Samui (Tajlandia). Dochód z najmu, prawo do 14 dni pobytu rocznie i pełne zarządzanie Harmony Life.',
+        'Społeczność inwestorów Harmony Life na Koh Samui: coroczne spotkania, grupy mentoringowe oraz pierwszeństwo do nowych okazji i wspólnych inwestycji. Bezpłatny benefit dla inwestorów.',
       image: OG_IMAGE,
-      brand: { '@type': 'Brand', name: 'Harmony Life' },
-      category: 'Real estate co-ownership',
-      offers: {
-        '@type': 'Offer',
-        price: '1500000',
-        priceCurrency: 'THB',
-        availability: 'https://schema.org/InStock',
-        url: URL,
-      },
+      areaServed: 'Koh Samui, Thailand',
+      provider: { '@type': 'Organization', name: 'Harmony Life', url: SITE_URL },
     },
     {
       '@type': 'FAQPage',

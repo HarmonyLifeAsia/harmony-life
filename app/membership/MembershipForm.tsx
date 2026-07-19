@@ -6,7 +6,7 @@ import { WEB3FORMS_ACCESS_KEY, MEMBERSHIP_LEADS_EMAIL } from '../_data/site'
 type Status = 'idle' | 'sending' | 'ok' | 'error'
 
 const KEY_READY = WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY'
-const SUBJECT = 'Nowe zgłoszenie — Membership (willa w Tajlandii, udział 1,5 mln THB)'
+const SUBJECT = 'Nowe zgłoszenie — Klub Inwestora Harmony Life'
 
 export default function MembershipForm() {
   const [status, setStatus] = useState<Status>('idle')
@@ -20,7 +20,7 @@ export default function MembershipForm() {
     // Fallback do czasu wklejenia klucza Web3Forms: otwórz klienta poczty
     // z wypełnioną treścią, żeby żadne zgłoszenie nie zginęło.
     if (!KEY_READY) {
-      const body = `Imię i nazwisko: ${data.get('name') || ''}\nE-mail: ${data.get('email') || ''}\nTelefon: ${data.get('phone') || ''}\nLiczba udziałów: ${data.get('udzialy') || ''}\n\nWiadomość:\n${data.get('message') || ''}`
+      const body = `Imię i nazwisko: ${data.get('name') || ''}\nE-mail: ${data.get('email') || ''}\nTelefon: ${data.get('phone') || ''}\nEtap: ${data.get('etap') || ''}\n\nWiadomość:\n${data.get('message') || ''}`
       window.location.href = `mailto:${MEMBERSHIP_LEADS_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(body)}`
       setStatus('ok')
       form.reset()
@@ -29,7 +29,7 @@ export default function MembershipForm() {
 
     data.append('access_key', WEB3FORMS_ACCESS_KEY)
     data.append('subject', SUBJECT)
-    data.append('from_name', 'Harmony Life — formularz Membership')
+    data.append('from_name', 'Harmony Life — Klub Inwestora')
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -57,7 +57,7 @@ export default function MembershipForm() {
         </div>
         <h3 className="font-serif text-2xl text-cream mb-2">Dziękujemy za zgłoszenie</h3>
         <p className="text-cream/60 text-sm leading-relaxed max-w-md mx-auto">
-          Odezwiemy się do Ciebie z pełnymi informacjami o programie Membership. Zwykle odpowiadamy w ciągu 24 godzin.
+          Odezwiemy się do Ciebie z informacjami o Klubie Inwestora Harmony Life. Zwykle odpowiadamy w ciągu 24 godzin.
         </p>
       </div>
     )
@@ -88,14 +88,13 @@ export default function MembershipForm() {
             placeholder="+48 600 000 000" />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="m-budget" className="text-cream/70 text-xs tracking-wide">Liczba udziałów (orientacyjnie)</label>
-          <select id="m-budget" name="udzialy" defaultValue=""
+          <label htmlFor="m-stage" className="text-cream/70 text-xs tracking-wide">Etap</label>
+          <select id="m-stage" name="etap" defaultValue=""
             className="bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md focus:outline-none focus:border-gold/60 transition-colors">
             <option value="" className="bg-primary">— wybierz —</option>
-            <option value="1 udział (1,5 mln THB)" className="bg-primary">1 udział (1,5 mln THB)</option>
-            <option value="2 udziały" className="bg-primary">2 udziały</option>
-            <option value="3+ udziałów" className="bg-primary">3+ udziałów</option>
-            <option value="Najpierw chcę poznać szczegóły" className="bg-primary">Najpierw chcę poznać szczegóły</option>
+            <option value="Jestem już inwestorem Harmony Life" className="bg-primary">Jestem już inwestorem Harmony Life</option>
+            <option value="Rozważam inwestycję" className="bg-primary">Rozważam inwestycję</option>
+            <option value="Chcę tylko poznać klub" className="bg-primary">Chcę tylko poznać klub</option>
           </select>
         </div>
       </div>
@@ -116,7 +115,7 @@ export default function MembershipForm() {
         {status === 'sending' ? 'Wysyłanie…' : 'Wyślij zgłoszenie'}
       </button>
       <p className="text-cream/35 text-xs mt-4 leading-relaxed">
-        Zgłoszenie nie jest zobowiązujące. Wysyłając formularz zgadzasz się na kontakt w sprawie programu Membership. Twoje dane wykorzystamy wyłącznie do odpowiedzi na zgłoszenie.
+        Zgłoszenie nie jest zobowiązujące. Wysyłając formularz zgadzasz się na kontakt w sprawie Klubu Inwestora Harmony Life. Twoje dane wykorzystamy wyłącznie do odpowiedzi na zgłoszenie.
       </p>
     </form>
   )
