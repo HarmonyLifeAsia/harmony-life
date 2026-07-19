@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   )
 
   // Polski-only strony (jak /ubezpieczenia i /membership) — tylko wariant PL.
-  const plOnly = ['/membership'].map((path) => ({
+  const plOnly = ([] as string[] /* '/membership' — ukryte na razie */).map((path) => ({
     url: `${SITE_URL}/pl${path}`,
     changeFrequency: 'monthly' as const,
     priority: 0.7,

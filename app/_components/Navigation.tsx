@@ -14,9 +14,9 @@ export default function Navigation() {
   const dict = useDict()
   const lang = useLocale()
 
-  const navLinks = [
+  const navLinks: { label: string; href: string; highlight?: boolean }[] = [
     { label: dict.nav.projects, href: `/${lang}/#projects` },
-    { label: 'Membership', href: `/pl/membership`, highlight: true },
+    // { label: 'Membership', href: `/pl/membership`, highlight: true }, // ukryte na razie
     { label: dict.nav.guide, href: `/${lang}/guide` },
     { label: dict.nav.about, href: `/${lang}/about` },
     { label: dict.nav.contact, href: `/${lang}/contact` },
