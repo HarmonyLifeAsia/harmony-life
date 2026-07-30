@@ -14,6 +14,9 @@ export const MEMBERSHIP_LEADS_EMAIL = 'robert@harmonylife.asia'
 // WHATSAPP_PHONE: pełny numer z kierunkowym, same cyfry (np. '66XXXXXXXXX' lub '48XXXXXXXXX').
 // Po wysłaniu formularza lead jest przekierowany prosto do rozmowy na WhatsApp.
 export const WHATSAPP_PHONE = '48533999996' // +48 533 999 996 (Robert)
+
+// Meta Pixel (Harmony Life Sp z oo) — base code w app/layout.tsx.
+export const META_PIXEL_ID = '1771642594018506'
 // Webhook Make.com — zapis leada do arkusza (Excel/Google Sheets) + mail powitalny.
 // Zostawione puste = krok pomijany (Web3Forms nadal wysyła powiadomienie na maila).
 export const VSL_WEBHOOK_URL = ''
