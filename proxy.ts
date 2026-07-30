@@ -6,6 +6,9 @@ const locales = ['en', 'pl', 'de']
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // Strony kampanijne poza strukturą językową (czysty layout, PL-only).
+  if (pathname === '/film') return
+
   const pathnameHasLocale = locales.some(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
