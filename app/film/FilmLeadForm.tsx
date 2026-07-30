@@ -6,12 +6,18 @@ import { WEB3FORMS_ACCESS_KEY, MEMBERSHIP_LEADS_EMAIL, WHATSAPP_PHONE, VSL_WEBHO
 type Status = 'idle' | 'sending' | 'ok' | 'error'
 
 const KEY_READY = WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY'
-const SUBJECT = 'Nowy lead — film SOLAYA (VSL)'
+const SUBJECT = 'Nowy lead — film Harmony Life (VSL)'
+
+// Pytania kwalifikujące — trafiają do arkusza i do maila z leadem.
+const TIMING = ['Jak najszybciej (1–3 miesiące)', 'W ciągu 3–6 miesięcy', 'W ciągu 6–12 miesięcy', 'Dopiero się rozglądam']
+const CAPITAL = ['do 700 tys. zł', '700 tys. – 1,5 mln zł', '1,5 – 3 mln zł', 'powyżej 3 mln zł']
+const GOAL = ['Inwestycja — dochód z najmu', 'Zamieszkanie na Koh Samui', 'Hybrydowo — najem + własne pobyty']
+const STAY = ['Do 2 tygodni w roku', '2–4 tygodnie w roku', '1–3 miesiące w roku', 'Pół roku i dłużej']
 
 // Po zapisaniu leada przenosimy go PROSTO do rozmowy na WhatsApp z gotową
 // pierwszą wiadomością — Robert dostaje kontakt natychmiast, na żywo.
 function whatsappUrl(name: string) {
-  const text = `Cześć! Obejrzałem film o willach SOLAYA na Koh Samui i chcę dowiedzieć się więcej. Nazywam się ${name}.`
+  const text = `Cześć! Obejrzałem film o inwestycjach Harmony Life na Koh Samui i chcę porozmawiać. Nazywam się ${name}.`
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`
 }
 
@@ -19,8 +25,13 @@ declare global {
   interface Window { fbq?: (...args: unknown[]) => void }
 }
 
+const selectCls = 'bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md focus:outline-none focus:border-gold/60 transition-colors'
+const inputCls = 'bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md placeholder:text-cream/30 focus:outline-none focus:border-gold/60 transition-colors'
+
 export default function FilmLeadForm() {
   const [status, setStatus] = useState<Status>('idle')
+  const [goal, setGoal] = useState('')
+  const isHybrid = goal.startsWith('Hybrydowo')
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -28,8 +39,17 @@ export default function FilmLeadForm() {
     const form = e.currentTarget
     const data = new FormData(form)
     const name = String(data.get('name') || '')
-    const phone = String(data.get('phone') || '')
-    const email = String(data.get('email') || '')
+    const payload = {
+      name,
+      phone: String(data.get('phone') || ''),
+      email: String(data.get('email') || ''),
+      kiedy: String(data.get('kiedy') || ''),
+      kapital: String(data.get('kapital') || ''),
+      cel: String(data.get('cel') || ''),
+      pobyt: String(data.get('pobyt') || ''),
+      source: 'vsl-film',
+      page: '/film',
+    }
 
     // Meta Pixel — zdarzenie Lead (jeśli pixel jest wpięty).
     try { window.fbq?.('track', 'Lead') } catch { /* noop */ }
@@ -42,7 +62,7 @@ export default function FilmLeadForm() {
         fetch(VSL_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, phone, email, source: 'vsl-film', page: '/film' }),
+          body: JSON.stringify(payload),
         }).catch(() => null),
       )
     }
@@ -53,9 +73,7 @@ export default function FilmLeadForm() {
       w3.append('access_key', WEB3FORMS_ACCESS_KEY)
       w3.append('subject', SUBJECT)
       w3.append('from_name', 'Harmony Life — strona /film')
-      w3.append('name', name)
-      w3.append('phone', phone)
-      w3.append('email', email)
+      Object.entries(payload).forEach(([k, v]) => w3.append(k, v))
       jobs.push(
         fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body: w3 }).catch(() => null),
       )
@@ -65,6 +83,7 @@ export default function FilmLeadForm() {
       await Promise.all(jobs)
       setStatus('ok')
       form.reset()
+      setGoal('')
       // 3) Prosto do rozmowy na WhatsApp.
       if (WHATSAPP_PHONE) window.location.href = whatsappUrl(name)
     } catch {
@@ -92,25 +111,54 @@ export default function FilmLeadForm() {
     <form onSubmit={handleSubmit} className="bg-charcoal/30 border border-gold/15 rounded-2xl p-7 md:p-9">
       <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
+      {/* Kontakt */}
       <div className="grid sm:grid-cols-3 gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="f-name" className="text-cream/70 text-xs tracking-wide">Imię *</label>
-          <input id="f-name" name="name" type="text" required autoComplete="given-name"
-            className="bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md placeholder:text-cream/30 focus:outline-none focus:border-gold/60 transition-colors"
-            placeholder="Jan" />
+          <input id="f-name" name="name" type="text" required autoComplete="given-name" className={inputCls} placeholder="Jan" />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="f-phone" className="text-cream/70 text-xs tracking-wide">Telefon (WhatsApp) *</label>
-          <input id="f-phone" name="phone" type="tel" required autoComplete="tel"
-            className="bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md placeholder:text-cream/30 focus:outline-none focus:border-gold/60 transition-colors"
-            placeholder="+48 600 000 000" />
+          <input id="f-phone" name="phone" type="tel" required autoComplete="tel" className={inputCls} placeholder="+48 600 000 000" />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="f-email" className="text-cream/70 text-xs tracking-wide">E-mail *</label>
-          <input id="f-email" name="email" type="email" required autoComplete="email"
-            className="bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-md placeholder:text-cream/30 focus:outline-none focus:border-gold/60 transition-colors"
-            placeholder="jan@email.com" />
+          <input id="f-email" name="email" type="email" required autoComplete="email" className={inputCls} placeholder="jan@email.com" />
         </div>
+      </div>
+
+      {/* Kwalifikacja */}
+      <div className="grid sm:grid-cols-2 gap-5 mt-5">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="f-kiedy" className="text-cream/70 text-xs tracking-wide">Kiedy chcesz zainwestować? *</label>
+          <select id="f-kiedy" name="kiedy" required defaultValue="" className={selectCls}>
+            <option value="" disabled className="bg-primary">— wybierz —</option>
+            {TIMING.map((o) => <option key={o} value={o} className="bg-primary">{o}</option>)}
+          </select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="f-kapital" className="text-cream/70 text-xs tracking-wide">Kapitał na inwestycję *</label>
+          <select id="f-kapital" name="kapital" required defaultValue="" className={selectCls}>
+            <option value="" disabled className="bg-primary">— wybierz —</option>
+            {CAPITAL.map((o) => <option key={o} value={o} className="bg-primary">{o}</option>)}
+          </select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="f-cel" className="text-cream/70 text-xs tracking-wide">Jaki masz cel? *</label>
+          <select id="f-cel" name="cel" required value={goal} onChange={(e) => setGoal(e.target.value)} className={selectCls}>
+            <option value="" disabled className="bg-primary">— wybierz —</option>
+            {GOAL.map((o) => <option key={o} value={o} className="bg-primary">{o}</option>)}
+          </select>
+        </div>
+        {isHybrid && (
+          <div className="flex flex-col gap-2">
+            <label htmlFor="f-pobyt" className="text-cream/70 text-xs tracking-wide">Jak długo chcesz korzystać z willi w roku? *</label>
+            <select id="f-pobyt" name="pobyt" required defaultValue="" className={selectCls}>
+              <option value="" disabled className="bg-primary">— wybierz —</option>
+              {STAY.map((o) => <option key={o} value={o} className="bg-primary">{o}</option>)}
+            </select>
+          </div>
+        )}
       </div>
 
       {status === 'error' && (

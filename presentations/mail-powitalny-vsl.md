@@ -23,11 +23,12 @@ standardach i w legalnej strukturze opartej o rekomendacje tajskiego rządu.
    kilku godzin. Wolisz konkretny termin? Zarezerwuj go tutaj:
    https://calendly.com/robert-samui/spotkanie-inwestycyjne-harmony-life
 
-2. **Na start — materiały o projekcie SOLAYA Residence:**
-   - Prezentacja z liczbami i benchmarkiem rynkowym (realne stawki z Booking):
+2. **Na start — nasze aktualne projekty na Koh Samui:**
+   - Wszystkie inwestycje w sprzedaży (wille i apartamenty, różne budżety):
+     https://www.harmonylife.co/pl/#projects
+   - Przykładowa prezentacja z liczbami i benchmarkiem rynkowym (SOLAYA Residence,
+     realne stawki najmu z Booking):
      https://www.harmonylife.co/prezentacje/solaya.pdf
-   - Strona projektu z interaktywną mapą dostępności willi:
-     https://www.harmonylife.co/pl/projects/solaya-residence
 
 3. **Jedno ważne zastrzeżenie** — wszystkie liczby, które pokazuję, to prognozy
    oparte o realne dane rynkowe, nie gwarancje. Na rozmowie przejdziemy przez

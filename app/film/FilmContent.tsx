@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { VSL_VIDEO_URL, VSL_VIDEO_POSTER } from '../_data/site'
+import { VSL_YOUTUBE_ID } from '../_data/site'
 import FilmLeadForm from './FilmLeadForm'
 
 const fade = {
@@ -13,7 +13,7 @@ const fade = {
 }
 
 const LEARN = [
-  'Realne stawki najmu podobnych willi — z publicznych ofert Booking.com',
+  'Realne stawki najmu willi na Koh Samui — z publicznych ofert Booking.com',
   'Jak liczymy zwrot netto po kosztach (prognoza, nie gwarancja)',
   'Jak działa pełne zarządzanie: Ty inkasujesz, my robimy resztę',
   'Jak wygląda legalna struktura zakupu oparta o rekomendacje tajskiego rządu',
@@ -22,7 +22,7 @@ const LEARN = [
 const FIT_YES = [
   'Masz odłożony kapitał i chcesz, żeby realnie pracował',
   'Zależy Ci na dochodzie pasywnym i dywersyfikacji poza Polską',
-  'Chcesz mieć własne miejsce w Tajlandii — bez zajmowania się nim',
+  'Chcesz mieć własne miejsce w Tajlandii — na inwestycję, na życie albo jedno i drugie',
 ]
 
 const TRUST = [
@@ -34,29 +34,65 @@ const TRUST = [
 
 const FAQ = [
   { q: 'Czy zakup nieruchomości w Tajlandii przez Polaka jest legalny?', a: 'Tak. Stosujemy strukturę leasehold rejestrowaną w tajskim Land Department, opartą o oficjalne rekomendacje tajskiego rządu i prowadzoną z prawnikami. Każdą umowę możesz zweryfikować u niezależnego prawnika.' },
-  { q: 'Jak mam zarządzać willą, mieszkając w Polsce?', a: 'Nie musisz. Harmony Life prowadzi najem od A do Z: marketing, rezerwacje, goście, serwis i sprzątanie. Ty dostajesz kwartalny raport i przelew.' },
+  { q: 'Jak mam zarządzać nieruchomością, mieszkając w Polsce?', a: 'Nie musisz. Harmony Life prowadzi najem od A do Z: marketing, rezerwacje, goście, serwis i sprzątanie. Ty dostajesz kwartalny raport i przelew.' },
   { q: 'Ile można realnie zarobić?', a: 'Pokazujemy prognozy oparte o realne stawki rynkowe — w scenariuszu górnym ok. 20% netto rocznie. To prognoza, nie gwarancja: wynik zależy od obłożenia, sezonu i strategii cenowej. W filmie tłumaczymy cały model.' },
-  { q: 'Od jakiej kwoty mogę wejść?', a: 'Wille SOLAYA Residence to budżety od ok. 11 mln THB. Przy mniejszym kapitale porozmawiajmy — mamy też inne ścieżki wejścia w projekty Harmony Life.' },
+  { q: 'Od jakiej kwoty mogę wejść?', a: 'Realnie od ok. 700 tys. zł. Mamy różne projekty i ścieżki wejścia — na rozmowie dopasujemy je do Twojego kapitału i celu: inwestycja, zamieszkanie albo model hybrydowy.' },
   { q: 'Co się dzieje po wysłaniu formularza?', a: 'Przechodzisz prosto do rozmowy na WhatsApp z Robertem — założycielem Harmony Life. Bez call center, bez presji. Dostaniesz też e-mail z materiałami.' },
 ]
 
+// Minimalne typy YouTube IFrame API (tylko to, czego używamy).
+type YtPlayer = { getCurrentTime: () => number; getDuration: () => number }
+type YtNamespace = { Player: new (id: string, opts: { events: { onStateChange: (e: { data: number }) => void } }) => YtPlayer }
+
 export default function FilmContent() {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const playerRef = useRef<YtPlayer | null>(null)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const fired = useRef<Set<string>>(new Set())
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
-  // Meta Pixel — postęp oglądania (25/50/75/95%), raz na próg.
-  function onTime() {
-    const v = videoRef.current
-    if (!v || !Number.isFinite(v.duration) || v.duration === 0) return
-    const pct = (v.currentTime / v.duration) * 100
-    for (const t of [25, 50, 75, 95]) {
-      if (pct >= t && !fired.current.has(`v${t}`)) {
-        fired.current.add(`v${t}`)
-        try { window.fbq?.('trackCustom', `VideoWatched${t}`) } catch { /* noop */ }
+  // Meta Pixel — start + postęp oglądania (25/50/75/95%), raz na próg.
+  useEffect(() => {
+    const w = window as unknown as { YT?: YtNamespace; onYouTubeIframeAPIReady?: () => void }
+    const track = (ev: string) => {
+      if (fired.current.has(ev)) return
+      fired.current.add(ev)
+      try { window.fbq?.('trackCustom', ev) } catch { /* noop */ }
+    }
+    const poll = () => {
+      const p = playerRef.current
+      if (!p) return
+      const d = p.getDuration()
+      if (!d) return
+      const pct = (p.getCurrentTime() / d) * 100
+      for (const t of [25, 50, 75, 95]) if (pct >= t) track(`VideoWatched${t}`)
+    }
+    const init = () => {
+      if (!w.YT) return
+      playerRef.current = new w.YT.Player('yt-vsl', {
+        events: {
+          onStateChange: (e) => {
+            if (e.data === 1) { // playing
+              track('VideoStart')
+              if (!timerRef.current) timerRef.current = setInterval(poll, 1000)
+            }
+            if (e.data === 0) track('VideoWatched95') // ended
+          },
+        },
+      })
+    }
+    if (w.YT?.Player) init()
+    else {
+      const prev = w.onYouTubeIframeAPIReady
+      w.onYouTubeIframeAPIReady = () => { prev?.(); init() }
+      if (!document.getElementById('yt-iframe-api')) {
+        const s = document.createElement('script')
+        s.id = 'yt-iframe-api'
+        s.src = 'https://www.youtube.com/iframe_api'
+        document.head.appendChild(s)
       }
     }
-  }
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [])
 
   return (
     <main className="min-h-screen bg-primary">
@@ -78,18 +114,16 @@ export default function FilmContent() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.22 }}
             className="relative rounded-2xl overflow-hidden border border-gold/25 shadow-2xl shadow-black/40">
-            <video
-              ref={videoRef}
-              controls
-              playsInline
-              preload="metadata"
-              poster={VSL_VIDEO_POSTER}
-              onPlay={() => { if (!fired.current.has('start')) { fired.current.add('start'); try { window.fbq?.('trackCustom', 'VideoStart') } catch { /* noop */ } } }}
-              onTimeUpdate={onTime}
-              className="w-full aspect-video object-cover bg-black"
-            >
-              <source src={VSL_VIDEO_URL} type="video/mp4" />
-            </video>
+            <div className="relative aspect-video bg-black">
+              <iframe
+                id="yt-vsl"
+                src={`https://www.youtube.com/embed/${VSL_YOUTUBE_ID}?enablejsapi=1&rel=0&playsinline=1&color=white`}
+                title="Film — inwestycje Harmony Life na Koh Samui"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
           </motion.div>
           <p className="text-cream/40 text-xs mt-4">Polski deweloper · europejskie standardy budowy · 200+ najemców w zarządzaniu</p>
         </div>
@@ -195,14 +229,14 @@ export default function FilmContent() {
         </div>
       </section>
 
-      {/* 7 — Finalne CTA + formularz */}
+      {/* 7 — Finalne CTA + formularz kwalifikujący */}
       <section id="kontakt" className="scroll-mt-10 px-6 py-20 pb-28 md:pb-20" style={{ background: 'linear-gradient(160deg, #252542, #1a1a2e)' }}>
         <div className="max-w-3xl mx-auto">
           <motion.div {...fade} className="text-center mb-10">
             <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Porozmawiajmy</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-4">19 willi. Najlepsze widoki schodzą pierwsze.</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-4">Dopasujemy inwestycję do Twojego celu</h2>
             <p className="text-cream/60 text-base leading-relaxed max-w-xl mx-auto">
-              Zostaw kontakt — od razu przeniesiemy Cię do rozmowy na WhatsApp z Robertem. Na maila dostaniesz też materiały o projekcie.
+              Odpowiedz na trzy krótkie pytania i zostaw kontakt — od razu przeniesiemy Cię do rozmowy na WhatsApp z Robertem. Na maila dostaniesz też materiały o projektach.
             </p>
           </motion.div>
           <motion.div {...fade}>
