@@ -17,8 +17,9 @@ export const WHATSAPP_PHONE = '48533999996' // +48 533 999 996 (Robert)
 // Webhook Make.com — zapis leada do arkusza (Excel/Google Sheets) + mail powitalny.
 // Zostawione puste = krok pomijany (Web3Forms nadal wysyła powiadomienie na maila).
 export const VSL_WEBHOOK_URL = ''
-// Film promocyjny na stronie /film (YouTube ID z https://youtu.be/...).
-export const VSL_YOUTUBE_ID = 'YXVDOXc71oU'
+// Film promocyjny (self-hosted — bez logo/linkow/polecanych YouTube).
+export const VSL_VIDEO_URL = '/video/kampania.mp4'
+export const VSL_VIDEO_POSTER = '/video/kampania-poster.webp'
 
 // Office location (Harmony Life One, Bo Phut, Koh Samui).
 export const OFFICE_MAP_LINK =

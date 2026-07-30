@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { VSL_YOUTUBE_ID } from '../_data/site'
+import { VSL_VIDEO_URL, VSL_VIDEO_POSTER } from '../_data/site'
 import FilmLeadForm from './FilmLeadForm'
 
 const fade = {
@@ -40,59 +40,24 @@ const FAQ = [
   { q: 'Co się dzieje po wysłaniu formularza?', a: 'Przechodzisz prosto do rozmowy na WhatsApp z Robertem — założycielem Harmony Life. Bez call center, bez presji. Dostaniesz też e-mail z materiałami.' },
 ]
 
-// Minimalne typy YouTube IFrame API (tylko to, czego używamy).
-type YtPlayer = { getCurrentTime: () => number; getDuration: () => number }
-type YtNamespace = { Player: new (id: string, opts: { events: { onStateChange: (e: { data: number }) => void } }) => YtPlayer }
-
 export default function FilmContent() {
-  const playerRef = useRef<YtPlayer | null>(null)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
   const fired = useRef<Set<string>>(new Set())
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
-  // Meta Pixel — start + postęp oglądania (25/50/75/95%), raz na próg.
-  useEffect(() => {
-    const w = window as unknown as { YT?: YtNamespace; onYouTubeIframeAPIReady?: () => void }
-    const track = (ev: string) => {
-      if (fired.current.has(ev)) return
-      fired.current.add(ev)
-      try { window.fbq?.('trackCustom', ev) } catch { /* noop */ }
-    }
-    const poll = () => {
-      const p = playerRef.current
-      if (!p) return
-      const d = p.getDuration()
-      if (!d) return
-      const pct = (p.getCurrentTime() / d) * 100
-      for (const t of [25, 50, 75, 95]) if (pct >= t) track(`VideoWatched${t}`)
-    }
-    const init = () => {
-      if (!w.YT) return
-      playerRef.current = new w.YT.Player('yt-vsl', {
-        events: {
-          onStateChange: (e) => {
-            if (e.data === 1) { // playing
-              track('VideoStart')
-              if (!timerRef.current) timerRef.current = setInterval(poll, 1000)
-            }
-            if (e.data === 0) track('VideoWatched95') // ended
-          },
-        },
-      })
-    }
-    if (w.YT?.Player) init()
-    else {
-      const prev = w.onYouTubeIframeAPIReady
-      w.onYouTubeIframeAPIReady = () => { prev?.(); init() }
-      if (!document.getElementById('yt-iframe-api')) {
-        const s = document.createElement('script')
-        s.id = 'yt-iframe-api'
-        s.src = 'https://www.youtube.com/iframe_api'
-        document.head.appendChild(s)
-      }
-    }
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
-  }, [])
+  const track = (ev: string) => {
+    if (fired.current.has(ev)) return
+    fired.current.add(ev)
+    try { window.fbq?.('trackCustom', ev) } catch { /* noop */ }
+  }
+
+  // Meta Pixel — postęp oglądania (25/50/75/95%), raz na próg.
+  function onTime() {
+    const v = videoRef.current
+    if (!v || !Number.isFinite(v.duration) || v.duration === 0) return
+    const pct = (v.currentTime / v.duration) * 100
+    for (const t of [25, 50, 75, 95]) if (pct >= t) track(`VideoWatched${t}`)
+  }
 
   return (
     <main className="min-h-screen bg-primary">
@@ -114,16 +79,21 @@ export default function FilmContent() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.22 }}
             className="relative rounded-2xl overflow-hidden border border-gold/25 shadow-2xl shadow-black/40">
-            <div className="relative aspect-video bg-black">
-              <iframe
-                id="yt-vsl"
-                src={`https://www.youtube.com/embed/${VSL_YOUTUBE_ID}?enablejsapi=1&rel=0&playsinline=1&color=white`}
-                title="Film — inwestycje Harmony Life na Koh Samui"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-              />
-            </div>
+            <video
+              ref={videoRef}
+              controls
+              playsInline
+              preload="metadata"
+              poster={VSL_VIDEO_POSTER}
+              controlsList="nodownload"
+              onContextMenu={(e) => e.preventDefault()}
+              onPlay={() => track('VideoStart')}
+              onTimeUpdate={onTime}
+              onEnded={() => track('VideoWatched95')}
+              className="w-full aspect-video object-cover bg-black"
+            >
+              <source src={VSL_VIDEO_URL} type="video/mp4" />
+            </video>
           </motion.div>
           <p className="text-cream/40 text-xs mt-4">Polski deweloper · europejskie standardy budowy · 200+ najemców w zarządzaniu</p>
         </div>
