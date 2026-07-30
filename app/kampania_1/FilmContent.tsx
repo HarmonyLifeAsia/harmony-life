@@ -32,6 +32,25 @@ const TRUST = [
   { t: 'Realny benchmark', d: 'Podobne wille w okolicy wynajmują się za 383–522 tys. THB / 30 nocy w średnim sezonie (Booking.com).' },
 ]
 
+// Zajawki aktualnie dostępnych inwestycji (otwierane w nowej karcie,
+// żeby nie wybijać leada ze strony kampanii).
+const PROJECTS = [
+  { img: '/images/projects/solaya/aerial/04.webp', name: 'SOLAYA Residence', desc: 'Wille premium 2–3 sypialnie z widokiem na morze · Plai Laem', href: '/pl/projects/solaya-residence' },
+  { img: '/images/projects/harmony-life-oasis/gallery/01.webp', name: 'Harmony Life Oasis', desc: '53 wille z widokiem na morze · od 6,2 mln THB', href: '/pl/projects/harmony-life-oasis' },
+  { img: '/images/projects/harmony-life-hill-2/01.webp', name: 'Harmony Life Hill 2', desc: '5 willi premium na wzgórzu — etap drugi', href: '/pl/projects/harmony-life-hill-2' },
+]
+
+// Zdjęcia z placu budowy aktualnych inwestycji.
+const BUILD_PHOTOS = ['b01', 'b03', 'b04', 'b06', 'b07', 'b08', 'b10', 'b11']
+
+// Ukończona inwestycja — dowód realizacji.
+const ONE_PHOTOS = [
+  ['/images/projects/harmony-life-one/real/06.webp', 'Harmony Life One — salon ukończonej willi'],
+  ['/images/projects/harmony-life-one/real/03.webp', 'Harmony Life One — tropikalny ogród przy willi'],
+  ['/images/projects/harmony-life-one/real/10.webp', 'Harmony Life One — ścieżka w ogrodzie wieczorem'],
+]
+const ONE_GALLERY_URL = 'https://drive.google.com/drive/folders/1NsbNO16Mdni2_HsBSfhPSGoJL2a9c0Cc?usp=share_link'
+
 const FAQ = [
   { q: 'Czy zakup nieruchomości w Tajlandii przez Polaka jest legalny?', a: 'Tak. Stosujemy strukturę leasehold rejestrowaną w tajskim Land Department, opartą o oficjalne rekomendacje tajskiego rządu i prowadzoną z prawnikami. Każdą umowę możesz zweryfikować u niezależnego prawnika.' },
   { q: 'Jak mam zarządzać nieruchomością, mieszkając w Polsce?', a: 'Nie musisz. Harmony Life prowadzi najem od A do Z: marketing, rezerwacje, goście, serwis i sprzątanie. Ty dostajesz kwartalny raport i przelew.' },
@@ -167,6 +186,69 @@ export default function FilmContent() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 5b — Aktualne inwestycje */}
+      <section className="px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <motion.div {...fade} className="mb-10">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Aktualnie w sprzedaży</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-cream leading-tight">Nasze dostępne inwestycje</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {PROJECTS.map((p) => (
+              <motion.a key={p.name} {...fade} href={p.href} target="_blank" rel="noopener noreferrer"
+                className="group block border border-gold/15 rounded-xl overflow-hidden hover:border-gold/40 transition-colors duration-300 cursor-pointer">
+                <div className="h-44 overflow-hidden">
+                  <img src={p.img} alt={p.name} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-serif text-lg text-cream mb-1 group-hover:text-gold transition-colors">{p.name}</h3>
+                  <p className="text-cream/55 text-xs leading-relaxed">{p.desc}</p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+          <motion.p {...fade} className="text-cream/40 text-xs mt-6">Szczegóły, ceny i dostępność omówimy na rozmowie — dopasujemy projekt do Twojego kapitału i celu.</motion.p>
+        </div>
+      </section>
+
+      {/* 5c — Prosto z budowy */}
+      <section className="px-6 py-16" style={{ background: 'linear-gradient(160deg, #252542, #1a1a2e)' }}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div {...fade} className="mb-10 max-w-2xl">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Prosto z placu budowy</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-cream leading-tight mb-3">Budujemy naprawdę — stan na dziś</h2>
+            <p className="text-cream/55 text-sm leading-relaxed">Aktualne zdjęcia z budowy naszych inwestycji na Koh Samui. Bez retuszu — beton, zbrojenia i zespół w pracy.</p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {BUILD_PHOTOS.map((b) => (
+              <motion.img key={b} {...fade} src={`/images/kampania/budowa/${b}.webp`} alt="Budowa willi Harmony Life na Koh Samui — zdjęcie z placu budowy" loading="lazy" decoding="async"
+                className="w-full h-44 md:h-52 object-cover rounded-lg border border-gold/10" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5d — Ukończona inwestycja */}
+      <section className="px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <motion.div {...fade} className="mb-10 max-w-2xl">
+            <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">Tak wygląda efekt końcowy</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-cream leading-tight mb-3">Harmony Life One — ukończona i wyprzedana</h2>
+            <p className="text-cream/55 text-sm leading-relaxed">Nasza pierwsza inwestycja: 10 willi sprzedanych jeszcze przed końcem budowy. Dziś mieszkają w nich właściciele i goście.</p>
+          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {ONE_PHOTOS.map(([src, alt]) => (
+              <motion.img key={src} {...fade} src={src} alt={alt} loading="lazy" decoding="async" className="w-full h-52 object-cover rounded-xl border border-gold/10" />
+            ))}
+          </div>
+          <motion.p {...fade} className="mt-6">
+            <a href={ONE_GALLERY_URL} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light text-sm underline underline-offset-4 cursor-pointer">
+              Zobacz pełną galerię ukończonej inwestycji →
+            </a>
+          </motion.p>
         </div>
       </section>
 
