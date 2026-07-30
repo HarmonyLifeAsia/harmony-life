@@ -6,7 +6,7 @@ import { WEB3FORMS_ACCESS_KEY, MEMBERSHIP_LEADS_EMAIL, WHATSAPP_PHONE, VSL_WEBHO
 type Status = 'idle' | 'sending' | 'ok' | 'error'
 
 const KEY_READY = WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY'
-const SUBJECT = 'Nowy lead — film Harmony Life (VSL)'
+const SUBJECT = 'Nowy lead — kampania_1 (film Harmony Life)'
 
 // Pytania kwalifikujące — trafiają do arkusza i do maila z leadem.
 const TIMING = ['Jak najszybciej (1–3 miesiące)', 'W ciągu 3–6 miesięcy', 'W ciągu 6–12 miesięcy', 'Dopiero się rozglądam']
@@ -47,8 +47,8 @@ export default function FilmLeadForm() {
       kapital: String(data.get('kapital') || ''),
       cel: String(data.get('cel') || ''),
       pobyt: String(data.get('pobyt') || ''),
-      source: 'vsl-film',
-      page: '/film',
+      source: 'vsl',
+      page: '/kampania_1',
     }
 
     // Meta Pixel — zdarzenie Lead (jeśli pixel jest wpięty).

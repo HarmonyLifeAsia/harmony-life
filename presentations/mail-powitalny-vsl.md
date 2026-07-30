@@ -41,5 +41,5 @@ Założyciel Harmony Life · Koh Samui
 robert@harmonylife.asia · harmonylife.co
 
 ---
-*Otrzymujesz tę wiadomość, bo zostawiłeś kontakt na stronie harmonylife.co/film.
+*Otrzymujesz tę wiadomość, bo zostawiłeś kontakt na stronie harmonylife.co/kampania_1.
 Jeśli to pomyłka — po prostu zignoruj tego maila, nie zapiszemy Cię do żadnej listy.*

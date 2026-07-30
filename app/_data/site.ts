@@ -13,7 +13,7 @@ export const MEMBERSHIP_LEADS_EMAIL = 'robert@harmonylife.asia'
 // Strona VSL (/film) — reklamy kierujące na film promocyjny.
 // WHATSAPP_PHONE: pełny numer z kierunkowym, same cyfry (np. '66XXXXXXXXX' lub '48XXXXXXXXX').
 // Po wysłaniu formularza lead jest przekierowany prosto do rozmowy na WhatsApp.
-export const WHATSAPP_PHONE = '' // TODO: wpisz numer WhatsApp Roberta
+export const WHATSAPP_PHONE = '48533999996' // +48 533 999 996 (Robert)
 // Webhook Make.com — zapis leada do arkusza (Excel/Google Sheets) + mail powitalny.
 // Zostawione puste = krok pomijany (Web3Forms nadal wysyła powiadomienie na maila).
 export const VSL_WEBHOOK_URL = ''
