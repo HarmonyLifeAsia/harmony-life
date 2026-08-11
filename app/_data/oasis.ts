@@ -32,19 +32,26 @@ export const OASIS_OFFER_URL = 'https://canva.link/1fsfd05xf53qpy5'
 export interface OasisVilla {
   id: string
   nameKey: string // key in dictionaries → oasis
+  photos: number // ile zdjęć leży w folderze typu (do galerii)
+  units: number // ile willi tego typu jest na osiedlu (panel HLOASIS)
+  plans: number // ile rzutów kondygnacji
   floorPlans: string[] // unit/floor-plan cards (1 per floor)
   images: string[]
 }
 
+// UWAGA: `photos` to liczba ZDJĘĆ w folderze typu, `units` to liczba willi
+// wg panelu HLOASIS. Kiedyś było to jedno pole `count` — przez co liczby zdjęć
+// trafiły do prezentacji jako liczby willi (suma wychodziła 55 zamiast 53).
+// 26+10+3+4+4+5 = 52 wille w sześciu typach + willa nr 53 (indywidualny układ).
 export const OASIS_VILLAS: OasisVilla[] = [
-  { id: '1bed-a', nameKey: 'villa1', count: 9, plans: 2 },
-  { id: '1bed-b-sea', nameKey: 'villa2', count: 10, plans: 1 },
-  { id: '2bed', nameKey: 'villa3', count: 10, plans: 1 },
-  { id: '3bed', nameKey: 'villa4', count: 9, plans: 1 },
-  { id: '3bed-rooftop-sea', nameKey: 'villa5', count: 7, plans: 2 },
-  { id: '4bed-sea', nameKey: 'villa6', count: 10, plans: 2 },
+  { id: '1bed-a', nameKey: 'villa1', photos: 9, units: 26, plans: 2 },
+  { id: '1bed-b-sea', nameKey: 'villa2', photos: 10, units: 10, plans: 1 },
+  { id: '2bed', nameKey: 'villa3', photos: 10, units: 3, plans: 1 },
+  { id: '3bed', nameKey: 'villa4', photos: 9, units: 4, plans: 1 },
+  { id: '3bed-rooftop-sea', nameKey: 'villa5', photos: 7, units: 4, plans: 2 },
+  { id: '4bed-sea', nameKey: 'villa6', photos: 10, units: 5, plans: 2 },
 ].map(v => ({
   ...v,
   floorPlans: Array.from({ length: v.plans }, (_, i) => `${BASE}/villas/${v.id}/plan-${String(i + 1).padStart(2, '0')}.webp`),
-  images: seq(v.count, `${BASE}/villas/${v.id}`),
+  images: seq(v.photos, `${BASE}/villas/${v.id}`),
 }))
