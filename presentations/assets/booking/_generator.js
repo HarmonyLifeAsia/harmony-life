@@ -3,7 +3,8 @@ const path = require('path');
 const ROOT = '/Users/robing/Documents/claude/www/harmonylifeco';
 const sharp = require(path.join(ROOT, 'node_modules', 'sharp'));
 const { PDFDocument } = require(path.join(ROOT, 'node_modules', 'pdf-lib'));
-const IMG = '/private/tmp/claude-501/-Users-robing-Documents-GitHub-www-harmonylife-co/108eef3a-1af4-488a-a23d-96082154223f/scratchpad/imgs';
+// Zrzuty z Booking leżą obok tego skryptu (trwale w repo).
+const IMG = __dirname;
 
 const W = 2526, H = 1785;
 const GOLD = '#C9A876', CREAM = '#F5F0E8', GREY = '#9A9AB0';
@@ -16,12 +17,12 @@ const rowY = [TOP, TOP + Hc + RGAP, TOP + 2 * (Hc + RGAP)];
 
 // all 6 villas — benchmark-table order
 const shots = [
-  { n: 1, file: 'L10235_0.webp', price: '460 845' },
-  { n: 2, file: 'L10235_1.webp', price: '503 200' },
-  { n: 3, file: 'L10235_2.png',  price: '522 750' },
-  { n: 4, file: 'L10235_3.webp', price: '421 530' },
-  { n: 5, file: 'L10235_4.webp', price: '1 855 842' },
-  { n: 6, file: 'L10324_0.png',  price: '383 700' },
+  { n: 1, file: '01-carpe-diem.webp', price: '460 845' },
+  { n: 2, file: '02-zog-villas.webp', price: '503 200' },
+  { n: 3, file: '03-rockstarvillas.png',  price: '522 750' },
+  { n: 4, file: '04-botan-villa.webp', price: '421 530' },
+  { n: 5, file: '05-samujana.webp', price: '1 855 842' },
+  { n: 6, file: '06-lom-talay.png',  price: '383 700' },
 ];
 const slots = [[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]];
 
@@ -75,7 +76,9 @@ const slots = [[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]];
 
   // replace old proof slide (page 13 = index 12)
   const pdf = await PDFDocument.load(fs.readFileSync(path.join(ROOT, 'public/prezentacje/solaya.pdf')));
-  pdf.removePage(12);
+  // Wstawiamy nowy slajd po "Benchmark rynkowy" (index 11 = strona 12).
+  // NIE usuwamy strony 13 — kiedyś stało tu removePage(12), które zjadało
+  // slajd "Zespół" przy odbudowie decka od zera.
   const img = await pdf.embedPng(png);
   const page = pdf.insertPage(12, [842, 595]);
   page.drawImage(img, { x: 0, y: 0, width: 842, height: 595 });
