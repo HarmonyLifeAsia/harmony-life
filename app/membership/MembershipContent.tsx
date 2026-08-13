@@ -65,7 +65,7 @@ export default function MembershipContent() {
       {/* Hero */}
       <section className="relative min-h-[88vh] flex items-center px-6 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/projects/solaya/aerial/hero.webp" alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
+          <img src="/images/projects/solaya/v2/02-osiedle-morze.webp" alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim via-scrim/75 to-scrim/55" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -108,7 +108,7 @@ export default function MembershipContent() {
             </p>
           </motion.div>
           <motion.div {...fade} className="relative">
-            <img src="/images/projects/solaya/3bed-terrace/01.webp" alt="Willa Harmony Life z prywatnym basenem i widokiem na morze, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
+            <img src="/images/projects/solaya/v2/10-willa-taras.webp" alt="Willa Harmony Life z prywatnym basenem i widokiem na morze, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
           </motion.div>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function MembershipContent() {
       {/* Coroczne spotkanie — Investor Days */}
       <section className="relative px-6 py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/projects/solaya/aerial/03.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <img src="/images/projects/solaya/v2/03-osiedle-widok.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/85" />
         </div>
         <div className="max-w-4xl mx-auto relative z-10 text-center">
@@ -192,7 +192,7 @@ export default function MembershipContent() {
       {/* CTA */}
       <section className="relative px-6 py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/projects/solaya/aerial/02.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <img src="/images/projects/solaya/v2/04-osiedle-rzedy.webp" alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/85" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">

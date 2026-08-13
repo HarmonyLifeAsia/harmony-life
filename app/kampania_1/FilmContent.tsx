@@ -35,7 +35,7 @@ const TRUST = [
 // Zajawki aktualnie dostępnych inwestycji (otwierane w nowej karcie,
 // żeby nie wybijać leada ze strony kampanii).
 const PROJECTS = [
-  { img: '/images/projects/solaya/aerial/04.webp', name: 'SOLAYA Residence', desc: 'Wille premium 2–3 sypialnie z widokiem na morze · Plai Laem', href: '/pl/projects/solaya-residence' },
+  { img: '/images/projects/solaya/v2/02-osiedle-morze.webp', name: 'SOLAYA Residence', desc: 'Wille premium 2–3 sypialnie z widokiem na morze · Plai Laem', href: '/pl/projects/solaya-residence' },
   { img: '/images/projects/harmony-life-oasis/gallery/01.webp', name: 'Harmony Life Oasis', desc: '53 wille z widokiem na morze · od 6,2 mln THB', href: '/pl/projects/harmony-life-oasis' },
   { img: '/images/projects/harmony-life-hill-2/01.webp', name: 'Harmony Life Hill 2', desc: '5 willi premium na wzgórzu — etap drugi', href: '/pl/projects/harmony-life-hill-2' },
 ]

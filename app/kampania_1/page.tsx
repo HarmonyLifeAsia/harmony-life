@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       'Realne liczby, realne stawki najmu i cały model krok po kroku. Polski deweloper na Koh Samui.',
     locale: 'pl_PL',
     siteName: 'Harmony Life',
-    images: [{ url: '/images/projects/solaya/aerial/04.webp', width: 1200, height: 630, alt: 'SOLAYA Residence — Koh Samui' }],
+    images: [{ url: '/images/projects/solaya/v2/02-osiedle-morze.webp', width: 1200, height: 630, alt: 'SOLAYA Residence — Koh Samui' }],
   },
 }
 

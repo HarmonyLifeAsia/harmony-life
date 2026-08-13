@@ -36,7 +36,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S1 Cover
 {
-  const bg = await cover(`${IMG}/aerial/04.webp`, W, H)
+  const bg = await cover(`${IMG}/v2/01-basen-morze.webp`, W, H)
   const overlay = svg(`
     <defs><linearGradient id="g" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1a1a2e" stop-opacity="0.97"/><stop offset="0.5" stop-color="#1a1a2e" stop-opacity="0.4"/><stop offset="1" stop-color="#1a1a2e" stop-opacity="0.05"/></linearGradient></defs>
     <rect width="${W}" height="${H}" fill="url(#g)"/>
@@ -51,7 +51,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S2 O projekcie
 {
-  const photo = await cover(`${IMG}/aerial/hero.webp`, 1000, H)
+  const photo = await cover(`${IMG}/v2/02-osiedle-morze.webp`, 1000, H)
   const body1 = wrap('Kameralny kompleks 19 luksusowych willi na tropikalnym wzgórzu w Plai Laem, zaprojektowany z myślą o prywatności, widoku i komforcie.', 44)
   const body2 = wrap('Wille rozmieszczono kaskadowo na zboczu — każda z prywatnym basenem, tarasami i szerokimi przeszkleniami. Nowoczesna forma i ciepłe materiały naturalne. To nie osiedle, a prywatny resort wkomponowany w krajobraz.', 44)
   let ty = 330
@@ -80,7 +80,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S4 Masterplan
 {
-  const plan = await contain(`${IMG}/masterplan.webp`, 1500, 1120)
+  const plan = await contain(`${IMG}/v2/15-masterplan.webp`, 1500, 1120)
   const noteLines = wrap('Wille 1–9 to górne rzędy osiedla — najlepsze usytuowanie i najszerszy, panoramiczny widok na morze.', 34)
   let ny = 470
   const note = noteLines.map(l => T(1720, ny += 54, l, CREAM, 40, SANS)).join('')
@@ -93,7 +93,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S5 Typy willi
 {
-  const types = [['2bed/01.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', 'Kompaktowy luksus pod wynajem premium'], ['3bed/01.webp', 'Willa 3 sypialnie', 'od ฿11,9 mln', 'Przestrzeń dla rodziny i gości'], ['3bed-terrace/01.webp', '3 sypialnie + taras na dachu', 'typ flagowy', 'Panoramiczny taras i zachody słońca na dachu']]
+  const types = [['v2/09-willa-naroznik.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', 'Kompaktowy luksus pod wynajem premium'], ['v2/12-wnetrze-kuchnia.webp', 'Willa 3 sypialnie', 'od ฿11,9 mln', 'Przestrzeń dla rodziny i gości'], ['v2/10-willa-taras.webp', '3 sypialnie + taras na dachu', 'typ flagowy', 'Panoramiczny taras i zachody słońca na dachu']]
   const comps = []; const cardW = 700, imgH = 470, gap = 60, sx = 150, sy = 420
   let labels = ''
   for (let i = 0; i < 3; i++) {
@@ -107,9 +107,9 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S6 Wizualizacje
 {
-  const big = await cover(`${IMG}/3bed-terrace/01.webp`, 1500, 1120)
-  const r1 = await cover(`${IMG}/3bed/02.webp`, 730, 540)
-  const r2 = await cover(`${IMG}/2bed/03.webp`, 730, 540)
+  const big = await cover(`${IMG}/v2/10-willa-taras.webp`, 1500, 1120)
+  const r1 = await cover(`${IMG}/v2/13-taras-lezaki.webp`, 730, 540)
+  const r2 = await cover(`${IMG}/v2/08-prywatnosc.webp`, 730, 540)
   const text = svg(`${T(150, 200, 'WIZUALIZACJE', GOLD, 40, SANS, 'start', 10)}${T(150, 292, 'Wnętrza, tarasy, baseny', CREAM, 72, SERIF)}`)
   await addSlide([{ input: big, top: 400, left: 150 }, { input: r1, top: 400, left: 1700 }, { input: r2, top: 980, left: 1700 }, { input: text }])
 }
@@ -210,7 +210,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S13 Kontakt / CTA
 {
-  const bg = await cover(`${IMG}/aerial/hero.webp`, W, H)
+  const bg = await cover(`${IMG}/v2/02-osiedle-morze.webp`, W, H)
   const overlay = svg(`<rect width="${W}" height="${H}" fill="#1a1a2e" fill-opacity="0.8"/>
     ${T(W / 2, 560, 'Zainteresowany SOLAYA?', CREAM, 96, SERIF, 'middle')}
     ${T(W / 2, 660, 'Sprawdź aktualne ceny i dostępność albo umów bezpłatną konsultację.', CREAM, 42, SANS, 'middle')}

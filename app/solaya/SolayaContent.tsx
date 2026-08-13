@@ -40,13 +40,18 @@ const MGMT_ICONS = [
 ]
 
 const thumb = (s: string) => s.replace(/\.webp$/, '-t.webp')
+// Rendery v2 mają wariant 900 px (-t.webp) obok pełnego 2560 px. Dzięki srcSet
+// przeglądarka pobiera mniejszy plik tam, gdzie obraz i tak jest wyświetlany
+// mały — bez tego każda galeria ciągnęła pełne 2560 px.
+const srcSet = (s: string) => (s.includes('/v2/') ? `${thumb(s)} 900w, ${s} 2560w` : undefined)
 
 function VillaGallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0)
   return (
     <div>
       <div className="overflow-hidden rounded-2xl border border-gold/10">
-        <img src={images[active]} alt={alt} loading="lazy" decoding="async" className="w-full aspect-[16/10] object-cover" />
+        <img src={images[active]} srcSet={srcSet(images[active])} sizes="(max-width: 1024px) 100vw, 600px"
+          alt={alt} loading="lazy" decoding="async" className="w-full aspect-[16/10] object-cover" />
       </div>
       <div className="mt-3 grid grid-cols-5 gap-2">
         {images.map((src, i) => (
@@ -69,7 +74,8 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
       {/* 1. Hero */}
       <section className="relative min-h-[92vh] flex items-center px-6 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={SOLAYA_IMAGES.heroAerial} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
+          <img src={SOLAYA_IMAGES.heroAerial} srcSet={srcSet(SOLAYA_IMAGES.heroAerial)} sizes="100vw"
+            alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim via-scrim/70 to-scrim/45" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -112,7 +118,8 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
             {c.about.paragraphs.map((p, i) => (<p key={i} className="text-cream/65 text-base leading-relaxed mb-4">{p}</p>))}
           </motion.div>
           <motion.div {...fade}>
-            <img src={SOLAYA_IMAGES.aboutAerial} alt="SOLAYA — Plai Laem, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
+            <img src={SOLAYA_IMAGES.aboutAerial} srcSet={srcSet(SOLAYA_IMAGES.aboutAerial)} sizes="(max-width: 1024px) 100vw, 600px"
+              alt="SOLAYA — Plai Laem, Koh Samui" loading="lazy" decoding="async" className="w-full h-[420px] object-cover rounded-2xl" />
           </motion.div>
         </div>
       </section>

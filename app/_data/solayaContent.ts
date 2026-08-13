@@ -45,22 +45,26 @@ export interface FormLabels {
   submit: string; sending: string; okTitle: string; okBody: string; error: string; consent: string
 }
 
+// Rendery v2 (folder "NOWE SOLAYA" → presentations/assets/solaya/convert-renders.mjs).
+// Kolejność jest narracyjna: marzenie → miejsce → osiedle → architektura →
+// willa → wnętrze → masterplan z dostępnością.
+const V2 = '/images/projects/solaya/v2'
 export const SOLAYA_IMAGES = {
-  heroAerial: '/images/projects/solaya/aerial/04.webp',
-  aboutAerial: '/images/projects/solaya/aerial/hero.webp',
-  locationAerial: '/images/projects/solaya/aerial/03.webp',
-  masterplan: '/images/projects/solaya/masterplan.webp',
+  heroAerial: `${V2}/01-basen-morze.webp`,
+  aboutAerial: `${V2}/02-osiedle-morze.webp`,
+  locationAerial: `${V2}/03-osiedle-widok.webp`,
+  masterplan: `${V2}/15-masterplan.webp`,
   estate: [
-    '/images/projects/solaya/aerial/hero.webp',
-    '/images/projects/solaya/aerial/04.webp',
-    '/images/projects/solaya/aerial/02.webp',
-    '/images/projects/solaya/aerial/03.webp',
-    '/images/projects/solaya/aerial/05.webp',
+    `${V2}/04-osiedle-rzedy.webp`,
+    `${V2}/05-osiedle-uklad.webp`,
+    `${V2}/06-tarasy-dachowe.webp`,
+    `${V2}/07-architektura-zbocze.webp`,
+    `${V2}/11-willa-aerial.webp`,
   ],
   villa: {
-    '2bed': ['/images/projects/solaya/2bed/01.webp', '/images/projects/solaya/2bed/02.webp', '/images/projects/solaya/2bed/03.webp', '/images/projects/solaya/2bed/04.webp', '/images/projects/solaya/2bed/05.webp'],
-    '3bed': ['/images/projects/solaya/3bed/01.webp', '/images/projects/solaya/3bed/02.webp', '/images/projects/solaya/3bed/03.webp', '/images/projects/solaya/3bed/04.webp', '/images/projects/solaya/3bed/05.webp'],
-    'terrace': ['/images/projects/solaya/3bed-terrace/01.webp', '/images/projects/solaya/3bed-terrace/02.webp', '/images/projects/solaya/3bed-terrace/03.webp', '/images/projects/solaya/3bed-terrace/04.webp', '/images/projects/solaya/3bed-terrace/05.webp'],
+    '2bed': [`${V2}/09-willa-naroznik.webp`, `${V2}/14-willa-z-gory.webp`, `${V2}/13-taras-lezaki.webp`],
+    '3bed': [`${V2}/12-wnetrze-kuchnia.webp`, `${V2}/08-prywatnosc.webp`, `${V2}/01-basen-morze.webp`],
+    'terrace': [`${V2}/10-willa-taras.webp`, `${V2}/06-tarasy-dachowe.webp`, `${V2}/11-willa-aerial.webp`],
   } as Record<VillaType['key'], string[]>,
 }
 

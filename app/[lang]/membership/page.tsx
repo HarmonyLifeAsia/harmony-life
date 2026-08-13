@@ -5,7 +5,7 @@ import { SITE_URL } from '../../_data/site'
 import MembershipContent from '../../membership/MembershipContent'
 
 const URL = `${SITE_URL}/pl/membership`
-const OG_IMAGE = `${SITE_URL}/images/projects/solaya/aerial/hero.webp`
+const OG_IMAGE = `${SITE_URL}/images/projects/solaya/v2/02-osiedle-morze.webp`
 
 export const metadata: Metadata = {
   title: 'Klub Inwestora Harmony Life — społeczność inwestorów na Koh Samui',
