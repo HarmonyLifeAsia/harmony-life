@@ -62,8 +62,8 @@ export const SOLAYA_IMAGES = {
     `${V2}/11-willa-aerial.webp`,
   ],
   villa: {
-    '2bed': [`${V2}/09-willa-naroznik.webp`, `${V2}/14-willa-z-gory.webp`, `${V2}/13-taras-lezaki.webp`],
-    '3bed': [`${V2}/12-wnetrze-kuchnia.webp`, `${V2}/08-prywatnosc.webp`, `${V2}/01-basen-morze.webp`],
+    '2bed': [`${V2}/12-wnetrze-kuchnia.webp`, `${V2}/08-prywatnosc.webp`, `${V2}/01-basen-morze.webp`],
+    '3bed': [`${V2}/09-willa-naroznik.webp`, `${V2}/14-willa-z-gory.webp`, `${V2}/13-taras-lezaki.webp`],
     'terrace': [`${V2}/10-willa-taras.webp`, `${V2}/06-tarasy-dachowe.webp`, `${V2}/11-willa-aerial.webp`],
   } as Record<VillaType['key'], string[]>,
 }

@@ -93,7 +93,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S5 Typy willi
 {
-  const types = [['v2/09-willa-naroznik.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', 'Kompaktowy luksus pod wynajem premium'], ['v2/12-wnetrze-kuchnia.webp', 'Willa 3 sypialnie', 'od ฿11,9 mln', 'Przestrzeń dla rodziny i gości'], ['v2/10-willa-taras.webp', '3 sypialnie + taras na dachu', 'typ flagowy', 'Panoramiczny taras i zachody słońca na dachu']]
+  const types = [['v2/12-wnetrze-kuchnia.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', 'Kompaktowy luksus pod wynajem premium'], ['v2/09-willa-naroznik.webp', 'Willa 3 sypialnie', 'od ฿11,9 mln', 'Przestrzeń dla rodziny i gości'], ['v2/10-willa-taras.webp', '3 sypialnie + taras na dachu', 'typ flagowy', 'Panoramiczny taras i zachody słońca na dachu']]
   const comps = []; const cardW = 700, imgH = 470, gap = 60, sx = 150, sy = 420
   let labels = ''
   for (let i = 0; i < 3; i++) {
@@ -154,7 +154,9 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 {
   // Cennik z panelu SOLV (panel.harmonylife.asia/p/SOLV/units) — synchronizacja 2026-08-11.
   // Aktualizacja: pobierz JSON z API, uruchom sync_prices.mjs i przegeneruj deck.
-  const villas = [[1, '3 syp', '—', 'Sprzedana'], [2, '3 syp', '฿16,9 mln', 'Dostępna'], [3, '3 syp', '฿17,9 mln', 'Dostępna'], [4, '3 syp', '—', 'Sprzedana'], [5, '2 syp', '฿13,9 mln', 'Dostępna'], [6, '2 syp', '฿13,9 mln', 'Dostępna'], [7, '2 syp', '฿12,9 mln', 'Dostępna'], [8, '2 syp', '฿12,9 mln', 'Dostępna'], [9, '2 syp', '฿12,9 mln', 'Dostępna'], [10, '2 syp · taras', '฿12,9 mln', 'Rezerwacja'], [11, '2 syp · taras', '฿12,9 mln', 'Rezerwacja'], [12, '2 syp · taras', '฿12,9 mln', 'Dostępna'], [13, '2 syp · taras', '฿12,9 mln', 'Dostępna'], [14, '2 syp · taras', '฿11,9 mln', 'Dostępna'], [15, '3 syp · taras', '฿11,9 mln', 'Dostępna'], [16, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [17, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [18, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [19, '3 syp · taras', '฿12,9 mln', 'Dostępna']]
+  // Cennik z panelu SOLV (panel.harmonylife.asia/p/SOLV/units) — synchronizacja 2026-08-11.
+  // Aktualizacja: pobierz JSON z API, uruchom sync_prices.mjs i przegeneruj deck.
+  const villas = [[1, '3 syp', '—', 'Sprzedana'], [2, '3 syp', '฿16,9 mln', 'Dostępna'], [3, '3 syp', '฿17,9 mln', 'Dostępna'], [4, '3 syp', '—', 'Sprzedana'], [5, '2 syp', '฿13,9 mln', 'Dostępna'], [6, '2 syp', '฿13,9 mln', 'Dostępna'], [7, '2 syp', '฿12,9 mln', 'Dostępna'], [8, '2 syp', '฿12,9 mln', 'Dostępna'], [9, '2 syp', '฿12,9 mln', 'Dostępna'], [10, '2 syp · taras', '฿12,9 mln', 'Rezerwacja'], [11, '2 syp · taras', '฿12,9 mln', 'Rezerwacja'], [12, '2 syp · taras', '฿12,9 mln', 'Dostępna'], [13, '2 syp · taras', '฿12,9 mln', 'Dostępna'], [14, '2 syp · taras', '฿11,9 mln', 'Dostępna'], [15, '2 syp · taras', '฿11,9 mln', 'Dostępna'], [16, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [17, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [18, '3 syp · taras', '฿12,9 mln', 'Dostępna'], [19, '3 syp · taras', '฿12,9 mln', 'Dostępna']]
   function colRows(list, x) {
     const head = `${T(x, 400, 'NR', GOLD, 26, SANS, 'start', 3)}${T(x + 90, 400, 'TYP', GOLD, 26, SANS, 'start', 3)}${T(x + 660, 400, 'CENA', GOLD, 26, SANS, 'end', 3)}${T(x + 690, 400, 'STATUS', GOLD, 26, SANS, 'start', 3)}<line x1="${x}" y1="420" x2="${x + 900}" y2="420" stroke="${GOLD}" stroke-opacity="0.25"/>`
     let y = 478
