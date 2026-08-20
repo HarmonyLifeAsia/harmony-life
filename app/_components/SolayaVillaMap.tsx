@@ -20,15 +20,18 @@
   - kliknij "Eksportuj pozycje" i wklej JSON z powrotem do VILLAS.
 */
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 
-const BACKGROUND = "/images/projects/solaya/aerial/04.webp";
+const BACKGROUND = "/images/projects/solaya/aerial/05-plan-2026.webp";
 
 /* ---- POZYCJE WILL na aerialu (x%, y%) — status/ceny są LIVE z panelu SOLV ---- */
+// Punkt wyjścia dla nowego renderu (2026): 15 z 19 pozycji pochodzi z automatycznego wykrycia
+// basenów na zdjęciu, 4 zasłonięte (2, 4, 10, 14) są interpolowane. Numeracja wymaga potwierdzenia
+// przez właściciela — otwórz stronę z ?kalibracja, przeciągnij markery i skopiuj pozycje.
 const POS = {
-  1:[39.7,13.1], 2:[27.8,16], 3:[16.8,23], 4:[49.3,25.7], 5:[38.8,29.3], 6:[29.4,32.5],
-  7:[57.3,36.4], 8:[47.8,39], 9:[38.9,41.7], 10:[64.2,44.8], 11:[54.8,47.6], 12:[46.6,51],
-  13:[72.1,52.3], 14:[64.9,56.1], 15:[57.2,59], 16:[65.8,66], 17:[74.3,70.4], 18:[80.8,75.8], 19:[87.5,80.8],
+  1:[32,7], 2:[21,10], 3:[11,12], 4:[38,14], 5:[30,16], 6:[20,18],
+  7:[43,20], 8:[36,22], 9:[28,25], 10:[49,26], 11:[42,29], 12:[33,32],
+  13:[58,32], 14:[50,36], 15:[43,40], 16:[52,48], 17:[60,56], 18:[71,67], 19:[86,79],
 };
 
 const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
@@ -54,6 +57,18 @@ export default function SolayaVillaMap({ onInquire }) {
   const [filter, setFilter] = useState(null);      // null | status key
   const [toast, setToast] = useState(null);
 
+  // TRYB KALIBRACJI — włącza się tylko adresem ...?kalibracja, więc goście go nie widzą.
+  // Po podmianie renderu przeciągasz markery na właściwe wille i kopiujesz gotowy JSON do POS.
+  const [calib, setCalib] = useState(false);
+  const stageRef = useRef(null);
+  const dragRef = useRef(null);
+  const movedRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setCalib(new URLSearchParams(window.location.search).has("kalibracja"));
+  }, []);
+
   const counts = useMemo(() => {
     const c = { available: 0, reserved: 0, sold: 0 };
     villas.forEach((v) => c[v.status]++);
@@ -72,7 +87,12 @@ export default function SolayaVillaMap({ onInquire }) {
         if (!alive || !Array.isArray(data.units)) return;
         const byNum = {};
         data.units.forEach((u) => { byNum[String(u.unitNumber)] = u; });
-        setVillas(Object.entries(POS).map(([k, [x, y]]) => {
+        // Zachowaj bieżące x/y: co 3 minuty dociągamy status z CRM, a w trakcie kalibracji
+        // markery stoją tam, gdzie je przeciągnięto — nadpisanie ich POS-em kasowałoby pracę.
+        setVillas((prev) => {
+          const held = Object.fromEntries(prev.map((v) => [v.n, [v.x, v.y]]));
+          return Object.entries(POS).map(([k, [px, py]]) => {
+          const [x, y] = held[Number(k)] ?? [px, py];
           const u = byNum[String(k)];
           return {
             n: Number(k), x, y,
@@ -83,7 +103,8 @@ export default function SolayaVillaMap({ onInquire }) {
             priceFrom: u?.basePriceTHB != null ? Number(u.basePriceTHB) : null,
             lease: u?.yearlyLeaseTHB != null ? Number(u.yearlyLeaseTHB) : null,
           };
-        }));
+          });
+        });
       } catch { /* keep fallback */ }
     };
     load();
@@ -98,6 +119,46 @@ export default function SolayaVillaMap({ onInquire }) {
   }, []);
 
   const flash = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
+
+  const pctFromEvent = (e) => {
+    const r = stageRef.current.getBoundingClientRect();
+    return {
+      x: Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100)),
+      y: Math.max(0, Math.min(100, ((e.clientY - r.top) / r.height) * 100)),
+    };
+  };
+
+  const startDrag = (n) => (e) => {
+    if (!calib) return;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    dragRef.current = n;
+    movedRef.current = false;
+  };
+
+  const onDrag = (e) => {
+    if (dragRef.current == null) return;
+    const { x, y } = pctFromEvent(e);
+    movedRef.current = true;
+    setVillas((vs) => vs.map((v) => (v.n === dragRef.current
+      ? { ...v, x: Number(x.toFixed(1)), y: Number(y.toFixed(1)) } : v)));
+  };
+
+  const endDrag = () => { dragRef.current = null; };
+
+  // Wynik kalibracji w formacie, który wkleja się wprost do POS na górze pliku.
+  const copyPositions = async () => {
+    const rows = villas.slice().sort((a, b) => a.n - b.n)
+      .map((v) => `  ${v.n}:[${v.x},${v.y}],`).join("\n");
+    const json = `const POS = {\n${rows}\n};`;
+    try {
+      await navigator.clipboard.writeText(json);
+      flash("Pozycje skopiowane — wklej je Claude'owi albo do POS w kodzie.");
+    } catch {
+      console.log(json);
+      flash("Schowek niedostępny — pozycje są w konsoli przeglądarki (F12).");
+    }
+  };
 
   const activeVilla = active != null ? villas.find((v) => v.n === active) : null;
 
@@ -134,10 +195,21 @@ export default function SolayaVillaMap({ onInquire }) {
         ))}
       </div>
 
+      {calib && (
+        <div className="hl-calib">
+          <b>Tryb kalibracji.</b> Przeciągnij numery na właściwe wille, potem skopiuj pozycje.
+          <button className="chip" onClick={copyPositions}>Kopiuj pozycje</button>
+        </div>
+      )}
+
       {/* SCENA */}
       <div
-        className="hl-stage"
+        ref={stageRef}
+        className={"hl-stage" + (calib ? " calibrate" : "")}
         style={{ backgroundImage: `url("${BACKGROUND}")` }}
+        onPointerMove={onDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
       >
         <div className="hl-veil" />
 
@@ -163,7 +235,8 @@ export default function SolayaVillaMap({ onInquire }) {
               }}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
-              onClick={() => setActive(v.n)}
+              onPointerDown={startDrag(v.n)}
+              onClick={() => { if (!calib && !movedRef.current) setActive(v.n); }}
               aria-label={`Willa ${v.n} — ${STATUS[v.status].label}${v.priceFrom != null ? ` — od ${thb(v.priceFrom)}` : ""}`}
             >
               <span className="m-num">{v.n}</span>
@@ -250,10 +323,13 @@ const css = `
 .chip .dot{ width:9px; height:9px; border-radius:50%; background:var(--dot,var(--sand)); }
 .chip.active .dot{ box-shadow:0 0 0 2px rgba(255,255,255,.4); }
 
-.hl-stage{ position:relative; width:100%; aspect-ratio:4/3; border-radius:18px;
+.hl-stage{ position:relative; width:100%; aspect-ratio:2340/2010; border-radius:18px;
   overflow:hidden; background-size:cover; background-position:center;
   box-shadow:0 24px 60px -28px rgba(35,40,30,.55), inset 0 0 0 1px rgba(255,255,255,.18);
   container-type:inline-size; user-select:none; touch-action:none; }
+.hl-calib{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 10px;
+  padding:10px 14px; border-radius:12px; background:rgba(224,138,43,.14);
+  border:1px solid rgba(224,138,43,.5); font-size:14px; }
 .hl-stage.calibrate{ cursor:crosshair; outline:2px dashed var(--gold); outline-offset:-2px; }
 .hl-veil{ position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(20,30,20,.28)); }
