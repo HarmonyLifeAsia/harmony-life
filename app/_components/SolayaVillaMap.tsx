@@ -25,13 +25,14 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 const BACKGROUND = "/images/projects/solaya/aerial/05-plan-2026.webp";
 
 /* ---- POZYCJE WILL na aerialu (x%, y%) — status/ceny są LIVE z panelu SOLV ---- */
-// Punkt wyjścia dla nowego renderu (2026): 15 z 19 pozycji pochodzi z automatycznego wykrycia
-// basenów na zdjęciu, 4 zasłonięte (2, 4, 10, 14) są interpolowane. Numeracja wymaga potwierdzenia
-// przez właściciela — otwórz stronę z ?kalibracja, przeciągnij markery i skopiuj pozycje.
+// Pozycje na renderze z 2026 r., ustawione ręcznie przez właściciela w trybie kalibracji
+// (strona z ?kalibracja → przeciągnij markery → „Kopiuj pozycje"). Numeracja odpowiada numerom
+// willi w panelu SOLV, z którego lecą statusy i ceny.
 const POS = {
-  1:[32,7], 2:[21,10], 3:[11,12], 4:[38,14], 5:[30,16], 6:[20,18],
-  7:[43,20], 8:[36,22], 9:[28,25], 10:[49,26], 11:[42,29], 12:[33,32],
-  13:[58,32], 14:[50,36], 15:[43,40], 16:[52,48], 17:[60,56], 18:[71,67], 19:[86,79],
+  1:[30.6,3], 2:[20.2,3.7], 3:[9.7,7.1], 4:[33.9,10.5], 5:[25.1,12.4], 6:[14.8,14.6],
+  7:[38.3,16.3], 8:[29.9,18.3], 9:[20.8,20.8], 10:[45.2,22], 11:[37.7,24], 12:[28.3,27.2],
+  13:[54.1,27.7], 14:[46.5,31.4], 15:[38.7,36.1], 16:[47.7,42.3], 17:[55.7,49.4],
+  18:[66.9,58], 19:[80.5,69.1],
 };
 
 const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
