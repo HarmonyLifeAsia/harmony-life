@@ -195,7 +195,8 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
                 </div>
                 <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
                   <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">{v.tagline}</p>
-                  <h3 className="font-serif text-2xl md:text-3xl text-cream mb-4">{v.name}</h3>
+                  <h3 className="font-serif text-2xl md:text-3xl text-cream mb-2">{v.name}</h3>
+                  <p className="text-gold/80 text-sm font-sans mb-4 tabular-nums">{v.area}</p>
                   <p className="text-cream/60 text-base leading-relaxed mb-6">{v.desc}</p>
                   <ul className="space-y-2.5 mb-7">
                     {v.features.map((f) => (

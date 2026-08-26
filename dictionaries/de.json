@@ -360,10 +360,22 @@
     "eyebrow": "Warum es sicher ist",
     "title": "Polnischer Bauträger, europäische Standards, legale Struktur",
     "items": [
-      { "title": "Polnischer Bauträger", "desc": "Hinter dem Projekt steht ein polnischer Bauträger, der in Polen 100+ Anlagewohnungen realisiert und 200+ Mieter verwaltet — heute baut er auf Koh Samui nach europäischen Ausbau- und Qualitätsstandards." },
-      { "title": "Legal und transparent", "desc": "Die rechtliche Struktur basiert auf den offiziellen Empfehlungen der thailändischen Regierung und wird mit Anwälten umgesetzt. Alles rechtskonform, ohne versteckte Haken." },
-      { "title": "Volle Verwaltung", "desc": "Wir übernehmen die Vermietung von A bis Z — Marketing, Gäste, Service und transparente vierteljährliche Abrechnungen. Sie erhalten den Bericht und die Auszahlung." },
-      { "title": "Harmony-Life-Gemeinschaft", "desc": "Als Investor treten Sie der Harmony Life Membership bei — einer Gemeinschaft polnischer Unternehmer, in der wir Erfahrung, Kontakte und Wissen austauschen." }
+      {
+        "title": "Polnischer Bauträger",
+        "desc": "Hinter dem Projekt steht ein polnischer Bauträger, der in Polen 100+ Anlagewohnungen realisiert und 200+ Mieter verwaltet — heute baut er auf Koh Samui nach europäischen Ausbau- und Qualitätsstandards."
+      },
+      {
+        "title": "Legal und transparent",
+        "desc": "Die rechtliche Struktur basiert auf den offiziellen Empfehlungen der thailändischen Regierung und wird mit Anwälten umgesetzt. Alles rechtskonform, ohne versteckte Haken."
+      },
+      {
+        "title": "Volle Verwaltung",
+        "desc": "Wir übernehmen die Vermietung von A bis Z — Marketing, Gäste, Service und transparente vierteljährliche Abrechnungen. Sie erhalten den Bericht und die Auszahlung."
+      },
+      {
+        "title": "Harmony-Life-Gemeinschaft",
+        "desc": "Als Investor treten Sie der Harmony Life Membership bei — einer Gemeinschaft polnischer Unternehmer, in der wir Erfahrung, Kontakte und Wissen austauschen."
+      }
     ]
   },
   "solaya": {
@@ -470,13 +482,13 @@
       "type": "Premium-Villen",
       "priceFrom": "Auf Anfrage",
       "location": "Plai Laem, Koh Samui",
-      "landArea": "k. A.",
-      "poolSize": "Lagunenpool (gemeinschaftlich)",
+      "landArea": "212–498 m² (Grundstück)",
+      "poolSize": "Privatpool 32–38 m²",
       "features": [
         "Meer- oder Panoramablick",
-        "Villen mit 2–3 Schlafzimmern",
-        "Privater Pool & tropischer Garten",
-        "Flaggschiff-Typ mit Dachterrasse",
+        "Villen mit 2–3 Schlafzimmern · 98–131 m² Innenfläche",
+        "Privater Pool 32–38 m² & tropischer Garten",
+        "Terrasse 60–173 m² · Flaggschiff mit Dachterrasse",
         "Europäische Bauqualität",
         "Volles Vermietungsmanagement"
       ]

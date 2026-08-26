@@ -1,5 +1,6 @@
 // Bespoke, self-contained copy for the SOLAYA Residence sales subpage (PL/EN/DE).
-// Rules from brief: no prices, no m², no fixed villa count (→ offer panel);
+// Ceny i dostępność → panel ofertowy. Metraże pochodzą z dokumentacji
+// architektonicznej (solayaSurfaces.ts) i są podawane wprost;
 // payment shown as named stages without %; amenities described generally.
 
 export type SolayaLocale = 'pl' | 'en' | 'de'
@@ -8,6 +9,8 @@ export interface VillaType {
   key: '2bed' | '3bed' | 'terrace'
   name: string
   tagline: string
+  /** Metraże z dokumentacji architektonicznej — patrz solayaSurfaces.ts */
+  area: string
   desc: string
   features: string[]
 }
@@ -129,11 +132,11 @@ const pl: SolayaCopy = {
     title: 'Trzy typy, jeden standard',
     intro: 'Nowoczesny tropikalny minimalizm: pełne przeszklenia, płynne przejście wnętrze–taras, sufity z drewna tekowego, prywatny basen i ogród. Każda willa ma panoramiczny widok na morze, góry i świątynie Buddy.',
     panelCta: 'Szczegóły i dostępność w panelu',
-    note: 'Ceny, metraże i dostępność prowadzimy wyłącznie w zawsze aktualnym panelu ofertowym.',
+    note: 'Metraże wg dokumentacji architektonicznej. Ceny i dostępność prowadzimy w zawsze aktualnym panelu ofertowym.',
     types: [
-      { key: '2bed', name: 'Willa 2 sypialnie', tagline: 'Kompaktowy luksus', desc: 'Zaprojektowana pod wynajem premium: otwarta strefa dzienna z kuchnią i jadalnią, dwie sypialnie z łazienkami, prywatny basen i przestronny taras. Idealna dla par i małych rodzin — i najłatwiejsza w wynajmie.', features: ['Otwarta strefa dzienna', 'Dwie sypialnie z łazienkami', 'Prywatny basen i taras'] },
-      { key: '3bed', name: 'Willa 3 sypialnie', tagline: 'Przestrzeń dla rodziny i gości', desc: 'Otwarty salon z wyspą kuchenną i jadalnią, trzy sypialnie z łazienkami, basen i taras w standardzie resortowym, dom otwarty na ogród. Wysoka atrakcyjność najmu w segmencie rodzinnym i grupowym.', features: ['Salon z wyspą kuchenną', 'Trzy sypialnie z łazienkami', 'Taras i basen resortowy'] },
-      { key: 'terrace', name: 'Willa 3 sypialnie + taras na dachu', tagline: 'Typ flagowy', desc: 'Wszystko, co ma wersja 3-sypialniowa, plus prywatny taras na dachu ze strefą lounge i jadalnią pod pergolą oraz panoramicznym widokiem na morze. Zachody słońca na własnym dachu to atut, dla którego goście wracają.', features: ['Prywatny taras na dachu', 'Lounge i jadalnia pod pergolą', 'Panoramiczny widok na morze'] },
+      { key: '2bed', name: 'Willa 2 sypialnie', area: 'Wnętrze 98–112 m² · razem 194–315 m²', tagline: 'Kompaktowy luksus', desc: 'Zaprojektowana pod wynajem premium: otwarta strefa dzienna z kuchnią i jadalnią, dwie sypialnie z łazienkami, prywatny basen i przestronny taras. Idealna dla par i małych rodzin — i najłatwiejsza w wynajmie.', features: ['Otwarta strefa dzienna', 'Dwie sypialnie z łazienkami', 'Prywatny basen i taras'] },
+      { key: '3bed', name: 'Willa 3 sypialnie', area: 'Wnętrze 131 m² · razem 282–342 m²', tagline: 'Przestrzeń dla rodziny i gości', desc: 'Otwarty salon z wyspą kuchenną i jadalnią, trzy sypialnie z łazienkami, basen i taras w standardzie resortowym, dom otwarty na ogród. Wysoka atrakcyjność najmu w segmencie rodzinnym i grupowym.', features: ['Salon z wyspą kuchenną', 'Trzy sypialnie z łazienkami', 'Taras i basen resortowy'] },
+      { key: 'terrace', name: 'Willa 3 sypialnie + taras na dachu', area: 'Wnętrze 131 m² · razem 279–288 m²', tagline: 'Typ flagowy', desc: 'Wszystko, co ma wersja 3-sypialniowa, plus prywatny taras na dachu ze strefą lounge i jadalnią pod pergolą oraz panoramicznym widokiem na morze. Zachody słońca na własnym dachu to atut, dla którego goście wracają.', features: ['Prywatny taras na dachu', 'Lounge i jadalnia pod pergolą', 'Panoramiczny widok na morze'] },
     ],
   },
   finishing: {
@@ -307,11 +310,11 @@ const en: SolayaCopy = {
     title: 'Three types, one standard',
     intro: 'Modern tropical minimalism: full-height glazing, seamless indoor–outdoor flow, teak-wood ceilings, a private pool and garden. Every villa has a panoramic view of the sea, mountains and Buddha temples.',
     panelCta: 'Details & availability in the panel',
-    note: 'Prices, sizes and availability are kept exclusively in the always-current offer panel.',
+    note: 'Areas per architectural documentation. Prices and availability are kept in the always-current offer panel.',
     types: [
-      { key: '2bed', name: '2-bedroom villa', tagline: 'Compact luxury', desc: 'Designed for premium rental: an open living area with kitchen and dining, two en-suite bedrooms, a private pool and a spacious terrace. Ideal for couples and small families — and the easiest to rent.', features: ['Open living area', 'Two en-suite bedrooms', 'Private pool & terrace'] },
-      { key: '3bed', name: '3-bedroom villa', tagline: 'Space for family and guests', desc: 'An open living room with kitchen island and dining, three en-suite bedrooms, a resort-standard pool and terrace, and a home that opens onto the garden. Strong rental appeal in the family and group segment.', features: ['Living room with kitchen island', 'Three en-suite bedrooms', 'Resort terrace & pool'] },
-      { key: 'terrace', name: '3-bedroom villa + rooftop terrace', tagline: 'The flagship', desc: 'Everything the 3-bedroom offers, plus a private rooftop terrace with a lounge and dining area under a pergola and panoramic sea views. Sunsets on your own roof are the kind of experience guests come back for.', features: ['Private rooftop terrace', 'Lounge & dining under a pergola', 'Panoramic sea view'] },
+      { key: '2bed', name: '2-bedroom villa', area: '98–112 m² interior · 194–315 m² total', tagline: 'Compact luxury', desc: 'Designed for premium rental: an open living area with kitchen and dining, two en-suite bedrooms, a private pool and a spacious terrace. Ideal for couples and small families — and the easiest to rent.', features: ['Open living area', 'Two en-suite bedrooms', 'Private pool & terrace'] },
+      { key: '3bed', name: '3-bedroom villa', area: '131 m² interior · 282–342 m² total', tagline: 'Space for family and guests', desc: 'An open living room with kitchen island and dining, three en-suite bedrooms, a resort-standard pool and terrace, and a home that opens onto the garden. Strong rental appeal in the family and group segment.', features: ['Living room with kitchen island', 'Three en-suite bedrooms', 'Resort terrace & pool'] },
+      { key: 'terrace', name: '3-bedroom villa + rooftop terrace', area: '131 m² interior · 279–288 m² total', tagline: 'The flagship', desc: 'Everything the 3-bedroom offers, plus a private rooftop terrace with a lounge and dining area under a pergola and panoramic sea views. Sunsets on your own roof are the kind of experience guests come back for.', features: ['Private rooftop terrace', 'Lounge & dining under a pergola', 'Panoramic sea view'] },
     ],
   },
   finishing: {
@@ -485,11 +488,11 @@ const de: SolayaCopy = {
     title: 'Drei Typen, ein Standard',
     intro: 'Moderner tropischer Minimalismus: raumhohe Verglasungen, fließender Innen-Außen-Übergang, Decken aus Teakholz, privater Pool und Garten. Jede Villa hat einen Panoramablick auf Meer, Berge und Buddha-Tempel.',
     panelCta: 'Details & Verfügbarkeit im Panel',
-    note: 'Preise, Größen und Verfügbarkeit führen wir ausschließlich im stets aktuellen Angebots-Panel.',
+    note: 'Flächen gemäß Architekturdokumentation. Preise und Verfügbarkeit führen wir im stets aktuellen Angebots-Panel.',
     types: [
-      { key: '2bed', name: 'Villa mit 2 Schlafzimmern', tagline: 'Kompakter Luxus', desc: 'Für die Premium-Vermietung konzipiert: offener Wohnbereich mit Küche und Essplatz, zwei Schlafzimmer mit Bädern, privater Pool und großzügige Terrasse. Ideal für Paare und kleine Familien — und am leichtesten zu vermieten.', features: ['Offener Wohnbereich', 'Zwei Schlafzimmer mit Bad', 'Privater Pool & Terrasse'] },
-      { key: '3bed', name: 'Villa mit 3 Schlafzimmern', tagline: 'Platz für Familie und Gäste', desc: 'Offenes Wohnzimmer mit Kücheninsel und Essplatz, drei Schlafzimmer mit Bädern, Pool und Terrasse im Resort-Standard, zum Garten hin geöffnet. Hohe Vermietungsattraktivität im Familien- und Gruppensegment.', features: ['Wohnzimmer mit Kücheninsel', 'Drei Schlafzimmer mit Bad', 'Resort-Terrasse & Pool'] },
-      { key: 'terrace', name: 'Villa mit 3 Schlafzimmern + Dachterrasse', tagline: 'Das Flaggschiff', desc: 'Alles, was die 3-Schlafzimmer-Villa bietet, plus eine private Dachterrasse mit Lounge und Essbereich unter einer Pergola und Panorama-Meerblick. Sonnenuntergänge auf dem eigenen Dach sind das Erlebnis, für das Gäste wiederkommen.', features: ['Private Dachterrasse', 'Lounge & Essbereich unter Pergola', 'Panorama-Meerblick'] },
+      { key: '2bed', name: 'Villa mit 2 Schlafzimmern', area: '98–112 m² Innenfläche · 194–315 m² gesamt', tagline: 'Kompakter Luxus', desc: 'Für die Premium-Vermietung konzipiert: offener Wohnbereich mit Küche und Essplatz, zwei Schlafzimmer mit Bädern, privater Pool und großzügige Terrasse. Ideal für Paare und kleine Familien — und am leichtesten zu vermieten.', features: ['Offener Wohnbereich', 'Zwei Schlafzimmer mit Bad', 'Privater Pool & Terrasse'] },
+      { key: '3bed', name: 'Villa mit 3 Schlafzimmern', area: '131 m² Innenfläche · 282–342 m² gesamt', tagline: 'Platz für Familie und Gäste', desc: 'Offenes Wohnzimmer mit Kücheninsel und Essplatz, drei Schlafzimmer mit Bädern, Pool und Terrasse im Resort-Standard, zum Garten hin geöffnet. Hohe Vermietungsattraktivität im Familien- und Gruppensegment.', features: ['Wohnzimmer mit Kücheninsel', 'Drei Schlafzimmer mit Bad', 'Resort-Terrasse & Pool'] },
+      { key: 'terrace', name: 'Villa mit 3 Schlafzimmern + Dachterrasse', area: '131 m² Innenfläche · 279–288 m² gesamt', tagline: 'Das Flaggschiff', desc: 'Alles, was die 3-Schlafzimmer-Villa bietet, plus eine private Dachterrasse mit Lounge und Essbereich unter einer Pergola und Panorama-Meerblick. Sonnenuntergänge auf dem eigenen Dach sind das Erlebnis, für das Gäste wiederkommen.', features: ['Private Dachterrasse', 'Lounge & Essbereich unter Pergola', 'Panorama-Meerblick'] },
     ],
   },
   finishing: {

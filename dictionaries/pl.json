@@ -360,10 +360,22 @@
     "eyebrow": "Dlaczego to bezpieczne",
     "title": "Polski deweloper, europejskie standardy, legalna struktura",
     "items": [
-      { "title": "Polski deweloper", "desc": "Za projektem stoi polski deweloper, który w Polsce zrealizował 100+ mieszkań inwestycyjnych i zarządza 200+ najemcami — dziś buduje na Koh Samui w europejskich standardach wykończenia i jakości." },
-      { "title": "Legalnie i przejrzyście", "desc": "Konstrukcja prawna oparta jest na oficjalnych rekomendacjach tajskiego rządu i prowadzona z prawnikami. Wszystko zgodnie z prawem, bez ukrytych haczyków." },
-      { "title": "Pełne zarządzanie", "desc": "Zajmujemy się najmem od A do Z — marketing, goście, serwis i przejrzyste kwartalne rozliczenia. Ty odbierasz raport i przelew." },
-      { "title": "Społeczność Harmony Life", "desc": "Jako inwestor dołączasz do Harmony Life Membership — społeczności polskich przedsiębiorców, w której wymieniamy się doświadczeniem, kontaktami i wiedzą." }
+      {
+        "title": "Polski deweloper",
+        "desc": "Za projektem stoi polski deweloper, który w Polsce zrealizował 100+ mieszkań inwestycyjnych i zarządza 200+ najemcami — dziś buduje na Koh Samui w europejskich standardach wykończenia i jakości."
+      },
+      {
+        "title": "Legalnie i przejrzyście",
+        "desc": "Konstrukcja prawna oparta jest na oficjalnych rekomendacjach tajskiego rządu i prowadzona z prawnikami. Wszystko zgodnie z prawem, bez ukrytych haczyków."
+      },
+      {
+        "title": "Pełne zarządzanie",
+        "desc": "Zajmujemy się najmem od A do Z — marketing, goście, serwis i przejrzyste kwartalne rozliczenia. Ty odbierasz raport i przelew."
+      },
+      {
+        "title": "Społeczność Harmony Life",
+        "desc": "Jako inwestor dołączasz do Harmony Life Membership — społeczności polskich przedsiębiorców, w której wymieniamy się doświadczeniem, kontaktami i wiedzą."
+      }
     ]
   },
   "solaya": {
@@ -470,13 +482,13 @@
       "type": "Wille premium",
       "priceFrom": "Zapytaj",
       "location": "Plai Laem, Koh Samui",
-      "landArea": "Nie dotyczy",
-      "poolSize": "Basen-laguna (wspólny)",
+      "landArea": "212–498 m² (działka)",
+      "poolSize": "Prywatny basen 32–38 m²",
       "features": [
         "Widok na morze lub panorama",
-        "Wille 2–3 sypialnie",
-        "Prywatny basen i ogród",
-        "Typ flagowy z tarasem na dachu",
+        "Wille 2–3 sypialnie · wnętrze 98–131 m²",
+        "Prywatny basen 32–38 m² i ogród",
+        "Taras 60–173 m² · typ flagowy z tarasem na dachu",
         "Europejski standard wykonania",
         "Pełne zarządzanie najmem"
       ]

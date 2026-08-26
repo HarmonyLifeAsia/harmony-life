@@ -360,10 +360,22 @@
     "eyebrow": "Why it's safe",
     "title": "Polish developer, European standards, legal structure",
     "items": [
-      { "title": "Polish developer", "desc": "The project is run by a Polish developer who delivered 100+ investment apartments in Poland and manages 200+ tenants — now building on Koh Samui to European finishing and quality standards." },
-      { "title": "Legal and transparent", "desc": "The legal structure is based on official recommendations of the Thai government and handled with lawyers. Fully compliant, with no hidden catches." },
-      { "title": "Full management", "desc": "We handle the rental end to end — marketing, guests, service and transparent quarterly settlements. You receive the report and the payout." },
-      { "title": "Harmony Life community", "desc": "As an investor you join Harmony Life Membership — a community of Polish entrepreneurs where we share experience, contacts and knowledge." }
+      {
+        "title": "Polish developer",
+        "desc": "The project is run by a Polish developer who delivered 100+ investment apartments in Poland and manages 200+ tenants — now building on Koh Samui to European finishing and quality standards."
+      },
+      {
+        "title": "Legal and transparent",
+        "desc": "The legal structure is based on official recommendations of the Thai government and handled with lawyers. Fully compliant, with no hidden catches."
+      },
+      {
+        "title": "Full management",
+        "desc": "We handle the rental end to end — marketing, guests, service and transparent quarterly settlements. You receive the report and the payout."
+      },
+      {
+        "title": "Harmony Life community",
+        "desc": "As an investor you join Harmony Life Membership — a community of Polish entrepreneurs where we share experience, contacts and knowledge."
+      }
     ]
   },
   "solaya": {
@@ -470,13 +482,13 @@
       "type": "Premium Villas",
       "priceFrom": "On request",
       "location": "Plai Laem, Koh Samui",
-      "landArea": "N/A",
-      "poolSize": "Lagoon pool (shared)",
+      "landArea": "212–498 m² (plot)",
+      "poolSize": "Private pool 32–38 m²",
       "features": [
         "Sea or panoramic views",
-        "2–3 bedroom villas",
-        "Private pool & tropical garden",
-        "Flagship rooftop-terrace type",
+        "2–3 bedroom villas · 98–131 m² interior",
+        "Private 32–38 m² pool & tropical garden",
+        "60–173 m² terrace · flagship rooftop type",
         "European build quality",
         "Full rental management"
       ]
