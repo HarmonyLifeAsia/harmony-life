@@ -180,22 +180,31 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S11 Zwrot z inwestycji
 {
-  const cards = [[150, 'Willa 2 sypialnie', '~20%', '3,8 mln THB', '~2,2 mln THB'], [1290, 'Willa 3 sypialnie', '~22%', '4,8 mln THB', '~2,9 mln THB']]
+  // Cztery grupy willi — zwrot zależy od położenia, liczby sypialni i ceny.
+  const cards = [
+    [150,  'Wille 1–3',   '3 sypialnie',        '15,4–17,0%', '4,5–4,9 mln', '2,7–3,0 mln'],
+    [695,  'Wille 4–9',   '2 sypialnie',        '14,4–15,9%', '3,5–3,8 mln', '2,0–2,2 mln'],
+    [1240, 'Wille 10–15', '2–3 syp. + taras',   '15,2–16,9%', '3,4–3,8 mln', '2,0–2,2 mln'],
+    [1785, 'Wille 16–19', '3 syp. + taras',     '17,8–19,8%', '3,9–4,3 mln', '2,3–2,5 mln'],
+  ]
   let cardsS = ''
-  cards.forEach(([x, name, rate, rev, net]) => {
-    cardsS += `<rect x="${x}" y="360" width="1040" height="360" rx="18" fill="#252542" stroke="${GOLD}" stroke-opacity="0.25"/>
-      ${T(x + 50, 450, name, CREAM, 46, SERIF)}${T(x + 50, 520, 'ZWROT NETTO / ROK', GOLD, 28, SANS, 'start', 4)}${T(x + 50, 640, rate, GOLD, 130, SERIF)}
-      ${T(x + 990, 470, 'Przychód brutto', MUTED, 28, SANS, 'end')}${T(x + 990, 520, rev, CREAM, 40, SERIF, 'end')}${T(x + 990, 620, 'Zysk netto', MUTED, 28, SANS, 'end')}${T(x + 990, 670, net, CREAM, 40, SERIF, 'end')}`
+  cards.forEach(([x, name, sub, rate, rev, net]) => {
+    cardsS += `<rect x="${x}" y="350" width="505" height="400" rx="16" fill="#252542" stroke="${GOLD}" stroke-opacity="0.25"/>
+      ${T(x + 34, 412, name, CREAM, 38, SERIF)}${T(x + 34, 452, sub, MUTED, 26, SANS)}
+      ${T(x + 34, 516, 'ZWROT NETTO / ROK', GOLD, 21, SANS, 'start', 3)}
+      ${T(x + 34, 590, rate, GOLD, 54, SERIF)}
+      ${T(x + 34, 648, 'Przychód brutto', MUTED, 24, SANS)}${T(x + 471, 648, rev, CREAM, 28, SERIF, 'end')}
+      ${T(x + 34, 700, 'Zysk netto', MUTED, 24, SANS)}${T(x + 471, 700, net, CREAM, 28, SERIF, 'end')}`
   })
   const seasons = [['Wysoki', 'gru–mar', '80–90%', 320], ['Średni', 'kwi–sie', '55–70%', 235], ['Niski', 'wrz–lis', '35–50%', 165]]
-  let bars = '', bx = 300, cbase = 1400
+  let bars = '', bx = 300, cbase = 1420
   seasons.forEach(([n, m, o, hgt]) => { bars += `<rect x="${bx}" y="${cbase - hgt}" width="360" height="${hgt}" rx="8" fill="url(#gg)"/>${T(bx + 180, cbase - hgt - 24, o, GOLD, 40, SERIF, 'middle')}${T(bx + 180, cbase + 56, n + ' sezon', CREAM, 38, SANS, 'middle')}${T(bx + 180, cbase + 104, m, MUTED, 30, SANS, 'middle')}`; bx += 480 })
   const text = svg(`<defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DFC49A"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
     ${heading('ZWROT Z INWESTYCJI', 'Realny zwrot — po kosztach')}${cardsS}
-    ${T(150, 870, 'DLACZEGO SEZON MA ZNACZENIE', GOLD, 32, SANS, 'start', 6)}${bars}
-    ${T(1850, 960, 'Wysoki sezon (gru–mar)', CREAM, 40, SERIF)}${wrap('generuje największą część przychodu — wysokie obłożenie przy najwyższych stawkach za noc.', 34).map((l, j) => T(1850, 1020 + j * 46, l, CREAM, 32, SANS)).join('')}
-    ${wrap('Po kosztach: stałe ~447 tys. THB/rok, zmienne 10,5% przychodu i operator 25%.', 34).map((l, j) => T(1850, 1200 + j * 42, l, MUTED, 28, SANS)).join('')}
-    ${T(150, 1620, 'Dane orientacyjne i marketingowe (scenariusz górny). Nie stanowią gwarancji zysku — finalny wynik zależy od obłożenia, cen i zarządzania.', MUTED, 28, SANS)}`)
+    ${T(150, 900, 'DLACZEGO SEZON MA ZNACZENIE', GOLD, 32, SANS, 'start', 6)}${bars}
+    ${T(1850, 990, 'Wysoki sezon (gru–mar)', CREAM, 40, SERIF)}${wrap('generuje największą część przychodu — wysokie obłożenie przy najwyższych stawkach za noc.', 34).map((l, j) => T(1850, 1050 + j * 46, l, CREAM, 32, SANS)).join('')}
+    ${wrap('Po kosztach: stałe 437–487 tys. THB/rok (dzierżawa gruntu), zmienne 10,5% przychodu i operator 25% zysku operacyjnego.', 34).map((l, j) => T(1850, 1230 + j * 42, l, MUTED, 28, SANS)).join('')}
+    ${T(150, 1620, 'Zakres: scenariusz bazowy – górny. Stawki najmu odpowiadają realnym cenom porównywalnych willi w Plai Laem (Booking.com). Prognoza, nie gwarancja.', MUTED, 28, SANS)}`)
   await addSlide([{ input: text }])
 }
 

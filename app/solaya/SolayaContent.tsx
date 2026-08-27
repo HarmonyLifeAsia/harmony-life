@@ -311,7 +311,7 @@ export default function SolayaContent({ lang }: { lang: SolayaLocale }) {
                 <div className="flex items-end justify-between gap-6">
                   <div>
                     <p className="text-cream/40 text-xs uppercase tracking-wide mb-1">{c.roi.rateLabel}</p>
-                    <p className="font-serif text-5xl md:text-6xl text-gradient-gold leading-none">{v.rate}</p>
+                    <p className="font-serif text-3xl md:text-4xl text-gradient-gold leading-none whitespace-nowrap">{v.rate}</p>
                     <p className="text-cream/35 text-[11px] mt-2">{c.roi.rateNote}</p>
                   </div>
                   <div className="text-right space-y-3 shrink-0">

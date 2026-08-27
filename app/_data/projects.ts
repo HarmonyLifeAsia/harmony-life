@@ -248,7 +248,7 @@ export const projects: Project[] = [
     type: 'Premium Villas',
     bedrooms: '2–3 BR',
     bathrooms: '2–3',
-    priceFrom: 'On request',
+    priceFrom: '฿11.9M · $365,000',
     units: 19,
     area: '98–131 m²',
     landArea: '212–498 m²',
