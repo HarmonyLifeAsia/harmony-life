@@ -6,7 +6,7 @@ const P = 'presentations/solaya-deck.mjs'
 let s = fs.readFileSync(P, 'utf8')
 
 // Korekty względem panelu (panel bywa nieaktualny w polu `bedrooms`).
-const BEDROOMS_OVERRIDE = { 15: 2, 4: 2 }
+const BEDROOMS_OVERRIDE = { 10: 3, 13: 3 }
 
 const d = JSON.parse(fs.readFileSync('/tmp/solv_units.json', 'utf8'))
 const live = (Array.isArray(d) ? d : (d.units || d.data || []))

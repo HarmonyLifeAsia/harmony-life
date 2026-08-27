@@ -58,8 +58,8 @@ function model(villa, scenario) {
 
 // ── Wille z panelu SOLV ─────────────────────────────────────────────────────
 // Korekty względem panelu (panel bywa nieaktualny w polu `bedrooms`).
-// Willa 15 ma 2 sypialnie, mimo że panel podaje 3 — potwierdzone przez dewelopera.
-const BEDROOMS_OVERRIDE = { 15: 2 }
+// Wille 10 i 13 mają 3 sypialnie (dokumentacja), panel podaje 2.
+const BEDROOMS_OVERRIDE = { 10: 3, 13: 3 }
 
 const d = JSON.parse(fs.readFileSync('/tmp/solv_units.json', 'utf8'))
 const units = (Array.isArray(d) ? d : (d.units || d.data || []))
