@@ -1,0 +1,56 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>SOLAYA — korekta danych w panelu</title>
+<style>
+@page { size: A4 portrait; margin: 11mm 9mm; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:#1c1c28; font-size:9.3pt; line-height:1.38; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+h1 { font-family:Georgia,serif; font-size:18pt; margin:0 0 1.5mm; font-weight:600; }
+.sub { color:#5a5a70; font-size:8.8pt; margin:0 0 3.5mm; }
+.bar { border-left:3px solid #b8912f; background:#faf6ec; padding:2.6mm 3.5mm; margin-bottom:3.5mm; font-size:8.8pt; }
+.bar b { color:#7a5f1c; }
+table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+th { background:#1c1c28; color:#f3efe6; font-size:7.3pt; text-transform:uppercase; letter-spacing:.05em;
+  padding:2mm 1.4mm; text-align:left; font-weight:600; }
+th.n, td.n { text-align:right; }
+td { padding:1.5mm 1.4mm; border-bottom:.4pt solid #ddd8cc; }
+tr.grp td { background:#ece5d4; font-weight:700; font-size:8pt; letter-spacing:.03em;
+  color:#5b4a1e; padding:1.7mm 1.4mm; border-bottom:.6pt solid #c9b98d; }
+td.nr { font-weight:700; width:6mm; }
+td.dim { color:#8a8a9c; font-size:8.4pt; }
+td.chg { background:#fdf3d6; }
+td.chg b { color:#8a5a00; }
+.was { color:#a8a293; font-size:7.2pt; margin-left:1.4mm; }
+td.st { font-size:8pt; color:#6a6a80; }
+td.box { width:7mm; }
+td.box::after { content:""; display:block; width:4.2mm; height:4.2mm; border:.8pt solid #8a8a9c; border-radius:.7mm; }
+.legend { margin-top:3.5mm; font-size:8pt; color:#5a5a70; display:flex; gap:5mm; flex-wrap:wrap; }
+.swatch { display:inline-block; width:3.2mm; height:3.2mm; background:#fdf3d6; border:.4pt solid #d8c98e;
+  vertical-align:-.3mm; margin-right:1mm; }
+footer { margin-top:4mm; padding-top:2.5mm; border-top:.4pt solid #ddd8cc; font-size:7.6pt; color:#7a7a90; }
+</style></head><body>
+<h1>SOLAYA Residence — korekta danych w panelu</h1>
+<p class="sub">Wartości do wpisania w panelu ofertowym (panel.harmonylife.asia/p/SOLV). Źródło: dokumentacja architektoniczna „OASIS 2 surfaces" — zestawienia pomieszczeń dla każdej działki.</p>
+<div class="bar"><b>Do poprawy: 38 pozycji</b> — kolumny <b>Powierzchnia</b> i <b>Działka</b> we wszystkich 19 willach.
+Liczba sypialni w panelu jest już poprawna. Szare „was …" to wartość obecna w panelu. Żółte tło = wymaga zmiany.</div>
+<table>
+<thead><tr>
+  <th>Nr</th><th>Typ</th>
+  <th class="n">Wnętrze</th><th class="n">Basen</th><th class="n">Taras</th>
+  <th class="n">Powierzchnia → wpisz</th><th class="n">Działka → wpisz</th>
+  <th>Status</th><th></th>
+</tr></thead>
+<tbody><tr class="grp"><td colspan="9">G1 &nbsp;·&nbsp; 3 syp · najlepsza ekspozycja &nbsp;·&nbsp; wille 1–3</td></tr><tr><td class="nr">1</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">36.60</td><td class="n dim">114.15</td><td class="n chg"><b>281.78</b><span class="was">was 216</span></td><td class="n chg"><b>343.16</b><span class="was">was 450</span></td><td class="st">sprzedana</td><td class="box"></td></tr><tr><td class="nr">2</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">37.60</td><td class="n dim">119.00</td><td class="n chg"><b>287.66</b><span class="was">was 216</span></td><td class="n chg"><b>377.26</b><span class="was">was 450</span></td><td class="st">rezerwacja</td><td class="box"></td></tr><tr><td class="nr">3</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">37.60</td><td class="n dim">173.38</td><td class="n chg"><b>342.01</b><span class="was">was 216</span></td><td class="n chg"><b>497.72</b><span class="was">was 820</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr class="grp"><td colspan="9">G2 &nbsp;·&nbsp; 2 syp · najlepsza ekspozycja &nbsp;·&nbsp; wille 4–9</td></tr><tr><td class="nr">4</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">32.80</td><td class="n dim">110.98</td><td class="n chg"><b>241.41</b><span class="was">was 190</span></td><td class="n chg"><b>316.11</b><span class="was">was 730</span></td><td class="st">sprzedana</td><td class="box"></td></tr><tr><td class="nr">5</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">36.20</td><td class="n dim">61.84</td><td class="n chg"><b>195.67</b><span class="was">was 190</span></td><td class="n chg"><b>254.63</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">6</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">36.20</td><td class="n dim">60.00</td><td class="n chg"><b>193.83</b><span class="was">was 190</span></td><td class="n chg"><b>253.47</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">7</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">35.80</td><td class="n dim">72.41</td><td class="n chg"><b>205.84</b><span class="was">was 190</span></td><td class="n chg"><b>242.66</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">8</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">35.80</td><td class="n dim">68.16</td><td class="n chg"><b>201.59</b><span class="was">was 190</span></td><td class="n chg"><b>216.49</b><span class="was">was 320</span></td><td class="st">rezerwacja</td><td class="box"></td></tr><tr><td class="nr">9</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">35.80</td><td class="n dim">67.14</td><td class="n chg"><b>200.57</b><span class="was">was 190</span></td><td class="n chg"><b>214.60</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr class="grp"><td colspan="9">G3 &nbsp;·&nbsp; 2 syp + taras na dachu &nbsp;·&nbsp; wille 10–15</td></tr><tr><td class="nr">10</td><td>2 syp</td><td class="n dim">112.13</td><td class="n dim">35.80</td><td class="n dim">166.79</td><td class="n chg"><b>314.73</b><span class="was">was 320</span></td><td class="n chg"><b>304.43</b><span class="was">was 600</span></td><td class="st">rezerwacja</td><td class="box"></td></tr><tr><td class="nr">11</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">35.80</td><td class="n dim">114.00</td><td class="n chg"><b>247.43</b><span class="was">was 240</span></td><td class="n chg"><b>220.15</b><span class="was">was 320</span></td><td class="st">rezerwacja</td><td class="box"></td></tr><tr><td class="nr">12</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">35.80</td><td class="n dim">111.20</td><td class="n chg"><b>244.63</b><span class="was">was 240</span></td><td class="n chg"><b>215.82</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">13</td><td>2 syp</td><td class="n dim">112.13</td><td class="n dim">32.12</td><td class="n dim">141.20</td><td class="n chg"><b>285.45</b><span class="was">was 240</span></td><td class="n chg"><b>284.90</b><span class="was">was 380</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">14</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">32.12</td><td class="n dim">106.36</td><td class="n chg"><b>236.11</b><span class="was">was 240</span></td><td class="n chg"><b>211.50</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">15</td><td>2 syp</td><td class="n dim">97.63</td><td class="n dim">32.12</td><td class="n dim">119.40</td><td class="n chg"><b>249.15</b><span class="was">was 190</span></td><td class="n chg"><b>232.24</b><span class="was">was 400</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr class="grp"><td colspan="9">G4 &nbsp;·&nbsp; 3 syp + taras na dachu &nbsp;·&nbsp; wille 16–19</td></tr><tr><td class="nr">16</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">32.80</td><td class="n dim">124.57</td><td class="n chg"><b>288.40</b><span class="was">was 320</span></td><td class="n chg"><b>273.87</b><span class="was">was 350</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">17</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">32.80</td><td class="n dim">116.93</td><td class="n chg"><b>280.76</b><span class="was">was 320</span></td><td class="n chg"><b>271.93</b><span class="was">was 320</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">18</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">32.80</td><td class="n dim">118.70</td><td class="n chg"><b>282.53</b><span class="was">was 320</span></td><td class="n chg"><b>278.31</b><span class="was">was 330</span></td><td class="st">dostępna</td><td class="box"></td></tr><tr><td class="nr">19</td><td>3 syp</td><td class="n dim">131.03</td><td class="n dim">32.80</td><td class="n dim">115.20</td><td class="n chg"><b>279.00</b><span class="was">was 329</span></td><td class="n chg"><b>276.34</b><span class="was">was 330</span></td><td class="st">dostępna</td><td class="box"></td></tr></tbody>
+</table>
+<div class="legend">
+  <span><span class="swatch"></span>wymaga zmiany</span>
+  <span><b>Powierzchnia</b> = wnętrze + basen + taras</span>
+  <span><b>Wnętrze</b> = same pomieszczenia</span>
+  <span>wszystkie wartości w m²</span>
+</div>
+<footer>
+Jeśli „Powierzchnia" w panelu ma oznaczać wyłącznie metraż wnętrza, wpisz wartości z kolumny <b>Wnętrze</b>
+(97,63 m² — wille 2-sypialniowe; 112,13 m² — wille 10 i 13; 131,03 m² — wille 3-sypialniowe).
+Strona harmonylife.co i prezentacja podają obie wartości, więc każdy wariant pozostanie z nimi spójny.
+&nbsp;·&nbsp; Harmony Life — dokument roboczy
+</footer>
+</body></html>
