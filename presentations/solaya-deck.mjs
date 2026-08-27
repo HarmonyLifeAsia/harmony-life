@@ -93,7 +93,7 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 
 // ── S5 Typy willi
 {
-  const types = [['v2/12-wnetrze-kuchnia.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', 'Wnętrze 98–112 · razem 194–315 m²'], ['v2/09-willa-naroznik.webp', 'Willa 3 sypialnie', 'od ฿12,9 mln', 'Wnętrze 131 · razem 282–342 m²'], ['v2/10-willa-taras.webp', '3 sypialnie + taras na dachu', 'typ flagowy', 'Wnętrze 131 · razem 279–288 m²']]
+  const types = [['v2/12-wnetrze-kuchnia.webp', 'Willa 2 sypialnie', 'od ฿11,9 mln', '194–249 m² pow. użytkowej'], ['v2/09-willa-naroznik.webp', 'Willa 3 sypialnie', 'od ฿12,9 mln', '282–342 m² pow. użytkowej'], ['v2/10-willa-taras.webp', '3 sypialnie + taras na dachu', 'typ flagowy', '279–315 m² pow. użytkowej']]
   const comps = []; const cardW = 700, imgH = 470, gap = 60, sx = 150, sy = 420
   let labels = ''
   for (let i = 0; i < 3; i++) {
@@ -182,10 +182,10 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
 {
   // Cztery grupy willi — zwrot zależy od położenia, liczby sypialni i ceny.
   const cards = [
-    [150,  'Wille 1–3',   '3 sypialnie',        '15,4–17,0%', '4,5–4,9 mln', '2,7–3,0 mln'],
-    [695,  'Wille 4–9',   '2 sypialnie',        '14,4–15,9%', '3,5–3,8 mln', '2,0–2,2 mln'],
-    [1240, 'Wille 10–15', '2–3 syp. + taras',   '15,2–16,9%', '3,4–3,8 mln', '2,0–2,2 mln'],
-    [1785, 'Wille 16–19', '3 syp. + taras',     '17,8–19,8%', '3,9–4,3 mln', '2,3–2,5 mln'],
+    [150,  'Wille 1–3',   '3 sypialnie',        '16,2%', '4,5–4,9 mln', '2,7–3,0 mln'],
+    [695,  'Wille 4–9',   '2 sypialnie',        '15,2%', '3,5–3,8 mln', '2,0–2,2 mln'],
+    [1240, 'Wille 10–15', '2–3 syp. + taras',   '16,1%', '3,4–3,8 mln', '2,0–2,2 mln'],
+    [1785, 'Wille 16–19', '3 syp. + taras',     '18,8%', '3,9–4,3 mln', '2,3–2,5 mln'],
   ]
   let cardsS = ''
   cards.forEach(([x, name, sub, rate, rev, net]) => {
@@ -200,11 +200,11 @@ const heading = (eyebrow, title, x = 150, y = 210) => `${T(x, y, eyebrow, GOLD, 
   let bars = '', bx = 300, cbase = 1420
   seasons.forEach(([n, m, o, hgt]) => { bars += `<rect x="${bx}" y="${cbase - hgt}" width="360" height="${hgt}" rx="8" fill="url(#gg)"/>${T(bx + 180, cbase - hgt - 24, o, GOLD, 40, SERIF, 'middle')}${T(bx + 180, cbase + 56, n + ' sezon', CREAM, 38, SANS, 'middle')}${T(bx + 180, cbase + 104, m, MUTED, 30, SANS, 'middle')}`; bx += 480 })
   const text = svg(`<defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DFC49A"/><stop offset="1" stop-color="#8a6d3b"/></linearGradient></defs>
-    ${heading('ZWROT Z INWESTYCJI', 'Realny zwrot — po kosztach')}${cardsS}
+    ${heading('ZWROT Z INWESTYCJI', '15–19% zwrotu netto — w zależności od willi')}${cardsS}
     ${T(150, 900, 'DLACZEGO SEZON MA ZNACZENIE', GOLD, 32, SANS, 'start', 6)}${bars}
     ${T(1850, 990, 'Wysoki sezon (gru–mar)', CREAM, 40, SERIF)}${wrap('generuje największą część przychodu — wysokie obłożenie przy najwyższych stawkach za noc.', 34).map((l, j) => T(1850, 1050 + j * 46, l, CREAM, 32, SANS)).join('')}
     ${wrap('Po kosztach: stałe 437–487 tys. THB/rok (dzierżawa gruntu), zmienne 10,5% przychodu i operator 25% zysku operacyjnego.', 34).map((l, j) => T(1850, 1230 + j * 42, l, MUTED, 28, SANS)).join('')}
-    ${T(150, 1620, 'Zakres: scenariusz bazowy – górny. Stawki najmu odpowiadają realnym cenom porównywalnych willi w Plai Laem (Booking.com). Prognoza, nie gwarancja.', MUTED, 28, SANS)}`)
+    ${T(150, 1620, 'Wartości to środek widełek bazowy–górny. Stawki najmu odpowiadają realnym cenom porównywalnych willi w Plai Laem (Booking.com). Prognoza, nie gwarancja.', MUTED, 28, SANS)}`)
   await addSlide([{ input: text }])
 }
 

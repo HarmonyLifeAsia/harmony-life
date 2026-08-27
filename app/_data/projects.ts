@@ -250,7 +250,7 @@ export const projects: Project[] = [
     bathrooms: '2–3',
     priceFrom: '฿11.9M · $365,000',
     units: 19,
-    area: '98–131 m²',
+    area: '194–342 m²',
     landArea: '212–498 m²',
     poolSize: 'Private pool 32–38 m²',
     status: 'Selling',
