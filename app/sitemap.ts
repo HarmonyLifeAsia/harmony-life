@@ -7,7 +7,7 @@ import { projects } from './_data/projects'
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ['', '/projects', '/guide', '/about', '/contact', '/privacy']
   const projectPaths = projects.map((p) => `/projects/${p.slug}`)
-  const allPaths = [...staticPaths, ...projectPaths]
+  const allPaths = [...staticPaths, ...projectPaths, '/projects/harmony-life-oasis/model']
 
   const localized = locales.flatMap((lang) =>
     allPaths.map((path) => ({

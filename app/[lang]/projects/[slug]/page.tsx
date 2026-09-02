@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug } from '../../../_data/projects'
@@ -8,6 +9,7 @@ import ContactForm from '../../../_components/ContactForm'
 import GalleryLightbox from '../../../_components/GalleryLightbox'
 import MediaGallery from '../../../_components/MediaGallery'
 import OasisMedia from '../../../_components/OasisMedia'
+import { OASIS_MODEL_COPY, type OasisModelLocale } from '../../../_data/oasisModelContent'
 import ProjectHero from '../../../projects/[slug]/ProjectHero'
 import SolayaContent from '../../../solaya/SolayaContent'
 import { SOLAYA_COPY, SOLAYA_IMAGES, type SolayaLocale } from '../../../_data/solayaContent'
@@ -170,10 +172,32 @@ export default async function ProjectPage({
             </div>
 
             {slug === 'harmony-life-oasis' ? (
-              <OasisMedia
-                o={dict.oasis as unknown as Record<string, string>}
-                cf={dict.contactForm as unknown as Record<string, string>}
-              />
+              <>
+                <div className="rounded-xl border border-gold/20 bg-charcoal/30 p-8">
+                  <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-3">
+                    {OASIS_MODEL_COPY[lang as OasisModelLocale].teaser.eyebrow}
+                  </p>
+                  <p className="font-serif text-2xl text-cream mb-3">
+                    {OASIS_MODEL_COPY[lang as OasisModelLocale].teaser.title}
+                  </p>
+                  <p className="text-cream/60 text-sm leading-relaxed mb-6 max-w-2xl">
+                    {OASIS_MODEL_COPY[lang as OasisModelLocale].teaser.text}
+                  </p>
+                  <Link
+                    href={`/${lang}/projects/harmony-life-oasis/model`}
+                    className="inline-flex items-center gap-2 bg-gold text-primary px-7 py-3.5 text-sm font-medium tracking-wider uppercase hover:bg-gold-light transition-colors duration-300 rounded-md"
+                  >
+                    {OASIS_MODEL_COPY[lang as OasisModelLocale].teaser.button}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+                <OasisMedia
+                  o={dict.oasis as unknown as Record<string, string>}
+                  cf={dict.contactForm as unknown as Record<string, string>}
+                />
+              </>
             ) : (
               <>
                 {project.realImages && project.realImages.length > 0 ? (
