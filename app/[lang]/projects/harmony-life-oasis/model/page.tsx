@@ -167,6 +167,12 @@ export default async function OasisModelPage({
                     <td key={g.key} className={`${td} text-gold font-medium`}>≈ {n(g.fixed)}</td>
                   ))}
                 </tr>
+                <tr className="border-t border-gold/10 bg-gold/[0.03]">
+                  <td className="px-3 py-2.5 text-left text-cream/50 text-[13px] leading-snug">{c.fixedCosts.rowMonthly}</td>
+                  {OASIS_MODEL_GROUPS.map(g => (
+                    <td key={g.key} className={`${td} text-cream/60`}>≈ {n(Math.round(g.fixed / 12 / 50) * 50)}</td>
+                  ))}
+                </tr>
               </tbody>
             </table>
           </div>
@@ -190,6 +196,10 @@ export default async function OasisModelPage({
                   <div className="flex justify-between gap-4 border-t border-gold/20 pt-2 mt-2">
                     <span className="text-cream font-medium">{c.fixedCosts.rowTotal}</span>
                     <span className="text-gold font-medium whitespace-nowrap tabular-nums">≈ {n(g.fixed)}</span>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-cream/45">{c.fixedCosts.rowMonthly}</span>
+                    <span className="text-cream/60 whitespace-nowrap tabular-nums">≈ {n(Math.round(g.fixed / 12 / 50) * 50)}</span>
                   </div>
                 </div>
               </div>

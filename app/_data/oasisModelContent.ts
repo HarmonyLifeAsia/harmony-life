@@ -109,6 +109,7 @@ type Copy = {
     rowLease: string
     rows: string[] // 7 pozycji kosztowych
     rowTotal: string
+    rowMonthly: string
     footnote: string
     pooling: { title: string; text: string }
   }
@@ -194,6 +195,7 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
         'Internet, media i części wspólne osiedla',
       ],
       rowTotal: 'Razem koszty stałe (przy śr. dzierżawie)',
+      rowMonthly: 'czyli miesięcznie',
       footnote: 'Kwoty dzierżawy dla willi 2- i 3-sypialniowych (sprzedanych) są szacunkiem — obowiązuje stawka z umowy leasehold danej willi.',
       pooling: {
         title: 'Sześć grup poolingowych.',
@@ -314,6 +316,7 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
         'Internet, utilities and estate common areas',
       ],
       rowTotal: 'Total fixed costs (at average lease)',
+      rowMonthly: 'which is per month',
       footnote: 'Lease amounts for the 2- and 3-bedroom villas (sold) are estimates — the rate in each villa’s leasehold contract applies.',
       pooling: {
         title: 'Six pooling groups.',
@@ -434,6 +437,7 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
         'Internet, Medien und Gemeinschaftsflächen',
       ],
       rowTotal: 'Fixkosten gesamt (bei durchschn. Pacht)',
+      rowMonthly: 'also pro Monat',
       footnote: 'Die Pachtbeträge der 2- und 3-Schlafzimmer-Villen (verkauft) sind Schätzungen — es gilt der Satz aus dem Leasehold-Vertrag der jeweiligen Villa.',
       pooling: {
         title: 'Sechs Pooling-Gruppen.',
