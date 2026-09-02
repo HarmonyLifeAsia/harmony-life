@@ -37,11 +37,11 @@ const OCC_B: OasisModelGroup['occ'] = [[75, 85], [55, 65], [35, 45]]
 export const OASIS_MODEL_GROUPS: OasisModelGroup[] = [
   {
     key: '1a', villas: 26,
-    gross: 1742000, fixed: 246000, variable: 183000, income: 1314000, operator: 263000, net: 1051000,
-    yield: [17.0, 21.3], price: [6.0, 6.2],
+    gross: 1600000, fixed: 246000, variable: 168000, income: 1186000, operator: 237000, net: 949000,
+    yield: [15.3, 19.2], price: [6.0, 6.2],
     lease: { lo: 45000, hi: 50000, approx: false },
     fixedRows: [54000, 42000, 18000, 20000, 30000, 12000, 24000],
-    rates: [[8, 10], [6, 7.5], [4.5, 5.5]], occ: OCC_A,
+    rates: [[7.5, 9], [5.5, 7], [4, 5]], occ: OCC_A,
   },
   {
     key: '1b', villas: 10,
@@ -86,7 +86,7 @@ export const OASIS_MODEL_GROUPS: OasisModelGroup[] = [
 ]
 
 export const OASIS_MODEL_TOTALS = {
-  grossM: 138, ownersNetM: 85, fundM: 4.1, operatorM: 21,
+  grossM: 134, ownersNetM: 83, fundM: 4.0, operatorM: 21,
 }
 
 // ── Teksty ──────────────────────────────────────────────────────────────────

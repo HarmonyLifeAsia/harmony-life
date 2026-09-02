@@ -57,27 +57,45 @@ export default async function OasisModelPage({
     g.price === null
       ? c.settlement.sold
       : g.price[0] === g.price[1]
-        ? `${dec(g.price[0])} ${c.estate.unitM}`
-        : `${dec(g.price[0])}–${dec(g.price[1])} ${c.estate.unitM}`
+        ? `${dec(g.price[0])} ${c.estate.unitM} THB`
+        : `${dec(g.price[0])}–${dec(g.price[1])} ${c.estate.unitM} THB`
   const yieldLabel = (g: (typeof OASIS_MODEL_GROUPS)[number]) =>
     g.yield === null ? c.settlement.soldYield : `${dec(g.yield[0])}% → ${dec(g.yield[1])}%`
+  const seasonLabel = (g: (typeof OASIS_MODEL_GROUPS)[number], si: number) =>
+    `${dec(g.rates[si][0])}–${dec(g.rates[si][1])} · ${g.occ[si][0]}–${g.occ[si][1]}%`
 
-  const th = 'px-4 py-3 font-medium text-right whitespace-nowrap'
-  const td = 'px-4 py-3 text-right whitespace-nowrap tabular-nums'
-  const tdFirst = 'px-4 py-3 text-left text-cream/60'
+  const yearWord = loc === 'de' ? 'Jahr' : loc === 'en' ? 'year' : 'rok'
+
+  // Kompaktowa tabela — mieści 7 kolumn bez poziomego przewijania (md+);
+  // na mobile te same dane idą w kartach per typ willi.
+  const th = 'px-2 py-3 font-medium text-right align-bottom text-xs leading-snug'
+  const td = 'px-2 py-2.5 text-right whitespace-nowrap tabular-nums text-[13px]'
+  const tdFirst = 'px-3 py-2.5 text-left text-cream/60 text-[13px] leading-snug'
+
+  // wiersze rozliczenia rocznego — używane i w tabeli, i w kartach mobile
+  const settlementRows = [
+    { label: c.settlement.rows.gross, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => n(g.gross), tone: 'text-cream/80' },
+    { label: c.settlement.rows.fixed, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => `−${n(g.fixed)}`, tone: 'text-cream/50' },
+    { label: c.settlement.rows.variable, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => `−${n(g.variable)}`, tone: 'text-cream/50' },
+    { label: c.settlement.rows.income, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => n(g.income), tone: 'text-cream font-medium', highlight: 'income' as const },
+    { label: c.settlement.rows.operator, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => `−${n(g.operator)}`, tone: 'text-cream/50' },
+    { label: c.settlement.rows.net, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => n(g.net), tone: 'text-gold font-semibold', highlight: 'net' as const },
+    { label: c.settlement.rows.price, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => priceLabel(g), tone: 'text-cream/70' },
+    { label: c.settlement.rows.yield, val: (g: (typeof OASIS_MODEL_GROUPS)[number]) => yieldLabel(g), tone: 'text-cream font-medium' },
+  ]
 
   return (
     <div className="bg-primary min-h-screen">
       {/* Hero */}
       <section className="pt-32 pb-14 px-6 border-b border-gold/10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <p className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-4">{c.hero.eyebrow}</p>
           <h1 className="font-serif text-4xl md:text-5xl text-cream mb-6">{c.hero.title}</h1>
           <p className="text-cream/65 text-lg leading-relaxed max-w-2xl">{c.hero.lede}</p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20 space-y-20">
+      <div className="max-w-5xl mx-auto px-6 py-16 md:py-20 space-y-20">
         {/* Mix */}
         <section>
           <h2 className="font-serif text-3xl text-cream mb-4">{c.mix.title}</h2>
@@ -118,11 +136,13 @@ export default async function OasisModelPage({
         <section>
           <h2 className="font-serif text-3xl text-cream mb-4">{c.fixedCosts.title}</h2>
           <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.fixedCosts.intro}</p>
-          <div className="overflow-x-auto rounded-xl border border-gold/15">
-            <table className="w-full text-sm min-w-[860px]">
+
+          {/* Desktop: jedna tabela porównawcza */}
+          <div className="hidden md:block rounded-xl border border-gold/15 overflow-hidden">
+            <table className="w-full table-fixed">
               <thead>
                 <tr className="bg-charcoal/40 text-cream/80">
-                  <th className="px-4 py-3 font-medium text-left">THB / {loc === 'de' ? 'Jahr' : loc === 'en' ? 'year' : 'rok'}</th>
+                  <th className="px-3 py-3 font-medium text-left text-xs w-[21%]">THB / {yearWord}</th>
                   {c.fixedCosts.colHeaders.map(h => <th key={h} className={th}>{h}</th>)}
                 </tr>
               </thead>
@@ -142,7 +162,7 @@ export default async function OasisModelPage({
                   </tr>
                 ))}
                 <tr className="border-t border-gold/20 bg-gold/[0.06]">
-                  <td className="px-4 py-3 text-left text-cream font-medium">{c.fixedCosts.rowTotal}</td>
+                  <td className="px-3 py-2.5 text-left text-cream font-medium text-[13px] leading-snug">{c.fixedCosts.rowTotal}</td>
                   {OASIS_MODEL_GROUPS.map(g => (
                     <td key={g.key} className={`${td} text-gold font-medium`}>≈ {n(g.fixed)}</td>
                   ))}
@@ -150,6 +170,32 @@ export default async function OasisModelPage({
               </tbody>
             </table>
           </div>
+
+          {/* Mobile: karty per typ willi */}
+          <div className="md:hidden space-y-4">
+            {OASIS_MODEL_GROUPS.map((g, gi) => (
+              <div key={g.key} className="rounded-xl border border-gold/15 bg-charcoal/20 p-5">
+                <p className="text-gold text-sm font-medium mb-3">{c.fixedCosts.colHeaders[gi]}</p>
+                <div className="space-y-2 text-[13px]">
+                  <div className="flex justify-between gap-4">
+                    <span className="text-cream/55">{c.fixedCosts.rowLease}</span>
+                    <span className={`whitespace-nowrap tabular-nums ${g.lease.approx ? 'text-cream/45' : 'text-cream/80'}`}>{lease(g)}</span>
+                  </div>
+                  {c.fixedCosts.rows.map((label, ri) => (
+                    <div key={label} className="flex justify-between gap-4">
+                      <span className="text-cream/55">{label}</span>
+                      <span className="text-cream/80 whitespace-nowrap tabular-nums">{n(g.fixedRows[ri])}</span>
+                    </div>
+                  ))}
+                  <div className="flex justify-between gap-4 border-t border-gold/20 pt-2 mt-2">
+                    <span className="text-cream font-medium">{c.fixedCosts.rowTotal}</span>
+                    <span className="text-gold font-medium whitespace-nowrap tabular-nums">≈ {n(g.fixed)}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.fixedCosts.footnote}</p>
           <div className="mt-6 rounded-xl border border-gold/15 bg-charcoal/20 p-6">
             <p className="text-cream/70 text-sm leading-relaxed">
@@ -163,27 +209,27 @@ export default async function OasisModelPage({
         <section>
           <h2 className="font-serif text-3xl text-cream mb-4">{c.variableCosts.title}</h2>
           <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.variableCosts.intro}</p>
-          <div className="overflow-x-auto rounded-xl border border-gold/15">
-            <table className="w-full text-sm min-w-[560px]">
+          <div className="rounded-xl border border-gold/15 overflow-hidden">
+            <table className="w-full text-sm">
               <thead>
                 <tr className="bg-charcoal/40 text-cream/80">
-                  <th className="px-4 py-3 font-medium text-left">{c.variableCosts.headers[0]}</th>
-                  <th className="px-4 py-3 font-medium text-left">{c.variableCosts.headers[1]}</th>
-                  <th className="px-4 py-3 font-medium text-left">{c.variableCosts.headers[2]}</th>
+                  <th className="px-4 py-3 font-medium text-left text-xs">{c.variableCosts.headers[0]}</th>
+                  <th className="px-4 py-3 font-medium text-left text-xs">{c.variableCosts.headers[1]}</th>
+                  <th className="px-4 py-3 font-medium text-left text-xs hidden sm:table-cell">{c.variableCosts.headers[2]}</th>
                 </tr>
               </thead>
               <tbody>
                 {[c.variableCosts.ota, c.variableCosts.fund].map(row => (
-                  <tr key={row.name} className="border-t border-gold/10">
-                    <td className="px-4 py-3 text-cream/80">{row.name}</td>
-                    <td className="px-4 py-3 text-cream/80 whitespace-nowrap">{row.rate}</td>
-                    <td className="px-4 py-3 text-cream/50">{row.desc}</td>
+                  <tr key={row.name} className="border-t border-gold/10 align-top">
+                    <td className="px-4 py-3 text-cream/80 text-[13px] leading-snug">{row.name}</td>
+                    <td className="px-4 py-3 text-cream/80 text-[13px] whitespace-nowrap">{row.rate}</td>
+                    <td className="px-4 py-3 text-cream/50 text-[13px] leading-snug hidden sm:table-cell">{row.desc}</td>
                   </tr>
                 ))}
                 <tr className="border-t border-gold/20 bg-gold/[0.06]">
-                  <td className="px-4 py-3 text-cream font-medium">{c.variableCosts.total.name}</td>
-                  <td className="px-4 py-3 text-gold font-medium whitespace-nowrap">{c.variableCosts.total.rate}</td>
-                  <td className="px-4 py-3" />
+                  <td className="px-4 py-3 text-cream font-medium text-[13px]">{c.variableCosts.total.name}</td>
+                  <td className="px-4 py-3 text-gold font-medium text-[13px] whitespace-nowrap">{c.variableCosts.total.rate}</td>
+                  <td className="px-4 py-3 hidden sm:table-cell" />
                 </tr>
               </tbody>
             </table>
@@ -200,81 +246,34 @@ export default async function OasisModelPage({
         <section>
           <h2 className="font-serif text-3xl text-cream mb-4">{c.settlement.title}</h2>
           <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.settlement.intro}</p>
-          <div className="overflow-x-auto rounded-xl border border-gold/15">
-            <table className="w-full text-sm min-w-[860px]">
+
+          {/* Desktop: jedna tabela porównawcza */}
+          <div className="hidden md:block rounded-xl border border-gold/15 overflow-hidden">
+            <table className="w-full table-fixed">
               <thead>
                 <tr className="bg-charcoal/40 text-cream/80">
-                  <th className="px-4 py-3 font-medium text-left">THB / {loc === 'de' ? 'Jahr' : loc === 'en' ? 'year' : 'rok'}</th>
+                  <th className="px-3 py-3 font-medium text-left text-xs w-[19%]">THB / {yearWord}</th>
                   {c.fixedCosts.colHeaders.map(h => <th key={h} className={th}>{h}</th>)}
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.gross}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-cream/80`}>{n(g.gross)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.fixed}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-cream/50`}>−{n(g.fixed)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.variable}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-cream/50`}>−{n(g.variable)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/15 bg-charcoal/30">
-                  <td className="px-4 py-3 text-left text-cream font-medium">{c.settlement.rows.income}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-cream font-medium`}>{n(g.income)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.operator}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-cream/50`}>−{n(g.operator)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/20 bg-gold/[0.06]">
-                  <td className="px-4 py-3 text-left text-gold font-medium">{c.settlement.rows.net}</td>
-                  {OASIS_MODEL_GROUPS.map(g => <td key={g.key} className={`${td} text-gold font-semibold`}>{n(g.net)}</td>)}
-                </tr>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.price}</td>
-                  {OASIS_MODEL_GROUPS.map(g => (
-                    <td key={g.key} className={`${td} ${g.price === null ? 'text-cream/40' : 'text-cream/80'}`}>
-                      {priceLabel(g)}{g.price !== null ? ' THB' : ''}
+                {settlementRows.map(row => (
+                  <tr
+                    key={row.label}
+                    className={
+                      row.highlight === 'net'
+                        ? 'border-t border-gold/20 bg-gold/[0.06]'
+                        : row.highlight === 'income'
+                          ? 'border-t border-gold/15 bg-charcoal/30'
+                          : 'border-t border-gold/10'
+                    }
+                  >
+                    <td className={`px-3 py-2.5 text-left text-[13px] leading-snug ${row.highlight ? (row.highlight === 'net' ? 'text-gold font-medium' : 'text-cream font-medium') : 'text-cream/60'}`}>
+                      {row.label}
                     </td>
-                  ))}
-                </tr>
-                <tr className="border-t border-gold/10">
-                  <td className={tdFirst}>{c.settlement.rows.yield}</td>
-                  {OASIS_MODEL_GROUPS.map(g => (
-                    <td key={g.key} className={`${td} ${g.yield === null ? 'text-cream/40' : 'text-cream font-medium'}`}>
-                      {yieldLabel(g)}
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.settlement.footnote}</p>
-        </section>
-
-        {/* Assumptions */}
-        <section>
-          <h2 className="font-serif text-3xl text-cream mb-4">{c.assumptions.title}</h2>
-          <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.assumptions.intro}</p>
-          <div className="overflow-x-auto rounded-xl border border-gold/15">
-            <table className="w-full text-sm min-w-[720px]">
-              <thead>
-                <tr className="bg-charcoal/40 text-cream/80">
-                  {c.assumptions.headers.map((h, i) => (
-                    <th key={h} className={`px-4 py-3 font-medium ${i === 0 ? 'text-left' : 'text-right'}`}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {OASIS_MODEL_GROUPS.map((g, gi) => (
-                  <tr key={g.key} className="border-t border-gold/10">
-                    <td className="px-4 py-3 text-cream/80">{c.assumptions.groupNames[gi]}</td>
-                    {g.rates.map((r, si) => (
-                      <td key={si} className={`${td} text-cream/70`}>
-                        {dec(r[0])}–{dec(r[1])} · {g.occ[si][0]}–{g.occ[si][1]}%
+                    {OASIS_MODEL_GROUPS.map(g => (
+                      <td key={g.key} className={`${td} ${g.price === null && (row.label === c.settlement.rows.price || row.label === c.settlement.rows.yield) ? 'text-cream/40' : row.tone}`}>
+                        {row.val(g)}
                       </td>
                     ))}
                   </tr>
@@ -282,6 +281,79 @@ export default async function OasisModelPage({
               </tbody>
             </table>
           </div>
+
+          {/* Mobile: karty per typ willi */}
+          <div className="md:hidden space-y-4">
+            {OASIS_MODEL_GROUPS.map((g, gi) => (
+              <div key={g.key} className="rounded-xl border border-gold/15 bg-charcoal/20 p-5">
+                <p className="text-gold text-sm font-medium mb-3">{c.fixedCosts.colHeaders[gi]}</p>
+                <div className="space-y-2 text-[13px]">
+                  {settlementRows.map(row => (
+                    <div
+                      key={row.label}
+                      className={`flex justify-between gap-4 ${row.highlight ? 'border-t border-gold/20 pt-2' : ''}`}
+                    >
+                      <span className={row.highlight ? (row.highlight === 'net' ? 'text-gold font-medium' : 'text-cream font-medium') : 'text-cream/55'}>
+                        {row.label}
+                      </span>
+                      <span className={`whitespace-nowrap tabular-nums ${g.price === null && (row.label === c.settlement.rows.price || row.label === c.settlement.rows.yield) ? 'text-cream/40' : row.tone}`}>
+                        {row.val(g)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.settlement.footnote}</p>
+        </section>
+
+        {/* Assumptions */}
+        <section>
+          <h2 className="font-serif text-3xl text-cream mb-4">{c.assumptions.title}</h2>
+          <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.assumptions.intro}</p>
+
+          {/* Desktop */}
+          <div className="hidden sm:block rounded-xl border border-gold/15 overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-charcoal/40 text-cream/80">
+                  {c.assumptions.headers.map((h, i) => (
+                    <th key={h} className={`px-3 py-3 font-medium text-xs leading-snug ${i === 0 ? 'text-left' : 'text-right'}`}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {OASIS_MODEL_GROUPS.map((g, gi) => (
+                  <tr key={g.key} className="border-t border-gold/10">
+                    <td className="px-3 py-2.5 text-cream/80 text-[13px] leading-snug">{c.assumptions.groupNames[gi]}</td>
+                    {[0, 1, 2].map(si => (
+                      <td key={si} className={`${td} text-cream/70`}>{seasonLabel(g, si)}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile */}
+          <div className="sm:hidden space-y-4">
+            {OASIS_MODEL_GROUPS.map((g, gi) => (
+              <div key={g.key} className="rounded-xl border border-gold/15 bg-charcoal/20 p-5">
+                <p className="text-gold text-sm font-medium mb-3">{c.assumptions.groupNames[gi]}</p>
+                <div className="space-y-2 text-[13px]">
+                  {[0, 1, 2].map(si => (
+                    <div key={si} className="flex justify-between gap-4">
+                      <span className="text-cream/55">{c.assumptions.headers[si + 1]}</span>
+                      <span className="text-cream/80 whitespace-nowrap tabular-nums">{seasonLabel(g, si)}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
           <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.assumptions.unit}. {c.assumptions.footnote}</p>
         </section>
 

@@ -25,9 +25,9 @@ const GROUPS = [
   {
     key: '1A', label: '1 SYP — STANDARD', match: u => u.bedrooms === 1 && u.area < 95,
     seasons: [
-      { months: 4, rate: [8000, 10000], occ: [0.80, 0.90] },
-      { months: 5, rate: [6000, 7500], occ: [0.55, 0.70] },
-      { months: 3, rate: [4500, 5500], occ: [0.35, 0.50] },
+      { months: 4, rate: [7500, 9000], occ: [0.80, 0.90] },
+      { months: 5, rate: [5500, 7000], occ: [0.55, 0.70] },
+      { months: 3, rate: [4000, 5000], occ: [0.35, 0.50] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 54000],
