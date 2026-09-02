@@ -14,10 +14,10 @@ const seq = (n: number, dir: string) =>
   Array.from({ length: n }, (_, i) => `${dir}/${String(i + 1).padStart(2, '0')}.webp`)
 
 export const OASIS_MAIN_GALLERY = seq(6, `${BASE}/gallery`)
-export const OASIS_CONSTRUCTION = seq(4, `${BASE}/construction`)
+export const OASIS_CONSTRUCTION = seq(16, `${BASE}/construction`)
 
 // Update this when new construction photos are added.
-export const OASIS_CONSTRUCTION_DATE = '06.2026'
+export const OASIS_CONSTRUCTION_DATE = '09.2026'
 
 // Development location map.
 export const OASIS_MAP_EMBED = 'https://www.google.com/maps?q=9.565041,100.070399&z=16&output=embed'
