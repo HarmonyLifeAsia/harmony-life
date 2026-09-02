@@ -37,56 +37,56 @@ const OCC_B: OasisModelGroup['occ'] = [[75, 85], [55, 65], [35, 45]]
 export const OASIS_MODEL_GROUPS: OasisModelGroup[] = [
   {
     key: '1a', villas: 26,
-    gross: 1600000, fixed: 246000, variable: 168000, income: 1186000, operator: 237000, net: 949000,
-    yield: [15.3, 19.2], price: [6.0, 6.2],
+    gross: 1600000, fixed: 219000, variable: 168000, income: 1213000, operator: 243000, net: 970000,
+    yield: [15.7, 19.5], price: [6.0, 6.2],
     lease: { lo: 45000, hi: 50000, approx: false },
-    fixedRows: [54000, 42000, 18000, 20000, 30000, 12000, 24000],
+    fixedRows: [27000, 42000, 18000, 20000, 30000, 12000, 24000],
     rates: [[7.5, 9], [5.5, 7], [4, 5]], occ: OCC_A,
   },
   {
     key: '1b', villas: 10,
-    gross: 2125000, fixed: 274000, variable: 223000, income: 1628000, operator: 326000, net: 1302000,
-    yield: [17.6, 21.6], price: [7.2, 7.5],
+    gross: 2125000, fixed: 246000, variable: 223000, income: 1656000, operator: 331000, net: 1325000,
+    yield: [17.9, 21.9], price: [7.2, 7.5],
     lease: { lo: 70000, hi: 70000, approx: false },
-    fixedRows: [56000, 42000, 18000, 20000, 30000, 14000, 24000],
+    fixedRows: [28000, 42000, 18000, 20000, 30000, 14000, 24000],
     rates: [[10, 12], [7.5, 9], [5.5, 6.5]], occ: OCC_A,
   },
   {
     key: '2', villas: 3,
-    gross: 3335000, fixed: 362000, variable: 350000, income: 2623000, operator: 525000, net: 2098000,
+    gross: 3335000, fixed: 323000, variable: 350000, income: 2662000, operator: 532000, net: 2130000,
     yield: null, price: null,
     lease: { lo: 80000, hi: 80000, approx: true },
-    fixedRows: [78000, 66000, 30000, 32000, 35000, 17000, 24000],
+    fixedRows: [39000, 66000, 30000, 32000, 35000, 17000, 24000],
     rates: [[16, 18], [12, 14], [9, 11]], occ: OCC_A,
   },
   {
     key: '3', villas: 5,
-    gross: 3999000, fixed: 411000, variable: 420000, income: 3168000, operator: 634000, net: 2534000,
+    gross: 3999000, fixed: 369000, variable: 420000, income: 3210000, operator: 642000, net: 2568000,
     yield: null, price: null,
     lease: { lo: 90000, hi: 90000, approx: true },
-    fixedRows: [84000, 72000, 42000, 44000, 35000, 20000, 24000],
+    fixedRows: [42000, 72000, 42000, 44000, 35000, 20000, 24000],
     rates: [[20, 23], [15, 18], [11, 14]], occ: OCC_B,
   },
   {
     key: '3t', villas: 4,
-    gross: 4539000, fixed: 477000, variable: 477000, income: 3585000, operator: 717000, net: 2868000,
+    gross: 4539000, fixed: 422000, variable: 477000, income: 3640000, operator: 728000, net: 2912000,
     yield: null, price: null,
     lease: { lo: 110000, hi: 110000, approx: true },
-    fixedRows: [110000, 84000, 42000, 44000, 38000, 25000, 24000],
+    fixedRows: [55000, 84000, 42000, 44000, 38000, 25000, 24000],
     rates: [[23, 26], [17, 20], [13, 16]], occ: OCC_B,
   },
   {
     key: '4', villas: 5,
-    gross: 4665000, fixed: 529000, variable: 490000, income: 3646000, operator: 729000, net: 2917000,
-    yield: [17.3, 20.4], price: [16.9, 16.9],
+    gross: 4665000, fixed: 472000, variable: 490000, income: 3703000, operator: 741000, net: 2963000,
+    yield: [17.5, 20.7], price: [16.9, 16.9],
     lease: { lo: 120000, hi: 120000, approx: false },
-    fixedRows: [115000, 90000, 54000, 56000, 40000, 30000, 24000],
+    fixedRows: [58000, 90000, 54000, 56000, 40000, 30000, 24000],
     rates: [[24, 28], [17, 20], [13, 15]], occ: OCC_B,
   },
 ]
 
 export const OASIS_MODEL_TOTALS = {
-  grossM: 134, ownersNetM: 83, fundM: 4.0, operatorM: 21,
+  grossM: 134, ownersNetM: 84, fundM: 4.0, operatorM: 21,
 }
 
 // ── Teksty ──────────────────────────────────────────────────────────────────

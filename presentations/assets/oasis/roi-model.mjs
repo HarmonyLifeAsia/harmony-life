@@ -30,7 +30,7 @@ const GROUPS = [
       { months: 3, rate: [4000, 5000], occ: [0.35, 0.50] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 54000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 27000],
       ['Sprzątanie — udział w zespole osiedla', 42000],
       ['Pralnia — udział w koszcie osiedla', 18000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 20000],
@@ -48,7 +48,7 @@ const GROUPS = [
       { months: 3, rate: [5500, 6500], occ: [0.35, 0.50] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 56000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 28000],
       ['Sprzątanie — udział w zespole osiedla', 42000],
       ['Pralnia — udział w koszcie osiedla', 18000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 20000],
@@ -66,7 +66,7 @@ const GROUPS = [
       { months: 3, rate: [9000, 11000], occ: [0.35, 0.50] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 78000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 39000],
       ['Sprzątanie — udział w zespole osiedla', 66000],
       ['Pralnia — udział w koszcie osiedla', 30000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 32000],
@@ -84,7 +84,7 @@ const GROUPS = [
       { months: 3, rate: [11000, 14000], occ: [0.35, 0.45] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 84000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 42000],
       ['Sprzątanie — udział w zespole osiedla', 72000],
       ['Pralnia — udział w koszcie osiedla', 42000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 44000],
@@ -102,7 +102,7 @@ const GROUPS = [
       { months: 3, rate: [13000, 16000], occ: [0.35, 0.45] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 110000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 55000],
       ['Sprzątanie — udział w zespole osiedla', 84000],
       ['Pralnia — udział w koszcie osiedla', 42000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 44000],
@@ -120,7 +120,7 @@ const GROUPS = [
       { months: 3, rate: [13000, 15000], occ: [0.35, 0.45] },
     ],
     fixed: [
-      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 115000],
+      ['Utrzymanie willi (basen, ogród, serwis techniczny)', 58000],
       ['Sprzątanie — udział w zespole osiedla', 90000],
       ['Pralnia — udział w koszcie osiedla', 54000],
       ['Uzupełnianie wyposażenia (pościel, ręczniki, AGD)', 56000],
