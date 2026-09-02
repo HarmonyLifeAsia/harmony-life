@@ -37,57 +37,82 @@ const OCC_B: OasisModelGroup['occ'] = [[75, 85], [55, 65], [35, 45]]
 export const OASIS_MODEL_GROUPS: OasisModelGroup[] = [
   {
     key: '1a', villas: 26,
-    gross: 1600000, fixed: 219000, variable: 168000, income: 1213000, operator: 243000, net: 970000,
-    yield: [15.7, 19.5], price: [6.0, 6.2],
+    gross: 1240000, fixed: 219000, variable: 130000, income: 891000, operator: 178000, net: 713000,
+    yield: [11.5, 14.7], price: [6.0, 6.2],
     lease: { lo: 45000, hi: 50000, approx: false },
     fixedRows: [27000, 42000, 18000, 20000, 30000, 12000, 24000],
-    rates: [[7.5, 9], [5.5, 7], [4, 5]], occ: OCC_A,
+    rates: [[5.5, 7], [4.5, 5.5], [3, 4]], occ: OCC_A,
   },
   {
     key: '1b', villas: 10,
-    gross: 2125000, fixed: 246000, variable: 223000, income: 1656000, operator: 331000, net: 1325000,
-    yield: [17.9, 21.9], price: [7.2, 7.5],
+    gross: 1574000, fixed: 246000, variable: 165000, income: 1163000, operator: 233000, net: 930000,
+    yield: [12.6, 16.0], price: [7.2, 7.5],
     lease: { lo: 70000, hi: 70000, approx: false },
     fixedRows: [28000, 42000, 18000, 20000, 30000, 14000, 24000],
-    rates: [[10, 12], [7.5, 9], [5.5, 6.5]], occ: OCC_A,
+    rates: [[7, 9], [5.5, 7], [4, 5]], occ: OCC_A,
   },
   {
     key: '2', villas: 3,
-    gross: 3335000, fixed: 323000, variable: 350000, income: 2662000, operator: 532000, net: 2130000,
+    gross: 2349000, fixed: 323000, variable: 247000, income: 1780000, operator: 356000, net: 1424000,
     yield: null, price: null,
     lease: { lo: 80000, hi: 80000, approx: true },
     fixedRows: [39000, 66000, 30000, 32000, 35000, 17000, 24000],
-    rates: [[16, 18], [12, 14], [9, 11]], occ: OCC_A,
+    rates: [[11, 13], [8.5, 10], [6, 7.5]], occ: OCC_A,
   },
   {
     key: '3', villas: 5,
-    gross: 3999000, fixed: 369000, variable: 420000, income: 3210000, operator: 642000, net: 2568000,
+    gross: 2409000, fixed: 369000, variable: 253000, income: 1787000, operator: 357000, net: 1430000,
     yield: null, price: null,
     lease: { lo: 90000, hi: 90000, approx: true },
     fixedRows: [42000, 72000, 42000, 44000, 35000, 20000, 24000],
-    rates: [[20, 23], [15, 18], [11, 14]], occ: OCC_B,
+    rates: [[12, 14], [9, 11], [6.5, 8]], occ: OCC_B,
   },
   {
     key: '3t', villas: 4,
-    gross: 4539000, fixed: 422000, variable: 477000, income: 3640000, operator: 728000, net: 2912000,
+    gross: 2988000, fixed: 422000, variable: 314000, income: 2252000, operator: 450000, net: 1802000,
     yield: null, price: null,
     lease: { lo: 110000, hi: 110000, approx: true },
     fixedRows: [55000, 84000, 42000, 44000, 38000, 25000, 24000],
-    rates: [[23, 26], [17, 20], [13, 16]], occ: OCC_B,
+    rates: [[15, 18], [11, 13], [8, 10]], occ: OCC_B,
   },
   {
     key: '4', villas: 5,
-    gross: 4665000, fixed: 472000, variable: 490000, income: 3703000, operator: 741000, net: 2963000,
-    yield: [17.5, 20.7], price: [16.9, 16.9],
+    gross: 3903000, fixed: 472000, variable: 410000, income: 3021000, operator: 604000, net: 2417000,
+    yield: [14.3, 17.2], price: [16.9, 16.9],
     lease: { lo: 120000, hi: 120000, approx: false },
     fixedRows: [58000, 90000, 54000, 56000, 40000, 30000, 24000],
-    rates: [[24, 28], [17, 20], [13, 15]], occ: OCC_B,
+    rates: [[20, 24], [14, 17], [10, 12]], occ: OCC_B,
   },
 ]
 
 export const OASIS_MODEL_TOTALS = {
-  grossM: 134, ownersNetM: 84, fundM: 4.0, operatorM: 21,
+  grossM: 99, ownersNetM: 59, fundM: 3.0, operatorM: 15,
 }
+
+// ── Wille referencyjne (benchmark stawek) ───────────────────────────────────
+// Booking.com, rejon Choeng Mon Beach / Plai Laem, odczyt 02.09.2026.
+// Wyszukiwanie: 2 osoby, 5 nocy; wysoki sezon 10–15.01.2027, niski sezon
+// 11–16.10.2026. Ceny za noc = cena faktycznie płacona (z podatkami, po
+// promocjach) / 5. null = brak dostępności w badanym terminie.
+export const OASIS_MODEL_COMPS: {
+  name: string; beds: number; area: number | null; high: number | null; low: number | null
+}[] = [
+  { name: 'Sasitara Thai Villas', beds: 1, area: 60, high: 3960, low: 2460 },
+  { name: 'PS Thana Resort', beds: 1, area: 90, high: 4620, low: 4100 },
+  { name: 'Paradise Island Estate', beds: 1, area: 65, high: 7830, low: 3920 },
+  { name: 'Samui Blue Orchid', beds: 1, area: 150, high: 7860, low: null },
+  { name: 'Tango Luxe Beach Villa', beds: 1, area: 80, high: 9130, low: 4860 },
+  { name: 'Samui Honey Tara', beds: 2, area: 185, high: 7720, low: null },
+  { name: 'Sonata Koh Samui', beds: 2, area: 300, high: 16040, low: 11880 },
+  { name: 'NEW Private Pool 3BR Villa', beds: 3, area: null, high: 12130, low: 5790 },
+  { name: 'Horizon Villas Samui', beds: 3, area: 282, high: 13620, low: null },
+  { name: 'Valentine Village', beds: 3, area: 144, high: 15000, low: 8160 },
+  { name: 'The Beach Residence', beds: 3, area: 280, high: 16500, low: 9000 },
+  { name: 'Mai Tai Villa', beds: 3, area: 600, high: 17700, low: 6600 },
+  { name: 'Sunset Estates', beds: 4, area: 598, high: 20150, low: null },
+  { name: 'Samui Bayside Luxury Villas', beds: 4, area: 350, high: 23290, low: null },
+  { name: 'Royal Majestic Grand Thai Villa', beds: 4, area: 500, high: 32400, low: 18000 },
+]
 
 // ── Teksty ──────────────────────────────────────────────────────────────────
 type Copy = {
@@ -132,6 +157,12 @@ type Copy = {
     headers: [string, string, string, string]
     groupNames: string[] // 6 nazw grup
     unit: string // np. "tys. THB / noc · obłożenie"
+    footnote: string
+  }
+  benchmark: {
+    title: string; intro: string
+    headers: [string, string, string, string, string] // willa, typ, metraż, wysoki, niski
+    bedsUnit: string // "syp" / "bed" / "SZ"
     footnote: string
   }
   estate: {
@@ -232,11 +263,18 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
     },
     assumptions: {
       title: 'Założenia stawek i obłożenia',
-      intro: 'Stawki za noc odpowiadają porównywalnym willom z widokiem na morze na Koh Samui (na bazie ofert Booking.com). Obłożenie wg realnej sezonowości wyspy. Wysoki sezon robi wynik roku: cztery zimowe miesiące generują największą część przychodu.',
+      intro: 'Stawki za noc są zakotwiczone w cenach, które goście faktycznie płacą za porównywalne wille z prywatnym basenem w rejonie Choeng Mon / Plai Laem — pełne zestawienie willi referencyjnych znajdziesz poniżej. Obłożenie wg realnej sezonowości wyspy. Wysoki sezon robi wynik roku: cztery zimowe miesiące generują największą część przychodu.',
       headers: ['Typ willi', 'Wysoki sezon · gru–mar', 'Średni sezon · kwi–sie', 'Niski sezon · wrz–lis'],
       groupNames: ['1 sypialnia · standard', '1 sypialnia · sea view', '2 sypialnie', '3 sypialnie · standard', '3 sypialnie + taras na dachu', '4 sypialnie'],
       unit: 'tys. THB / noc · obłożenie',
       footnote: 'Widełki stawek to założenia modelu — finalny cennik ustala operator sezonowo, reagując na popyt.',
+    },
+    benchmark: {
+      title: 'Skąd te stawki — realne ceny z sąsiedztwa',
+      intro: 'Żadna z tych liczb nie jest „z palca". To ceny, które goście faktycznie płacą za wille z prywatnym basenem w rejonie Choeng Mon / Plai Laem na Koh Samui — tym samym, w którym powstaje Oasis. Odczyt z Booking.com z 2 września 2026, wyszukiwanie dla 2 osób na 5 nocy: wysoki sezon 10–15 stycznia 2027, niski sezon 11–16 października 2026. Podajemy cenę za noc z podatkami, po uwzględnieniu bieżących promocji.',
+      headers: ['Willa (Booking.com)', 'Typ', 'Metraż', 'Wysoki sezon', 'Niski sezon'],
+      bedsUnit: 'syp',
+      footnote: 'Ceny w THB za noc. „—" oznacza brak dostępności danego obiektu w badanym terminie. Z zestawienia wyłączyliśmy wille resortów 5★ (The Ritz-Carlton, SALA, Six Senses, Melati — 14–32 tys. THB/noc), bo to inny produkt cenowy. Nowa willa w europejskim standardzie broni górnej połowy widełek dla swojego typu.',
     },
     estate: {
       title: 'Osiedle łącznie — skala programu najmu',
@@ -353,11 +391,18 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
     },
     assumptions: {
       title: 'Rate and occupancy assumptions',
-      intro: 'Nightly rates match comparable sea-view villas on Koh Samui (based on Booking.com listings). Occupancy follows the island’s real seasonality. The high season makes the year: the four winter months generate the largest share of revenue.',
+      intro: 'Nightly rates are anchored in the prices guests actually pay for comparable private-pool villas in the Choeng Mon / Plai Laem area — the full list of reference villas is below. Occupancy follows the island’s real seasonality. The high season makes the year: the four winter months generate the largest share of revenue.',
       headers: ['Villa type', 'High season · Dec–Mar', 'Mid season · Apr–Aug', 'Low season · Sep–Nov'],
       groupNames: ['1 bedroom · standard', '1 bedroom · sea view', '2 bedrooms', '3 bedrooms · standard', '3 bedrooms + rooftop terrace', '4 bedrooms'],
       unit: 'k THB / night · occupancy',
       footnote: 'Rate ranges are model assumptions — the final price list is set seasonally by the operator in response to demand.',
+    },
+    benchmark: {
+      title: 'Where the rates come from — real prices next door',
+      intro: 'None of these numbers is guesswork. These are the prices guests actually pay for private-pool villas in the Choeng Mon / Plai Laem area of Koh Samui — the same area where Oasis is being built. Read from Booking.com on 2 September 2026, searching for 2 guests, 5 nights: high season 10–15 January 2027, low season 11–16 October 2026. We quote the per-night price including taxes and current promotions.',
+      headers: ['Villa (Booking.com)', 'Type', 'Size', 'High season', 'Low season'],
+      bedsUnit: 'bed',
+      footnote: 'Prices in THB per night. “—” means the property was not available for the sampled dates. We excluded 5★ resort villas (The Ritz-Carlton, SALA, Six Senses, Melati — 14–32k THB/night) as a different price product. A brand-new, European-standard villa defends the upper half of its type’s range.',
     },
     estate: {
       title: 'The estate as a whole — the scale of the rental programme',
@@ -474,11 +519,18 @@ export const OASIS_MODEL_COPY: Record<OasisModelLocale, Copy> = {
     },
     assumptions: {
       title: 'Annahmen zu Preisen und Auslastung',
-      intro: 'Die Übernachtungspreise entsprechen vergleichbaren Meerblick-Villen auf Koh Samui (auf Basis von Booking.com-Angeboten). Die Auslastung folgt der realen Saisonalität der Insel. Die Hochsaison macht das Jahr: die vier Wintermonate erwirtschaften den größten Teil des Umsatzes.',
+      intro: 'Die Übernachtungspreise sind in den Preisen verankert, die Gäste tatsächlich für vergleichbare Villen mit privatem Pool im Gebiet Choeng Mon / Plai Laem zahlen — die vollständige Liste der Referenzvillen finden Sie unten. Die Auslastung folgt der realen Saisonalität der Insel. Die Hochsaison macht das Jahr: die vier Wintermonate erwirtschaften den größten Teil des Umsatzes.',
       headers: ['Villentyp', 'Hochsaison · Dez–Mär', 'Mittelsaison · Apr–Aug', 'Nebensaison · Sep–Nov'],
       groupNames: ['1 Schlafzimmer · Standard', '1 Schlafzimmer · Meerblick', '2 Schlafzimmer', '3 Schlafzimmer · Standard', '3 Schlafzimmer + Dachterrasse', '4 Schlafzimmer'],
       unit: 'Tsd. THB / Nacht · Auslastung',
       footnote: 'Die Preisspannen sind Modellannahmen — die endgültige Preisliste legt der Betreiber saisonal nach Nachfrage fest.',
+    },
+    benchmark: {
+      title: 'Woher die Preise stammen — reale Preise aus der Nachbarschaft',
+      intro: 'Keine dieser Zahlen ist geraten. Es sind die Preise, die Gäste tatsächlich für Villen mit privatem Pool im Gebiet Choeng Mon / Plai Laem auf Koh Samui zahlen — genau dort, wo Oasis entsteht. Abgelesen von Booking.com am 2. September 2026, Suche für 2 Personen, 5 Nächte: Hochsaison 10.–15. Januar 2027, Nebensaison 11.–16. Oktober 2026. Angegeben ist der Preis pro Nacht inkl. Steuern und aktueller Rabatte.',
+      headers: ['Villa (Booking.com)', 'Typ', 'Fläche', 'Hochsaison', 'Nebensaison'],
+      bedsUnit: 'SZ',
+      footnote: 'Preise in THB pro Nacht. „—“ bedeutet: im untersuchten Zeitraum nicht verfügbar. Villen der 5★-Resorts (The Ritz-Carlton, SALA, Six Senses, Melati — 14–32 Tsd. THB/Nacht) wurden als anderes Preisprodukt ausgeschlossen. Eine neue Villa im europäischen Standard behauptet die obere Hälfte der Spanne ihres Typs.',
     },
     estate: {
       title: 'Die Anlage insgesamt — die Größenordnung des Mietprogramms',

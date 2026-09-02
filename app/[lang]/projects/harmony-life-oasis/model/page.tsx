@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { hasLocale, locales } from '../../../../_i18n/dictionaries'
 import { SITE_URL } from '../../../../_data/site'
 import {
+  OASIS_MODEL_COMPS,
   OASIS_MODEL_COPY,
   OASIS_MODEL_GROUPS,
   OASIS_MODEL_TOTALS,
@@ -365,6 +366,53 @@ export default async function OasisModelPage({
           </div>
 
           <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.assumptions.unit}. {c.assumptions.footnote}</p>
+        </section>
+
+        {/* Benchmark — reference villas */}
+        <section>
+          <h2 className="font-serif text-3xl text-cream mb-4">{c.benchmark.title}</h2>
+          <p className="text-cream/60 text-sm leading-relaxed mb-8 max-w-2xl">{c.benchmark.intro}</p>
+
+          {/* Desktop */}
+          <div className="hidden sm:block rounded-xl border border-gold/15 overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-charcoal/40 text-cream/80">
+                  {c.benchmark.headers.map((h, i) => (
+                    <th key={h} className={`px-3 py-3 font-medium text-xs leading-snug ${i === 0 ? 'text-left' : 'text-right'}`}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {OASIS_MODEL_COMPS.map(v => (
+                  <tr key={v.name} className="border-t border-gold/10">
+                    <td className="px-3 py-2.5 text-cream/80 text-[13px] leading-snug">{v.name}</td>
+                    <td className={`${td} text-cream/60`}>{v.beds} {c.benchmark.bedsUnit}</td>
+                    <td className={`${td} text-cream/60`}>{v.area ? `${v.area} m²` : '—'}</td>
+                    <td className={`${td} text-cream/80`}>{v.high ? n(v.high) : '—'}</td>
+                    <td className={`${td} ${v.low ? 'text-cream/80' : 'text-cream/35'}`}>{v.low ? n(v.low) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile */}
+          <div className="sm:hidden rounded-xl border border-gold/15 divide-y divide-gold/10">
+            {OASIS_MODEL_COMPS.map(v => (
+              <div key={v.name} className="p-4">
+                <p className="text-cream/85 text-[13px] font-medium leading-snug">{v.name}</p>
+                <div className="flex justify-between gap-4 mt-1 text-[13px]">
+                  <span className="text-cream/45">{v.beds} {c.benchmark.bedsUnit}{v.area ? ` · ${v.area} m²` : ''}</span>
+                  <span className="text-cream/75 whitespace-nowrap tabular-nums">
+                    {v.high ? n(v.high) : '—'} / {v.low ? n(v.low) : '—'}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-cream/40 text-xs leading-relaxed mt-3">{c.benchmark.footnote}</p>
         </section>
 
         {/* Estate totals */}

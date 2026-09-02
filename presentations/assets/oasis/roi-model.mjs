@@ -17,17 +17,18 @@ const PANEL = 'https://panel.harmonylife.asia/api/public/projects/HLOASIS/units'
 
 // ── Grupy poolingowe ────────────────────────────────────────────────────────
 // rate/occ: [lo, hi] per sezon (Wysoki gru–mar ×4 mies., Średni kwi–sie ×5,
-// Niski wrz–lis ×3). Stawki 2/3 syp = publikowane dla SOLAYA; 1 syp, taras
-// i 4 syp — ekstrapolacja konserwatywna, DO POTWIERDZENIA.
+// Niski wrz–lis ×3). Stawki zakotwiczone w realnych cenach Booking.com dla
+// rejonu Choeng Mon / Plai Laem (odczyt 02.09.2026, 5 nocy: 10–15.01.2027
+// wysoki sezon i 11–16.10.2026 niski; ceny płacone, bez willi resortów 5*).
 // fixed: koszty stałe THB/rok bez dzierżawy gruntu (ta idzie z panelu albo
 // z leaseFallback dla willi sprzedanych bez danych).
 const GROUPS = [
   {
     key: '1A', label: '1 SYP — STANDARD', match: u => u.bedrooms === 1 && u.area < 95,
     seasons: [
-      { months: 4, rate: [7500, 9000], occ: [0.80, 0.90] },
-      { months: 5, rate: [5500, 7000], occ: [0.55, 0.70] },
-      { months: 3, rate: [4000, 5000], occ: [0.35, 0.50] },
+      { months: 4, rate: [5500, 7000], occ: [0.80, 0.90] },
+      { months: 5, rate: [4500, 5500], occ: [0.55, 0.70] },
+      { months: 3, rate: [3000, 4000], occ: [0.35, 0.50] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 27000],
@@ -43,9 +44,9 @@ const GROUPS = [
   {
     key: '1B', label: '1 SYP — SEA VIEW', match: u => u.bedrooms === 1 && u.area >= 95,
     seasons: [
-      { months: 4, rate: [10000, 12000], occ: [0.80, 0.90] },
-      { months: 5, rate: [7500, 9000], occ: [0.55, 0.70] },
-      { months: 3, rate: [5500, 6500], occ: [0.35, 0.50] },
+      { months: 4, rate: [7000, 9000], occ: [0.80, 0.90] },
+      { months: 5, rate: [5500, 7000], occ: [0.55, 0.70] },
+      { months: 3, rate: [4000, 5000], occ: [0.35, 0.50] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 28000],
@@ -61,9 +62,9 @@ const GROUPS = [
   {
     key: '2', label: '2 SYP', match: u => u.bedrooms === 2,
     seasons: [
-      { months: 4, rate: [16000, 18000], occ: [0.80, 0.90] },
-      { months: 5, rate: [12000, 14000], occ: [0.55, 0.70] },
-      { months: 3, rate: [9000, 11000], occ: [0.35, 0.50] },
+      { months: 4, rate: [11000, 13000], occ: [0.80, 0.90] },
+      { months: 5, rate: [8500, 10000], occ: [0.55, 0.70] },
+      { months: 3, rate: [6000, 7500], occ: [0.35, 0.50] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 39000],
@@ -79,9 +80,9 @@ const GROUPS = [
   {
     key: '3', label: '3 SYP — STANDARD', match: u => u.bedrooms === 3 && u.area < 300,
     seasons: [
-      { months: 4, rate: [20000, 23000], occ: [0.75, 0.85] },
-      { months: 5, rate: [15000, 18000], occ: [0.55, 0.65] },
-      { months: 3, rate: [11000, 14000], occ: [0.35, 0.45] },
+      { months: 4, rate: [12000, 14000], occ: [0.75, 0.85] },
+      { months: 5, rate: [9000, 11000], occ: [0.55, 0.65] },
+      { months: 3, rate: [6500, 8000], occ: [0.35, 0.45] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 42000],
@@ -97,9 +98,9 @@ const GROUPS = [
   {
     key: '3T', label: '3 SYP + TARAS NA DACHU', match: u => u.bedrooms === 3 && u.area >= 300,
     seasons: [
-      { months: 4, rate: [23000, 26000], occ: [0.75, 0.85] },
-      { months: 5, rate: [17000, 20000], occ: [0.55, 0.65] },
-      { months: 3, rate: [13000, 16000], occ: [0.35, 0.45] },
+      { months: 4, rate: [15000, 18000], occ: [0.75, 0.85] },
+      { months: 5, rate: [11000, 13000], occ: [0.55, 0.65] },
+      { months: 3, rate: [8000, 10000], occ: [0.35, 0.45] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 55000],
@@ -115,9 +116,9 @@ const GROUPS = [
   {
     key: '4', label: '4 SYP', match: u => u.bedrooms === 4,
     seasons: [
-      { months: 4, rate: [24000, 28000], occ: [0.75, 0.85] },
-      { months: 5, rate: [17000, 20000], occ: [0.55, 0.65] },
-      { months: 3, rate: [13000, 15000], occ: [0.35, 0.45] },
+      { months: 4, rate: [20000, 24000], occ: [0.75, 0.85] },
+      { months: 5, rate: [14000, 17000], occ: [0.55, 0.65] },
+      { months: 3, rate: [10000, 12000], occ: [0.35, 0.45] },
     ],
     fixed: [
       ['Utrzymanie willi (basen, ogród, serwis techniczny)', 58000],
