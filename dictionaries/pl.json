@@ -98,25 +98,21 @@
     "stat3Label": "Projektów na Koh Samui"
   },
   "testimonials": {
-    "eyebrow": "Opinie klientów",
-    "title": "Słowa naszych właścicieli",
-    "subtitle": "Posłuchaj, co mówią międzynarodowi inwestorzy i nabywcy stylu życia, którzy wybrali Harmony Life.",
-    "t1Quote": "Kupiliśmy willę 2BR w Harmony Life One przed ukończeniem budowy i doświadczenie przerosło wszelkie oczekiwania. Jakość wykonania naprawdę dorównuje temu, co widzieliśmy w Szwajcarii — dbałość Roberta o detal jest niezwykła.",
-    "t1Author": "Marek i Katarzyna W.",
-    "t1Origin": "Warszawa, Polska",
-    "t1Property": "Harmony Life One, Willa 4",
-    "t2Quote": "Jako doświadczony inwestor na rynku nieruchomości byłem początkowo sceptyczny. Lecz widok izolacji i wentylacji w europejskim standardzie w tropikalnym klimacie przekonał mnie. Generujemy stały dochód z najmu, podczas gdy rodzina korzysta z nieruchomości jako bazy urlopowej. Dokładnie to, czego chcieliśmy.",
-    "t2Author": "Dieter K.",
-    "t2Origin": "Monachium, Niemcy",
-    "t2Property": "Harmony Life Hill, Willa 2",
-    "t3Quote": "Od pierwszej konsultacji po przekazanie kluczy, Harmony Life było profesjonalne i transparentne. Mieszkamy w Singapurze, a zarządzanie nieruchomością dba o wszystko. Nasza inwestycja praktycznie działa sama.",
-    "t3Author": "James i Priya T.",
-    "t3Origin": "Singapur",
-    "t3Property": "Harmony Life Apartments, Lokal 3B",
-    "t4Quote": "Inwestowałam wcześniej w Tajlandii i straciłam przez złe wykonanie. Harmony Life to zupełnie inna kategoria. Europejskie korzenie założyciela widać w każdym narożniku. Naprawdę wyjątkowe.",
-    "t4Author": "Sophie M.",
-    "t4Origin": "Paryż, Francja",
-    "t4Property": "Harmony Life One, Willa 7"
+    "eyebrow": "Referencje",
+    "title": "Co mówią nasi inwestorzy",
+    "subtitle": "Prawdziwe rekomendacje od inwestorów, którzy realizują z nami swoje projekty na Koh Samui — publikowane w ich własnych słowach.",
+    "items": [
+      {
+        "quote": "Z czystym sumieniem możemy polecić współpracę z Robertem przy realizacji projektu Harmony Life Hill i budowy naszej willi na wyspie Koh Samui. Od samego początku relacja opiera się na pełnym profesjonalizmie. Robert to wyjątkowo konkretny człowiek, który doskonale wie, jak zarządzać procesem budowlanym w tajskich realiach, co od razu dało nam duże poczucie bezpieczeństwa.\n\nCała współpraca jest w pełni transparentna. Robert przestrzega warunków umowy i dba o każdy detal. Ogromnym plusem jest doskonała komunikacja — jesteśmy na bieżąco informowani o postępach prac oraz o zakończeniu każdego kolejnego etapu budowy. Otrzymujemy regularne aktualizacje, dzięki czemu, mimo odległości, doskonale wiemy, co dzieje się na budowie.\n\nNiedawno zostaliśmy poinformowani o niedotrzymaniu pierwotnego terminu zakończenia inwestycji. Choć zmiana harmonogramu zawsze jest wyzwaniem, doceniamy profesjonalne podejście Roberta — zamiast unikania kontaktu, otrzymaliśmy jasne wyjaśnienie sytuacji oraz zaktualizowany plan działania. Taka rzetelność buduje duże zaufanie.\n\nDotychczasowy przebieg współpracy oceniamy bardzo pozytywnie. Patrząc na postępy, już teraz nie możemy się doczekać końcowego efektu naszej willi.",
+        "author": "Marta i Michał",
+        "property": "Harmony Life Hill 2 · Willa 3"
+      },
+      {
+        "quote": "Jestem inwestorem w Harmony Life we współpracy z Robertem Szymańskim. Realizuje dla nas inwestycje Harmony Life Hill willa numer 2 oraz Harmony Life Oasis willa numer 5 i 10. Jak dotąd wszelki kontakt przebiega bardzo dobrze. Jest to człowiek słowny, zaangażowany w projekty budowlane. Bardzo podoba mi się transparentność inwestycji i komunikacji zarówno w sprawach budowlanych, postępach prac jak i finansowych. W grudniu tego roku planuję odebrać pierwszą inwestycję i liczymy na to, że będę mógł osobiście zobaczyć willę numer 2 zgodnie z ustaleniami. Na ten moment wszelkie ustalenia z Robertem opierały się o fakty i zdecydowanie jest to człowiek, który z najwyższą możliwą starannością realizuje biznesowe negocjacje. Polecam współpracę.",
+        "author": "Grzegorz i Agnieszka",
+        "property": "Harmony Life Hill 1 · Willa 2"
+      }
+    ]
   },
   "contactSection": {
     "eyebrow": "Umów konsultację",

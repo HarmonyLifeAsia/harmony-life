@@ -98,25 +98,21 @@
     "stat3Label": "Koh Samui projects"
   },
   "testimonials": {
-    "eyebrow": "Client Stories",
-    "title": "Words from our owners",
-    "subtitle": "Hear from the international investors and lifestyle buyers who have chosen Harmony Life.",
-    "t1Quote": "We purchased a 2BR villa at Harmony Life One before construction finished and the experience exceeded every expectation. The build quality genuinely rivals what we've seen in Switzerland — Robert's attention to detail is extraordinary.",
-    "t1Author": "Marek & Katarzyna W.",
-    "t1Origin": "Warsaw, Poland",
-    "t1Property": "Harmony Life One, Villa 4",
-    "t2Quote": "As an experienced real estate investor, I was initially sceptical. But seeing European-standard insulation and ventilation in a tropical climate convinced me. We're generating consistent rental yield while the family uses it as a holiday base. Exactly what we wanted.",
-    "t2Author": "Dieter K.",
-    "t2Origin": "Munich, Germany",
-    "t2Property": "Harmony Life Hill, Villa 2",
-    "t3Quote": "From the first consultation to the handover, Harmony Life was professional and transparent. We live in Singapore and the property management takes care of everything. Our investment practically runs itself.",
-    "t3Author": "James & Priya T.",
-    "t3Origin": "Singapore",
-    "t3Property": "Harmony Life Apartments, Unit 3B",
-    "t4Quote": "I've invested in Thailand before and been burned by poor construction. Harmony Life is categorically different. The founder's European background shows in every corner. Truly exceptional.",
-    "t4Author": "Sophie M.",
-    "t4Origin": "Paris, France",
-    "t4Property": "Harmony Life One, Villa 7"
+    "eyebrow": "References",
+    "title": "What our investors say",
+    "subtitle": "Genuine recommendations from investors building their projects with us on Koh Samui — published in their own words.",
+    "items": [
+      {
+        "quote": "With a clear conscience, we can recommend working with Robert on the Harmony Life Hill project and the construction of our villa on Koh Samui. From the very beginning, the relationship has been based on full professionalism. Robert is an exceptionally straightforward person who knows exactly how to manage the construction process in Thai realities, which immediately gave us a strong sense of security.\n\nThe entire cooperation is fully transparent. Robert honours the terms of the contract and takes care of every detail. A huge plus is the excellent communication — we are kept up to date on the progress of works and the completion of each stage of construction. We receive regular updates, so despite the distance we know exactly what is happening on site.\n\nWe were recently informed that the original completion date would not be met. Although a change of schedule is always a challenge, we appreciate Robert’s professional approach — instead of avoiding contact, we received a clear explanation of the situation and an updated action plan. That kind of reliability builds real trust.\n\nWe rate the cooperation so far very positively. Looking at the progress, we already can’t wait to see the final result of our villa.",
+        "author": "Marta & Michał",
+        "property": "Harmony Life Hill 2 · Villa 3"
+      },
+      {
+        "quote": "I am an investor in Harmony Life, working with Robert Szymański. He is delivering for us the Harmony Life Hill villa no. 2 as well as Harmony Life Oasis villas no. 5 and 10. So far, all contact has gone very well. He is a man of his word, genuinely committed to the construction projects. I really appreciate the transparency of the investment and the communication — in construction matters, work progress and finances alike. In December this year I plan to take handover of the first investment, and we count on being able to see villa no. 2 in person, as agreed. To date, every arrangement with Robert has been based on facts, and he is definitely a person who conducts business dealings with the utmost diligence. I recommend working with him.",
+        "author": "Grzegorz & Agnieszka",
+        "property": "Harmony Life Hill 1 · Villa 2"
+      }
+    ]
   },
   "contactSection": {
     "eyebrow": "Schedule a Consultation",

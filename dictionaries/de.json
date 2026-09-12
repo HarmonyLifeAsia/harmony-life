@@ -98,25 +98,21 @@
     "stat3Label": "Projekte auf Koh Samui"
   },
   "testimonials": {
-    "eyebrow": "Kundenstimmen",
-    "title": "Was unsere Eigentümer sagen",
-    "subtitle": "Erfahren Sie, was internationale Investoren und Lifestyle-Käufer berichten, die sich für Harmony Life entschieden haben.",
-    "t1Quote": "Wir haben eine 2-Schlafzimmer-Villa in Harmony Life One vor Baufertigstellung erworben — die Erfahrung hat jede Erwartung übertroffen. Die Bauqualität kommt wirklich dem nahe, was wir in der Schweiz gesehen haben. Roberts Liebe zum Detail ist außergewöhnlich.",
-    "t1Author": "Marek & Katarzyna W.",
-    "t1Origin": "Warschau, Polen",
-    "t1Property": "Harmony Life One, Villa 4",
-    "t2Quote": "Als erfahrener Immobilieninvestor war ich zunächst skeptisch. Doch europäische Dämmung und Lüftungssysteme in einem tropischen Klima zu sehen, hat mich überzeugt. Wir erzielen konstante Mietrenditen, während die Familie die Immobilie als Urlaubsbasis nutzt. Genau das, was wir wollten.",
-    "t2Author": "Dieter K.",
-    "t2Origin": "München, Deutschland",
-    "t2Property": "Harmony Life Hill, Villa 2",
-    "t3Quote": "Von der ersten Beratung bis zur Schlüsselübergabe war Harmony Life professionell und transparent. Wir leben in Singapur, und das Property Management kümmert sich um alles. Unsere Investition läuft praktisch von selbst.",
-    "t3Author": "James & Priya T.",
-    "t3Origin": "Singapur",
-    "t3Property": "Harmony Life Apartments, Einheit 3B",
-    "t4Quote": "Ich habe zuvor in Thailand investiert und durch schlechte Bauqualität Verluste erlitten. Harmony Life ist eine völlig andere Kategorie. Der europäische Hintergrund des Gründers ist in jedem Winkel sichtbar. Wirklich außergewöhnlich.",
-    "t4Author": "Sophie M.",
-    "t4Origin": "Paris, Frankreich",
-    "t4Property": "Harmony Life One, Villa 7"
+    "eyebrow": "Referenzen",
+    "title": "Was unsere Investoren sagen",
+    "subtitle": "Echte Empfehlungen von Investoren, die ihre Projekte mit uns auf Koh Samui realisieren — veröffentlicht in ihren eigenen Worten.",
+    "items": [
+      {
+        "quote": "Mit gutem Gewissen können wir die Zusammenarbeit mit Robert beim Projekt Harmony Life Hill und beim Bau unserer Villa auf Koh Samui empfehlen. Von Anfang an basiert die Beziehung auf voller Professionalität. Robert ist ein außergewöhnlich konkreter Mensch, der genau weiß, wie man den Bauprozess unter thailändischen Bedingungen steuert — das gab uns von Beginn an ein großes Gefühl von Sicherheit.\n\nDie gesamte Zusammenarbeit ist vollkommen transparent. Robert hält die Vertragsbedingungen ein und achtet auf jedes Detail. Ein großes Plus ist die hervorragende Kommunikation — wir werden laufend über den Baufortschritt und den Abschluss jeder weiteren Bauphase informiert. Wir erhalten regelmäßige Updates, sodass wir trotz der Entfernung genau wissen, was auf der Baustelle passiert.\n\nVor Kurzem wurden wir darüber informiert, dass der ursprüngliche Fertigstellungstermin nicht eingehalten wird. Auch wenn eine Änderung des Zeitplans immer eine Herausforderung ist, schätzen wir Roberts professionelle Herangehensweise — statt den Kontakt zu meiden, erhielten wir eine klare Erklärung der Situation und einen aktualisierten Plan. Diese Verlässlichkeit schafft großes Vertrauen.\n\nDen bisherigen Verlauf der Zusammenarbeit bewerten wir sehr positiv. Angesichts der Fortschritte können wir das Endergebnis unserer Villa jetzt schon kaum erwarten.",
+        "author": "Marta & Michał",
+        "property": "Harmony Life Hill 2 · Villa 3"
+      },
+      {
+        "quote": "Ich bin Investor bei Harmony Life in Zusammenarbeit mit Robert Szymański. Er realisiert für uns die Investition Harmony Life Hill Villa Nr. 2 sowie Harmony Life Oasis Villa Nr. 5 und 10. Bislang verläuft jeglicher Kontakt sehr gut. Er ist ein Mann, der zu seinem Wort steht und sich mit vollem Einsatz für die Bauprojekte engagiert. Die Transparenz der Investition und der Kommunikation gefällt mir sehr — sowohl in Baufragen und beim Baufortschritt als auch in finanziellen Angelegenheiten. Im Dezember dieses Jahres plane ich die Abnahme der ersten Investition, und wir hoffen, dass ich Villa Nr. 2 wie vereinbart persönlich sehen kann. Bisher beruhten alle Absprachen mit Robert auf Fakten, und er ist definitiv ein Mensch, der geschäftliche Verhandlungen mit größtmöglicher Sorgfalt führt. Ich empfehle die Zusammenarbeit.",
+        "author": "Grzegorz & Agnieszka",
+        "property": "Harmony Life Hill 1 · Villa Nr. 2"
+      }
+    ]
   },
   "contactSection": {
     "eyebrow": "Beratung vereinbaren",

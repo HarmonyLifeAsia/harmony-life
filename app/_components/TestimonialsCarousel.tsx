@@ -10,13 +10,7 @@ export default function TestimonialsCarousel() {
   const [direction, setDirection] = useState(1)
   const dict = useDict()
   const t = dict.testimonials
-
-  const testimonials = [
-    { quote: t.t1Quote, author: t.t1Author, origin: t.t1Origin, property: t.t1Property },
-    { quote: t.t2Quote, author: t.t2Author, origin: t.t2Origin, property: t.t2Property },
-    { quote: t.t3Quote, author: t.t3Author, origin: t.t3Origin, property: t.t3Property },
-    { quote: t.t4Quote, author: t.t4Author, origin: t.t4Origin, property: t.t4Property },
-  ]
+  const testimonials = t.items
 
   const go = (idx: number) => {
     setDirection(idx > current ? 1 : -1)
@@ -30,34 +24,33 @@ export default function TestimonialsCarousel() {
           <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative min-h-[280px] flex items-center">
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={current}
-                custom={direction}
-                initial={{ opacity: 0, x: direction * 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -40 }}
-                transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="w-full"
-              >
-                <div className="text-center">
-                  <svg className="w-10 h-10 text-gold/25 mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                  <p className="font-serif text-xl md:text-2xl text-cream/85 leading-relaxed mb-8 italic">
-                    "{testimonials[current].quote}"
+        <div className="max-w-3xl mx-auto">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -40 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="w-full"
+            >
+              <svg className="w-10 h-10 text-gold/25 mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <div className="space-y-5 mb-10">
+                {testimonials[current].quote.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className="font-serif text-base md:text-lg text-cream/85 leading-relaxed italic">
+                    {paragraph}
                   </p>
-                  <div>
-                    <p className="text-cream font-medium">{testimonials[current].author}</p>
-                    <p className="text-gold/60 text-sm mt-0.5">{testimonials[current].origin}</p>
-                    <p className="text-cream/30 text-xs mt-2 tracking-wide">{testimonials[current].property}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                ))}
+              </div>
+              <div className="text-center">
+                <p className="text-cream font-medium">{testimonials[current].author}</p>
+                <p className="text-gold/60 text-sm mt-1 tracking-wide">{testimonials[current].property}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           <div className="flex items-center justify-center gap-3 mt-10">
             {testimonials.map((_, i) => (
