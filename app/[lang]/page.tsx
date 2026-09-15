@@ -12,6 +12,7 @@ import LifestyleSection from '../_components/LifestyleSection'
 import FounderSection from '../_components/FounderSection'
 import TestimonialsCarousel from '../_components/TestimonialsCarousel'
 import ContactForm from '../_components/ContactForm'
+import NewsletterSection from '../_components/NewsletterSection'
 import { projects } from '../_data/projects'
 import { CONTACT_EMAIL } from '../_data/site'
 
@@ -124,6 +125,8 @@ export default async function HomePage({
       </section>
 
       <TestimonialsCarousel />
+
+      <NewsletterSection />
 
       {/* CTA / Contact */}
       <section className="py-24 px-6">

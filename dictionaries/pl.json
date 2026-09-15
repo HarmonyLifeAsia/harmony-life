@@ -742,5 +742,11 @@
     "ctaTitle": "Sprawdź, która nieruchomość pasuje do Twojej strategii",
     "ctaText": "Porozmawiajmy o Twoich celach, budżecie i modelu korzystania z nieruchomości. Pokażemy dostępne opcje i wyjaśnimy proces, zanim podejmiesz decyzję.",
     "ctaButton": "Umów konsultację"
+  },
+  "newsletterSection": {
+    "eyebrow": "Newsletter",
+    "title": "Bądź na bieżąco z rynkiem Koh Samui",
+    "subtitle": "Nowe inwestycje, analizy rynku i wczesny dostęp do przedsprzedaży — bez spamu, maksymalnie raz–dwa razy w miesiącu.",
+    "note": "Możesz wypisać się w każdej chwili. Twoje dane pozostają poufne."
   }
 }

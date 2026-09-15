@@ -742,5 +742,11 @@
     "ctaTitle": "Finden Sie heraus, welche Immobilie zu Ihrer Strategie passt",
     "ctaText": "Sprechen wir über Ihre Ziele, Ihr Budget und Ihre geplante Nutzung der Immobilie. Wir zeigen die verfügbaren Optionen und erklären den Prozess, bevor Sie entscheiden.",
     "ctaButton": "Beratung buchen"
+  },
+  "newsletterSection": {
+    "eyebrow": "Newsletter",
+    "title": "Bleiben Sie über den Markt auf Koh Samui informiert",
+    "subtitle": "Neue Projekte, Marktanalysen und früher Zugang zu Vorverkäufen — kein Spam, höchstens ein- bis zweimal im Monat.",
+    "note": "Sie können sich jederzeit abmelden. Ihre Daten bleiben vertraulich."
   }
 }

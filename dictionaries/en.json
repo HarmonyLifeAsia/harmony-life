@@ -742,5 +742,11 @@
     "ctaTitle": "See which property fits your strategy",
     "ctaText": "Let’s talk about your goals, budget and how you plan to use the property. We will show the available options and explain the process before you decide.",
     "ctaButton": "Book a consultation"
+  },
+  "newsletterSection": {
+    "eyebrow": "Newsletter",
+    "title": "Stay ahead of the Koh Samui market",
+    "subtitle": "New developments, market insights and early access to pre-sales — no spam, at most once or twice a month.",
+    "note": "You can unsubscribe at any time. Your data stays confidential."
   }
 }
