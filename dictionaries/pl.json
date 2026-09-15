@@ -167,7 +167,8 @@
     "rights": "Wszelkie prawa zastrzeżone.",
     "subscribeSuccess": "Dziękujemy za subskrypcję!",
     "joinButton": "Dołącz",
-    "partnerDeck": "Prezentacja do druku (dla partnerów)"
+    "partnerDeck": "Prezentacja do druku (dla partnerów)",
+    "subscribeError": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "projectDetail": {
     "aboutEyebrow": "O tym projekcie",

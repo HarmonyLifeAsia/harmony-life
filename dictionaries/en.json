@@ -167,7 +167,8 @@
     "rights": "All rights reserved.",
     "subscribeSuccess": "Thank you for subscribing!",
     "joinButton": "Join",
-    "partnerDeck": "Print presentation (for partners)"
+    "partnerDeck": "Print presentation (for partners)",
+    "subscribeError": "Something went wrong. Please try again."
   },
   "projectDetail": {
     "aboutEyebrow": "About this Project",
