@@ -41,7 +41,7 @@ const T = (x, y, s, fill, size, family = SERIF, anchor = 'start', ls = 0, weight
     <rect width="${W}" height="${H}" fill="url(#g)"/>
     ${T(150, 1230, 'KOH SAMUI · TAJLANDIA', GOLD, 40, SANS, 'start', 10)}
     ${T(146, 1420, 'Harmony Life Oasis', CREAM, 180, SERIF)}
-    ${T(150, 1520, '53 wille z widokiem na morze — tropikalna oaza', GOLD, 58, SERIF)}
+    ${T(150, 1520, '53 wille w Plai Laem — tropikalna oaza', GOLD, 58, SERIF)}
     ${T(150, 1650, 'harmonylife.co', CREAM, 34, SANS, 'start', 4)}`)
   const lotus = await embBuf(150)
   await addSlide([{ input: bg }, { input: overlay }, { input: lotus, top: 90, left: 150 }])
@@ -50,7 +50,7 @@ const T = (x, y, s, fill, size, family = SERIF, anchor = 'start', ls = 0, weight
 // ── S2 O inwestycji
 {
   const photo = await cover(`${IMG}/gallery/01.webp`, 980, H)
-  const long = wrap('Harmony Life Oasis to wyjątkowy projekt 53 luksusowych willi zaprojektowanych jako prawdziwa tropikalna oaza. Inwestycja zapewnia szeroki wybór układów — od 1 do 4 sypialni, o powierzchni od 90 do 345 m² — każda z zapierającym dech widokiem na morze.', 46)
+  const long = wrap('Harmony Life Oasis to wyjątkowy projekt 53 luksusowych willi zaprojektowanych jako prawdziwa tropikalna oaza. Inwestycja zapewnia szeroki wybór układów — od 1 do 4 sypialni, o powierzchni od 90 do 345 m² — większość z widokiem na morze.', 46)
   const long2 = wrap('Na terenie osiedla znajdują się ekskluzywna kawiarnia i profesjonalny klub dla dzieci — projekt jest idealny zarówno dla inwestorów szukających zysków z najmu, jak i dla rodzin planujących zamieszkać na Koh Samui na stałe.', 46)
   const facts = [['53', 'wille'], ['1–4', 'sypialnie'], ['90–345 m²', 'powierzchnia'], ['฿6,2 mln', 'cena od · ≈ $190 000']]
   // Stałe pozycje kolumn — równy krok 300 px nie mieści '90–345 m²' obok
@@ -71,7 +71,7 @@ const T = (x, y, s, fill, size, family = SERIF, anchor = 'start', ls = 0, weight
 // ── S3 Cechy
 {
   const photo = await cover(`${IMG}/villas/4bed-sea/01.webp`, 1050, H)
-  const feats = ['Widok na morze ze wszystkich lokali', 'Układy od 1 do 4 sypialni', 'Powierzchnie 90–345 m²', 'Kawiarnia na terenie osiedla', 'Profesjonalny klub dla dzieci', 'Prywatny basen przy każdej willi', 'Budownictwo o europejskiej jakości', 'Możliwość zarządzania najmem']
+  const feats = ['Widok na morze z większości willi', 'Układy od 1 do 4 sypialni', 'Powierzchnie 90–345 m²', 'Kawiarnia na terenie osiedla', 'Profesjonalny klub dla dzieci', 'Prywatny basen przy każdej willi', 'Budownictwo o europejskiej jakości', 'Możliwość zarządzania najmem']
   let fy = 430
   const list = feats.map(f => { const row = `${T(160, fy, '✦', GOLD, 40, SERIF)}${T(230, fy, f, CREAM, 46, SANS)}`; fy += 130; return row }).join('')
   const text = svg(`
@@ -90,7 +90,7 @@ const T = (x, y, s, fill, size, family = SERIF, anchor = 'start', ls = 0, weight
     ['1bed-a', 'Willa 1 sypialnia — Typ A', '26 willi · 90 m²'],
     ['1bed-b-sea', '1 sypialnia — Typ B, widok na morze', '10 willi · 98 m²'],
     ['2bed', 'Willa 2 sypialnie', '3 wille · 189 m²'],
-    ['3bed', 'Willa 3 sypialnie', '4 wille · 216 m²'],
+    ['3bed', 'Willa 3 sypialnie', '4 wille · 237 m²'],
     ['3bed-rooftop-sea', '3 sypialnie — taras na dachu', '4 wille · 330 m²'],
     ['4bed-sea', 'Willa 4 sypialnie — widok na morze', '5 willi · 345 m²'],
   ]
@@ -144,9 +144,9 @@ const T = (x, y, s, fill, size, family = SERIF, anchor = 'start', ls = 0, weight
   const rows = [
     ['—', 'Rezerwacja', 'Opłata leasingu na 2 lata z góry'],
     ['30%', 'Umowa deweloperska', 'Po podpisaniu umowy deweloperskiej'],
-    ['25%', 'Fundamenty i basen', 'Po zakończeniu fundamentów i konstrukcji basenu'],
+    ['20%', 'Fundamenty i basen', 'Po zakończeniu fundamentów i konstrukcji basenu'],
     ['30%', 'Ściany i dach', 'Po zakończeniu ścian i konstrukcji dachu'],
-    ['10%', 'Wykończenie wewnętrzne', 'Elektryka, tynki, instalacje, okna'],
+    ['15%', 'Wykończenie wewnętrzne', 'Elektryka, tynki, instalacje, okna'],
     ['5%', 'Zakończenie', 'Po zakończeniu prac wewnątrz i na zewnątrz'],
   ]
   let ry = 430

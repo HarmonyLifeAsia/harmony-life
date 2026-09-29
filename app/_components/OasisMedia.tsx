@@ -2,6 +2,8 @@ import MediaGallery from './MediaGallery'
 import VillaQuickContact from './VillaQuickContact'
 import SentBanner from './SentBanner'
 import OasisVillaMapSection from './OasisVillaMapSection'
+import { OasisVillaSpecs, OasisSpecsNote, OasisFinishing, OasisFurnishing, OasisManagement } from './OasisSections'
+import type { OasisLocale } from '../_data/oasisContent'
 import {
   OASIS_MAIN_GALLERY,
   OASIS_CONSTRUCTION,
@@ -12,9 +14,10 @@ import {
 } from '../_data/oasis'
 
 // Oasis-only media sections: development gallery, villa types (floor plan +
-// visualisations + CTAs), construction progress, and a video.
+// visualisations + CTAs), finishing standard, furnishing, rental management,
+// construction progress, and a video.
 // `o` is dict.oasis, `cf` is dict.contactForm.
-export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: Record<string, string> }) {
+export default function OasisMedia({ o, cf, lang }: { o: Record<string, string>; cf: Record<string, string>; lang: OasisLocale }) {
   return (
     <>
       <SentBanner title={cf.successTitle} text={cf.successText} />
@@ -35,7 +38,8 @@ export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: R
         <div className="space-y-14">
           {OASIS_VILLAS.map((v) => (
             <div key={v.id} className="border-t border-gold/10 pt-8 first:border-0 first:pt-0">
-              <h3 className="font-serif text-xl text-cream mb-5">{o[v.nameKey]}</h3>
+              <h3 className="font-serif text-xl text-cream mb-1">{o[v.nameKey]}</h3>
+              <OasisVillaSpecs villa={v} lang={lang} />
 
               <p className="text-cream/40 text-[10px] tracking-widest uppercase mb-2">{o.floorPlanLabel}</p>
               <div className="mb-6">
@@ -68,7 +72,12 @@ export default function OasisMedia({ o, cf }: { o: Record<string, string>; cf: R
             </div>
           ))}
         </div>
+        <OasisSpecsNote lang={lang} />
       </div>
+
+      <OasisFinishing lang={lang} />
+      <OasisFurnishing lang={lang} />
+      <OasisManagement lang={lang} />
 
       {/* Construction progress */}
       <div>

@@ -5,7 +5,7 @@
 // przeskalowany na osiedle 53 willi i rozdzielony na 6 grup poolingowych:
 //  - 1 syp standard (26 szt, 90,25 m²) i 1 syp SEA VIEW (10 szt, 97,95 m²,
 //    droższe, wyższe stawki najmu),
-//  - 3 syp standard (5 szt, 140–216 m²) i 3 syp + TARAS NA DACHU (4 szt,
+//  - 3 syp standard (5 szt, 140–237 m²) i 3 syp + TARAS NA DACHU (4 szt,
 //    330 m², nr 2–5 — przypisanie po metrażu, DO POTWIERDZENIA),
 //  - 2 syp (3 szt) i 4 syp (5 szt).
 //  - koszty wspólne rozkładają się na 53 wille; koszty zależne od wielkości
