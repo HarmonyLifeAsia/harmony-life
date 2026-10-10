@@ -1,4 +1,3 @@
-// @ts-nocheck — vendor interactive map component; types to be added later.
 'use client';
 
 /*
@@ -21,6 +20,32 @@
 */
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import { useBrowserValue } from "../_hooks/useBrowserValue";
+
+type VillaStatus = "available" | "reserved" | "sold";
+
+interface Villa {
+  n: number;
+  x: number;
+  y: number;
+  status: VillaStatus;
+  beds: number | null;
+  area: number | null;
+  plot: number | null;
+  priceFrom: number | null;
+  lease: number | null;
+}
+
+// Unit as returned by the CRM panel (proxied through UNITS_API).
+interface CrmUnit {
+  unitNumber: number | string;
+  status?: string;
+  bedrooms?: number | null;
+  areaSqm?: number | string | null;
+  plotAreaSqm?: number | string | null;
+  basePriceTHB?: number | string | null;
+  yearlyLeaseTHB?: number | string | null;
+}
 
 const BACKGROUND = "/images/projects/solaya/aerial/05-plan-2026.webp";
 
@@ -28,50 +53,45 @@ const BACKGROUND = "/images/projects/solaya/aerial/05-plan-2026.webp";
 // Pozycje na renderze z 2026 r., ustawione ręcznie przez właściciela w trybie kalibracji
 // (strona z ?kalibracja → przeciągnij markery → „Kopiuj pozycje"). Numeracja odpowiada numerom
 // willi w panelu SOLV, z którego lecą statusy i ceny.
-const POS = {
+const POS: Record<number, [number, number]> = {
   1:[30.6,3], 2:[20.2,3.7], 3:[9.7,7.1], 4:[33.9,10.5], 5:[25.1,12.4], 6:[14.8,14.6],
   7:[38.3,16.3], 8:[29.9,18.3], 9:[20.8,20.8], 10:[45.2,22], 11:[37.7,24], 12:[28.3,27.2],
   13:[54.1,27.7], 14:[46.5,31.4], 15:[38.7,36.1], 16:[47.7,42.3], 17:[55.7,49.4],
   18:[66.9,58], 19:[80.5,69.1],
 };
 
-const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
+const STATUS_MAP: Record<string, VillaStatus> = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
 const UNITS_API = "/api/solaya-units"; // live data proxied from the CRM panel (SOLV)
 
 // Positions come from calibration (POS); status / specs / prices are LIVE from the CRM.
-const FALLBACK_VILLAS = Object.entries(POS).map(([k, [x, y]]) => ({
+const FALLBACK_VILLAS: Villa[] = Object.entries(POS).map(([k, [x, y]]) => ({
   n: Number(k), x, y, status: "available", beds: null, area: null, plot: null, priceFrom: null, lease: null,
 }));
 
-const STATUS = {
+const STATUS: Record<VillaStatus, { label: string; color: string; short: string }> = {
   available: { label: "Dostępna", color: "#3E9B5F", short: "dostępne" },
   reserved:  { label: "Rezerwacja", color: "#E08A2B", short: "rezerwacja" },
   sold:      { label: "Sprzedana", color: "#D23B36", short: "sprzedane" },
 };
 
-const thb = (v) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
+const thb = (v: number) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
 
-export default function SolayaVillaMap({ onInquire }) {
+export default function SolayaVillaMap({ onInquire }: { onInquire?: (villa: Villa) => void }) {
   const [villas, setVillas] = useState(FALLBACK_VILLAS);
-  const [active, setActive] = useState(null);
-  const [hover, setHover] = useState(null);
-  const [filter, setFilter] = useState(null);      // null | status key
-  const [toast, setToast] = useState(null);
+  const [active, setActive] = useState<number | null>(null);
+  const [hover, setHover] = useState<number | null>(null);
+  const [filter, setFilter] = useState<VillaStatus | null>(null);      // null | status key
+  const [toast, setToast] = useState<string | null>(null);
 
   // TRYB KALIBRACJI — włącza się tylko adresem ...?kalibracja, więc goście go nie widzą.
   // Po podmianie renderu przeciągasz markery na właściwe wille i kopiujesz gotowy JSON do POS.
-  const [calib, setCalib] = useState(false);
-  const stageRef = useRef(null);
-  const dragRef = useRef(null);
+  const calib = useBrowserValue(() => new URLSearchParams(window.location.search).has("kalibracja"), false);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<number | null>(null);
   const movedRef = useRef(false);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    setCalib(new URLSearchParams(window.location.search).has("kalibracja"));
-  }, []);
-
   const counts = useMemo(() => {
-    const c = { available: 0, reserved: 0, sold: 0 };
+    const c: Record<VillaStatus, number> = { available: 0, reserved: 0, sold: 0 };
     villas.forEach((v) => c[v.status]++);
     return c;
   }, [villas]);
@@ -86,18 +106,18 @@ export default function SolayaVillaMap({ onInquire }) {
         if (!res.ok) return;
         const data = await res.json();
         if (!alive || !Array.isArray(data.units)) return;
-        const byNum = {};
-        data.units.forEach((u) => { byNum[String(u.unitNumber)] = u; });
+        const byNum: Record<string, CrmUnit> = {};
+        data.units.forEach((u: CrmUnit) => { byNum[String(u.unitNumber)] = u; });
         // Zachowaj bieżące x/y: co 3 minuty dociągamy status z CRM, a w trakcie kalibracji
         // markery stoją tam, gdzie je przeciągnięto — nadpisanie ich POS-em kasowałoby pracę.
         setVillas((prev) => {
-          const held = Object.fromEntries(prev.map((v) => [v.n, [v.x, v.y]]));
-          return Object.entries(POS).map(([k, [px, py]]) => {
-          const [x, y] = held[Number(k)] ?? [px, py];
+          const held = new Map(prev.map((v) => [v.n, [v.x, v.y] as [number, number]]));
+          return Object.entries(POS).map(([k, [px, py]]): Villa => {
+          const [x, y] = held.get(Number(k)) ?? [px, py];
           const u = byNum[String(k)];
           return {
             n: Number(k), x, y,
-            status: u ? (STATUS_MAP[u.status] || "available") : "available",
+            status: u ? (STATUS_MAP[u.status ?? ""] || "available") : "available",
             beds: u?.bedrooms ?? null,
             area: u?.areaSqm != null ? Math.round(Number(u.areaSqm)) : null,
             plot: u?.plotAreaSqm != null ? Math.round(Number(u.plotAreaSqm)) : null,
@@ -114,22 +134,22 @@ export default function SolayaVillaMap({ onInquire }) {
   }, []);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") setActive(null); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActive(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const flash = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
+  const flash = (msg: string) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
 
-  const pctFromEvent = (e) => {
-    const r = stageRef.current.getBoundingClientRect();
+  const pctFromEvent = (e: React.PointerEvent, stage: HTMLElement) => {
+    const r = stage.getBoundingClientRect();
     return {
       x: Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100)),
       y: Math.max(0, Math.min(100, ((e.clientY - r.top) / r.height) * 100)),
     };
   };
 
-  const startDrag = (n) => (e) => {
+  const startDrag = (n: number) => (e: React.PointerEvent<HTMLButtonElement>) => {
     if (!calib) return;
     e.preventDefault();
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -137,9 +157,9 @@ export default function SolayaVillaMap({ onInquire }) {
     movedRef.current = false;
   };
 
-  const onDrag = (e) => {
-    if (dragRef.current == null) return;
-    const { x, y } = pctFromEvent(e);
+  const onDrag = (e: React.PointerEvent) => {
+    if (dragRef.current == null || !stageRef.current) return;
+    const { x, y } = pctFromEvent(e, stageRef.current);
     movedRef.current = true;
     setVillas((vs) => vs.map((v) => (v.n === dragRef.current
       ? { ...v, x: Number(x.toFixed(1)), y: Number(y.toFixed(1)) } : v)));
@@ -184,12 +204,12 @@ export default function SolayaVillaMap({ onInquire }) {
         >
           Wszystkie <b>{villas.length}</b>
         </button>
-        {Object.entries(STATUS).map(([k, s]) => (
+        {(Object.entries(STATUS) as [VillaStatus, (typeof STATUS)[VillaStatus]][]).map(([k, s]) => (
           <button
             key={k}
             className={"chip " + (filter === k ? "active" : "")}
             onClick={() => setFilter((f) => (f === k ? null : k))}
-            style={{ "--dot": s.color }}
+            style={{ "--dot": s.color } as React.CSSProperties}
           >
             <span className="dot" /> {s.label} <b>{counts[k]}</b>
           </button>
@@ -233,7 +253,7 @@ export default function SolayaVillaMap({ onInquire }) {
                 top: `${p.y}%`,
                 "--c": STATUS[v.status].color,
                 zIndex: isActive || isHover ? 60 : dim ? 5 : 10,
-              }}
+              } as React.CSSProperties}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
               onPointerDown={startDrag(v.n)}
@@ -255,10 +275,10 @@ export default function SolayaVillaMap({ onInquire }) {
         <div className="hl-panel-bg" onClick={() => setActive(null)}>
           <aside className="hl-panel" onClick={(e) => e.stopPropagation()}>
             <button className="hl-x" onClick={() => setActive(null)}>×</button>
-            <div className="hl-pnum" style={{ "--c": STATUS[activeVilla.status].color }}>
+            <div className="hl-pnum" style={{ "--c": STATUS[activeVilla.status].color } as React.CSSProperties}>
               {activeVilla.n}
             </div>
-            <span className="hl-badge" style={{ "--c": STATUS[activeVilla.status].color }}>
+            <span className="hl-badge" style={{ "--c": STATUS[activeVilla.status].color } as React.CSSProperties}>
               <span className="dot" /> {STATUS[activeVilla.status].label}
             </span>
             <h3 className="hl-pname">Willa nr {activeVilla.n}</h3>

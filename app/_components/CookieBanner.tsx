@@ -1,28 +1,27 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useDict, useLocale } from './LangProvider'
+import { useBrowserValue } from '../_hooks/useBrowserValue'
 
 export default function CookieBanner() {
-  const [visible, setVisible] = useState(false)
+  // Server + hydration assume a stored choice, so the banner never flashes before localStorage is read.
+  const stored = useBrowserValue(() => localStorage.getItem('hl-cookie-consent'), 'pending')
+  const [decided, setDecided] = useState(false)
+  const visible = !stored && !decided
   const dict = useDict()
   const lang = useLocale()
   const t = dict.cookies
 
-  useEffect(() => {
-    const consent = localStorage.getItem('hl-cookie-consent')
-    if (!consent) setVisible(true)
-  }, [])
-
   const accept = () => {
     localStorage.setItem('hl-cookie-consent', 'accepted')
-    setVisible(false)
+    setDecided(true)
   }
 
   const decline = () => {
     localStorage.setItem('hl-cookie-consent', 'declined')
-    setVisible(false)
+    setDecided(true)
   }
 
   return (

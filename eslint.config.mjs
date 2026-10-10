@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Skrypty narzędziowe (generatory PDF, logotypy) — Node/CommonJS, nie część aplikacji.
+    "presentations/**",
+    "scripts/**",
   ]),
 ]);
 

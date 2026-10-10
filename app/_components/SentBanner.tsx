@@ -2,21 +2,20 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useBrowserValue } from '../_hooks/useBrowserValue'
 
 // Success toast shown after a villa quick-contact submission (?sent=villa).
 export default function SentBanner({ title, text }: { title: string; text: string }) {
-  const [show, setShow] = useState(false)
+  const sent = useBrowserValue(() => new URLSearchParams(window.location.search).get('sent') === 'villa', false)
+  const [hidden, setHidden] = useState(false)
+  const show = sent && !hidden
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.get('sent') === 'villa') {
-      setShow(true)
-      const base = window.location.origin + window.location.pathname
-      window.history.replaceState({}, '', base)
-      const t = setTimeout(() => setShow(false), 7000)
-      return () => clearTimeout(t)
-    }
-  }, [])
+    if (!sent) return
+    window.history.replaceState({}, '', window.location.origin + window.location.pathname)
+    const t = setTimeout(() => setHidden(true), 7000)
+    return () => clearTimeout(t)
+  }, [sent])
 
   return (
     <AnimatePresence>

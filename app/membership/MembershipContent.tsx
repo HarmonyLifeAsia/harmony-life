@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '../_data/site'
 import MembershipForm from './MembershipForm'
@@ -183,7 +184,7 @@ export default function MembershipContent() {
         <div className="max-w-3xl mx-auto text-center">
           <motion.p {...fade} className="text-gold text-xs tracking-[0.3em] uppercase font-sans mb-6">Słowo założyciela</motion.p>
           <motion.blockquote {...fade} className="font-serif text-2xl md:text-3xl text-cream leading-snug mb-6">
-            „Zbudowaliśmy coś więcej niż osiedla — krąg ludzi, którzy myślą podobnie. Sam przeniosłem się z Warszawy na Koh Samui i wiem, ile daje dobre otoczenie. Chcę, żeby każdy nasz inwestor miał wokół siebie ludzi, od których można się uczyć — i z którymi można robić większe rzeczy."
+            „Zbudowaliśmy coś więcej niż osiedla — krąg ludzi, którzy myślą podobnie. Sam przeniosłem się z Warszawy na Koh Samui i wiem, ile daje dobre otoczenie. Chcę, żeby każdy nasz inwestor miał wokół siebie ludzi, od których można się uczyć — i z którymi można robić większe rzeczy.”
           </motion.blockquote>
           <motion.p {...fade} className="text-cream/60 text-sm">Robert Jakub Szymański · założyciel Harmony Life</motion.p>
         </div>
@@ -201,10 +202,10 @@ export default function MembershipContent() {
             Zostań inwestorem Harmony Life i dołącz do społeczności — albo umów niezobowiązującą rozmowę, na której opowiemy o projektach i o tym, jak działa klub.
           </motion.p>
           <motion.div {...fade} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/pl/projects/solaya-residence" className="inline-flex items-center gap-2 bg-gold text-primary text-sm font-medium tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-gold-light transition-colors duration-300 cursor-pointer">
+            <Link href="/pl/projects/solaya-residence" className="inline-flex items-center gap-2 bg-gold text-primary text-sm font-medium tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-gold-light transition-colors duration-300 cursor-pointer">
               Poznaj projekt SOLAYA Residence
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </a>
+            </Link>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-onscrim-gold/60 text-onscrim-gold text-sm tracking-wider uppercase px-7 py-3.5 rounded-md hover:bg-onscrim-gold hover:text-scrim transition-all duration-300 cursor-pointer">
               Umów rozmowę
             </a>

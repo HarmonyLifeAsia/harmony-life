@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useBrowserValue } from '../_hooks/useBrowserValue'
 
 const WEB3FORMS_ACCESS_KEY = '4e74606e-aa83-4830-b740-63b82440a3f9'
 
@@ -28,11 +29,7 @@ export default function VillaQuickContact({
   labels: QuickContactLabels
 }) {
   const [open, setOpen] = useState(false)
-  const [redirectUrl, setRedirectUrl] = useState('')
-
-  useEffect(() => {
-    setRedirectUrl(`${window.location.origin}${window.location.pathname}?sent=villa`)
-  }, [])
+  const redirectUrl = useBrowserValue(() => `${window.location.origin}${window.location.pathname}?sent=villa`, '')
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''

@@ -34,7 +34,7 @@ export default function FounderSection() {
             <p className="text-cream/65 text-base leading-relaxed mb-4">{t.p1}</p>
             <p className="text-cream/65 text-base leading-relaxed mb-8">{t.p2}</p>
             <div className="relative pl-6 border-l-2 border-gold/40 mb-8">
-              <p className="font-serif text-xl text-cream/80 italic leading-relaxed">"{t.quote}"</p>
+              <p className="font-serif text-xl text-cream/80 italic leading-relaxed">“{t.quote}”</p>
               <p className="text-gold/60 text-sm mt-3">— {t.quoteAuthor}</p>
             </div>
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/10">

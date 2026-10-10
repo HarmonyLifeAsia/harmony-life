@@ -147,7 +147,7 @@ export default function FilmContent() {
           <motion.div {...fade} className="border border-gold/15 rounded-xl p-7 bg-charcoal/20">
             <h3 className="font-serif text-xl text-cream mb-3">A nie jest, jeśli…</h3>
             <p className="text-cream/55 text-sm leading-relaxed">
-              …szukasz szybkiego zysku bez ryzyka albo „okazji, która nie może się nie udać". Pracujemy na prognozach i realnych liczbach — i mówimy wprost, co jest założeniem, a co faktem.
+              …szukasz szybkiego zysku bez ryzyka albo „okazji, która nie może się nie udać”. Pracujemy na prognozach i realnych liczbach — i mówimy wprost, co jest założeniem, a co faktem.
             </p>
           </motion.div>
         </div>

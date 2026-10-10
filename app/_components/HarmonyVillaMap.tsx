@@ -1,4 +1,3 @@
-// @ts-nocheck — vendor interactive map component; types to be added later.
 'use client';
 
 /*
@@ -22,10 +21,35 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 
+type VillaStatus = "available" | "reserved" | "sold";
+
+interface Villa {
+  n: number;
+  x: number;
+  y: number;
+  status: VillaStatus;
+  beds: number | null;
+  area: number | null;
+  plot: number | null;
+  priceFrom: number | null;
+  lease: number | null;
+}
+
+// Unit as returned by the CRM panel (proxied through UNITS_API).
+interface CrmUnit {
+  unitNumber: number | string;
+  status?: string;
+  bedrooms?: number | null;
+  areaSqm?: number | string | null;
+  plotAreaSqm?: number | string | null;
+  basePriceTHB?: number | string | null;
+  yearlyLeaseTHB?: number | string | null;
+}
+
 const BACKGROUND = "/images/projects/harmony-life-oasis/harmony-oasis-plan.jpg";
 
 /* ---- DANE WILL ---- (status: 'available' | 'reserved' | 'sold') */
-const POS = {
+const POS: Record<number, [number, number]> = {
   1:[62.2,1.9], 2:[59.5,7.2], 3:[61.7,11.2], 4:[59,14.9], 5:[62,20.1], 6:[58.7,23.5], 7:[62.2,31.2], 8:[58.1,36.2],
   9:[48.1,1.7], 10:[45.4,5], 11:[46.9,9], 12:[44.1,11.8], 13:[44.7,16.6], 14:[41.3,20.4], 15:[41.7,26.5], 16:[37.7,33.2],
   17:[55,2.8], 18:[51.9,2.3], 19:[54.7,6.6], 20:[51.3,5.9], 21:[54.8,9.3], 22:[51.1,8.9],
@@ -36,31 +60,31 @@ const POS = {
 };
 const CAFE_POS = [40, 64.6];
 
-const STATUS_MAP = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
+const STATUS_MAP: Record<string, VillaStatus> = { AVAILABLE: "available", SOLD: "sold", RESERVED: "reserved" };
 const UNITS_API = "/api/oasis-units"; // live data proxied from the CRM panel
 
 // Positions come from calibration (POS); status / specs / prices are LIVE from the CRM.
-const FALLBACK_VILLAS = Object.entries(POS).map(([k, [x, y]]) => ({
+const FALLBACK_VILLAS: Villa[] = Object.entries(POS).map(([k, [x, y]]) => ({
   n: Number(k), x, y, status: "available", beds: null, area: null, plot: null, priceFrom: null, lease: null,
 }));
 
-const STATUS = {
+const STATUS: Record<VillaStatus, { label: string; color: string; short: string }> = {
   available: { label: "Dostępna", color: "#3E9B5F", short: "dostępne" },
   reserved:  { label: "Rezerwacja", color: "#E08A2B", short: "rezerwacja" },
   sold:      { label: "Sprzedana", color: "#D23B36", short: "sprzedane" },
 };
 
-const thb = (v) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
+const thb = (v: number) => "฿" + Math.round(Number(v)).toLocaleString("pl-PL");
 
-export default function HarmonyVillaMap({ onInquire }) {
+export default function HarmonyVillaMap({ onInquire }: { onInquire?: (villa: Villa) => void }) {
   const [villas, setVillas] = useState(FALLBACK_VILLAS);
-  const [active, setActive] = useState(null);
-  const [hover, setHover] = useState(null);
-  const [filter, setFilter] = useState(null);      // null | status key
-  const [toast, setToast] = useState(null);
+  const [active, setActive] = useState<number | null>(null);
+  const [hover, setHover] = useState<number | null>(null);
+  const [filter, setFilter] = useState<VillaStatus | null>(null);      // null | status key
+  const [toast, setToast] = useState<string | null>(null);
 
   const counts = useMemo(() => {
-    const c = { available: 0, reserved: 0, sold: 0 };
+    const c: Record<VillaStatus, number> = { available: 0, reserved: 0, sold: 0 };
     villas.forEach((v) => c[v.status]++);
     return c;
   }, [villas]);
@@ -75,13 +99,13 @@ export default function HarmonyVillaMap({ onInquire }) {
         if (!res.ok) return;
         const data = await res.json();
         if (!alive || !Array.isArray(data.units)) return;
-        const byNum = {};
-        data.units.forEach((u) => { byNum[String(u.unitNumber)] = u; });
-        setVillas(Object.entries(POS).map(([k, [x, y]]) => {
+        const byNum: Record<string, CrmUnit> = {};
+        data.units.forEach((u: CrmUnit) => { byNum[String(u.unitNumber)] = u; });
+        setVillas(Object.entries(POS).map(([k, [x, y]]): Villa => {
           const u = byNum[String(k)];
           return {
             n: Number(k), x, y,
-            status: u ? (STATUS_MAP[u.status] || "available") : "available",
+            status: u ? (STATUS_MAP[u.status ?? ""] || "available") : "available",
             beds: u?.bedrooms ?? null,
             area: u?.areaSqm != null ? Math.round(Number(u.areaSqm)) : null,
             plot: u?.plotAreaSqm != null ? Math.round(Number(u.plotAreaSqm)) : null,
@@ -97,12 +121,12 @@ export default function HarmonyVillaMap({ onInquire }) {
   }, []);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") setActive(null); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActive(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const flash = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
+  const flash = (msg: string) => { setToast(msg); setTimeout(() => setToast(null), 2200); };
 
   const activeVilla = active != null ? villas.find((v) => v.n === active) : null;
 
@@ -127,12 +151,12 @@ export default function HarmonyVillaMap({ onInquire }) {
         >
           Wszystkie <b>{villas.length}</b>
         </button>
-        {Object.entries(STATUS).map(([k, s]) => (
+        {(Object.entries(STATUS) as [VillaStatus, (typeof STATUS)[VillaStatus]][]).map(([k, s]) => (
           <button
             key={k}
             className={"chip " + (filter === k ? "active" : "")}
             onClick={() => setFilter((f) => (f === k ? null : k))}
-            style={{ "--dot": s.color }}
+            style={{ "--dot": s.color } as React.CSSProperties}
           >
             <span className="dot" /> {s.label} <b>{counts[k]}</b>
           </button>
@@ -170,7 +194,7 @@ export default function HarmonyVillaMap({ onInquire }) {
                 top: `${p.y}%`,
                 "--c": STATUS[v.status].color,
                 zIndex: isActive || isHover ? 60 : dim ? 5 : 10,
-              }}
+              } as React.CSSProperties}
               onMouseEnter={() => setHover(v.n)}
               onMouseLeave={() => setHover(null)}
               onClick={() => setActive(v.n)}
@@ -191,10 +215,10 @@ export default function HarmonyVillaMap({ onInquire }) {
         <div className="hl-panel-bg" onClick={() => setActive(null)}>
           <aside className="hl-panel" onClick={(e) => e.stopPropagation()}>
             <button className="hl-x" onClick={() => setActive(null)}>×</button>
-            <div className="hl-pnum" style={{ "--c": STATUS[activeVilla.status].color }}>
+            <div className="hl-pnum" style={{ "--c": STATUS[activeVilla.status].color } as React.CSSProperties}>
               {activeVilla.n}
             </div>
-            <span className="hl-badge" style={{ "--c": STATUS[activeVilla.status].color }}>
+            <span className="hl-badge" style={{ "--c": STATUS[activeVilla.status].color } as React.CSSProperties}>
               <span className="dot" /> {STATUS[activeVilla.status].label}
             </span>
             <h3 className="hl-pname">Willa nr {activeVilla.n}</h3>

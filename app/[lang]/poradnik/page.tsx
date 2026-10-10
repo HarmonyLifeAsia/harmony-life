@@ -49,7 +49,7 @@ export default async function PoradnikPage({ params }: { params: Promise<{ lang:
         {/* Jak używać */}
         <div className="rounded-xl border border-gold/20 bg-charcoal/20 p-6 space-y-3">
           <p className="text-cream/80 text-base leading-relaxed">
-            <span className="text-gold font-medium">Jak używać tego przewodnika:</span> idź krok po kroku. W każdym kroku jest gotowy <b className="text-cream/90">prompt</b> (polecenie dla AI). Skopiuj go przyciskiem „Kopiuj", a w miejscach w <b className="text-cream/90">[nawiasach kwadratowych]</b> wpisz dane swojego biznesu. Wklej do AI i zobacz efekt. Poprawiasz, prosząc o zmiany zwykłym językiem.
+            <span className="text-gold font-medium">Jak używać tego przewodnika:</span> idź krok po kroku. W każdym kroku jest gotowy <b className="text-cream/90">prompt</b> (polecenie dla AI). Skopiuj go przyciskiem „Kopiuj”, a w miejscach w <b className="text-cream/90">[nawiasach kwadratowych]</b> wpisz dane swojego biznesu. Wklej do AI i zobacz efekt. Poprawiasz, prosząc o zmiany zwykłym językiem.
           </p>
           <p className="text-cream/55 text-sm leading-relaxed">
             Zasada nadrzędna: <b className="text-cream/80">buduj zaufanie, nie krzykiem.</b> Spokojny, konkretny ton działa lepiej niż agresywna sprzedaż.
@@ -164,10 +164,10 @@ i podepnij je w odpowiednich sekcjach/galeriach.`} />
         <Step n="11" title="Pracuj iteracyjnie (najlepszy nawyk)">
           <p>Nie planuj wszystkiego naraz. Mów krótko, co poprawić — AI wprowadza, buduje i wdraża, a Ty oglądasz efekt:</p>
           <ul className="list-disc pl-5 space-y-1 text-cream/70">
-            <li>„zmień nagłówek hero na…",</li>
-            <li>„powiększ zdjęcia w galerii",</li>
-            <li>„dodaj sekcję z cennikiem",</li>
-            <li>„na telefonie menu ma się chować".</li>
+            <li>„zmień nagłówek hero na…”,</li>
+            <li>„powiększ zdjęcia w galerii”,</li>
+            <li>„dodaj sekcję z cennikiem”,</li>
+            <li>„na telefonie menu ma się chować”.</li>
           </ul>
         </Step>
 
@@ -187,7 +187,7 @@ i podepnij je w odpowiednich sekcjach/galeriach.`} />
         <section className="border-t border-gold/10 pt-8">
           <h2 className="font-serif text-2xl text-cream mb-3">Skrót: cała ścieżka</h2>
           <p className="text-cream/70 leading-relaxed">
-            Start → kolory/fonty → treści/ton → zdjęcia (WebP) → sekcja „wow" → dane/oferta → formularz → blog/FAQ → języki → wdrożenie + domena → iteracja.
+            Start → kolory/fonty → treści/ton → zdjęcia (WebP) → sekcja „wow” → dane/oferta → formularz → blog/FAQ → języki → wdrożenie + domena → iteracja.
           </p>
           <p className="text-cream/50 text-sm mt-4">Wszystkie prompty możesz kopiować i dostosować do siebie. Powodzenia z Twoją stroną! 🚀</p>
         </section>

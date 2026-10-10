@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useDict } from './LangProvider'
 import { CALENDLY_URL } from '../_data/site'
+import { useBrowserValue } from '../_hooks/useBrowserValue'
 
 // Discreet, premium persistent CTA. Appears once the user scrolls past the
 // hero, can be dismissed for the session. Intentionally understated (no red,
@@ -12,10 +13,10 @@ export default function StickyCta() {
   const dict = useDict()
   const t = dict.stickyCta
   const [visible, setVisible] = useState(false)
-  const [dismissed, setDismissed] = useState(true)
+  const dismissedBefore = useBrowserValue(() => sessionStorage.getItem('hl-sticky-cta-dismissed') === '1', true)
+  const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
-    setDismissed(sessionStorage.getItem('hl-sticky-cta-dismissed') === '1')
     const onScroll = () => setVisible(window.scrollY > 700)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -27,7 +28,7 @@ export default function StickyCta() {
     sessionStorage.setItem('hl-sticky-cta-dismissed', '1')
   }
 
-  const show = visible && !dismissed
+  const show = visible && !dismissed && !dismissedBefore
 
   return (
     <AnimatePresence>

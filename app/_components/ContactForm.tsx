@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useDict } from './LangProvider'
+import { useBrowserValue } from '../_hooks/useBrowserValue'
 
 // Public Web3Forms access key — safe to expose client-side.
 const WEB3FORMS_ACCESS_KEY = '4e74606e-aa83-4830-b740-63b82440a3f9'
@@ -24,18 +25,14 @@ function presetInvestment(name?: string) {
 export default function ContactForm({ projectName, compact = false }: ContactFormProps) {
   const dict = useDict()
   const t = dict.contactForm
-  const [redirectUrl, setRedirectUrl] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-
+  const base = useBrowserValue(() => window.location.origin + window.location.pathname, '')
+  const redirectUrl = base ? `${base}?sent=1` : ''
   // Web3Forms redirects back here with ?sent=1 on success → show the success state.
+  const submitted = useBrowserValue(() => new URLSearchParams(window.location.search).get('sent') === '1', false)
+
   useEffect(() => {
-    const base = window.location.origin + window.location.pathname
-    setRedirectUrl(`${base}?sent=1`)
-    if (new URLSearchParams(window.location.search).get('sent') === '1') {
-      setSubmitted(true)
-      window.history.replaceState({}, '', base)
-    }
-  }, [])
+    if (submitted) window.history.replaceState({}, '', base)
+  }, [submitted, base])
 
   const inputClass =
     'w-full bg-white/5 border border-gold/20 text-cream text-sm px-4 py-3 rounded-sm placeholder:text-cream/30 focus:outline-none focus:border-gold/60 transition-colors'

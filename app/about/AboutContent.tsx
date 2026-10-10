@@ -143,7 +143,7 @@ export default function AboutContent() {
                 <p>{t.founderBio4}</p>
               </div>
               <blockquote className="mt-8 pl-6 border-l-2 border-gold/40">
-                <p className="font-serif text-xl text-cream/80 italic">"{t.founderQuote}"</p>
+                <p className="font-serif text-xl text-cream/80 italic">“{t.founderQuote}”</p>
                 <p className="text-gold/60 text-sm mt-3">— Robert Szymański</p>
               </blockquote>
             </motion.div>
