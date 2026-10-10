@@ -18,6 +18,7 @@ export default function Navigation() {
     { label: dict.nav.projects, href: `/${lang}/#projects` },
     // { label: 'Membership', href: `/pl/membership`, highlight: true }, // ukryte na razie
     { label: dict.nav.guide, href: `/${lang}/guide` },
+    { label: dict.nav.partners, href: `/${lang}/partners` },
     { label: dict.nav.about, href: `/${lang}/about` },
     { label: dict.nav.contact, href: `/${lang}/contact` },
   ]

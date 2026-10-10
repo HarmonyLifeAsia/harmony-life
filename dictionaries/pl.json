@@ -5,7 +5,8 @@
     "contact": "Kontakt",
     "bookConsultation": "Umów konsultację",
     "guide": "Przewodnik inwestora",
-    "insurance": "Ubezpieczenia"
+    "insurance": "Ubezpieczenia",
+    "partners": "Partnerzy"
   },
   "hero": {
     "eyebrow": "Koh Samui, Tajlandia",
@@ -755,5 +756,140 @@
     "title": "Bądź na bieżąco z rynkiem Koh Samui",
     "subtitle": "Nowe inwestycje, analizy rynku i wczesny dostęp do przedsprzedaży — bez spamu, maksymalnie raz–dwa razy w miesiącu.",
     "note": "Możesz wypisać się w każdej chwili. Twoje dane pozostają poufne."
+  },
+  "partners": {
+    "metaTitle": "Program partnerski dla pośredników | Harmony Life",
+    "metaDescription": "Współpraca dla pośredników i agencji: {lead}% prowizji za przekazanie kontaktu, {full}% za poprowadzenie klienta do umowy. Projekty Oasis, SOLAYA i Hill 2 na Koh Samui.",
+    "heroEyebrow": "Program partnerski",
+    "heroTitle": "Polecasz klienta, my prowadzimy resztę",
+    "heroSubtitle": "Współpracujemy z pośrednikami, agencjami i osobami, które znają inwestorów. Ty przekazujesz kontakt albo prowadzisz klienta do umowy. My odpowiadamy za budowę, najem i rozliczenia. Stawki prowizji znasz od pierwszego dnia.",
+    "heroCta": "Dołącz jako partner",
+    "heroSecondary": "Zobacz projekty",
+    "commissionEyebrow": "Prowizja",
+    "commissionTitle": "Dwie stawki, jasne zasady",
+    "commissionSubtitle": "Prowizję liczymy od ceny willi bez pakietu wyposażenia. Wysokość zależy od tego, ile pracy bierzesz na siebie.",
+    "tiers": [
+      {
+        "name": "Przekazanie kontaktu",
+        "text": "Przekazujesz nam dane klienta, który rozważa inwestycję na Koh Samui. Dalej prowadzimy wszystko my: rozmowę, prezentację, wizytę na wyspie i umowę.",
+        "points": [
+          "Zgłaszasz klienta przez formularz albo e-mail, zanim porozmawia z nami",
+          "Potwierdzamy, że kontakt jest zapisany na Ciebie",
+          "Informujemy Cię o postępach sprzedaży"
+        ]
+      },
+      {
+        "name": "Obsługa całego klienta",
+        "text": "Prowadzisz klienta od pierwszej rozmowy do podpisania umowy: prezentujesz projekt, odpowiadasz na pytania, organizujesz wizytę. My dostarczamy materiały, aktualne ceny i przygotowujemy dokumenty.",
+        "points": [
+          "Dostęp do prezentacji, cenników i panelu dostępności willi",
+          "Wsparcie naszego zespołu w pytaniach prawnych i technicznych",
+          "Po podpisaniu umowy klient przechodzi pod naszą opiekę"
+        ]
+      }
+    ],
+    "basisLabel": "Podstawa",
+    "basisText": "Cena willi bez pakietu wyposażenia pod klucz.",
+    "payoutLabel": "Wypłata",
+    "payoutText": "50% prowizji po wpłacie przez klienta pierwszej transzy, 50% po wpłacie drugiej transzy.",
+    "agreementNote": "Szczegóły współpracy, w tym zasady rejestracji klientów, zapisujemy w umowie partnerskiej.",
+    "projectsEyebrow": "Oferta",
+    "projectsTitle": "Projekty dostępne dla partnerów",
+    "projectsSubtitle": "Trzy projekty w sprzedaży. Ceny i dostępność willi są w panelu ofertowym, aktualizowanym na bieżąco.",
+    "colPrice": "Cena od",
+    "colUnits": "Liczba willi",
+    "colBedrooms": "Sypialnie",
+    "colArea": "Powierzchnia",
+    "linkProject": "Strona projektu",
+    "linkAvailability": "Dostępność i ceny",
+    "linkDeck": "Prezentacja (PDF)",
+    "soldOutNote": "Zrealizowane i sprzedane projekty pokazują klientom, co dowozimy:",
+    "stepsEyebrow": "Jak zaczynamy",
+    "stepsTitle": "Cztery kroki do pierwszej prowizji",
+    "steps": [
+      {
+        "title": "Zgłoszenie",
+        "text": "Wypełniasz formularz na dole strony. Odpowiadamy i umawiamy krótką rozmowę."
+      },
+      {
+        "title": "Umowa partnerska",
+        "text": "Podpisujemy umowę ze stawkami, zasadami rejestracji klientów i harmonogramem wypłat."
+      },
+      {
+        "title": "Materiały i klienci",
+        "text": "Dostajesz prezentacje, cenniki i dostęp do panelu. Każdego klienta zgłaszasz do nas przed pierwszą prezentacją."
+      },
+      {
+        "title": "Umowa i prowizja",
+        "text": "Klient podpisuje umowę i wpłaca transze. Prowizję wypłacamy w dwóch częściach, zgodnie z tym harmonogramem."
+      }
+    ],
+    "materialsEyebrow": "Do pobrania",
+    "materialsTitle": "Materiały, z których korzystasz od razu",
+    "materials": {
+      "deckOasis": "Prezentacja Harmony Life Oasis (PDF)",
+      "deckSolaya": "Prezentacja SOLAYA Residence (PDF)",
+      "modelOasis": "Model finansowy najmu Oasis",
+      "guide": "Przewodnik inwestora: leasehold, koszty, proces zakupu",
+      "panelOasis": "Panel dostępności Oasis",
+      "panelSolaya": "Panel dostępności SOLAYA"
+    },
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Pytania, które słyszymy najczęściej",
+    "faq": [
+      {
+        "q": "Kto może zostać partnerem?",
+        "a": "Agencje nieruchomości, niezależni pośrednicy, doradcy i osoby, które mają w swoim otoczeniu inwestorów. Nie musisz prowadzić agencji. Liczy się realny kontakt z osobami, które rozważają zakup."
+      },
+      {
+        "q": "Od jakiej kwoty liczona jest prowizja?",
+        "a": "Od ceny willi bez pakietu wyposażenia pod klucz. Pakiet wyposażenia jest osobną pozycją i nie wchodzi do podstawy prowizji."
+      },
+      {
+        "q": "Kiedy dostanę wypłatę?",
+        "a": "W dwóch częściach. 50% prowizji po wpłacie przez klienta pierwszej transzy, 50% po wpłacie drugiej transzy."
+      },
+      {
+        "q": "Czy stawki są takie same dla każdego projektu?",
+        "a": "Tak. {lead}% za przekazanie kontaktu i {full}% za obsługę całego klienta obowiązują w każdym projekcie z listy."
+      },
+      {
+        "q": "Co jeśli klient sam skontaktuje się z Harmony Life?",
+        "a": "Dlatego każdego klienta zgłaszasz do nas przed pierwszą prezentacją. Zasady przypisania klienta i czas jego ochrony zapisujemy w umowie partnerskiej."
+      },
+      {
+        "q": "Czy mogę współpracować z Polski albo z innego kraju?",
+        "a": "Tak. Rozmowy prowadzimy zdalnie. Prezentacje na miejscu, wizyty i podpisanie umowy obsługuje nasz zespół na Koh Samui."
+      },
+      {
+        "q": "Czy mogę pokazywać klientom liczby o najmie?",
+        "a": "Korzystaj z naszych materiałów: modelu finansowego Oasis i przewodnika inwestora. To prognozy z opisanymi założeniami, nie gwarancje. Nie obiecujemy zwrotu ani procentów i prosimy o to samo partnerów."
+      }
+    ],
+    "formEyebrow": "Dołącz",
+    "formTitle": "Zgłoś się do programu partnerskiego",
+    "formSubtitle": "Zostaw kontakt. Odpowiemy i umówimy krótką rozmowę o współpracy.",
+    "form": {
+      "name": "Imię i nazwisko",
+      "company": "Firma lub agencja",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "market": "Kraj lub rynek, na którym działasz",
+      "cooperation": "Forma współpracy",
+      "cooperationOptions": [
+        "Przekazywanie kontaktów",
+        "Obsługa całego klienta",
+        "Jeszcze nie wiem"
+      ],
+      "message": "Wiadomość",
+      "messagePlaceholder": "Napisz, z jakimi klientami pracujesz, albo zostaw puste.",
+      "submit": "Wyślij zgłoszenie",
+      "sending": "Wysyłanie…",
+      "successTitle": "Dziękujemy za zgłoszenie",
+      "successText": "Odezwiemy się z informacjami o programie partnerskim. Zwykle odpowiadamy w ciągu 24 godzin.",
+      "error": "Nie udało się wysłać zgłoszenia. Spróbuj ponownie lub napisz na office@harmonylife.asia.",
+      "privacy": "Zgłoszenie nie jest zobowiązujące. Twoje dane wykorzystamy wyłącznie do kontaktu w sprawie programu partnerskiego."
+    },
+    "disclaimer": "Ta strona ma charakter informacyjny i nie stanowi oferty w rozumieniu Kodeksu cywilnego. Warunki współpracy określa umowa partnerska."
   }
 }

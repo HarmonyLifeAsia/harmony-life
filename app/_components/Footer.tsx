@@ -53,6 +53,7 @@ export default function Footer() {
                 { label: nav.projects, href: `/${lang}/#projects` },
                 // { label: 'Membership', href: `/pl/membership` }, // ukryte na razie
                 { label: nav.about, href: `/${lang}/about` },
+                { label: nav.partners, href: `/${lang}/partners` },
                 { label: nav.insurance, href: `/pl/ubezpieczenia` },
                 { label: nav.contact, href: `/${lang}/contact` },
               ].map(({ label, href }) => (

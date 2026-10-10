@@ -5,7 +5,8 @@
     "contact": "Contact",
     "bookConsultation": "Book Consultation",
     "guide": "Investor Guide",
-    "insurance": "Insurance"
+    "insurance": "Insurance",
+    "partners": "Partners"
   },
   "hero": {
     "eyebrow": "Koh Samui, Thailand",
@@ -755,5 +756,140 @@
     "title": "Stay ahead of the Koh Samui market",
     "subtitle": "New developments, market insights and early access to pre-sales — no spam, at most once or twice a month.",
     "note": "You can unsubscribe at any time. Your data stays confidential."
+  },
+  "partners": {
+    "metaTitle": "Partner program for agents | Harmony Life",
+    "metaDescription": "Work with Harmony Life as an agent or referrer: {lead}% commission for passing on a contact, {full}% for guiding the client to contract. Oasis, SOLAYA and Hill 2 on Koh Samui.",
+    "heroEyebrow": "Partner program",
+    "heroTitle": "You refer the client, we take care of the rest",
+    "heroSubtitle": "We work with agents, agencies and people who know investors. You pass on a contact or guide the client to contract. We take care of construction, rental and settlements. You know the commission rates from day one.",
+    "heroCta": "Join as a partner",
+    "heroSecondary": "See the projects",
+    "commissionEyebrow": "Commission",
+    "commissionTitle": "Two rates, clear rules",
+    "commissionSubtitle": "Commission is calculated on the villa price excluding the furnishing package. The rate depends on how much of the work you take on.",
+    "tiers": [
+      {
+        "name": "Passing on a contact",
+        "text": "You give us the details of a client considering an investment on Koh Samui. We handle everything from there: the conversation, the presentation, the visit to the island and the contract.",
+        "points": [
+          "You register the client through the form or by e-mail before they talk to us",
+          "We confirm the contact is recorded under your name",
+          "We keep you informed about the progress of the sale"
+        ]
+      },
+      {
+        "name": "Handling the whole client",
+        "text": "You guide the client from the first conversation to the signed contract: you present the project, answer questions and arrange the visit. We provide the materials, current prices and prepare the documents.",
+        "points": [
+          "Access to presentations, price lists and the live villa availability panel",
+          "Support from our team on legal and technical questions",
+          "After signing, the client moves under our care"
+        ]
+      }
+    ],
+    "basisLabel": "Basis",
+    "basisText": "Villa price excluding the turnkey furnishing package.",
+    "payoutLabel": "Payout",
+    "payoutText": "50% of the commission after the client pays the first instalment, 50% after the second instalment.",
+    "agreementNote": "The details of our cooperation, including how clients are registered, are set out in the partner agreement.",
+    "projectsEyebrow": "Offer",
+    "projectsTitle": "Projects available to partners",
+    "projectsSubtitle": "Three projects on sale. Villa prices and availability are in the offer panel, updated continuously.",
+    "colPrice": "Price from",
+    "colUnits": "Villas",
+    "colBedrooms": "Bedrooms",
+    "colArea": "Area",
+    "linkProject": "Project page",
+    "linkAvailability": "Availability and prices",
+    "linkDeck": "Presentation (PDF)",
+    "soldOutNote": "Completed and sold-out projects show clients what we deliver:",
+    "stepsEyebrow": "How we start",
+    "stepsTitle": "Four steps to your first commission",
+    "steps": [
+      {
+        "title": "Application",
+        "text": "You fill in the form at the bottom of this page. We reply and arrange a short call."
+      },
+      {
+        "title": "Partner agreement",
+        "text": "We sign an agreement with the rates, the client registration rules and the payout schedule."
+      },
+      {
+        "title": "Materials and clients",
+        "text": "You receive presentations, price lists and access to the panel. You register every client with us before the first presentation."
+      },
+      {
+        "title": "Contract and commission",
+        "text": "The client signs the contract and pays the instalments. We pay the commission in two parts, following that schedule."
+      }
+    ],
+    "materialsEyebrow": "Downloads",
+    "materialsTitle": "Materials you can use right away",
+    "materials": {
+      "deckOasis": "Harmony Life Oasis presentation (PDF)",
+      "deckSolaya": "SOLAYA Residence presentation (PDF)",
+      "modelOasis": "Oasis rental financial model",
+      "guide": "Investor guide: leasehold, costs, buying process",
+      "panelOasis": "Oasis availability panel",
+      "panelSolaya": "SOLAYA availability panel"
+    },
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Questions we hear most often",
+    "faq": [
+      {
+        "q": "Who can become a partner?",
+        "a": "Real estate agencies, independent agents, advisors and people who have investors around them. You do not need to run an agency. What matters is real contact with people considering a purchase."
+      },
+      {
+        "q": "What is the commission calculated on?",
+        "a": "On the villa price excluding the turnkey furnishing package. The furnishing package is a separate item and is not part of the commission basis."
+      },
+      {
+        "q": "When do I get paid?",
+        "a": "In two parts. 50% of the commission after the client pays the first instalment, 50% after the second instalment."
+      },
+      {
+        "q": "Are the rates the same for every project?",
+        "a": "Yes. {lead}% for passing on a contact and {full}% for handling the whole client apply to every project on the list."
+      },
+      {
+        "q": "What if the client contacts Harmony Life directly?",
+        "a": "That is why you register every client with us before the first presentation. The rules for assigning a client and the protection period are set out in the partner agreement."
+      },
+      {
+        "q": "Can I work with you from another country?",
+        "a": "Yes. We talk remotely. On-site presentations, visits and contract signing are handled by our team on Koh Samui."
+      },
+      {
+        "q": "Can I show clients rental figures?",
+        "a": "Use our materials: the Oasis financial model and the investor guide. They are forecasts with stated assumptions, not guarantees. We do not promise returns or percentages, and we ask our partners for the same."
+      }
+    ],
+    "formEyebrow": "Join",
+    "formTitle": "Apply to the partner program",
+    "formSubtitle": "Leave your contact details. We will reply and arrange a short call about working together.",
+    "form": {
+      "name": "Full name",
+      "company": "Company or agency",
+      "email": "E-mail",
+      "phone": "Phone",
+      "market": "Country or market you work in",
+      "cooperation": "Type of cooperation",
+      "cooperationOptions": [
+        "Passing on contacts",
+        "Handling the whole client",
+        "Not sure yet"
+      ],
+      "message": "Message",
+      "messagePlaceholder": "Tell us what kind of clients you work with, or leave this empty.",
+      "submit": "Send application",
+      "sending": "Sending…",
+      "successTitle": "Thank you for your application",
+      "successText": "We will get back to you with details of the partner program. We usually reply within 24 hours.",
+      "error": "We could not send your application. Please try again or write to office@harmonylife.asia.",
+      "privacy": "The application is not binding. We will use your details only to contact you about the partner program."
+    },
+    "disclaimer": "This page is for information only and does not constitute an offer. The terms of cooperation are set out in the partner agreement."
   }
 }

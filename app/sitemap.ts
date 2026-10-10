@@ -5,7 +5,7 @@ import { projects } from './_data/projects'
 
 // Every page × every locale. Keeps Google pointed at harmonylife.co.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ['', '/guide', '/about', '/contact', '/privacy']
+  const staticPaths = ['', '/guide', '/partners', '/about', '/contact', '/privacy']
   const projectPaths = projects.map((p) => `/projects/${p.slug}`)
   const allPaths = [...staticPaths, ...projectPaths, '/projects/harmony-life-oasis/model']
 
