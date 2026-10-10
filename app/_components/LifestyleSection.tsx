@@ -55,7 +55,7 @@ export default function LifestyleSection() {
 
           <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="relative">
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
-              <Image src="/images/projects/harmony-life-oasis/04.webp" alt="Luxury pool villa lifestyle at Harmony Life, Koh Samui" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+              <Image src="/images/projects/harmony-life-oasis/gallery/04.webp" alt="Luxury pool villa lifestyle at Harmony Life, Koh Samui" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
               <LoopingVideo videoId="OTLTdxleNV4" start={0} endTrim={6} />
             </div>
             <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 rounded-lg pointer-events-none" />

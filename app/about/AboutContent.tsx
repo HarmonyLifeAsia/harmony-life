@@ -87,7 +87,7 @@ export default function AboutContent() {
             >
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
                 <Image
-                  src="/images/projects/harmony-life-oasis/01.webp"
+                  src="/images/projects/harmony-life-oasis/gallery/01.webp"
                   alt="Harmony Life — luxury villa on Koh Samui"
                   fill sizes="(max-width:1024px) 100vw, 50vw"
                   className="object-cover"
