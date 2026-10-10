@@ -64,12 +64,12 @@ export default function Navigation() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`hover:text-gold text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
+                className={`hover:text-gold text-sm tracking-wide whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                   link.highlight
                     ? (scrolled ? 'text-gold' : 'text-onscrim-gold')
                     : (scrolled ? 'text-cream/80' : 'text-onscrim/80')
@@ -82,7 +82,7 @@ export default function Navigation() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`border hover:bg-gold hover:text-scrim text-sm px-5 py-2 rounded-sm transition-all duration-300 tracking-wider cursor-pointer ${scrolled ? 'border-gold/60 text-gold' : 'border-onscrim-gold/60 text-onscrim-gold'}`}
+              className={`border hover:bg-gold hover:text-scrim text-sm px-5 py-2 rounded-sm whitespace-nowrap transition-all duration-300 tracking-wider cursor-pointer ${scrolled ? 'border-gold/60 text-gold' : 'border-onscrim-gold/60 text-onscrim-gold'}`}
             >
               {dict.nav.bookConsultation}
             </a>
@@ -91,7 +91,7 @@ export default function Navigation() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] cursor-pointer z-50"
+            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] cursor-pointer z-50"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             <motion.span animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }} className={`block w-6 h-px ${scrolled ? 'bg-cream' : 'bg-onscrim'}`} />
@@ -108,7 +108,7 @@ export default function Navigation() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 bg-primary flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-40 bg-primary flex flex-col items-center justify-center gap-8 lg:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.div key={link.href} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.07 }}>
