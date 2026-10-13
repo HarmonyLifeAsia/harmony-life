@@ -45,3 +45,10 @@ python3 -m http.server 8000
 Materiał ma charakter poglądowy i marketingowy. Prognozy finansowe są scenariuszami
 opartymi na założeniach i nie stanowią gwarancji wyników ani oferty w rozumieniu
 przepisów o instrumentach finansowych.
+
+---
+
+## Harmony Upload
+
+W podkatalogu [`harmony-upload/`](harmony-upload/README.md) znajduje się osobny projekt: strona do zbierania
+oryginalnych filmów z wypraw (Cloudflare Workers + D1 + IDrive e2). Nie jest powiązany z prezentacją powyżej.
