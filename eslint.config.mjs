@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     // Skrypty narzędziowe (generatory PDF, logotypy) — Node/CommonJS, nie część aplikacji.
     "presentations/**",
     "scripts/**",
+    // Osobny projekt (Cloudflare Worker + Vite) z własną konfiguracją TS i testami — nie część aplikacji Next.
+    "harmony-upload/**",
   ]),
 ]);
 

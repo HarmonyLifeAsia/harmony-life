@@ -1,0 +1,43 @@
+// Harmony Upload — konfiguracja Cloudflare Worker.
+// UWAGA: plik zawiera wyłącznie nazwy i placeholdery. Prawdziwe wartości ustaw
+// w panelu Cloudflare / przez `wrangler secret put` (sekrety) — patrz docs/DEPLOY.md.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "harmony-upload",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2026-10-01",
+
+  // Statyczny front (Vite -> ./dist). Trasy HTML przechodzą przez Worker, żeby
+  // dostały nagłówki bezpieczeństwa i CSP z adresem magazynu; pliki JS/CSS są
+  // serwowane bezpośrednio (nie liczą się jako wywołania Workera).
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/", "/t/*", "/admin", "/admin/*", "/api/*"]
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "harmony-upload",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Sprzątanie porzuconych sesji + pomiar użycia magazynu (co godzinę).
+  "triggers": { "crons": ["17 * * * *"] },
+
+  // Zmienne NIEtajne — uzupełnij po założeniu konta/bucketu.
+  // Sekrety (S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, SESSION_SIGNING_KEY)
+  // ustawiasz WYŁĄCZNIE przez `wrangler secret put`.
+  "vars": {
+    "S3_ENDPOINT": "REPLACE_WITH_IDRIVE_E2_ENDPOINT_URL",
+    "S3_REGION": "REPLACE_WITH_IDRIVE_E2_REGION",
+    "S3_BUCKET": "REPLACE_WITH_BUCKET_NAME",
+    "APP_ORIGIN": "REPLACE_WITH_APP_ORIGIN",
+    "ACCESS_TEAM_DOMAIN": "REPLACE_WITH_TEAM.cloudflareaccess.com",
+    "ACCESS_AUD": "REPLACE_WITH_ACCESS_APPLICATION_AUD_TAG"
+  }
+}

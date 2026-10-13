@@ -1,0 +1,42 @@
+{
+  "name": "harmony-upload",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Harmony Upload — zbieranie oryginalnych filmów z wypraw (Cloudflare Workers + D1 + IDrive e2).",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run typecheck && vite build",
+    "typecheck": "tsc -p tsconfig.worker.json && tsc -p tsconfig.web.json",
+    "test": "vitest run",
+    "preview": "wrangler dev",
+    "e2e:local": "node scripts/e2e-local.mjs",
+    "e2e:browser": "node scripts/e2e-browser.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply harmony-upload --local",
+    "db:migrate:remote": "wrangler d1 migrations apply harmony-upload --remote"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "aws4fetch": "1.0.20",
+    "qrcode": "1.5.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.1",
+    "@cloudflare/workers-types": "5.20261013.1",
+    "@types/node": "26.6.5",
+    "@types/qrcode": "1.5.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "playwright-core": "1.64.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.4",
+    "vitest": "4.1.11",
+    "wrangler": "4.150.0"
+  }
+}
